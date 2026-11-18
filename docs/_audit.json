@@ -10,7 +10,7 @@
    2
   ],
   "skip": 0,
-  "canonical": "https://indemnizavial.co/no-encontrado/",
+  "canonical": "",
   "og": true,
   "tw": true,
   "ogTitle": true,
@@ -19,13 +19,13 @@
   "schema": [
    "LegalService"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 98,
   "external": 0,
   "faq": 3,
   "tables": 0,
   "pend": 0,
-  "bytes": 36676,
+  "bytes": 38627,
   "depth": 1
  },
  {
@@ -58,15 +58,16 @@
    "LegalService",
    "BreadcrumbList",
    "WebPage",
+   "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 115,
   "external": 2,
   "faq": 11,
   "tables": 0,
   "pend": 1,
-  "bytes": 57792,
+  "bytes": 60823,
   "depth": 1
  },
  {
@@ -99,20 +100,21 @@
    "LegalService",
    "BreadcrumbList",
    "WebPage",
+   "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 116,
   "external": 2,
   "faq": 11,
   "tables": 0,
   "pend": 1,
-  "bytes": 58124,
+  "bytes": 61122,
   "depth": 1
  },
  {
   "u": "/abogado-accidentes-transito-caldas/",
-  "words": 1001,
+  "words": 1016,
   "title": "Abogado de accidentes de tránsito en Caldas | Derechos con Dignidad",
   "desc": "Accidente en Caldas, Antioquia: dónde pedir el informe, cómo reclamar a empresas de transporte y qué hacer si hubo un vehículo pesado o un bus.",
   "h1": "Abogado de accidentes de tránsito en Caldas",
@@ -140,15 +142,16 @@
    "LegalService",
    "BreadcrumbList",
    "WebPage",
+   "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 115,
   "external": 2,
   "faq": 11,
   "tables": 0,
   "pend": 1,
-  "bytes": 57885,
+  "bytes": 61036,
   "depth": 1
  },
  {
@@ -181,15 +184,16 @@
    "LegalService",
    "BreadcrumbList",
    "WebPage",
+   "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 116,
   "external": 2,
   "faq": 11,
   "tables": 0,
   "pend": 1,
-  "bytes": 57213,
+  "bytes": 60245,
   "depth": 1
  },
  {
@@ -222,15 +226,16 @@
    "LegalService",
    "BreadcrumbList",
    "WebPage",
+   "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 116,
   "external": 1,
   "faq": 11,
   "tables": 0,
   "pend": 2,
-  "bytes": 58047,
+  "bytes": 61173,
   "depth": 1
  },
  {
@@ -263,15 +268,16 @@
    "LegalService",
    "BreadcrumbList",
    "WebPage",
+   "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 116,
   "external": 1,
   "faq": 11,
   "tables": 0,
   "pend": 2,
-  "bytes": 57817,
+  "bytes": 60874,
   "depth": 1
  },
  {
@@ -304,15 +310,16 @@
    "LegalService",
    "BreadcrumbList",
    "WebPage",
+   "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 117,
   "external": 2,
   "faq": 11,
   "tables": 0,
   "pend": 1,
-  "bytes": 57639,
+  "bytes": 60664,
   "depth": 1
  },
  {
@@ -345,15 +352,16 @@
    "LegalService",
    "BreadcrumbList",
    "WebPage",
+   "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 116,
   "external": 2,
   "faq": 11,
   "tables": 0,
   "pend": 1,
-  "bytes": 57764,
+  "bytes": 60776,
   "depth": 1
  },
  {
@@ -386,15 +394,16 @@
    "LegalService",
    "BreadcrumbList",
    "WebPage",
+   "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 118,
   "external": 2,
   "faq": 11,
   "tables": 0,
   "pend": 1,
-  "bytes": 58375,
+  "bytes": 61396,
   "depth": 1
  },
  {
@@ -427,15 +436,16 @@
    "LegalService",
    "BreadcrumbList",
    "WebPage",
+   "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 117,
   "external": 1,
   "faq": 11,
   "tables": 0,
   "pend": 2,
-  "bytes": 58359,
+  "bytes": 61404,
   "depth": 1
  },
  {
@@ -468,15 +478,16 @@
    "LegalService",
    "BreadcrumbList",
    "WebPage",
+   "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 117,
   "external": 3,
   "faq": 11,
   "tables": 0,
   "pend": 1,
-  "bytes": 57927,
+  "bytes": 60977,
   "depth": 1
  },
  {
@@ -509,15 +520,16 @@
    "LegalService",
    "BreadcrumbList",
    "WebPage",
+   "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 117,
   "external": 1,
   "faq": 11,
   "tables": 0,
   "pend": 1,
-  "bytes": 58520,
+  "bytes": 61549,
   "depth": 1
  },
  {
@@ -550,23 +562,24 @@
    "LegalService",
    "BreadcrumbList",
    "WebPage",
+   "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 117,
   "external": 3,
   "faq": 11,
   "tables": 0,
   "pend": 1,
-  "bytes": 57771,
+  "bytes": 60806,
   "depth": 1
  },
  {
   "u": "/area-metropolitana/",
-  "words": 1190,
+  "words": 1204,
   "title": "Abogado de accidentes de tránsito en el Valle de Aburrá y el Oriente",
   "desc": "Abogado para víctimas de accidentes de tránsito en Medellín, el Valle de Aburrá y el Oriente: Rionegro, La Ceja, El Retiro y El Carmen de Viboral.",
-  "h1": "Abogado de accidentes de tránsito en el Valle de Aburrá y el Oriente antioqueño",
+  "h1": "Abogado de accidentes de tránsito en el Valle de Aburrá y el Oriente",
   "hs": [
    1,
    2,
@@ -600,15 +613,16 @@
   "schema": [
    "LegalService",
    "BreadcrumbList",
+   "ItemList",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 105,
   "external": 0,
   "faq": 11,
   "tables": 1,
   "pend": 1,
-  "bytes": 62514,
+  "bytes": 66618,
   "depth": 1
  },
  {
@@ -644,13 +658,13 @@
    "Article",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 102,
   "external": 4,
   "faq": 9,
   "tables": 1,
   "pend": 0,
-  "bytes": 60497,
+  "bytes": 62825,
   "depth": 2
  },
  {
@@ -687,13 +701,13 @@
    "Article",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 98,
   "external": 2,
   "faq": 9,
   "tables": 1,
   "pend": 0,
-  "bytes": 56109,
+  "bytes": 58354,
   "depth": 2
  },
  {
@@ -727,13 +741,13 @@
    "Article",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 99,
   "external": 2,
   "faq": 9,
   "tables": 1,
   "pend": 0,
-  "bytes": 54355,
+  "bytes": 56601,
   "depth": 2
  },
  {
@@ -767,13 +781,13 @@
    "Article",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 96,
   "external": 2,
   "faq": 9,
   "tables": 1,
   "pend": 0,
-  "bytes": 54261,
+  "bytes": 56544,
   "depth": 2
  },
  {
@@ -810,13 +824,13 @@
    "Article",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 98,
   "external": 2,
   "faq": 9,
   "tables": 0,
   "pend": 0,
-  "bytes": 57821,
+  "bytes": 60050,
   "depth": 2
  },
  {
@@ -849,18 +863,18 @@
    "Article",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 97,
   "external": 3,
   "faq": 9,
   "tables": 0,
   "pend": 0,
-  "bytes": 51519,
+  "bytes": 53759,
   "depth": 2
  },
  {
   "u": "/blog/dias-incapacidad-fracturas/",
-  "words": 765,
+  "words": 766,
   "title": "Días de incapacidad por fractura: cómo se determina",
   "desc": "La incapacidad por una fractura no es una cifra fija: se determina según la lesión y el dictamen médico. Cómo funciona y por qué importa.",
   "h1": "Cuántos días de incapacidad por una fractura: cómo se determina",
@@ -892,18 +906,18 @@
    "Article",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 97,
   "external": 2,
   "faq": 9,
   "tables": 0,
   "pend": 0,
-  "bytes": 56198,
+  "bytes": 58420,
   "depth": 2
  },
  {
   "u": "/blog/diferencia-soat-demanda-civil/",
-  "words": 618,
+  "words": 619,
   "title": "SOAT vs. demanda civil: qué recupera cada vía",
   "desc": "Comparación clara entre el SOAT y la reclamación civil por accidente de tránsito: qué cubre cada una, contra quién va y cómo se complementan.",
   "h1": "SOAT vs. demanda civil: qué recupera cada vía",
@@ -931,18 +945,18 @@
    "Article",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 97,
   "external": 2,
   "faq": 9,
   "tables": 1,
   "pend": 0,
-  "bytes": 52446,
+  "bytes": 54655,
   "depth": 2
  },
  {
   "u": "/blog/domiciliarios-plataformas-accidente/",
-  "words": 618,
+  "words": 619,
   "title": "Accidente de domiciliario o pasajero de plataforma",
   "desc": "Cómo se analizan los accidentes de domiciliarios y pasajeros de plataformas: SOAT, seguridad social, responsabilidad del conductor y pólizas.",
   "h1": "Domiciliarios y pasajeros de Uber, DiDi o inDrive: quién responde en un accidente",
@@ -970,18 +984,18 @@
    "Article",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 98,
   "external": 3,
   "faq": 9,
   "tables": 0,
   "pend": 0,
-  "bytes": 51396,
+  "bytes": 53652,
   "depth": 2
  },
  {
   "u": "/blog/etapas-duracion-proceso/",
-  "words": 812,
+  "words": 813,
   "title": "Etapas de un proceso por accidente de tránsito",
   "desc": "Recorrido general de una reclamación: documentación, negociación, conciliación, demanda y fallo, sin promesas de tiempos.",
   "h1": "Etapas de un proceso por accidente de tránsito: del reclamo a la sentencia",
@@ -1013,13 +1027,13 @@
    "Article",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 97,
   "external": 2,
   "faq": 9,
   "tables": 1,
   "pend": 0,
-  "bytes": 56260,
+  "bytes": 58509,
   "depth": 2
  },
  {
@@ -1053,13 +1067,13 @@
    "Article",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 96,
   "external": 2,
   "faq": 9,
   "tables": 0,
   "pend": 0,
-  "bytes": 51314,
+  "bytes": 53541,
   "depth": 2
  },
  {
@@ -1092,18 +1106,18 @@
    "Article",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 99,
   "external": 3,
   "faq": 9,
   "tables": 0,
   "pend": 0,
-  "bytes": 51913,
+  "bytes": 54158,
   "depth": 2
  },
  {
   "u": "/blog/indemnizacion-fractura-segun-hueso/",
-  "words": 627,
+  "words": 628,
   "title": "Indemnización por fractura: qué la determina | Derechos con Dignidad",
   "desc": "No existe una tabla de precios por hueso. Estas son las variables que influyen en la indemnización por una fractura de fémur, tibia, clavícula o pelvis.",
   "h1": "Cuánto pagan por una fractura: por qué depende del hueso, las secuelas y las pruebas",
@@ -1131,13 +1145,13 @@
    "Article",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 99,
   "external": 2,
   "faq": 9,
   "tables": 1,
   "pend": 0,
-  "bytes": 52871,
+  "bytes": 55129,
   "depth": 2
  },
  {
@@ -1186,18 +1200,18 @@
    "BreadcrumbList",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 115,
   "external": 0,
   "faq": 11,
   "tables": 0,
   "pend": 0,
-  "bytes": 79487,
+  "bytes": 81561,
   "depth": 1
  },
  {
   "u": "/blog/ipat-informe-accidente/",
-  "words": 658,
+  "words": 659,
   "title": "IPAT: qué es y cómo conseguir el informe | Derechos con Dignidad",
   "desc": "Qué contiene el Informe Policial de Accidentes de Tránsito (IPAT), por qué importa para tu reclamación y cómo gestionarlo en Medellín.",
   "h1": "IPAT: qué es el informe del accidente de tránsito y cómo conseguirlo",
@@ -1226,13 +1240,13 @@
    "Article",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 96,
   "external": 2,
   "faq": 9,
   "tables": 1,
   "pend": 0,
-  "bytes": 52660,
+  "bytes": 54903,
   "depth": 2
  },
  {
@@ -1269,13 +1283,13 @@
    "Article",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 98,
   "external": 2,
   "faq": 9,
   "tables": 1,
   "pend": 0,
-  "bytes": 56371,
+  "bytes": 58598,
   "depth": 2
  },
  {
@@ -1313,18 +1327,18 @@
    "Article",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 98,
   "external": 2,
   "faq": 9,
   "tables": 0,
   "pend": 0,
-  "bytes": 57407,
+  "bytes": 59634,
   "depth": 2
  },
  {
   "u": "/blog/parrillero-ciclista-peaton-quien-responde/",
-  "words": 670,
+  "words": 671,
   "title": "Parrillero, ciclista y peatón: quién responde",
   "desc": "Cómo se analiza la responsabilidad cuando la víctima es un parrillero, un ciclista o un peatón, y qué coberturas aplican.",
   "h1": "Parrillero, ciclista y peatón: quién responde por mis lesiones",
@@ -1352,13 +1366,13 @@
    "Article",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 97,
   "external": 3,
   "faq": 9,
   "tables": 1,
   "pend": 0,
-  "bytes": 53272,
+  "bytes": 55546,
   "depth": 2
  },
  {
@@ -1391,13 +1405,13 @@
    "Article",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 97,
   "external": 2,
   "faq": 9,
   "tables": 1,
   "pend": 0,
-  "bytes": 51409,
+  "bytes": 53665,
   "depth": 2
  },
  {
@@ -1431,13 +1445,13 @@
    "Article",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 98,
   "external": 3,
   "faq": 9,
   "tables": 0,
   "pend": 0,
-  "bytes": 54181,
+  "bytes": 56461,
   "depth": 2
  },
  {
@@ -1470,13 +1484,13 @@
    "Article",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 99,
   "external": 4,
   "faq": 9,
   "tables": 0,
   "pend": 0,
-  "bytes": 53128,
+  "bytes": 55339,
   "depth": 2
  },
  {
@@ -1510,13 +1524,13 @@
    "Article",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 98,
   "external": 4,
   "faq": 9,
   "tables": 1,
   "pend": 0,
-  "bytes": 53273,
+  "bytes": 55460,
   "depth": 2
  },
  {
@@ -1553,13 +1567,13 @@
    "Article",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 98,
   "external": 2,
   "faq": 9,
   "tables": 1,
   "pend": 0,
-  "bytes": 58065,
+  "bytes": 60303,
   "depth": 2
  },
  {
@@ -1591,13 +1605,13 @@
    "WebPage",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 98,
   "external": 2,
   "faq": 12,
   "tables": 1,
   "pend": 0,
-  "bytes": 59371,
+  "bytes": 61497,
   "depth": 1
  },
  {
@@ -1625,13 +1639,13 @@
    "BreadcrumbList",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 92,
   "external": 0,
   "faq": 11,
   "tables": 0,
   "pend": 2,
-  "bytes": 60384,
+  "bytes": 62422,
   "depth": 1
  },
  {
@@ -1658,13 +1672,13 @@
    "DefinedTermSet",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 91,
   "external": 0,
   "faq": 9,
   "tables": 0,
   "pend": 0,
-  "bytes": 56554,
+  "bytes": 58632,
   "depth": 1
  },
  {
@@ -1697,20 +1711,20 @@
    "BreadcrumbList",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 91,
   "external": 0,
   "faq": 11,
   "tables": 1,
   "pend": 1,
-  "bytes": 54053,
+  "bytes": 56121,
   "depth": 1
  },
  {
   "u": "/",
-  "words": 1185,
+  "words": 1213,
   "title": "Abogado de accidentes de tránsito en Medellín",
-  "desc": "Abogados de accidentes de tránsito en Medellín y el Valle de Aburrá. Orientación sobre SOAT, aseguradoras y reclamación de perjuicios, con lenguaje claro.",
+  "desc": "Abogados de accidentes de tránsito en Medellín, el Valle de Aburrá y el Oriente antioqueño. Orientación sobre SOAT, aseguradoras y reclamación de perjuicios.",
   "h1": "Abogado de accidentes de tránsito en Medellín",
   "hs": [
    1,
@@ -1751,20 +1765,20 @@
    "WebSite",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 129,
   "external": 0,
   "faq": 11,
   "tables": 1,
   "pend": 2,
-  "bytes": 76170,
+  "bytes": 78813,
   "depth": 0
  },
  {
   "u": "/lp/accidente-moto/",
-  "words": 98,
+  "words": 110,
   "title": "¿Te lesionaste en un accidente de moto en Medellín?",
-  "desc": "Cuéntanos qué pasó y te explicamos, sin presiones, qué puedes reclamar y con qué soportes. Landing de campaña.",
+  "desc": "Cuéntanos qué ocurrió en tu accidente de moto en Medellín y te explicamos con claridad y sin presiones qué puedes reclamar, ante quién y con qué soportes.",
   "h1": "¿Te lesionaste en un accidente de moto en Medellín?",
   "hs": [
    1,
@@ -1780,20 +1794,20 @@
   "schema": [
    "LegalService"
   ],
-  "imgs": 1,
+  "imgs": 2,
   "internal": 6,
   "external": 0,
   "faq": 0,
   "tables": 0,
   "pend": 0,
-  "bytes": 11004,
+  "bytes": 13174,
   "depth": 2
  },
  {
   "u": "/lp/aseguradora-objeto-reclamacion/",
-  "words": 89,
+  "words": 101,
   "title": "¿La aseguradora objetó o no quiere pagar tu reclamación?",
-  "desc": "Revisamos el motivo de la objeción y te explicamos las vías disponibles. Landing de campaña.",
+  "desc": "¿La aseguradora objetó tu reclamación de accidente de tránsito? Revisamos el motivo de la objeción sin costo y te explicamos las vías jurídicas disponibles.",
   "h1": "¿La aseguradora objetó o no quiere pagar tu reclamación?",
   "hs": [
    1,
@@ -1809,20 +1823,20 @@
   "schema": [
    "LegalService"
   ],
-  "imgs": 1,
+  "imgs": 2,
   "internal": 6,
   "external": 0,
   "faq": 0,
   "tables": 0,
   "pend": 0,
-  "bytes": 10924,
+  "bytes": 13208,
   "depth": 2
  },
  {
   "u": "/nosotros/",
-  "words": 698,
+  "words": 764,
   "title": "Nosotros | Derechos con Dignidad",
-  "desc": "Conoce el enfoque de Derechos con Dignidad, cómo trabajamos y cómo atendemos a víctimas de accidentes de tránsito en Medellín y el Valle de Aburrá.",
+  "desc": "Conoce el enfoque de Derechos con Dignidad, cómo trabajamos y cómo atendemos a víctimas de accidentes de tránsito en Medellín, el Valle de Aburrá y el Oriente.",
   "h1": "Nosotros",
   "hs": [
    1,
@@ -1849,15 +1863,20 @@
   "schema": [
    "LegalService",
    "BreadcrumbList",
+   "Person",
+   "Person",
+   "Person",
+   "Person",
+   "Person",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 8,
   "internal": 93,
   "external": 0,
   "faq": 9,
   "tables": 0,
   "pend": 1,
-  "bytes": 51650,
+  "bytes": 58543,
   "depth": 1
  },
  {
@@ -1884,13 +1903,13 @@
    "LegalService",
    "BreadcrumbList"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 94,
   "external": 0,
   "faq": 3,
   "tables": 1,
   "pend": 1,
-  "bytes": 37985,
+  "bytes": 40058,
   "depth": 1
  },
  {
@@ -1926,18 +1945,18 @@
    "BreadcrumbList",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 94,
   "external": 0,
   "faq": 7,
   "tables": 2,
   "pend": 1,
-  "bytes": 55415,
+  "bytes": 57494,
   "depth": 1
  },
  {
   "u": "/preguntas-frecuentes/",
-  "words": 781,
+  "words": 796,
   "title": "Preguntas frecuentes sobre accidentes de tránsito",
   "desc": "Más de 25 respuestas a las dudas más comunes tras un accidente de tránsito: SOAT, aseguradoras, plazos, honorarios y qué hacer primero.",
   "h1": "Preguntas frecuentes",
@@ -1957,13 +1976,13 @@
    "BreadcrumbList",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 91,
   "external": 0,
   "faq": 31,
   "tables": 0,
   "pend": 0,
-  "bytes": 60078,
+  "bytes": 62264,
   "depth": 1
  },
  {
@@ -1993,21 +2012,21 @@
    "BreadcrumbList",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 93,
   "external": 2,
   "faq": 9,
   "tables": 0,
   "pend": 0,
-  "bytes": 46262,
+  "bytes": 48391,
   "depth": 2
  },
  {
   "u": "/servicios/accidente-in-itinere/",
-  "words": 1170,
-  "title": "Accidente en el trayecto al trabajo: ARL, SOAT y reclamación",
-  "desc": "Cómo se analiza un accidente de tránsito camino o de regreso del trabajo: cuándo interviene la ARL, qué cubre el SOAT y qué se puede reclamar.",
-  "h1": "Accidente de tránsito en el trayecto al trabajo (in itinere)",
+  "words": 1167,
+  "title": "Accidente Camino al Trabajo | Reclama ARL y SOAT",
+  "desc": "¿Accidente de tránsito yendo o volviendo del trabajo? Coordinamos ARL, SOAT y demanda civil por culpa patronal. ¡Escríbenos y te orientamos gratis!",
+  "h1": "Accidente de tránsito en el trayecto al trabajo",
   "hs": [
    1,
    2,
@@ -2040,20 +2059,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 105,
   "external": 3,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 68710,
+  "bytes": 71568,
   "depth": 2
  },
  {
   "u": "/servicios/accidente-mortal/",
   "words": 1240,
-  "title": "Muerte en accidente de tránsito: derechos de la familia",
-  "desc": "Orientación respetuosa para familiares de una víctima fatal de un accidente de tránsito: SOAT, responsabilidad civil y trámites iniciales.",
+  "title": "Indemnización por Muerte en Accidente | Consulta Gratis",
+  "desc": "Orientación respetuosa para familias de víctimas fatales en accidentes de tránsito: SOAT y demanda civil. ¡Contáctanos y te asesoramos sin presiones!",
   "h1": "Muerte en accidente de tránsito: apoyo jurídico a la familia",
   "hs": [
    1,
@@ -2087,20 +2106,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 105,
   "external": 3,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 68994,
+  "bytes": 71965,
   "depth": 2
  },
  {
   "u": "/servicios/accidentes-carro/",
-  "words": 1270,
-  "title": "Abogado de accidentes de carro en Medellín | Derechos con Dignidad",
-  "desc": "Asesoría jurídica si sufriste lesiones en un choque de carro en Medellín: SOAT, aseguradoras, responsabilidad civil y reclamación de perjuicios.",
+  "words": 1269,
+  "title": "Abogado de Accidentes de Carro en Medellín | Asesórate Ya",
+  "desc": "¿Choque de carro en Medellín? Te ayudamos a cobrar daños materiales, gastos médicos e indemnización. ¡Consulta gratis con un abogado experto hoy!",
   "h1": "Abogado de accidentes de carro en Medellín",
   "hs": [
    1,
@@ -2134,20 +2153,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 107,
   "external": 3,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 70572,
+  "bytes": 73445,
   "depth": 2
  },
  {
   "u": "/servicios/accidentes-ciclistas/",
-  "words": 1116,
-  "title": "Abogado para ciclistas atropellados en Medellín",
-  "desc": "Si fuiste atropellado como ciclista en Medellín, conoce qué cubre el SOAT, cómo se analiza la responsabilidad y cómo reclamar lesiones y daños a la bicicleta.",
+  "words": 1117,
+  "title": "Abogado para Ciclistas Atropellados | Consulta Gratis",
+  "desc": "¿Ciclista atropellado en Medellín? Cobramos el SOAT, daños a tu bicicleta e indemnización por lesiones corporales. ¡Escríbenos y revisamos tu caso hoy!",
   "h1": "Abogado para ciclistas atropellados en Medellín",
   "hs": [
    1,
@@ -2181,20 +2200,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 103,
   "external": 3,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 67846,
+  "bytes": 70744,
   "depth": 2
  },
  {
   "u": "/servicios/accidentes-moto/",
-  "words": 1428,
-  "title": "Abogado de accidentes de moto en Medellín | Derechos con Dignidad",
-  "desc": "Si sufriste un accidente de moto en Medellín o el Valle de Aburrá, te orientamos sobre SOAT, responsabilidad del otro conductor y reclamación de perjuicios.",
+  "words": 1427,
+  "title": "Abogado de Accidentes de Moto en Medellín | Consulta Gratis",
+  "desc": "¿Accidente en moto en Medellín? Reclamamos tu indemnización, SOAT y perjuicios al responsable. ¡Escríbenos por WhatsApp y revisamos tu caso sin costo!",
   "h1": "Abogado de accidentes de moto en Medellín",
   "hs": [
    1,
@@ -2228,20 +2247,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 107,
   "external": 3,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 71541,
+  "bytes": 74387,
   "depth": 2
  },
  {
   "u": "/servicios/accidentes-pasajeros-transporte-publico/",
-  "words": 1122,
-  "title": "Pasajero lesionado en bus o transporte público",
-  "desc": "Si te lesionaste en un bus, buseta o transporte público en Medellín y el Valle de Aburrá, conoce qué coberturas y reclamaciones pueden aplicar.",
+  "words": 1124,
+  "title": "Pasajero Lesionado en Bus o Metro | Consulta Gratis",
+  "desc": "¿Te lesionaste como pasajero en bus, buseta o metro en Medellín? Reclamamos pólizas contractuales y SOAT. ¡Escríbenos y revisamos tu caso sin costo!",
   "h1": "Accidentes de pasajeros en bus y transporte público",
   "hs": [
    1,
@@ -2275,20 +2294,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 102,
   "external": 3,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 67369,
+  "bytes": 70353,
   "depth": 2
  },
  {
   "u": "/servicios/accidentes-peatones/",
-  "words": 1215,
-  "title": "Peatón atropellado en Medellín: orientación jurídica",
-  "desc": "Si fuiste atropellado como peatón en Medellín, conoce qué documentos reunir, cómo funciona el SOAT y cuándo reclamar perjuicios.",
+  "words": 1216,
+  "title": "Abogado para Peatones Atropellados | Consulta Gratis",
+  "desc": "¿Fuiste atropellado en Medellín? Conoce qué cubre el SOAT y reclama tu indemnización integral al conductor. ¡Escríbenos y revisamos tu caso gratis!",
   "h1": "Abogado para peatones atropellados en Medellín",
   "hs": [
    1,
@@ -2322,20 +2341,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 105,
   "external": 3,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 69074,
+  "bytes": 72044,
   "depth": 2
  },
  {
   "u": "/servicios/accidentes-plataformas/",
-  "words": 1132,
-  "title": "Accidente en vehículo de plataforma (Uber, DiDi, inDrive)",
-  "desc": "Si te lesionaste como pasajero de una plataforma de movilidad, conoce qué coberturas pueden aplicar y cómo orientar tu reclamación.",
+  "words": 1134,
+  "title": "Accidente en Uber, DiDi o inDrive | Reclama tu Indemnización",
+  "desc": "¿Accidente en Uber, DiDi, inDrive o Cabify? Exige la póliza de la plataforma y la indemnización que mereces. ¡Contáctanos y te orientamos sin costo!",
   "h1": "Accidentes en Uber, DiDi, inDrive o Cabify",
   "hs": [
    1,
@@ -2369,20 +2388,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 104,
   "external": 3,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 68054,
+  "bytes": 71016,
   "depth": 2
  },
  {
   "u": "/servicios/accidentes-senalizacion-semaforos/",
   "words": 1123,
-  "title": "Accidente por semáforo dañado o falta de señalización",
-  "desc": "Cuando un semáforo dañado o la ausencia de señales causa un accidente, la responsabilidad puede recaer en la entidad a cargo. Conoce cómo se analiza.",
+  "title": "Accidente por Semáforo Dañado | Demanda con Abogados",
+  "desc": "¿Choque por semáforo apagado o falta de señalización vial? Demandamos la responsabilidad de la entidad pública. ¡Consulta gratis con nuestro equipo!",
   "h1": "Accidentes por semáforos dañados o falta de señalización",
   "hs": [
    1,
@@ -2416,20 +2435,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 105,
   "external": 3,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 68280,
+  "bytes": 71245,
   "depth": 2
  },
  {
   "u": "/servicios/accidentes-vias-mal-estado/",
-  "words": 1180,
-  "title": "Accidente por hueco o vía en mal estado: reclamación",
-  "desc": "Si sufriste un accidente por un hueco, alcantarilla sin tapa o mal estado de la vía, conoce cómo se analiza la responsabilidad de las entidades públicas.",
+  "words": 1182,
+  "title": "Accidente por Hueco o Vía en Mal Estado | Reclama Ya",
+  "desc": "¿Te accidentaste por un hueco o vía en mal estado en Medellín? Demandamos a la Alcaldía o concesión vial. ¡Escríbenos y revisamos tus pruebas gratis!",
   "h1": "Accidentes por huecos, vías en mal estado o alcantarillas sin tapa",
   "hs": [
    1,
@@ -2463,20 +2482,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 106,
   "external": 3,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 69353,
+  "bytes": 72313,
   "depth": 2
  },
  {
   "u": "/servicios/amputaciones/",
   "words": 1053,
-  "title": "Amputación por accidente de tránsito: perjuicios y derechos",
-  "desc": "Pérdida de extremidades tras un accidente: prótesis, rehabilitación, pérdida de capacidad laboral y perjuicios que pueden analizarse en una reclamación.",
+  "title": "Indemnización por Amputación Vial | Reclama con Expertos",
+  "desc": "¿Pérdida de extremidad por accidente de tránsito? Reclamamos prótesis, lucro cesante y daño a la vida de relación. ¡Consulta tu caso sin costo hoy!",
   "h1": "Amputaciones y pérdida de extremidades por accidente de tránsito",
   "hs": [
    1,
@@ -2510,20 +2529,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 105,
   "external": 2,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 67718,
+  "bytes": 70592,
   "depth": 2
  },
  {
   "u": "/servicios/aseguradoras-no-pagan/",
   "words": 1107,
-  "title": "Aseguradora objetó o no paga tu siniestro: qué hacer",
-  "desc": "Si la aseguradora objetó tu reclamación o se niega a pagar tras un accidente de tránsito, conoce tus opciones y cómo responder.",
+  "title": "¿La Aseguradora No Quiere Pagar? | Reclama con Abogado",
+  "desc": "¿La aseguradora objetó tu indemnización de tránsito? Una objeción no es la última palabra: la controvertimos. ¡Escríbenos y analizamos tu caso gratis!",
   "h1": "La aseguradora objetó o no quiere pagar tu reclamación",
   "hs": [
    1,
@@ -2557,20 +2576,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 106,
   "external": 2,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 68924,
+  "bytes": 71937,
   "depth": 2
  },
  {
   "u": "/servicios/denuncia-lesiones-culposas/",
-  "words": 1116,
-  "title": "Denuncia por lesiones culposas tras un accidente de tránsito",
-  "desc": "Qué es el delito de lesiones personales culposas, cuándo puede denunciarse, cómo se relaciona con la reclamación civil y qué papel tiene la víctima.",
+  "words": 1114,
+  "title": "Denuncia por Lesiones Culposas | Asesórate Ya",
+  "desc": "¿Lesionado por imprudencia de otro conductor? Presentamos la denuncia penal en Fiscalía y exigimos indemnización civil. ¡Consulta gratis por WhatsApp!",
   "h1": "Denuncia penal por lesiones personales culposas en un accidente de tránsito",
   "hs": [
    1,
@@ -2604,20 +2623,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 103,
   "external": 3,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 67689,
+  "bytes": 70625,
   "depth": 2
  },
  {
   "u": "/servicios/fracturas-accidente-transito/",
-  "words": 1105,
-  "title": "Fracturas por accidente de tránsito: qué perjuicios se analizan",
-  "desc": "Fracturas de fémur, tibia, clavícula o pelvis tras un accidente: cómo se documentan las secuelas y qué perjuicios pueden analizarse en una reclamación.",
+  "words": 1104,
+  "title": "Indemnización por Fractura en Accidente | Consulta Hoy",
+  "desc": "¿Fractura de fémur, tibia, clavícula o pelvis en accidente vial? Reclamamos cirugías, secuelas y lucro cesante. ¡Escríbenos y te asesoramos gratis!",
   "h1": "Fracturas por accidente de tránsito: fémur, tibia, clavícula y pelvis",
   "hs": [
    1,
@@ -2651,20 +2670,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 107,
   "external": 2,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 69327,
+  "bytes": 72240,
   "depth": 2
  },
  {
   "u": "/servicios/gastos-medicos-superan-soat/",
-  "words": 1181,
-  "title": "Se agotó el SOAT: qué hacer con los gastos médicos",
-  "desc": "Si los gastos médicos del accidente superan el tope del SOAT, estas son las alternativas para continuar el tratamiento y reclamar lo que corresponda.",
+  "words": 1179,
+  "title": "¿Gastos Superan el SOAT? | Reclama tu Indemnización",
+  "desc": "¿Se agotó el tope médico del SOAT? Trasladamos los gastos a la EPS, ARL o pólizas de responsabilidad civil. ¡Consulta gratis con un abogado experto!",
   "h1": "Gastos médicos que superan el tope del SOAT",
   "hs": [
    1,
@@ -2698,20 +2717,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 105,
   "external": 3,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 68798,
+  "bytes": 71706,
   "depth": 2
  },
  {
   "u": "/servicios/",
-  "words": 1090,
-  "title": "Servicios de abogado de accidentes de tránsito en Medellín",
-  "desc": "Accidentes de moto y carro, lesiones graves, SOAT, aseguradoras, responsabilidad civil y accidentes por vías en mal estado en Medellín.",
+  "words": 1089,
+  "title": "Servicios por Accidentes de Tránsito | Consulta Gratis",
+  "desc": "¿Accidente de tránsito en Medellín? Reclamamos tu indemnización, SOAT y seguros sin costo inicial. ¡Escríbenos por WhatsApp y recibe asesoría hoy!",
   "h1": "Servicios para víctimas de accidentes de tránsito",
   "hs": [
    1,
@@ -2763,20 +2782,20 @@
    "BreadcrumbList",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 120,
   "external": 0,
   "faq": 11,
   "tables": 1,
   "pend": 0,
-  "bytes": 68298,
+  "bytes": 70413,
   "depth": 1
  },
  {
   "u": "/servicios/latigazo-cervical/",
-  "words": 1135,
-  "title": "Latigazo cervical tras un accidente de tránsito: qué reclamar",
-  "desc": "El latigazo cervical puede aparecer horas o días después de un choque. Conoce cómo documentarlo y qué perjuicios pueden analizarse en una reclamación.",
+  "words": 1134,
+  "title": "Latigazo Cervical por Choque | Reclama tu Indemnización",
+  "desc": "¿Dolor de cuello o latigazo cervical tras un choque vial? Documentamos tus secuelas para cobrar la indemnización debida. ¡Consulta tu caso sin costo!",
   "h1": "Latigazo cervical por accidente de tránsito: qué reclamar",
   "hs": [
    1,
@@ -2810,20 +2829,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 103,
   "external": 2,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 67529,
+  "bytes": 70392,
   "depth": 2
  },
  {
   "u": "/servicios/lesiones-columna/",
   "words": 1063,
-  "title": "Lesiones de columna y hernias por accidente de tránsito",
-  "desc": "Lesiones de columna, hernias discales y dolor lumbar tras un accidente: cómo se prueba la relación con el hecho y qué perjuicios pueden analizarse.",
+  "title": "Lesiones de Columna y Hernias Viales | Consulta Gratis",
+  "desc": "¿Hernia discal o daño en columna por accidente de tránsito? Exige tu indemnización por pérdida de capacidad laboral. ¡Consulta gratis por WhatsApp!",
   "h1": "Lesiones de columna y hernias discales tras un accidente",
   "hs": [
    1,
@@ -2857,20 +2876,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 103,
   "external": 2,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 67035,
+  "bytes": 69928,
   "depth": 2
  },
  {
   "u": "/servicios/lesiones-graves/",
-  "words": 1268,
-  "title": "Lesiones graves y secuelas tras un accidente de tránsito",
-  "desc": "Fracturas, lesiones de columna, trauma craneoencefálico y otras secuelas: cómo se analizan los perjuicios y qué documentación se necesita.",
+  "words": 1266,
+  "title": "Indemnización por Lesiones Graves | Consulta Gratis",
+  "desc": "¿Lesiones graves tras un accidente vial? Analizamos secuelas, pérdida de capacidad laboral y daño moral. ¡Escríbenos y evaluamos tu caso sin costo!",
   "h1": "Lesiones graves y secuelas por accidente de tránsito",
   "hs": [
    1,
@@ -2904,20 +2923,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 108,
   "external": 3,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 70915,
+  "bytes": 73818,
   "depth": 2
  },
  {
   "u": "/servicios/lesiones-parrillero-moto/",
   "words": 1151,
-  "title": "Parrillero lesionado en accidente de moto: ¿quién responde?",
-  "desc": "Si ibas de parrillero y resultaste lesionado, conoce qué coberturas existen y contra quién puede dirigirse la reclamación.",
+  "title": "Parrillero en Moto Lesionado | Reclama tu Indemnización",
+  "desc": "¿Ibas de parrillero y te lesionaste? Tienes derecho a indemnización sin importar quién tuvo la culpa. ¡Consulta gratis con un abogado por WhatsApp!",
   "h1": "Parrillero lesionado en un accidente de moto",
   "hs": [
    1,
@@ -2951,20 +2970,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 105,
   "external": 2,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 68439,
+  "bytes": 71415,
   "depth": 2
  },
  {
   "u": "/servicios/lesiones-personales/",
-  "words": 1163,
-  "title": "Abogado de lesiones personales por accidente de tránsito en Medellín",
-  "desc": "Qué son las lesiones personales en un accidente de tránsito, qué perjuicios pueden analizarse y qué documentos reunir para tu reclamación en Medellín.",
+  "words": 1162,
+  "title": "Abogado de Lesiones Personales en Medellín | Consulta Ya",
+  "desc": "¿Lesiones en accidente de tránsito? Cuantificamos incapacidad, daño emergente y secuelas para tu cobro. ¡Habla gratis con un abogado especialista hoy!",
   "h1": "Lesiones personales por accidente de tránsito en Medellín",
   "hs": [
    1,
@@ -2998,20 +3017,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 105,
   "external": 3,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 68664,
+  "bytes": 71519,
   "depth": 2
  },
  {
   "u": "/servicios/quemaduras-cicatrices/",
   "words": 1025,
-  "title": "Quemaduras, cicatrices y daño estético por accidente",
-  "desc": "Quemaduras por fricción con el asfalto y cicatrices tras un accidente: cómo se documenta el daño estético y qué perjuicios pueden analizarse.",
+  "title": "Quemaduras y Cicatrices Viales | Reclama Indemnización",
+  "desc": "¿Quemaduras por fricción o cicatrices tras un accidente? El daño estético y moral se indemniza ante aseguradoras. ¡Escríbenos y te asesoramos gratis!",
   "h1": "Quemaduras por fricción, cicatrices y daño estético",
   "hs": [
    1,
@@ -3045,20 +3064,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 103,
   "external": 2,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 66957,
+  "bytes": 69894,
   "depth": 2
  },
  {
   "u": "/servicios/responsabilidad-civil/",
-  "words": 1176,
-  "title": "Demanda civil por accidente de tránsito en Colombia",
-  "desc": "Qué es la responsabilidad civil extracontractual, qué perjuicios pueden reclamarse tras un accidente y cómo se prepara una reclamación.",
+  "words": 1175,
+  "title": "Demanda de Responsabilidad Civil | Consulta Gratis",
+  "desc": "¿El SOAT no cubrió tus daños? Demandamos perjuicios materiales, lucro cesante y daño moral al responsable. ¡Escríbenos y evalúa tu caso sin costo!",
   "h1": "Demanda de responsabilidad civil por accidente de tránsito",
   "hs": [
    1,
@@ -3092,20 +3111,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 108,
   "external": 3,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 69954,
+  "bytes": 72936,
   "depth": 2
  },
  {
   "u": "/servicios/soat/",
-  "words": 1323,
-  "title": "SOAT: coberturas y cómo reclamar tras un accidente",
-  "desc": "Qué es el SOAT, qué cubre y qué no, qué documentos pedir y qué hacer cuando se agota el tope o la aseguradora no responde tras un accidente.",
+  "words": 1324,
+  "title": "Reclamación del SOAT en Medellín | Consulta Gratis",
+  "desc": "¿Problemas para cobrar el SOAT tras un accidente? Te ayudamos con incapacidades, gastos médicos e indemnización. ¡Consulta gratis por WhatsApp hoy!",
   "h1": "SOAT: qué cubre y cómo reclamarlo tras un accidente",
   "hs": [
    1,
@@ -3139,20 +3158,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 107,
   "external": 4,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 71046,
+  "bytes": 73918,
   "depth": 2
  },
  {
   "u": "/servicios/trauma-craneoencefalico/",
   "words": 1058,
-  "title": "Trauma craneoencefálico por accidente de tránsito: derechos",
-  "desc": "Trauma craneoencefálico y daño cerebral tras un accidente: por qué importa el seguimiento médico y qué perjuicios pueden analizarse para la familia.",
+  "title": "Trauma Craneoencefálico en Accidente | Asesórate Ya",
+  "desc": "¿Trauma en la cabeza o daño cerebral por accidente vial? Protegemos tus derechos y reclamamos indemnización integral. ¡Escríbenos y te orientamos ya!",
   "h1": "Trauma craneoencefálico y daño cerebral por accidente de tránsito",
   "hs": [
    1,
@@ -3186,20 +3205,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 103,
   "external": 2,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 67146,
+  "bytes": 70058,
   "depth": 2
  },
  {
   "u": "/servicios/trauma-dental-maxilofacial/",
-  "words": 983,
-  "title": "Trauma dental y maxilofacial tras un accidente de tránsito",
-  "desc": "Pérdida de dientes, fracturas de mandíbula y reconstrucción facial tras un accidente: tratamientos, daño estético y perjuicios que pueden analizarse.",
+  "words": 982,
+  "title": "Trauma Dental y Maxilofacial | Reclama tu Indemnización",
+  "desc": "¿Pérdida de dientes o fractura facial tras un choque vial? Reclamamos implantes, reconstrucción y perjuicios. ¡Escríbenos y revisamos tu caso gratis!",
   "h1": "Trauma dental y lesiones maxilofaciales por accidente de tránsito",
   "hs": [
    1,
@@ -3233,20 +3252,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 103,
   "external": 2,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 66756,
+  "bytes": 69684,
   "depth": 2
  },
  {
   "u": "/servicios/trauma-ocular/",
-  "words": 1030,
-  "title": "Trauma ocular y pérdida de visión tras un accidente",
-  "desc": "Lesiones oculares y pérdida de visión por accidente de tránsito: valoraciones especializadas, secuelas y perjuicios que pueden analizarse.",
+  "words": 1031,
+  "title": "Trauma Ocular y Pérdida de Visión | Reclama tu Pago",
+  "desc": "¿Lesión en los ojos o pérdida visual por accidente de tránsito? Cuantificamos secuelas y exigimos tu indemnización. ¡Consulta gratis con un abogado!",
   "h1": "Trauma ocular y pérdida de visión por accidente de tránsito",
   "hs": [
    1,
@@ -3280,20 +3299,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 103,
   "external": 2,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 66714,
+  "bytes": 69656,
   "depth": 2
  },
  {
   "u": "/servicios/trauma-psicologico/",
   "words": 1050,
-  "title": "Estrés postraumático y miedo a conducir tras un accidente",
-  "desc": "Ansiedad, estrés postraumático y fobia a conducir después de un accidente de tránsito: cómo se documenta y qué perjuicios pueden analizarse.",
+  "title": "Trauma Psicológico por Accidente | Reclama Daño Moral",
+  "desc": "¿Miedo a conducir o estrés postraumático tras un accidente? Tienes derecho a indemnización por daño moral y psicológico. ¡Consulta gratis por WhatsApp!",
   "h1": "Trauma psicológico, estrés postraumático y miedo a conducir",
   "hs": [
    1,
@@ -3327,21 +3346,21 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 105,
   "external": 2,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 67399,
+  "bytes": 70340,
   "depth": 2
  },
  {
   "u": "/servicios/vehiculo-fantasma/",
-  "words": 1086,
-  "title": "Conductor que huyó tras un accidente: qué hacer",
-  "desc": "Si el conductor responsable huyó del lugar, conoce los pasos inmediatos, qué pruebas buscar y qué coberturas pueden atenderte.",
-  "h1": "Accidente con conductor que huyó (vehículo fantasma)",
+  "words": 1087,
+  "title": "Conductor Huyó del Accidente | Reclama tu Indemnización",
+  "desc": "¿El conductor culpable se dio a la fuga? La ADRES y el fondo de víctimas cubren tus lesiones y gastos médicos. ¡Contáctanos y te asesoramos gratis!",
+  "h1": "Accidente con conductor que huyó o vehículo fantasma",
   "hs": [
    1,
    2,
@@ -3374,20 +3393,20 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 102,
   "external": 2,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 66826,
+  "bytes": 69852,
   "depth": 2
  },
  {
   "u": "/servicios/vehiculo-sin-soat/",
   "words": 1119,
-  "title": "Choque con vehículo sin SOAT ni seguro: qué hacer",
-  "desc": "Si el vehículo que causó tu accidente no tenía SOAT ni seguro voluntario, estas son las alternativas para la atención médica y la reclamación.",
+  "title": "Choque con Vehículo Sin SOAT | Reclama tu Indemnización",
+  "desc": "¿Te chocó un vehículo sin SOAT ni seguro en Medellín? Reclamamos ante la ADRES y el patrimonio del responsable. ¡Escríbenos y revisamos tu caso hoy!",
   "h1": "Accidente con un vehículo sin SOAT",
   "hs": [
    1,
@@ -3421,13 +3440,13 @@
    "Service",
    "FAQPage"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 105,
   "external": 2,
   "faq": 9,
   "tables": 2,
   "pend": 1,
-  "bytes": 68070,
+  "bytes": 70960,
   "depth": 2
  },
  {
@@ -3459,13 +3478,13 @@
    "LegalService",
    "BreadcrumbList"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 94,
   "external": 0,
   "faq": 3,
   "tables": 0,
   "pend": 1,
-  "bytes": 40650,
+  "bytes": 42715,
   "depth": 1
  },
  {
@@ -3493,13 +3512,13 @@
    "LegalService",
    "BreadcrumbList"
   ],
-  "imgs": 2,
+  "imgs": 3,
   "internal": 94,
   "external": 0,
   "faq": 3,
   "tables": 0,
   "pend": 1,
-  "bytes": 37599,
+  "bytes": 39701,
   "depth": 1
  }
 ]

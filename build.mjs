@@ -10,6 +10,7 @@ import { EXTRA_SECTIONS } from './src/articles-extra.mjs';
 import { faqsFor, POOLS_BY_HUB, POOLS_BY_CLUSTER } from './src/faqs.mjs';
 import { MUNICIPIOS, muniFaqs, DIRECTORIO_URL, RECURSOS, REGIONES, regionOf } from './src/municipios.mjs';
 import { PRIVACIDAD, AUTORIZACION, TERMINOS, COOKIES, LEGAL_FAQ } from './src/legal.mjs';
+import { SERVICES_SEO } from './src/services-seo.mjs';
 Object.assign(SERVICES, SERVICES2); Object.assign(EXTRA, EXTRA2); Object.assign(GLOSARIO, GLOS2);
 for (const [id, items] of Object.entries(HUB_ADD)) HUBS.find((h) => h.id === id).items.push(...items);
 ARTICLES.push(...ARTICLES2);
@@ -194,21 +195,324 @@ ${scripts.map((s) => `<script src="${s}?v=${BUILD_V}" defer></script>`).join('')
   const out = path.join(DIST, url === '/' ? '' : url, 'index.html');
   fs.mkdirSync(path.dirname(out), { recursive: true });
   fs.writeFileSync(out, html);
-  if (!noindex) pages.push(url);
+  if (!noindex) {
+    const heroMatch = body.match(/<img\s+[^>]*src="(\/assets\/hero\/[^"]+)"[^>]*alt="([^"]*)"/);
+    pages.push({
+      url,
+      heroImg: heroMatch ? heroMatch[1] : null,
+      heroAlt: heroMatch ? heroMatch[2] : null,
+    });
+  }
 }
 
 // ---------- Componentes ----------
 const crumbsHtml = (c) => `<nav aria-label="Migas de pan" class="text-sm text-slate-400 mb-6"><ol class="flex flex-wrap items-center gap-2">${c.map((x, i) => i === c.length - 1 ? `<li aria-current="page" class="text-slate-300">${esc(x[0])}</li>` : `<li><a href="${x[1]}" class="hover:text-gold-500">${esc(x[0])}</a></li><li aria-hidden="true">/</li>`).join('')}</ol></nav>`;
 
-const pageHero = ({ crumbs, h1, sub, ctas = true, kicker }) => `<section class="relative bg-navy-900 text-white overflow-hidden">
-  <div class="absolute inset-0 hero-grid opacity-40" aria-hidden="true"></div>
-  <div class="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-gold-500/10 blur-3xl" aria-hidden="true"></div>
+const HERO_IMAGES = {
+  home: '/assets/hero/hero-home.webp',
+  equipo: '/assets/hero/hero-equipo.webp',
+  moto: '/assets/hero/hero-moto.webp',
+  carro: '/assets/hero/hero-carro.webp',
+  peaton: '/assets/hero/hero-peaton.webp',
+  transporte: '/assets/hero/hero-transporte.webp',
+  plataformas: '/assets/hero/hero-plataformas.webp',
+  ciclista: '/assets/hero/hero-ciclista.webp',
+  vias: '/assets/hero/hero-vias.webp',
+  penal: '/assets/hero/hero-penal.webp',
+  soat: '/assets/hero/hero-soat.webp',
+  medico: '/assets/hero/hero-medico.webp',
+  trauma: '/assets/hero/hero-trauma.webp',
+  psicologico: '/assets/hero/hero-psicologico.webp',
+  calculadora: '/assets/hero/hero-calculadora.webp',
+  municipios: '/assets/hero/hero-municipios.webp',
+  guias: '/assets/hero/hero-guias.webp',
+  legal: '/assets/hero/hero-legal.webp',
+};
+
+const HERO_DATA = JSON.parse(fs.readFileSync(new URL('./src/hero_data.json', import.meta.url), 'utf8'));
+
+function resolveHeroInfo({ crumbs = [], h1 = '', kicker = '', bgImage, altText = '', url = '' }) {
+  if (bgImage) return { src: bgImage, alt: altText || h1 || SITE.name };
+
+  // 100% unique hero image per page: exact URL match
+  const currentUrl = url || (crumbs && crumbs.length ? crumbs[crumbs.length - 1][1] : '');
+  if (currentUrl && HERO_DATA[currentUrl]) {
+    return {
+      src: HERO_DATA[currentUrl].src,
+      alt: altText || HERO_DATA[currentUrl].alt
+    };
+  }
+
+  // Fallback by slug
+  const slug = (currentUrl || '').replace(/^\/+|\/+$/g, '').replace(/\//g, '-') || 'home';
+  const slugFile = `/assets/hero/hero-${slug}.webp`;
+  if (fs.existsSync(path.join(DIST, slugFile))) {
+    return {
+      src: slugFile,
+      alt: altText || (h1 ? `${h1} - Derechos con Dignidad` : 'Firma de abogados de accidentes de tránsito en Medellín')
+    };
+  }
+
+  const fullText = (url + ' ' + crumbs.map((c) => c[0] + ' ' + c[1]).join(' ') + ' ' + h1 + ' ' + (kicker || '')).toLowerCase();
+
+  // 0. Municipios de Antioquia y Área Metropolitana (cobertura local específica)
+  if (fullText.includes('abogado-accidentes-transito-') || fullText.includes('area-metropolitana')) {
+    const muniMatch = h1.match(/en\s+([A-Za-zÁÉÍÓÚáéíóúñÑ\s]+)$/i);
+    const muniName = muniMatch ? muniMatch[1].trim() : 'Antioquia';
+    return {
+      src: HERO_IMAGES.municipios,
+      alt: altText || `Abogado especialista en accidentes de tránsito y reclamaciones en ${muniName}, Antioquia`
+    };
+  }
+
+  // 1. Motos y parrilleros
+  if (fullText.includes('moto') || fullText.includes('parrillero') || fullText.includes('motocicl')) {
+    return {
+      src: HERO_IMAGES.moto,
+      alt: altText || (h1 ? `${h1} - Asesoría legal para motociclistas en Medellín` : 'Abogado de accidentes de moto y lesiones de parrilleros en Medellín')
+    };
+  }
+
+  // 2. Ciclistas
+  if (fullText.includes('ciclista') || fullText.includes('bicicleta')) {
+    return {
+      src: HERO_IMAGES.ciclista,
+      alt: altText || 'Defensa legal y reclamación de indemnizaciones para ciclistas en accidentes de tránsito'
+    };
+  }
+
+  // 3. Peatones y atropellos
+  if (fullText.includes('peaton') || fullText.includes('peatón') || fullText.includes('atropell')) {
+    return {
+      src: HERO_IMAGES.peaton,
+      alt: altText || 'Asesoría jurídica y reclamación de indemnización para peatones atropellados en Medellín'
+    };
+  }
+
+  // 4. Plataformas y domiciliarios (Uber, DiDi, inDrive, Cabify, domiciliarios)
+  if (fullText.includes('plataforma') || fullText.includes('domiciliario') || fullText.includes('taxi') || fullText.includes('uber') || fullText.includes('didi') || fullText.includes('indrive') || fullText.includes('cabify')) {
+    return {
+      src: HERO_IMAGES.plataformas,
+      alt: altText || 'Reclamación de indemnización para pasajeros y conductores de plataformas y domiciliarios'
+    };
+  }
+
+  // 5. Transporte público, buses y pasajeros
+  if (fullText.includes('transporte-publico') || fullText.includes('transporte público') || fullText.includes('pasajero') || fullText.includes(' en bus') || fullText.includes('del metro') || fullText.includes('en metro')) {
+    return {
+      src: HERO_IMAGES.transporte,
+      alt: altText || 'Indemnización para pasajeros lesionados en bus, metro o transporte público en Medellín'
+    };
+  }
+
+  // 6. Carros, choques y colisiones
+  if (fullText.includes('carro') || fullText.includes('choque') || fullText.includes('fantasma') || fullText.includes('que-hacer-despues')) {
+    return {
+      src: HERO_IMAGES.carro,
+      alt: altText || 'Abogado de accidentes de carro, choques y reclamación de perjuicios materiales y corporales'
+    };
+  }
+
+  // 7. Vías, huecos, alcaldía, semáforos e in-itinere
+  if (fullText.includes('hueco') || fullText.includes('vias-mal-estado') || fullText.includes('vías en mal estado') || fullText.includes('semáforo') || fullText.includes('semaforo') || fullText.includes('señaliz') || fullText.includes('ipat') || fullText.includes('in-itinere') || fullText.includes('trayecto al trabajo')) {
+    return {
+      src: HERO_IMAGES.vias,
+      alt: altText || 'Demanda contra el Estado por accidentes viales causados por huecos, vías en mal estado o semáforos dañados'
+    };
+  }
+
+  // 8. Traumatología, fracturas y lesiones físicas específicas
+  if (fullText.includes('fractura') || fullText.includes('tibia') || fullText.includes('peroné') || fullText.includes('perone') || fullText.includes('fémur') || fullText.includes('femur') || fullText.includes('hueso') || fullText.includes('latigazo') || fullText.includes('cervical') || fullText.includes('columna') || fullText.includes('cráneo') || fullText.includes('craneo') || fullText.includes('encefálico') || fullText.includes('amputa') || fullText.includes('ocular') || fullText.includes('visión') || fullText.includes('dental') || fullText.includes('maxilo') || fullText.includes('quemadura') || fullText.includes('estético') || fullText.includes('estetico') || fullText.includes('cicatriz')) {
+    return {
+      src: HERO_IMAGES.trauma,
+      alt: altText || (h1 ? `${h1} - Reclamación de indemnización y valoración médica` : 'Indemnización por fracturas, cirugías y secuelas físicas en accidentes de tránsito')
+    };
+  }
+
+  // 9. Daño moral, psicológico y accidentes mortales
+  if (fullText.includes('psicológic') || fullText.includes('psicologic') || fullText.includes('moral') || fullText.includes('mortal') || fullText.includes('muerte') || fullText.includes('fallec')) {
+    return {
+      src: HERO_IMAGES.psicologico,
+      alt: altText || 'Indemnización por daño moral, trauma psicológico y fallecimiento en accidentes de tránsito'
+    };
+  }
+
+  // 10. SOAT, aseguradoras y pólizas
+  if (fullText.includes('soat') || fullText.includes('aseguradora') || fullText.includes('póliza') || fullText.includes('poliza') || fullText.includes('objeción') || fullText.includes('objecion') || fullText.includes('acuerdo') || fullText.includes('derecho-de-peticion') || fullText.includes('derecho de petición')) {
+    return {
+      src: HERO_IMAGES.soat,
+      alt: altText || (h1 ? `${h1} - Asesoría en reclamación ante aseguradoras y SOAT` : 'Asesoría y defensa jurídica en reclamaciones ante el SOAT y compañías de seguros')
+    };
+  }
+
+  // 11. Calculadora e indemnización económica
+  if (fullText.includes('calculadora') || fullText.includes('como-se-calcula') || fullText.includes('cuanto-cobra') || fullText.includes('honorarios') || fullText.includes('cuota-litis')) {
+    return {
+      src: HERO_IMAGES.calculadora,
+      alt: altText || 'Liquidación y cálculo de indemnizaciones por accidentes de tránsito en Colombia'
+    };
+  }
+
+  // 12. Atención médica, incapacidad, medicina legal y lesiones generales
+  if (fullText.includes('gastos-medicos') || fullText.includes('gastos médicos') || fullText.includes('medicina legal') || fullText.includes('junta-calificacion') || fullText.includes('calificación') || fullText.includes('lesión') || fullText.includes('lesion') || fullText.includes('lesiones-personales') || fullText.includes('lesiones-graves') || fullText.includes('médic') || fullText.includes('medic') || fullText.includes('incapacidad') || fullText.includes('invalidez') || fullText.includes('secuela')) {
+    return {
+      src: HERO_IMAGES.medico,
+      alt: altText || 'Dictamen médico legal, pérdida de capacidad laboral e incapacidades por accidentes viales'
+    };
+  }
+
+  // 13. Vía judicial, penal, fiscalía, plazos y demandas
+  if (fullText.includes('penal') || fullText.includes('culposa') || fullText.includes('fiscalía') || fullText.includes('fiscalia') || fullText.includes('denuncia') || fullText.includes('demanda') || fullText.includes('plazo') || fullText.includes('duracion-proceso') || fullText.includes('responsabilidad civil')) {
+    return {
+      src: HERO_IMAGES.penal,
+      alt: altText || 'Representación jurídica en denuncias penales por lesiones culposas y demandas de responsabilidad civil'
+    };
+  }
+
+  // 14. Documentos legales formales
+  if (fullText.includes('privacidad') || fullText.includes('datos') || fullText.includes('términos') || fullText.includes('terminos') || fullText.includes('cookies')) {
+    return {
+      src: HERO_IMAGES.legal,
+      alt: altText || 'Términos de servicio, política de privacidad y tratamiento de datos personales de indemnizavial.co'
+    };
+  }
+
+  // 15. Equipo, firma, abogados, nosotros y contacto
+  if (fullText.includes('nosotros') || fullText.includes('equipo') || fullText.includes('contacto') || fullText.includes('quiénes somos') || fullText.includes('quienes somos') || fullText.includes('vale-la-pena')) {
+    return {
+      src: HERO_IMAGES.equipo,
+      alt: altText || 'Equipo de abogados especialistas en accidentes de tránsito y responsabilidad civil en Medellín'
+    };
+  }
+
+  // 16. Municipios de Antioquia y cobertura regional (se evalúa tras descartar temas específicos)
+  if (fullText.includes('abogado-accidentes-transito-') || fullText.includes('area-metropolitana') || fullText.includes('valle de aburrá') || fullText.includes('oriente') || fullText.includes('área metropolitana') || fullText.includes('medellín') || fullText.includes('bello') || fullText.includes('envigado') || fullText.includes('itagüí') || fullText.includes('itagui') || fullText.includes('sabaneta') || fullText.includes('rionegro') || fullText.includes('marinilla') || fullText.includes('guarne') || fullText.includes('la ceja') || fullText.includes('retiro') || fullText.includes('caldas') || fullText.includes('copacabana') || fullText.includes('girardota') || fullText.includes('barbosa') || fullText.includes('carmen') || fullText.includes('estrella')) {
+    return {
+      src: HERO_IMAGES.municipios,
+      alt: altText || 'Abogado de accidentes de tránsito en los municipios del Valle de Aburrá y Oriente antioqueño'
+    };
+  }
+
+  // 17. Guías generales, glosario y preguntas frecuentes
+  if (fullText.includes('guía') || fullText.includes('guia') || fullText.includes('blog') || fullText.includes('glosario') || fullText.includes('recurso') || fullText.includes('preguntas-frecuentes')) {
+    return {
+      src: HERO_IMAGES.guias,
+      alt: altText || (h1 ? `${h1} - Guía jurídica de indemnizavial.co` : 'Guías jurídicas y orientación paso a paso para víctimas de accidentes de tránsito')
+    };
+  }
+
+  return {
+    src: HERO_IMAGES.home,
+    alt: altText || 'Firma de abogados especialistas en accidentes de tránsito e indemnizaciones en Medellín'
+  };
+}
+
+function resolveHeroImage(opts) {
+  return resolveHeroInfo(opts).src;
+}
+
+function highlightHeroH1(h1) {
+  if (!h1) return '';
+  if (h1.includes('<span')) return h1;
+
+  let t = esc(h1).trim();
+
+  // 1. Municipios: "Abogado de accidentes de tránsito en [Municipio]"
+  const mMuni = t.match(/^(Abogado de accidentes de tránsito en (?:el )?)(.+)$/i);
+  if (mMuni) {
+    const prefix = mMuni[1];
+    const muni = mMuni[2];
+    if (muni.includes('Valle de Aburrá')) {
+      return `${prefix}<span class="text-gold-500">Valle de Aburrá</span> y el <span class="text-gold-500">Oriente</span>`;
+    }
+    return `${prefix}<span class="text-gold-500">${muni}</span>`;
+  }
+
+  // 2. Reglas de palabras clave prioritarias
+  const rules = [
+    [/\b(motociclista lesionado)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(moto)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(carro)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(peatones atropellados|peatón)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(ciclistas atropellados|ciclista)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(Parrillero lesionado|Parrillero)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(transporte público)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(Uber, DiDi, inDrive o Cabify|Uber, DiDi o inDrive)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(vehículo fantasma)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(trabajo)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(vías en mal estado)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(semáforos dañados)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(Fracturas)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(fractura)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(Latigazo cervical)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(Lesiones de columna)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(Trauma craneoencefálico)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(Amputaciones)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(Trauma ocular)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(Trauma dental)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(daño estético)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(Trauma psicológico)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(Daño moral)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(Muerte en accidente de tránsito)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(Lesiones graves)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(Lesiones personales)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(Denuncia penal)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(superan el tope del SOAT)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(sin SOAT)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(responsabilidad civil)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(SOAT vs\. demanda civil)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(SOAT)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(aseguradora)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(indemnización|indemnizar)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(cuota litis)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(IPAT)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(Junta de Calificación)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(Medicina Legal)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(Plazos para reclamar)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(Alcaldía)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(hueco)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(incapacidad)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(derecho de petición)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(privacidad)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(cookies)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(términos de uso)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(datos personales)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(Preguntas frecuentes)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(Glosario)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(Contacto)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(Nosotros)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(víctimas)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(no existe)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(abogado)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(accidente de tránsito)\b/i, '<span class="text-gold-500">$1</span>'],
+    [/\b(Medellín)\b/i, '<span class="text-gold-500">$1</span>'],
+  ];
+
+  for (const [regex, replacement] of rules) {
+    if (regex.test(t)) {
+      return t.replace(regex, replacement);
+    }
+  }
+
+  return t;
+}
+
+const pageHero = ({ crumbs = [], h1, sub, ctas = true, kicker, bgImage, altText }) => {
+  const { src: bg, alt } = resolveHeroInfo({ crumbs, h1, kicker, bgImage, altText });
+  return `<section class="relative bg-[#003854] text-white overflow-hidden">
+  ${bg ? `
+  <div class="absolute inset-0">
+    <img src="${bg}" alt="${esc(alt)}" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center" />
+    <div class="absolute inset-0 bg-gradient-to-r from-[#002030]/55 via-[#00283d]/30 to-[#002030]/15" aria-hidden="true"></div>
+  </div>` : ''}
+  <div class="absolute inset-0 hero-grid opacity-10" aria-hidden="true"></div>
   <div class="relative max-w-7xl mx-auto px-6 py-14 md:py-20">
-    ${kicker ? `<p class="text-gold-500 text-xs font-semibold uppercase tracking-[0.2em] mb-3">${esc(kicker)}</p>` : ''}
-    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight max-w-4xl leading-tight">${esc(h1)}</h1>
-    ${sub ? `<p class="mt-5 text-lg text-slate-300 max-w-3xl leading-relaxed">${esc(sub)}</p>` : ''}
+    ${kicker ? `<p class="text-gold-500 text-xs font-semibold uppercase tracking-[0.2em] mb-3 drop-shadow">${esc(kicker)}</p>` : ''}
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight max-w-4xl leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)]">${highlightHeroH1(h1)}</h1>
+    ${sub ? `<p class="mt-5 text-lg text-slate-100 max-w-3xl leading-relaxed drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">${esc(sub)}</p>` : ''}
     ${ctas ? `<div class="mt-8 flex flex-wrap gap-3">${btnWA('Hablar por WhatsApp', '', 'hero')}${btnCall(undefined, '', 'hero')}</div>` : ''}
   </div></section>`;
+};
 
 const faqHtml = (faqs, search = false) => `<div data-faq>${search ? '<input data-faq-search type="search" placeholder="Buscar en las preguntas…" aria-label="Buscar en las preguntas frecuentes" class="w-full mb-4 bg-white border border-slate-200 rounded-lg px-4 py-3">' : ''}<div class="flex justify-between items-center mb-3 text-xs"><span class="text-slate-500">${faqs.length} preguntas</span><span class="flex gap-4 no-print"><button type="button" data-faq-toggle="open" class="underline">Abrir todas</button><button type="button" data-faq-toggle="close" class="underline">Cerrar todas</button></span></div><div class="space-y-3">${faqs.map(([q, a]) => `<details class="group bg-white border border-slate-200 rounded-xl p-5"><summary class="flex justify-between items-center gap-4 cursor-pointer font-semibold text-navy-900 list-none">${esc(q)}<span class="shrink-0 transition-transform group-open:rotate-180">${ic('down')}</span></summary><p class="mt-3 text-slate-600 leading-relaxed">${esc(a)}</p></details>`).join('')}</div>${search ? '<p data-faq-empty class="hidden text-sm text-slate-500 mt-3">No encontramos preguntas con ese término.</p>' : ''}</div>`;
 
@@ -250,14 +554,18 @@ function home() {
   ];
   const opts = ['Accidente de moto', 'Accidente de carro', 'Atropello (peatón)', 'Parrillero o pasajero', 'SOAT o aseguradora', 'Otro'].map((o) => `<option>${o}</option>`).join('');
   const body = `
-<section class="relative bg-navy-900 text-white overflow-hidden">
-  <div class="absolute inset-0 hero-grid opacity-40" aria-hidden="true"></div>
-  <div class="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-gold-500/10 blur-3xl" aria-hidden="true"></div>
+<section class="relative bg-[#003854] text-white overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="/assets/hero/hero-home.webp" alt="Firma de abogados especialistas en indemnizaciones por accidentes de tránsito en Medellín" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center" />
+    <div class="absolute inset-0 bg-gradient-to-r from-[#002030]/55 via-[#00283d]/30 to-[#002030]/15" aria-hidden="true"></div>
+  </div>
+  <div class="absolute inset-0 hero-grid opacity-10" aria-hidden="true"></div>
+  <div class="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-cyan-400/10 blur-3xl" aria-hidden="true"></div>
   <div class="relative max-w-7xl mx-auto px-6 py-16 md:py-24 grid lg:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
     <div>
       <span class="inline-flex items-center gap-2 border border-gold-500/40 bg-gold-500/10 text-gold-500 text-xs font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span>Medellín y Valle de Aburrá</span>
-      <h1 class="mt-6 text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05]">Abogado de accidentes de tránsito en <span class="text-gold-500">Medellín</span></h1>
-      <p class="mt-6 text-lg md:text-xl text-slate-300 leading-relaxed max-w-2xl">Si tú o un familiar resultaron lesionados, te explicamos con claridad qué puedes reclamar, ante quién y con qué soportes. Sin presiones y sin promesas irreales.</p>
+      <h1 class="mt-6 text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)]">Abogado de accidentes de tránsito en <span class="text-gold-500">Medellín</span></h1>
+      <p class="mt-6 text-lg md:text-xl text-slate-100 leading-relaxed max-w-2xl drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">Si tú o un familiar resultaron lesionados, te explicamos con claridad qué puedes reclamar, ante quién y con qué soportes. Sin presiones y sin promesas irreales.</p>
       <div class="mt-9 flex flex-wrap gap-3">${btnWA('Hablar por WhatsApp', '', 'hero')}<a href="#situaciones" class="inline-flex items-center justify-center gap-2 border border-white/30 hover:bg-white/10 text-white font-medium px-6 py-3.5 rounded-lg transition-colors">Identificar mi situación ${ic('down')}</a></div>
       <ul class="mt-12 pt-8 border-t border-white/10 grid sm:grid-cols-3 gap-6 text-sm">
         <li class="flex gap-3">${ic('check', 'w-5 h-5 text-gold-500 shrink-0')}<span><strong class="block text-white">Lenguaje claro</strong>Sin tecnicismos innecesarios.</span></li>
@@ -418,7 +726,7 @@ function servicesHub() {
     `<section class="py-16"><div class="max-w-7xl mx-auto px-6 space-y-16">${HUBS.map((h) => `
       <div id="${h.id}" class="scroll-mt-28"><div class="flex items-center gap-3"><span class="w-11 h-11 bg-navy-900 text-gold-500 rounded-lg flex items-center justify-center">${ic(h.icon, 'w-6 h-6')}</span><div><h2 class="text-2xl md:text-3xl font-semibold text-navy-900 tracking-tight">${esc(h.title)}</h2><p class="text-sm">${esc(h.desc)}</p></div></div>
       <div class="mt-6 grid md:grid-cols-2 lg:grid-cols-3 gap-5">${h.items.map((s) => `<a href="${svcUrl(s)}" class="group bg-white border border-slate-200 hover:border-gold-500 hover:shadow-glow rounded-2xl p-6 transition-all"><h3 class="font-semibold text-navy-900 text-lg">${esc(SERVICES[s].short)}</h3><p class="mt-2 text-sm leading-relaxed">${esc(SERVICES[s].sub)}</p><span class="mt-4 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-navy-900">Ver más ${ic('arrow', 'w-4 h-4')}</span></a>`).join('')}</div></div>`).join('')}</div></section>` + ctaFinal();
-  render({ url: '/servicios/', title: 'Servicios de abogado de accidentes de tránsito en Medellín | Derechos con Dignidad', desc: 'Accidentes de moto y carro, lesiones graves, SOAT, aseguradoras, responsabilidad civil y accidentes por vías en mal estado en Medellín.', body, crumbs: [['Inicio', '/'], ['Servicios', '/servicios/']], faq: { pools: ['primeros', 'seguros', 'lesiones', 'transporte', 'estado'], min: 8 } });
+  render({ url: '/servicios/', title: SERVICES_SEO['/servicios/']?.title || 'Servicios de abogado de accidentes de tránsito en Medellín | Derechos con Dignidad', desc: SERVICES_SEO['/servicios/']?.desc || 'Accidentes de moto y carro, lesiones graves, SOAT, aseguradoras, responsabilidad civil y accidentes por vías en mal estado en Medellín.', body, crumbs: [['Inicio', '/'], ['Servicios', '/servicios/']], faq: { pools: ['primeros', 'seguros', 'lesiones', 'transporte', 'estado'], min: 8 } });
 }
 
 // ---------- Helpers de estructura semántica ----------
@@ -483,11 +791,14 @@ function servicePage(slug) {
   </aside>
 </div>
 <div class="max-w-7xl mx-auto px-6 pb-14"><p class="text-xs text-slate-500">Contenido informativo y orientativo; no constituye asesoría jurídica ni garantiza resultados.</p></div>` + ctaFinal();
+  const sHero = resolveHeroInfo({ crumbs, h1: s.title, kicker: s.short });
+  const metaTitle = SERVICES_SEO[slug]?.title || s.metaTitle;
+  const metaDesc = SERVICES_SEO[slug]?.desc || s.metaDesc;
   render({
-    url: svcUrl(slug), title: s.metaTitle, desc: s.metaDesc, body, crumbs,
+    url: svcUrl(slug), title: metaTitle, desc: metaDesc, body, crumbs,
     schema: [
-      { '@context': 'https://schema.org', '@type': 'WebPage', name: s.title, url: SITE.url + svcUrl(slug), inLanguage: 'es-CO', datePublished: SITE.published, dateModified: SITE.lastReview, isPartOf: { '@id': SITE.url + '/#website' }, about: s.short },
-      { '@context': 'https://schema.org', '@type': 'Service', name: s.short, serviceType: 'Asesoría jurídica en accidentes de tránsito', provider: { '@id': SITE.url + '/#organization' }, areaServed: [{ '@type': 'City', name: 'Medellín' }, ...MUNICIPIOS.map((m) => ({ '@type': 'City', name: m.name }))], description: s.metaDesc },
+      { '@context': 'https://schema.org', '@type': 'WebPage', name: s.title, url: SITE.url + svcUrl(slug), inLanguage: 'es-CO', datePublished: SITE.published, dateModified: SITE.lastReview, isPartOf: { '@id': SITE.url + '/#website' }, about: s.short, primaryImageOfPage: { '@type': 'ImageObject', url: SITE.url + sHero.src, caption: sHero.alt } },
+      { '@context': 'https://schema.org', '@type': 'Service', name: s.short, serviceType: 'Asesoría jurídica en accidentes de tránsito', provider: { '@id': SITE.url + '/#organization' }, areaServed: [{ '@type': 'City', name: 'Medellín' }, ...MUNICIPIOS.map((m) => ({ '@type': 'City', name: m.name }))], description: metaDesc, image: SITE.url + sHero.src },
       faqSchema(allFaqs),
     ],
   });
@@ -629,7 +940,7 @@ function blog() {
     const author = SITE.lawyers.length ? { '@type': 'Person', name: SITE.lawyers[0].name } : { '@id': SITE.url + '/#organization' };
     render({ url, title: `${a.seo || SEO_TITLES[a.slug] || a.title} | Derechos con Dignidad`, desc: a.desc, body: b, crumbs, og: 'article',
       schema: [
-        { '@context': 'https://schema.org', '@type': 'Article', headline: a.title, description: a.desc, inLanguage: 'es-CO', datePublished: SITE.published, dateModified: SITE.lastReview, mainEntityOfPage: SITE.url + url, author, publisher: { '@id': SITE.url + '/#organization' }, articleSection: a.cluster, about: target[1] },
+        { '@context': 'https://schema.org', '@type': 'Article', headline: a.title, description: a.desc, image: [SITE.url + resolveHeroInfo({ crumbs, h1: a.title, kicker: a.cluster }).src], inLanguage: 'es-CO', datePublished: SITE.published, dateModified: SITE.lastReview, mainEntityOfPage: SITE.url + url, author, publisher: { '@id': SITE.url + '/#organization' }, articleSection: a.cluster, about: target[1] },
         faqSchema(faqs),
       ] });
   }
@@ -646,7 +957,14 @@ function glosario() {
 // ---------- Archivos técnicos ----------
 function tech() {
   const w = (f, c) => { fs.mkdirSync(path.dirname(path.join(DIST, f)), { recursive: true }); fs.writeFileSync(path.join(DIST, f), c); };
-  w('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map((u) => `  <url><loc>${SITE.url}${u}</loc><lastmod>${SITE.lastReview}</lastmod></url>`).join('\n')}\n</urlset>\n`);
+  w('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${pages.map((p) => {
+  const u = typeof p === 'string' ? p : p.url;
+  const imgTag = p.heroImg ? `\n    <image:image>\n      <image:loc>${SITE.url}${p.heroImg}</image:loc>\n      <image:title>${esc(p.heroAlt || SITE.name)}</image:title>\n    </image:image>` : '';
+  return `  <url>\n    <loc>${SITE.url}${u}</loc>\n    <lastmod>${SITE.lastReview}</lastmod>${imgTag}\n  </url>`;
+}).join('\n')}
+</urlset>\n`);
   // Configuración para hostings Apache / cPanel (Netlify, Vercel y Cloudflare Pages la ignoran y usan 404.html solos)
   w('.htaccess', `# Derechos con Dignidad - configuración Apache (cPanel)
 DirectoryIndex index.html
@@ -733,6 +1051,7 @@ ErrorDocument 404 /404.html
   w('assets/site.webmanifest', JSON.stringify({ name: SITE.name, short_name: SITE.name, start_url: '/', display: 'browser', background_color: '#ffffff', theme_color: '#0f172a', icons: [{ src: '/assets/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }, { src: '/assets/icon-512.png', sizes: '512x512', type: 'image/png' }] }));
   if (hasOG) fs.copyFileSync('src/assets/og-default.png', path.join(DIST, 'assets', 'og-default.png'));
   if (fs.existsSync('src/assets/team')) fs.cpSync('src/assets/team', path.join(DIST, 'assets', 'team'), { recursive: true });
+  if (fs.existsSync('src/assets/hero')) fs.cpSync('src/assets/hero', path.join(DIST, 'assets', 'hero'), { recursive: true });
   if (fs.existsSync('src/assets/favicon.svg')) fs.copyFileSync('src/assets/favicon.svg', path.join(DIST, 'assets', 'favicon.svg')); else w('assets/favicon.svg', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="4" fill="#d4af37"/><path d="M16 6v20M8 10h16M10 11l-3 7a3.5 3.5 0 0 0 6 0zM22 11l-3 7a3.5 3.5 0 0 0 6 0zM10 26h12" stroke="#0f172a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>');
   w('assets/app.js', fs.readFileSync('src/app.js', 'utf8'));
   w('assets/calc.js', fs.readFileSync('src/calc.js', 'utf8'));
@@ -878,8 +1197,8 @@ function municipios() {
   <p class="text-xs text-slate-500">Contenido informativo; no constituye asesoría jurídica ni garantiza resultados.</p>
 </div>` + ctaFinal(`¿Tu accidente fue en ${m.name}?`, 'Cuéntanos qué pasó. Revisamos tu caso y te explicamos tus opciones, sin presiones.');
     render({ url, title: `Abogado de accidentes de tránsito en ${m.name} | ${SITE.name}`, desc: m.desc, body, crumbs,
-      schema: [{ '@context': 'https://schema.org', '@type': 'WebPage', name: `Abogado de accidentes de tránsito en ${m.name}`, url: SITE.url + url, inLanguage: 'es-CO', datePublished: SITE.published, dateModified: SITE.lastReview, about: { '@type': 'City', name: m.name, containedInPlace: { '@type': 'AdministrativeArea', name: (reg === 'oriente' ? 'Oriente antioqueño' : 'Valle de Aburrá') + ', Antioquia, Colombia' } }, isPartOf: { '@id': SITE.url + '/#website' } },
-        { '@context': 'https://schema.org', '@type': 'Service', name: `Orientación jurídica por accidentes de tránsito en ${m.name}`, serviceType: 'Asesoría jurídica en accidentes de tránsito', provider: { '@id': SITE.url + '/#organization' }, areaServed: { '@type': 'City', name: m.name }, description: m.desc }],
+      schema: [{ '@context': 'https://schema.org', '@type': 'WebPage', name: `Abogado de accidentes de tránsito en ${m.name}`, url: SITE.url + url, inLanguage: 'es-CO', datePublished: SITE.published, dateModified: SITE.lastReview, about: { '@type': 'City', name: m.name, containedInPlace: { '@type': 'AdministrativeArea', name: (reg === 'oriente' ? 'Oriente antioqueño' : 'Valle de Aburrá') + ', Antioquia, Colombia' } }, isPartOf: { '@id': SITE.url + '/#website' }, primaryImageOfPage: { '@type': 'ImageObject', url: SITE.url + HERO_IMAGES.municipios, caption: `Abogado de accidentes de tránsito en ${m.name}` } },
+        { '@context': 'https://schema.org', '@type': 'Service', name: `Orientación jurídica por accidentes de tránsito en ${m.name}`, serviceType: 'Asesoría jurídica en accidentes de tránsito', provider: { '@id': SITE.url + '/#organization' }, areaServed: { '@type': 'City', name: m.name }, description: m.desc, image: SITE.url + HERO_IMAGES.municipios }],
       faq: { own: muniFaqs(m), pools: ['cobertura', 'primeros'], seed: m.slug, min: 8 } });
   }
 }
@@ -941,15 +1260,21 @@ function calculadora() {
 
 // ---------- Landings de pauta (noindex, header mínimo, canonical a la página de servicio) ----------
 const LANDINGS = [
-  { slug: 'accidente-moto', service: 'accidentes-moto', h1: '¿Te lesionaste en un accidente de moto en Medellín?', sub: 'Cuéntanos qué pasó y te explicamos, sin presiones, qué puedes reclamar y con qué soportes.', bullets: ['El SOAT atiende tu atención médica inicial sin importar la culpa', 'Los demás perjuicios se reclaman al responsable y su aseguradora', 'No firmes acuerdos antes de conocer el alcance de tus lesiones'] },
-  { slug: 'aseguradora-objeto-reclamacion', service: 'aseguradoras-no-pagan', h1: '¿La aseguradora objetó o no quiere pagar tu reclamación?', sub: 'Revisamos el motivo de la objeción y te explicamos las vías disponibles.', bullets: ['Pide la objeción por escrito y conserva toda la correspondencia', 'Una objeción no siempre es la última palabra', 'No firmes un finiquito sin entender sus efectos'] },
+  { slug: 'accidente-moto', service: 'accidentes-moto', h1: '¿Te lesionaste en un accidente de moto en Medellín?', sub: 'Cuéntanos qué ocurrió en tu accidente de moto en Medellín y te explicamos con claridad y sin presiones qué puedes reclamar, ante quién y con qué soportes.', bullets: ['El SOAT atiende tu atención médica inicial sin importar la culpa', 'Los demás perjuicios se reclaman al responsable y su aseguradora', 'No firmes acuerdos antes de conocer el alcance de tus lesiones'] },
+  { slug: 'aseguradora-objeto-reclamacion', service: 'aseguradoras-no-pagan', h1: '¿La aseguradora objetó o no quiere pagar tu reclamación?', sub: '¿La aseguradora objetó tu reclamación de accidente de tránsito? Revisamos el motivo de la objeción sin costo y te explicamos las vías jurídicas disponibles.', bullets: ['Pide la objeción por escrito y conserva toda la correspondencia', 'Una objeción no siempre es la última palabra', 'No firmes un finiquito sin entender sus efectos'] },
 ];
 function landings() {
   for (const l of LANDINGS) {
     const s = SERVICES[l.service];
-    const body = `<section class="relative bg-navy-900 text-white overflow-hidden"><div class="absolute inset-0 hero-grid opacity-40" aria-hidden="true"></div>
+    const { src: bgLp, alt: altLp } = resolveHeroInfo({ h1: l.h1, kicker: s.short, url: `/lp/${l.slug}/` });
+    const body = `<section class="relative bg-[#003854] text-white overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="${bgLp}" alt="${esc(altLp)}" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center" />
+    <div class="absolute inset-0 bg-gradient-to-r from-[#002030]/55 via-[#00283d]/30 to-[#002030]/15" aria-hidden="true"></div>
+  </div>
+  <div class="absolute inset-0 hero-grid opacity-10" aria-hidden="true"></div>
   <div class="relative max-w-5xl mx-auto px-6 py-14 grid md:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
-    <div><h1 class="text-3xl md:text-5xl font-semibold tracking-tight leading-tight">${esc(l.h1)}</h1><p class="mt-5 text-lg text-slate-300">${esc(l.sub)}</p>
+    <div><h1 class="text-3xl md:text-5xl font-semibold tracking-tight leading-tight">${highlightHeroH1(l.h1)}</h1><p class="mt-5 text-lg text-slate-300">${esc(l.sub)}</p>
       <ul class="mt-6 space-y-3">${l.bullets.map((x) => `<li class="flex gap-3">${ic('check', 'w-5 h-5 text-gold-500 shrink-0 mt-0.5')}<span>${esc(x)}</span></li>`).join('')}</ul>
       <div class="mt-8 flex flex-wrap gap-3">${btnWA('Hablar por WhatsApp', '', 'landing')}${btnCall(undefined, '', 'landing')}</div>
       <p class="mt-6 text-sm text-slate-400">Más información: <a class="underline" href="${svcUrl(l.service)}">${esc(s.short)}</a></p></div>
@@ -962,7 +1287,7 @@ function landings() {
         <button type="submit" class="w-full inline-flex items-center justify-center gap-2 bg-navy-900 hover:bg-navy-800 text-white font-semibold px-6 py-3.5 rounded-lg">Enviar consulta ${ic('arrow')}</button>
         <p id="formMsg" class="text-sm hidden" role="status"></p></form></div>
   </div></section>`;
-    render({ url: `/lp/${l.slug}/`, title: `${l.h1} | ${SITE.name}`, desc: l.sub + ' Landing de campaña.', body, noindex: true, minimal: true, canonicalUrl: svcUrl(l.service) });
+    render({ url: `/lp/${l.slug}/`, title: `${l.h1} | ${SITE.name}`, desc: l.sub, body, noindex: true, minimal: true, canonicalUrl: svcUrl(l.service) });
   }
 }
 
@@ -1051,11 +1376,16 @@ home(); servicesHub(); Object.keys(SERVICES).forEach(servicePage); otherPages();
     ['pin', 'Cobertura', 'Valle de Aburrá y Oriente antioqueño', '/area-metropolitana/'],
     ['phone', 'Contacto', 'Cuéntanos tu caso', '/contacto/'],
   ];
-  const body = `<section class="relative bg-navy-900 text-white overflow-hidden"><div class="absolute inset-0 hero-grid opacity-40" aria-hidden="true"></div>
-  <div class="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-gold-500/10 blur-3xl" aria-hidden="true"></div>
+  const body = `<section class="relative bg-[#003854] text-white overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="/assets/hero/hero-no-encontrado.webp" alt="Página no encontrada en indemnizavial.co" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center" />
+    <div class="absolute inset-0 bg-gradient-to-r from-[#002030]/55 via-[#00283d]/30 to-[#002030]/15" aria-hidden="true"></div>
+  </div>
+  <div class="absolute inset-0 hero-grid opacity-10" aria-hidden="true"></div>
+  <div class="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-cyan-400/10 blur-3xl" aria-hidden="true"></div>
   <div class="relative max-w-3xl mx-auto px-6 py-20 md:py-28 text-center">
     <p class="text-7xl md:text-8xl font-semibold tracking-tight text-gold-500" aria-hidden="true">404</p>
-    <h1 class="mt-4 text-3xl md:text-4xl font-semibold tracking-tight">Esta página no existe o cambió de dirección</h1>
+    <h1 class="mt-4 text-3xl md:text-4xl font-semibold tracking-tight">Esta página <span class="text-gold-500">no existe</span> o cambió de dirección</h1>
     <p class="mt-4 text-lg text-slate-300">Revisa que el enlace esté bien escrito o usa uno de estos accesos. Si tuviste un accidente, también puedes contactarnos directamente.</p>
     <div class="mt-8 flex flex-wrap gap-3 justify-center"><a href="/" class="inline-flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-6 py-3.5 rounded-lg transition-colors">Volver al inicio</a>${btnCall(undefined, '', '404')}</div>
   </div></section>

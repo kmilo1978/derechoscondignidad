@@ -259,7 +259,7 @@ export const SERVICES = {
     related: ['soat', 'vehiculo-fantasma', 'responsabilidad-civil'],
   },
   'vehiculo-fantasma': {
-    title: 'Accidente con conductor que huyó (vehículo fantasma)', short: 'Conductor que huye', icon: 'shield',
+    title: 'Accidente con conductor que huyó o vehículo fantasma', short: 'Conductor que huye', icon: 'shield',
     kw: 'qué hacer si el conductor huyó accidente de tránsito', hub: 'soat-aseguradoras',
     metaTitle: 'Conductor que huyó tras un accidente: qué hacer | Derechos con Dignidad',
     metaDesc: 'Si el conductor responsable huyó del lugar, conoce los pasos inmediatos, qué pruebas buscar y qué coberturas pueden atenderte.',

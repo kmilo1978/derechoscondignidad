@@ -174,7 +174,7 @@ export const SERVICES2 = {
     related: ['accidentes-vias-mal-estado', 'responsabilidad-civil', 'accidentes-carro'],
   }),
   'accidente-in-itinere': mk({
-    title: 'Accidente de tránsito en el trayecto al trabajo (in itinere)', short: 'Accidente en trayecto laboral', icon: 'briefcase', hub: 'responsabilidad-estado',
+    title: 'Accidente de tránsito en el trayecto al trabajo', short: 'Accidente en trayecto laboral', icon: 'briefcase', hub: 'responsabilidad-estado',
     kw: 'accidente in itinere trayecto al trabajo colombia',
     metaTitle: 'Accidente en el trayecto al trabajo: ARL, SOAT y reclamación',
     metaDesc: 'Cómo se analiza un accidente de tránsito camino o de regreso del trabajo: cuándo interviene la ARL, qué cubre el SOAT y qué se puede reclamar.',

@@ -1,0 +1,330 @@
+{
+  "/": {
+    "src": "/assets/hero/hero-home.webp",
+    "alt": "Firma de abogados especialistas en accidentes de tránsito e indemnizaciones en Medellín"
+  },
+  "/servicios/": {
+    "src": "/assets/hero/hero-servicios.webp",
+    "alt": "Servicios para víctimas de accidentes de tránsito - Derechos con Dignidad Medellín"
+  },
+  "/servicios/accidentes-moto/": {
+    "src": "/assets/hero/hero-servicios-accidentes-moto.webp",
+    "alt": "Abogado de accidentes de moto en Medellín - Derechos con Dignidad Medellín"
+  },
+  "/servicios/accidentes-carro/": {
+    "src": "/assets/hero/hero-servicios-accidentes-carro.webp",
+    "alt": "Abogado de accidentes de carro en Medellín - Derechos con Dignidad Medellín"
+  },
+  "/servicios/lesiones-graves/": {
+    "src": "/assets/hero/hero-servicios-lesiones-graves.webp",
+    "alt": "Lesiones graves y secuelas por accidente de tránsito - Derechos con Dignidad Medellín"
+  },
+  "/servicios/accidente-mortal/": {
+    "src": "/assets/hero/hero-servicios-accidente-mortal.webp",
+    "alt": "Muerte en accidente de tránsito: apoyo jurídico a la familia - Derechos con Dignidad Medellín"
+  },
+  "/servicios/accidentes-peatones/": {
+    "src": "/assets/hero/hero-servicios-accidentes-peatones.webp",
+    "alt": "Abogado para peatones atropellados en Medellín - Derechos con Dignidad Medellín"
+  },
+  "/servicios/lesiones-parrillero-moto/": {
+    "src": "/assets/hero/hero-servicios-lesiones-parrillero-moto.webp",
+    "alt": "Parrillero lesionado en un accidente de moto - Derechos con Dignidad Medellín"
+  },
+  "/servicios/accidentes-plataformas/": {
+    "src": "/assets/hero/hero-servicios-accidentes-plataformas.webp",
+    "alt": "Accidentes en Uber, DiDi, inDrive o Cabify - Derechos con Dignidad Medellín"
+  },
+  "/servicios/accidentes-pasajeros-transporte-publico/": {
+    "src": "/assets/hero/hero-servicios-accidentes-pasajeros-transporte-publico.webp",
+    "alt": "Accidentes de pasajeros en bus y transporte público - Derechos con Dignidad Medellín"
+  },
+  "/servicios/soat/": {
+    "src": "/assets/hero/hero-servicios-soat.webp",
+    "alt": "SOAT: qué cubre y cómo reclamarlo tras un accidente - Derechos con Dignidad Medellín"
+  },
+  "/servicios/aseguradoras-no-pagan/": {
+    "src": "/assets/hero/hero-servicios-aseguradoras-no-pagan.webp",
+    "alt": "La aseguradora objetó o no quiere pagar tu reclamación - Derechos con Dignidad Medellín"
+  },
+  "/servicios/gastos-medicos-superan-soat/": {
+    "src": "/assets/hero/hero-servicios-gastos-medicos-superan-soat.webp",
+    "alt": "Gastos médicos que superan el tope del SOAT - Derechos con Dignidad Medellín"
+  },
+  "/servicios/vehiculo-sin-soat/": {
+    "src": "/assets/hero/hero-servicios-vehiculo-sin-soat.webp",
+    "alt": "Accidente con un vehículo sin SOAT - Derechos con Dignidad Medellín"
+  },
+  "/servicios/vehiculo-fantasma/": {
+    "src": "/assets/hero/hero-servicios-vehiculo-fantasma.webp",
+    "alt": "Accidente con conductor que huyó o vehículo fantasma - Derechos con Dignidad Medellín"
+  },
+  "/servicios/responsabilidad-civil/": {
+    "src": "/assets/hero/hero-servicios-responsabilidad-civil.webp",
+    "alt": "Demanda de responsabilidad civil por accidente de tránsito - Derechos con Dignidad Medellín"
+  },
+  "/servicios/accidentes-vias-mal-estado/": {
+    "src": "/assets/hero/hero-servicios-accidentes-vias-mal-estado.webp",
+    "alt": "Accidentes por huecos, vías en mal estado o alcantarillas sin tapa - Derechos con Dignidad Medellín"
+  },
+  "/servicios/lesiones-personales/": {
+    "src": "/assets/hero/hero-servicios-lesiones-personales.webp",
+    "alt": "Lesiones personales por accidente de tránsito en Medellín - Derechos con Dignidad Medellín"
+  },
+  "/servicios/latigazo-cervical/": {
+    "src": "/assets/hero/hero-servicios-latigazo-cervical.webp",
+    "alt": "Latigazo cervical por accidente de tránsito: qué reclamar - Derechos con Dignidad Medellín"
+  },
+  "/servicios/fracturas-accidente-transito/": {
+    "src": "/assets/hero/hero-servicios-fracturas-accidente-transito.webp",
+    "alt": "Fracturas por accidente de tránsito: fémur, tibia, clavícula y pelvis - Derechos con Dignidad Medellín"
+  },
+  "/servicios/lesiones-columna/": {
+    "src": "/assets/hero/hero-servicios-lesiones-columna.webp",
+    "alt": "Lesiones de columna y hernias discales tras un accidente - Derechos con Dignidad Medellín"
+  },
+  "/servicios/trauma-craneoencefalico/": {
+    "src": "/assets/hero/hero-servicios-trauma-craneoencefalico.webp",
+    "alt": "Trauma craneoencefálico y daño cerebral por accidente de tránsito - Derechos con Dignidad Medellín"
+  },
+  "/servicios/amputaciones/": {
+    "src": "/assets/hero/hero-servicios-amputaciones.webp",
+    "alt": "Amputaciones y pérdida de extremidades por accidente de tránsito - Derechos con Dignidad Medellín"
+  },
+  "/servicios/quemaduras-cicatrices/": {
+    "src": "/assets/hero/hero-servicios-quemaduras-cicatrices.webp",
+    "alt": "Quemaduras por fricción, cicatrices y daño estético - Derechos con Dignidad Medellín"
+  },
+  "/servicios/trauma-ocular/": {
+    "src": "/assets/hero/hero-servicios-trauma-ocular.webp",
+    "alt": "Trauma ocular y pérdida de visión por accidente de tránsito - Derechos con Dignidad Medellín"
+  },
+  "/servicios/trauma-dental-maxilofacial/": {
+    "src": "/assets/hero/hero-servicios-trauma-dental-maxilofacial.webp",
+    "alt": "Trauma dental y lesiones maxilofaciales por accidente de tránsito - Derechos con Dignidad Medellín"
+  },
+  "/servicios/trauma-psicologico/": {
+    "src": "/assets/hero/hero-servicios-trauma-psicologico.webp",
+    "alt": "Trauma psicológico, estrés postraumático y miedo a conducir - Derechos con Dignidad Medellín"
+  },
+  "/servicios/accidentes-ciclistas/": {
+    "src": "/assets/hero/hero-servicios-accidentes-ciclistas.webp",
+    "alt": "Abogado para ciclistas atropellados en Medellín - Derechos con Dignidad Medellín"
+  },
+  "/servicios/accidentes-senalizacion-semaforos/": {
+    "src": "/assets/hero/hero-servicios-accidentes-senalizacion-semaforos.webp",
+    "alt": "Accidentes por semáforos dañados o falta de señalización - Derechos con Dignidad Medellín"
+  },
+  "/servicios/accidente-in-itinere/": {
+    "src": "/assets/hero/hero-servicios-accidente-in-itinere.webp",
+    "alt": "Accidente de tránsito en el trayecto al trabajo - Derechos con Dignidad Medellín"
+  },
+  "/servicios/denuncia-lesiones-culposas/": {
+    "src": "/assets/hero/hero-servicios-denuncia-lesiones-culposas.webp",
+    "alt": "Denuncia penal por lesiones personales culposas en un accidente de tránsito - Derechos con Dignidad Medellín"
+  },
+  "/honorarios-cuota-litis/": {
+    "src": "/assets/hero/hero-honorarios-cuota-litis.webp",
+    "alt": "Honorarios y cuota litis - Derechos con Dignidad Medellín"
+  },
+  "/nosotros/": {
+    "src": "/assets/hero/hero-nosotros.webp",
+    "alt": "Nosotros - Derechos con Dignidad Medellín"
+  },
+  "/contacto/": {
+    "src": "/assets/hero/hero-contacto.webp",
+    "alt": "Contacto - Derechos con Dignidad Medellín"
+  },
+  "/preguntas-frecuentes/": {
+    "src": "/assets/hero/hero-preguntas-frecuentes.webp",
+    "alt": "Preguntas frecuentes - Derechos con Dignidad Medellín"
+  },
+  "/politica-de-privacidad/": {
+    "src": "/assets/hero/hero-politica-de-privacidad.webp",
+    "alt": "Política de privacidad - Derechos con Dignidad Medellín"
+  },
+  "/tratamiento-de-datos/": {
+    "src": "/assets/hero/hero-tratamiento-de-datos.webp",
+    "alt": "Autorización de tratamiento de datos personales - Derechos con Dignidad Medellín"
+  },
+  "/terminos-de-uso/": {
+    "src": "/assets/hero/hero-terminos-de-uso.webp",
+    "alt": "Términos de uso - Derechos con Dignidad Medellín"
+  },
+  "/politica-de-cookies/": {
+    "src": "/assets/hero/hero-politica-de-cookies.webp",
+    "alt": "Política de cookies - Derechos con Dignidad Medellín"
+  },
+  "/blog/": {
+    "src": "/assets/hero/hero-blog.webp",
+    "alt": "Guías para víctimas de accidentes de tránsito - Derechos con Dignidad Medellín"
+  },
+  "/blog/que-hacer-despues-accidente-transito/": {
+    "src": "/assets/hero/hero-blog-que-hacer-despues-accidente-transito.webp",
+    "alt": "Qué hacer después de un accidente de tránsito en Medellín: guía paso a paso - Derechos con Dignidad Medellín"
+  },
+  "/blog/firmar-acuerdo-aseguradora/": {
+    "src": "/assets/hero/hero-blog-firmar-acuerdo-aseguradora.webp",
+    "alt": "¿Debo firmar lo que me ofrece la aseguradora después de un accidente? - Derechos con Dignidad Medellín"
+  },
+  "/blog/ipat-informe-accidente/": {
+    "src": "/assets/hero/hero-blog-ipat-informe-accidente.webp",
+    "alt": "IPAT: qué es el informe del accidente de tránsito y cómo conseguirlo - Derechos con Dignidad Medellín"
+  },
+  "/blog/cuanto-cobra-abogado-accidente-transito/": {
+    "src": "/assets/hero/hero-blog-cuanto-cobra-abogado-accidente-transito.webp",
+    "alt": "Cuánto cobra un abogado de accidentes de tránsito: la cuota litis explicada - Derechos con Dignidad Medellín"
+  },
+  "/blog/soat-cuanto-cubre/": {
+    "src": "/assets/hero/hero-blog-soat-cuanto-cubre.webp",
+    "alt": "Cuánto cubre el SOAT y qué pasa cuando se agota - Derechos con Dignidad Medellín"
+  },
+  "/blog/diferencia-soat-demanda-civil/": {
+    "src": "/assets/hero/hero-blog-diferencia-soat-demanda-civil.webp",
+    "alt": "SOAT vs. demanda civil: qué recupera cada vía - Derechos con Dignidad Medellín"
+  },
+  "/blog/como-se-calcula-indemnizacion/": {
+    "src": "/assets/hero/hero-blog-como-se-calcula-indemnizacion.webp",
+    "alt": "Cómo se calcula una indemnización por accidente de tránsito: variables y límites - Derechos con Dignidad Medellín"
+  },
+  "/blog/plazos-demandar-accidente/": {
+    "src": "/assets/hero/hero-blog-plazos-demandar-accidente.webp",
+    "alt": "Plazos para reclamar tras un accidente de tránsito: por qué no debes esperar - Derechos con Dignidad Medellín"
+  },
+  "/blog/medicina-legal-cita-accidente/": {
+    "src": "/assets/hero/hero-blog-medicina-legal-cita-accidente.webp",
+    "alt": "Cómo prepararte para la cita de Medicina Legal tras un accidente - Derechos con Dignidad Medellín"
+  },
+  "/blog/parrillero-ciclista-peaton-quien-responde/": {
+    "src": "/assets/hero/hero-blog-parrillero-ciclista-peaton-quien-responde.webp",
+    "alt": "Parrillero, ciclista y peatón: quién responde por mis lesiones - Derechos con Dignidad Medellín"
+  },
+  "/blog/etapas-duracion-proceso/": {
+    "src": "/assets/hero/hero-blog-etapas-duracion-proceso.webp",
+    "alt": "Etapas de un proceso por accidente de tránsito: del reclamo a la sentencia - Derechos con Dignidad Medellín"
+  },
+  "/blog/aseguradora-objeta-como-responder/": {
+    "src": "/assets/hero/hero-blog-aseguradora-objeta-como-responder.webp",
+    "alt": "La aseguradora objetó mi siniestro: cómo responder y qué opciones tienes - Derechos con Dignidad Medellín"
+  },
+  "/blog/accidente-transito-colombia-que-hacer-a-quien-reclamar/": {
+    "src": "/assets/hero/hero-blog-accidente-transito-colombia-que-hacer-a-quien-reclamar.webp",
+    "alt": "Accidente de tránsito en Colombia: qué hacer, a quién reclamar y qué se puede indemnizar - Derechos con Dignidad Medellín"
+  },
+  "/blog/vale-la-pena-contratar-abogado/": {
+    "src": "/assets/hero/hero-blog-vale-la-pena-contratar-abogado.webp",
+    "alt": "¿Vale la pena contratar un abogado después de un accidente de tránsito? - Derechos con Dignidad Medellín"
+  },
+  "/blog/dano-moral-vida-de-relacion/": {
+    "src": "/assets/hero/hero-blog-dano-moral-vida-de-relacion.webp",
+    "alt": "Daño moral y daño a la vida de relación: qué son y cómo se prueban - Derechos con Dignidad Medellín"
+  },
+  "/blog/reclamar-soat-paso-a-paso/": {
+    "src": "/assets/hero/hero-blog-reclamar-soat-paso-a-paso.webp",
+    "alt": "Cómo reclamar el SOAT paso a paso: documentos y trámite - Derechos con Dignidad Medellín"
+  },
+  "/blog/guia-motociclista-lesionado/": {
+    "src": "/assets/hero/hero-blog-guia-motociclista-lesionado.webp",
+    "alt": "Guía del motociclista lesionado en Medellín: derechos y pasos - Derechos con Dignidad Medellín"
+  },
+  "/blog/dias-incapacidad-fracturas/": {
+    "src": "/assets/hero/hero-blog-dias-incapacidad-fracturas.webp",
+    "alt": "Cuántos días de incapacidad por una fractura: cómo se determina - Derechos con Dignidad Medellín"
+  },
+  "/blog/junta-calificacion-guia/": {
+    "src": "/assets/hero/hero-blog-junta-calificacion-guia.webp",
+    "alt": "Junta de Calificación de Invalidez: qué es y cómo controvertir un dictamen - Derechos con Dignidad Medellín"
+  },
+  "/blog/demanda-alcaldia-hueco/": {
+    "src": "/assets/hero/hero-blog-demanda-alcaldia-hueco.webp",
+    "alt": "Accidente por un hueco: cómo reclamar a la Alcaldía u otra entidad - Derechos con Dignidad Medellín"
+  },
+  "/blog/domiciliarios-plataformas-accidente/": {
+    "src": "/assets/hero/hero-blog-domiciliarios-plataformas-accidente.webp",
+    "alt": "Domiciliarios y pasajeros de Uber, DiDi o inDrive: quién responde en un accidente - Derechos con Dignidad Medellín"
+  },
+  "/blog/indemnizacion-fractura-segun-hueso/": {
+    "src": "/assets/hero/hero-blog-indemnizacion-fractura-segun-hueso.webp",
+    "alt": "Cuánto pagan por una fractura: por qué depende del hueso, las secuelas y las pruebas - Derechos con Dignidad Medellín"
+  },
+  "/glosario/": {
+    "src": "/assets/hero/hero-glosario.webp",
+    "alt": "Glosario de términos de accidentes de tránsito - Derechos con Dignidad Medellín"
+  },
+  "/lp/accidente-moto/": {
+    "src": "/assets/hero/hero-lp-accidente-moto.webp",
+    "alt": "¿Te lesionaste en un accidente de moto en Medellín? - Derechos con Dignidad Medellín"
+  },
+  "/lp/aseguradora-objeto-reclamacion/": {
+    "src": "/assets/hero/hero-lp-aseguradora-objeto-reclamacion.webp",
+    "alt": "¿La aseguradora objetó o no quiere pagar tu reclamación? - Derechos con Dignidad Medellín"
+  },
+  "/recursos/modelo-derecho-de-peticion/": {
+    "src": "/assets/hero/hero-recursos-modelo-derecho-de-peticion.webp",
+    "alt": "Modelo de derecho de petición a una aseguradora - Derechos con Dignidad Medellín"
+  },
+  "/area-metropolitana/": {
+    "src": "/assets/hero/hero-area-metropolitana.webp",
+    "alt": "Abogado de accidentes de tránsito en el Valle de Aburrá y el Oriente - Reclamación de indemnizaciones y asesoría jurídica"
+  },
+  "/abogado-accidentes-transito-bello/": {
+    "src": "/assets/hero/hero-abogado-accidentes-transito-bello.webp",
+    "alt": "Abogado de accidentes de tránsito en Bello - Reclamación de indemnizaciones y asesoría jurídica"
+  },
+  "/abogado-accidentes-transito-itagui/": {
+    "src": "/assets/hero/hero-abogado-accidentes-transito-itagui.webp",
+    "alt": "Abogado de accidentes de tránsito en Itagüí - Reclamación de indemnizaciones y asesoría jurídica"
+  },
+  "/abogado-accidentes-transito-envigado/": {
+    "src": "/assets/hero/hero-abogado-accidentes-transito-envigado.webp",
+    "alt": "Abogado de accidentes de tránsito en Envigado - Reclamación de indemnizaciones y asesoría jurídica"
+  },
+  "/abogado-accidentes-transito-sabaneta/": {
+    "src": "/assets/hero/hero-abogado-accidentes-transito-sabaneta.webp",
+    "alt": "Abogado de accidentes de tránsito en Sabaneta - Reclamación de indemnizaciones y asesoría jurídica"
+  },
+  "/abogado-accidentes-transito-la-estrella/": {
+    "src": "/assets/hero/hero-abogado-accidentes-transito-la-estrella.webp",
+    "alt": "Abogado de accidentes de tránsito en La Estrella - Reclamación de indemnizaciones y asesoría jurídica"
+  },
+  "/abogado-accidentes-transito-caldas/": {
+    "src": "/assets/hero/hero-abogado-accidentes-transito-caldas.webp",
+    "alt": "Abogado de accidentes de tránsito en Caldas - Reclamación de indemnizaciones y asesoría jurídica"
+  },
+  "/abogado-accidentes-transito-copacabana/": {
+    "src": "/assets/hero/hero-abogado-accidentes-transito-copacabana.webp",
+    "alt": "Abogado de accidentes de tránsito en Copacabana - Reclamación de indemnizaciones y asesoría jurídica"
+  },
+  "/abogado-accidentes-transito-girardota/": {
+    "src": "/assets/hero/hero-abogado-accidentes-transito-girardota.webp",
+    "alt": "Abogado de accidentes de tránsito en Girardota - Reclamación de indemnizaciones y asesoría jurídica"
+  },
+  "/abogado-accidentes-transito-barbosa/": {
+    "src": "/assets/hero/hero-abogado-accidentes-transito-barbosa.webp",
+    "alt": "Abogado de accidentes de tránsito en Barbosa - Reclamación de indemnizaciones y asesoría jurídica"
+  },
+  "/abogado-accidentes-transito-rionegro/": {
+    "src": "/assets/hero/hero-abogado-accidentes-transito-rionegro.webp",
+    "alt": "Abogado de accidentes de tránsito en Rionegro - Reclamación de indemnizaciones y asesoría jurídica"
+  },
+  "/abogado-accidentes-transito-la-ceja/": {
+    "src": "/assets/hero/hero-abogado-accidentes-transito-la-ceja.webp",
+    "alt": "Abogado de accidentes de tránsito en La Ceja - Reclamación de indemnizaciones y asesoría jurídica"
+  },
+  "/abogado-accidentes-transito-el-carmen-de-viboral/": {
+    "src": "/assets/hero/hero-abogado-accidentes-transito-el-carmen-de-viboral.webp",
+    "alt": "Abogado de accidentes de tránsito en El Carmen de Viboral - Reclamación de indemnizaciones y asesoría jurídica"
+  },
+  "/abogado-accidentes-transito-el-retiro/": {
+    "src": "/assets/hero/hero-abogado-accidentes-transito-el-retiro.webp",
+    "alt": "Abogado de accidentes de tránsito en El Retiro - Reclamación de indemnizaciones y asesoría jurídica"
+  },
+  "/calculadora-indemnizacion/": {
+    "src": "/assets/hero/hero-calculadora-indemnizacion.webp",
+    "alt": "Calculadora orientativa de indemnización por accidente de tránsito - Derechos con Dignidad Medellín"
+  },
+  "/no-encontrado/": {
+    "src": "/assets/hero/hero-no-encontrado.webp",
+    "alt": "Página no encontrada en indemnizavial.co - Orientación y contacto jurídico"
+  }
+}

@@ -336,5 +336,14 @@
   "paginas": [
    "/sitemap.xml"
   ]
+ },
+ {
+  "url": "http://www.google.com/schemas/sitemap-image/1.1",
+  "ok": true,
+  "status": 200,
+  "final": "http://www.google.com/schemas/sitemap-image/1.1/",
+  "paginas": [
+   "/sitemap.xml"
+  ]
  }
 ]

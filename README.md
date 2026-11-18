@@ -17,7 +17,8 @@ npm install        # instala dependencias (solo la primera vez)
 npm run build      # genera el sitio en dist/ y los documentos en docs/
 npm run check      # revisa enlaces rotos y SEO básico
 npm run serve      # sirve dist/ en http://localhost:5174
-npm run zip        # crea sitio-para-subir.zip con el contenido de dist/
+npm run zip        # crea sitio-para-subir.zip con el contenido de dist/ (estático para cPanel/FTP/Drop)
+npm run zip:source # crea Pagina web.zip limpio sin node_modules (para Vercel/Netlify upload)
 ```
 
 ## Cómo publicar

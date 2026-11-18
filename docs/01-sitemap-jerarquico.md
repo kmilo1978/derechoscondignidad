@@ -18,7 +18,7 @@ Navegación principal: Inicio | Accidentes y lesiones | SOAT y aseguradoras | Re
     - `/abogado-accidentes-transito-la-estrella/` — Abogado de accidentes de tránsito en La Estrella 
     - `/abogado-accidentes-transito-rionegro/` — Abogado de accidentes de tránsito en Rionegro 
     - `/abogado-accidentes-transito-sabaneta/` — Abogado de accidentes de tránsito en Sabaneta 
-  - `/area-metropolitana/` — Abogado de accidentes de tránsito en el Valle de Aburrá y el Oriente antioqueño 
+  - `/area-metropolitana/` — Abogado de accidentes de tránsito en el Valle de Aburrá y el Oriente 
   - `/blog/` — Guías para víctimas de accidentes de tránsito 
     - `/blog/accidente-transito-colombia-que-hacer-a-quien-reclamar/` — Accidente de tránsito en Colombia: qué hacer, a quién reclamar y qué se puede indemnizar 
     - `/blog/aseguradora-objeta-como-responder/` — La aseguradora objetó mi siniestro: cómo responder y qué opciones tienes 
@@ -55,7 +55,7 @@ Navegación principal: Inicio | Accidentes y lesiones | SOAT y aseguradoras | Re
   - `/preguntas-frecuentes/` — Preguntas frecuentes 
     - `/recursos/modelo-derecho-de-peticion/` — Modelo de derecho de petición a una aseguradora 
   - `/servicios/` — Servicios para víctimas de accidentes de tránsito 
-    - `/servicios/accidente-in-itinere/` — Accidente de tránsito en el trayecto al trabajo (in itinere) 
+    - `/servicios/accidente-in-itinere/` — Accidente de tránsito en el trayecto al trabajo 
     - `/servicios/accidente-mortal/` — Muerte en accidente de tránsito: apoyo jurídico a la familia 
     - `/servicios/accidentes-carro/` — Abogado de accidentes de carro en Medellín 
     - `/servicios/accidentes-ciclistas/` — Abogado para ciclistas atropellados en Medellín 
@@ -82,7 +82,7 @@ Navegación principal: Inicio | Accidentes y lesiones | SOAT y aseguradoras | Re
     - `/servicios/trauma-dental-maxilofacial/` — Trauma dental y lesiones maxilofaciales por accidente de tránsito 
     - `/servicios/trauma-ocular/` — Trauma ocular y pérdida de visión por accidente de tránsito 
     - `/servicios/trauma-psicologico/` — Trauma psicológico, estrés postraumático y miedo a conducir 
-    - `/servicios/vehiculo-fantasma/` — Accidente con conductor que huyó (vehículo fantasma) 
+    - `/servicios/vehiculo-fantasma/` — Accidente con conductor que huyó o vehículo fantasma 
     - `/servicios/vehiculo-sin-soat/` — Accidente con un vehículo sin SOAT 
   - `/terminos-de-uso/` — Términos de uso 
   - `/tratamiento-de-datos/` — Autorización de tratamiento de datos personales 
