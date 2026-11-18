@@ -15,3 +15,6 @@ npm-debug.log*
 # Variables de entorno y secretos (nunca subir)
 .env
 .env.*
+
+# Paquetes para subir al hosting (se generan con npm run zip)
+*.zip

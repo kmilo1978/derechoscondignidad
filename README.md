@@ -17,7 +17,16 @@ npm install        # instala dependencias (solo la primera vez)
 npm run build      # genera el sitio en dist/ y los documentos en docs/
 npm run check      # revisa enlaces rotos y SEO básico
 npm run serve      # sirve dist/ en http://localhost:5174
+npm run zip        # crea sitio-para-subir.zip con el contenido de dist/
 ```
+
+## Cómo publicar
+
+Lo que se publica es el **contenido** de `dist/` (ahí está `index.html`), no la carpeta del proyecto.
+
+- **Hosting con cPanel / FTP:** sube el contenido de `dist/` (o descomprime `sitio-para-subir.zip`) dentro de `public_html/`. Debe quedar `public_html/index.html`. Incluye el archivo `.htaccess` (ya configura la página 404). Cuando el SSL esté activo, descomenta en `.htaccess` el bloque de HTTPS.
+- **Netlify:** arrastra la carpeta `dist/` en app.netlify.com/drop, o conecta el repositorio con build `npm run build` y publish `dist`.
+- **Vercel / Cloudflare Pages:** conecta el repositorio; comando `npm run build`, carpeta de salida `dist`.
 
 ## Estructura
 

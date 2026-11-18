@@ -186,7 +186,7 @@ ${crumbBar}${body}
 </main>
 ${minimal ? footerMin() : footer()}
 <button id="toTop" type="button" aria-label="Volver arriba" class="fixed bottom-20 right-5 z-40 w-11 h-11 rounded-full bg-navy-900 text-white shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-opacity">${ic('down', 'w-5 h-5 rotate-180')}</button>
-${scripts.map((s) => `<script src="${s}" defer></script>`).join('')}
+${scripts.map((s) => `<script src="${s}?v=${BUILD_V}" defer></script>`).join('')}
 <script src="/assets/app.js?v=${BUILD_V}" defer></script>
 </body>
 </html>
@@ -647,6 +647,41 @@ function glosario() {
 function tech() {
   const w = (f, c) => { fs.mkdirSync(path.dirname(path.join(DIST, f)), { recursive: true }); fs.writeFileSync(path.join(DIST, f), c); };
   w('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map((u) => `  <url><loc>${SITE.url}${u}</loc><lastmod>${SITE.lastReview}</lastmod></url>`).join('\n')}\n</urlset>\n`);
+  // Configuración para hostings Apache / cPanel (Netlify, Vercel y Cloudflare Pages la ignoran y usan 404.html solos)
+  w('.htaccess', `# Derechos con Dignidad - configuración Apache (cPanel)
+DirectoryIndex index.html
+Options -Indexes
+ErrorDocument 404 /404.html
+
+# Forzar HTTPS y dominio sin www (coincide con las URL canónicas: ${SITE.url}).
+# Actívalo quitando los "#" SOLO cuando el certificado SSL ya esté instalado en el hosting.
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTPS} off [OR]
+#   RewriteCond %{HTTP_HOST} ^www\\. [NC]
+#   RewriteRule ^ ${SITE.url}%{REQUEST_URI} [L,R=301]
+# </IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/plain text/xml application/xml image/svg+xml application/json
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+`);
   w('robots.txt', `# Política de rastreo (aprobar por el responsable del sitio)\nUser-agent: *\nAllow: /\n\n# Búsqueda de OpenAI: permitir para aparecer en respuestas de búsqueda\nUser-agent: OAI-SearchBot\nAllow: /\n\n# Entrenamiento de modelos de OpenAI: decisión del titular; por defecto permitido\nUser-agent: GPTBot\nAllow: /\n\nSitemap: ${SITE.url}/sitemap.xml\n`);
   const regionList = (k) => MUNICIPIOS.filter((m) => regionOf(m) === k);
   const auth = (m) => m.autoridad.candidato ? m.autoridad.nombre + ' (datos de contacto por confirmar en la alcaldía)' : m.autoridad.nombre + ': ' + m.autoridad.dir + '. Tel. ' + m.autoridad.tel;
