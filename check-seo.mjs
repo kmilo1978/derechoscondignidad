@@ -14,7 +14,7 @@ for (const f of files) {
   if (d.length < 70 || d.length > 175) bad(f, `meta ${d.length} car.`);
   if (titles.has(t)) bad(f, 'title duplicado'); titles.set(t, f);
   if (metas.has(d)) bad(f, 'meta duplicada'); metas.set(d, f);
-  if (!/rel="canonical"/.test(h)) bad(f, 'sin canonical');
+  if (!/rel="canonical"/.test(h) && !/404\.html$/.test(f)) bad(f, 'sin canonical'); // la 404 no debe tener canonical
   const rel = f.replace('dist', '').replace(/\\/g, '/');
   const exempt = /\/(politica-de-privacidad|tratamiento-de-datos|terminos-de-uso|politica-de-cookies|no-encontrado)\/|\/lp\/|404\.html/.test(rel);
   const nFaq = (h.match(/<details /g) || []).length;

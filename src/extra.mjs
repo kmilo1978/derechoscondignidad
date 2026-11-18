@@ -30,7 +30,7 @@ export const FUENTES = {
   superfinanciera: ['Superintendencia Financiera de Colombia', 'https://www.superfinanciera.gov.co', 'Autoridad de supervisión de aseguradoras; recibe quejas de consumidores financieros.'],
   medicinalegal: ['Instituto Nacional de Medicina Legal', 'https://www.medicinalegal.gov.co', 'Dictámenes médico-legales, incapacidades y secuelas.'],
   runt: ['RUNT: Registro Único Nacional de Tránsito', 'https://www.runt.com.co', 'Consulta de vehículos, SOAT vigente y datos de registro.'],
-  senado: ['Secretaría del Senado: normas', 'https://www.secretariasenado.gov.co', 'Consulta del Código Nacional de Tránsito (Ley 769 de 2002), el Código Penal (Ley 599 de 2000, art. 120) y otras normas. Verifica siempre la vigencia.'],
+  senado: ['Función Pública: Gestor Normativo', 'https://www.funcionpublica.gov.co/eva/gestornormativo/', 'Consulta del Código Nacional de Tránsito (Ley 769 de 2002), el Código Penal (Ley 599 de 2000, art. 120) y otras normas. Verifica siempre la vigencia.'],
   suin: ['SUIN-Juriscol: normas y jurisprudencia', 'https://www.suin-juriscol.gov.co', 'Normas del SOAT (Decreto 780 de 2016) y jurisprudencia. Verifica vigencia y modificaciones.'],
   movilidad: ['Alcaldía de Medellín', 'https://www.medellin.gov.co', 'Trámites y servicios de tránsito y movilidad de Medellín.'],
   mintransporte: ['Ministerio de Transporte', 'https://www.mintransporte.gov.co', 'Normativa y política de tránsito y transporte.'],

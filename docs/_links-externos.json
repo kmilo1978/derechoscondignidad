@@ -1,0 +1,340 @@
+[
+ {
+  "url": "https://www.barbosa.gov.co",
+  "ok": true,
+  "status": 200,
+  "final": "https://www.barbosa.gov.co/Paginas/Inicio.aspx",
+  "paginas": [
+   "/abogado-accidentes-transito-barbosa/"
+  ]
+ },
+ {
+  "url": "https://www.transitoitagui.gov.co/transparencia-y-acceso-a-informacion-publica/informacion-de-la-entidad/directorio-de-entidades/",
+  "ok": true,
+  "status": 200,
+  "final": "https://www.transitoitagui.gov.co/transparencia-y-acceso-a-informacion-publica/informacion-de-la-entidad/directorio-de-entidades/",
+  "paginas": [
+   "/abogado-accidentes-transito-barbosa/",
+   "/abogado-accidentes-transito-bello/",
+   "/abogado-accidentes-transito-caldas/",
+   "/abogado-accidentes-transito-copacabana/",
+   "/abogado-accidentes-transito-envigado/",
+   "/abogado-accidentes-transito-girardota/",
+   "/abogado-accidentes-transito-itagui/",
+   "/abogado-accidentes-transito-la-estrella/",
+   "/abogado-accidentes-transito-sabaneta/"
+  ]
+ },
+ {
+  "url": "https://bello.gov.co/NuestraAlcaldia/Dependencias/Paginas/Secretaria-de-Movilidad.aspx",
+  "ok": true,
+  "status": 200,
+  "final": "https://bello.gov.co/NuestraAlcaldia/Dependencias/Paginas/Secretaria-de-Movilidad.aspx",
+  "paginas": [
+   "/abogado-accidentes-transito-bello/"
+  ]
+ },
+ {
+  "url": "https://caldasantioquia.gov.co/Transparencia/Paginas/Secretaria-de-Movilidad.aspx",
+  "ok": true,
+  "status": 200,
+  "final": "https://caldasantioquia.gov.co/Transparencia/Paginas/Secretaria-de-Movilidad.aspx",
+  "paginas": [
+   "/abogado-accidentes-transito-caldas/"
+  ]
+ },
+ {
+  "url": "https://www.elcarmendeviboral-antioquia.gov.co/",
+  "ok": true,
+  "status": 200,
+  "final": "https://www.elcarmendeviboral-antioquia.gov.co/",
+  "paginas": [
+   "/abogado-accidentes-transito-el-carmen-de-viboral/"
+  ]
+ },
+ {
+  "url": "https://elretiro.gov.co/",
+  "ok": true,
+  "status": 200,
+  "final": "https://elretiro.gov.co/",
+  "paginas": [
+   "/abogado-accidentes-transito-el-retiro/"
+  ]
+ },
+ {
+  "url": "https://movilidad.envigado.gov.co/portal-servicios/modulos/home-public/home-public.html",
+  "ok": true,
+  "status": 200,
+  "final": "https://movilidad.envigado.gov.co/portal-servicios/modulos/home-public/home-public.html",
+  "paginas": [
+   "/abogado-accidentes-transito-envigado/"
+  ]
+ },
+ {
+  "url": "https://www.transitoitagui.gov.co/",
+  "ok": true,
+  "status": 200,
+  "final": "https://www.transitoitagui.gov.co/",
+  "paginas": [
+   "/abogado-accidentes-transito-itagui/"
+  ]
+ },
+ {
+  "url": "https://www.laceja-antioquia.gov.co/",
+  "ok": true,
+  "status": 200,
+  "final": "https://www.laceja-antioquia.gov.co/",
+  "paginas": [
+   "/abogado-accidentes-transito-la-ceja/"
+  ]
+ },
+ {
+  "url": "https://laestrella.gov.co",
+  "ok": true,
+  "status": 200,
+  "final": "https://laestrella.gov.co/",
+  "paginas": [
+   "/abogado-accidentes-transito-la-estrella/"
+  ]
+ },
+ {
+  "url": "https://emtrasur.com.co/tramites-de-transito/",
+  "ok": true,
+  "status": 200,
+  "final": "https://emtrasur.com.co/tramites-de-transito/",
+  "paginas": [
+   "/abogado-accidentes-transito-la-estrella/"
+  ]
+ },
+ {
+  "url": "https://movilidad.rionegro.gov.co/web/contactenos/",
+  "ok": true,
+  "status": 200,
+  "final": "https://movilidad.rionegro.gov.co/web/contactenos/",
+  "paginas": [
+   "/abogado-accidentes-transito-rionegro/"
+  ]
+ },
+ {
+  "url": "https://sabaneta.gov.co/directorio/entidades/",
+  "ok": true,
+  "status": 200,
+  "final": "https://sabaneta.gov.co/directorio/entidades/",
+  "paginas": [
+   "/abogado-accidentes-transito-sabaneta/"
+  ]
+ },
+ {
+  "url": "https://observatorio.sabaneta.gov.co/estadisticas/habitat-y-territorio/movilidad-y-transporte/",
+  "ok": true,
+  "status": 200,
+  "final": "https://observatorio.sabaneta.gov.co/estadisticas/habitat-y-territorio/movilidad-y-transporte/",
+  "paginas": [
+   "/abogado-accidentes-transito-sabaneta/"
+  ]
+ },
+ {
+  "url": "https://www.adres.gov.co",
+  "ok": true,
+  "status": 200,
+  "final": "https://www.adres.gov.co/",
+  "paginas": [
+   "/blog/accidente-transito-colombia-que-hacer-a-quien-reclamar/",
+   "/blog/diferencia-soat-demanda-civil/",
+   "/blog/domiciliarios-plataformas-accidente/",
+   "/blog/guia-motociclista-lesionado/",
+   "/blog/parrillero-ciclista-peaton-quien-responde/",
+   "/blog/que-hacer-despues-accidente-transito/",
+   "/blog/reclamar-soat-paso-a-paso/",
+   "/blog/soat-cuanto-cubre/",
+   "/servicios/accidente-mortal/",
+   "/servicios/accidentes-ciclistas/",
+   "/servicios/accidentes-moto/",
+   "/servicios/accidentes-pasajeros-transporte-publico/",
+   "/servicios/accidentes-peatones/",
+   "/servicios/accidentes-plataformas/",
+   "/servicios/fracturas-accidente-transito/",
+   "/servicios/gastos-medicos-superan-soat/",
+   "/servicios/latigazo-cervical/",
+   "/servicios/lesiones-columna/",
+   "/servicios/lesiones-graves/",
+   "/servicios/lesiones-parrillero-moto/",
+   "/servicios/lesiones-personales/",
+   "/servicios/quemaduras-cicatrices/",
+   "/servicios/soat/",
+   "/servicios/trauma-craneoencefalico/",
+   "/servicios/trauma-dental-maxilofacial/",
+   "/servicios/trauma-ocular/",
+   "/servicios/vehiculo-fantasma/",
+   "/servicios/vehiculo-sin-soat/"
+  ]
+ },
+ {
+  "url": "https://www.runt.com.co",
+  "ok": true,
+  "status": 200,
+  "final": "https://www.runt.gov.co/",
+  "paginas": [
+   "/blog/accidente-transito-colombia-que-hacer-a-quien-reclamar/",
+   "/blog/domiciliarios-plataformas-accidente/",
+   "/blog/guia-motociclista-lesionado/",
+   "/blog/que-hacer-despues-accidente-transito/",
+   "/blog/reclamar-soat-paso-a-paso/",
+   "/blog/soat-cuanto-cubre/",
+   "/servicios/accidentes-carro/",
+   "/servicios/accidentes-moto/",
+   "/servicios/accidentes-pasajeros-transporte-publico/",
+   "/servicios/accidentes-plataformas/",
+   "/servicios/lesiones-parrillero-moto/",
+   "/servicios/soat/",
+   "/servicios/vehiculo-sin-soat/"
+  ]
+ },
+ {
+  "url": "https://www.suin-juriscol.gov.co",
+  "ok": false,
+  "status": "UNABLE_TO_VERIFY_LEAF_SIGNATURE",
+  "paginas": [
+   "/blog/accidente-transito-colombia-que-hacer-a-quien-reclamar/",
+   "/blog/aseguradora-objeta-como-responder/",
+   "/blog/como-se-calcula-indemnizacion/",
+   "/blog/cuanto-cobra-abogado-accidente-transito/",
+   "/blog/dano-moral-vida-de-relacion/",
+   "/blog/demanda-alcaldia-hueco/",
+   "/blog/dias-incapacidad-fracturas/",
+   "/blog/diferencia-soat-demanda-civil/",
+   "/blog/domiciliarios-plataformas-accidente/",
+   "/blog/etapas-duracion-proceso/",
+   "/blog/firmar-acuerdo-aseguradora/",
+   "/blog/indemnizacion-fractura-segun-hueso/",
+   "/blog/junta-calificacion-guia/",
+   "/blog/medicina-legal-cita-accidente/",
+   "/blog/plazos-demandar-accidente/",
+   "/blog/reclamar-soat-paso-a-paso/",
+   "/blog/soat-cuanto-cubre/",
+   "/blog/vale-la-pena-contratar-abogado/",
+   "/calculadora-indemnizacion/",
+   "/servicios/accidente-in-itinere/",
+   "/servicios/accidente-mortal/",
+   "/servicios/accidentes-senalizacion-semaforos/",
+   "/servicios/accidentes-vias-mal-estado/",
+   "/servicios/amputaciones/",
+   "/servicios/aseguradoras-no-pagan/",
+   "/servicios/denuncia-lesiones-culposas/",
+   "/servicios/gastos-medicos-superan-soat/",
+   "/servicios/lesiones-graves/",
+   "/servicios/lesiones-personales/",
+   "/servicios/responsabilidad-civil/",
+   "/servicios/soat/",
+   "/servicios/trauma-psicologico/"
+  ]
+ },
+ {
+  "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/",
+  "ok": false,
+  "status": "UNABLE_TO_VERIFY_LEAF_SIGNATURE",
+  "paginas": [
+   "/blog/accidente-transito-colombia-que-hacer-a-quien-reclamar/",
+   "/blog/cuanto-cobra-abogado-accidente-transito/",
+   "/blog/demanda-alcaldia-hueco/",
+   "/blog/etapas-duracion-proceso/",
+   "/blog/guia-motociclista-lesionado/",
+   "/blog/ipat-informe-accidente/",
+   "/blog/parrillero-ciclista-peaton-quien-responde/",
+   "/blog/plazos-demandar-accidente/",
+   "/blog/que-hacer-despues-accidente-transito/",
+   "/recursos/modelo-derecho-de-peticion/",
+   "/servicios/accidente-in-itinere/",
+   "/servicios/accidente-mortal/",
+   "/servicios/accidentes-carro/",
+   "/servicios/accidentes-ciclistas/",
+   "/servicios/accidentes-moto/",
+   "/servicios/accidentes-peatones/",
+   "/servicios/accidentes-senalizacion-semaforos/",
+   "/servicios/accidentes-vias-mal-estado/",
+   "/servicios/denuncia-lesiones-culposas/",
+   "/servicios/responsabilidad-civil/",
+   "/servicios/vehiculo-fantasma/"
+  ]
+ },
+ {
+  "url": "https://www.superfinanciera.gov.co",
+  "ok": true,
+  "status": 200,
+  "final": "https://www.superfinanciera.gov.co/",
+  "paginas": [
+   "/blog/aseguradora-objeta-como-responder/",
+   "/blog/firmar-acuerdo-aseguradora/",
+   "/blog/reclamar-soat-paso-a-paso/",
+   "/blog/soat-cuanto-cubre/",
+   "/blog/vale-la-pena-contratar-abogado/",
+   "/recursos/modelo-derecho-de-peticion/",
+   "/servicios/accidente-in-itinere/",
+   "/servicios/accidentes-carro/",
+   "/servicios/accidentes-plataformas/",
+   "/servicios/aseguradoras-no-pagan/",
+   "/servicios/gastos-medicos-superan-soat/",
+   "/servicios/responsabilidad-civil/",
+   "/servicios/soat/"
+  ]
+ },
+ {
+  "url": "https://www.medicinalegal.gov.co",
+  "ok": false,
+  "status": 403,
+  "paginas": [
+   "/blog/como-se-calcula-indemnizacion/",
+   "/blog/dano-moral-vida-de-relacion/",
+   "/blog/dias-incapacidad-fracturas/",
+   "/blog/indemnizacion-fractura-segun-hueso/",
+   "/blog/junta-calificacion-guia/",
+   "/blog/medicina-legal-cita-accidente/",
+   "/calculadora-indemnizacion/",
+   "/servicios/amputaciones/",
+   "/servicios/denuncia-lesiones-culposas/",
+   "/servicios/fracturas-accidente-transito/",
+   "/servicios/latigazo-cervical/",
+   "/servicios/lesiones-columna/",
+   "/servicios/lesiones-graves/",
+   "/servicios/lesiones-personales/",
+   "/servicios/quemaduras-cicatrices/",
+   "/servicios/trauma-craneoencefalico/",
+   "/servicios/trauma-dental-maxilofacial/",
+   "/servicios/trauma-ocular/",
+   "/servicios/trauma-psicologico/"
+  ]
+ },
+ {
+  "url": "https://www.medellin.gov.co",
+  "ok": true,
+  "status": 200,
+  "final": "https://www.medellin.gov.co/",
+  "paginas": [
+   "/blog/demanda-alcaldia-hueco/",
+   "/blog/ipat-informe-accidente/",
+   "/blog/parrillero-ciclista-peaton-quien-responde/",
+   "/servicios/accidentes-ciclistas/",
+   "/servicios/accidentes-peatones/",
+   "/servicios/accidentes-senalizacion-semaforos/",
+   "/servicios/accidentes-vias-mal-estado/"
+  ]
+ },
+ {
+  "url": "https://www.mintransporte.gov.co",
+  "ok": true,
+  "status": 200,
+  "final": "https://mintransporte.gov.co/",
+  "paginas": [
+   "/servicios/accidentes-pasajeros-transporte-publico/"
+  ]
+ },
+ {
+  "url": "http://www.sitemaps.org/schemas/sitemap/0.9",
+  "ok": true,
+  "status": 200,
+  "final": "https://sitemaps.azurewebsites.net/schemas/sitemap/0.9/",
+  "paginas": [
+   "/sitemap.xml"
+  ]
+ }
+]

@@ -736,7 +736,9 @@ ErrorDocument 404 /404.html
   if (fs.existsSync('src/assets/favicon.svg')) fs.copyFileSync('src/assets/favicon.svg', path.join(DIST, 'assets', 'favicon.svg')); else w('assets/favicon.svg', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="4" fill="#d4af37"/><path d="M16 6v20M8 10h16M10 11l-3 7a3.5 3.5 0 0 0 6 0zM22 11l-3 7a3.5 3.5 0 0 0 6 0zM10 26h12" stroke="#0f172a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>');
   w('assets/app.js', fs.readFileSync('src/app.js', 'utf8'));
   w('assets/calc.js', fs.readFileSync('src/calc.js', 'utf8'));
-  w('404.html', fs.readFileSync(path.join(DIST, 'no-encontrado', 'index.html'), 'utf8'));
+  // La 404 no lleva canonical ni og:url (no es una URL real del sitio)
+  w('404.html', fs.readFileSync(path.join(DIST, 'no-encontrado', 'index.html'), 'utf8')
+    .replace(/<link rel="canonical"[^>]*>/, '').replace(/<meta property="og:url"[^>]*>/, ''));
   fs.rmSync(path.join(DIST, 'no-encontrado'), { recursive: true, force: true });
 }
 
