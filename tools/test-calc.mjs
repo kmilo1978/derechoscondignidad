@@ -1,0 +1,27 @@
+// Prueba la calculadora en Chrome headless contra el servidor local (puerto 5174).
+import { spawn } from 'node:child_process';
+const ch = spawn('C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', ['--headless=new', '--disable-gpu', '--remote-debugging-port=9444', '--user-data-dir=' + process.env.TEMP + '\\chr9', 'about:blank'], { stdio: 'ignore' });
+await new Promise((r) => setTimeout(r, 3000));
+const tabs = await (await fetch('http://127.0.0.1:9444/json')).json();
+const ws = new WebSocket(tabs.find((t) => t.type === 'page').webSocketDebuggerUrl);
+await new Promise((r) => (ws.onopen = r));
+let id = 0; const pend = {};
+const send = (method, params = {}) => new Promise((r) => { const i = ++id; pend[i] = r; ws.send(JSON.stringify({ id: i, method, params })); });
+ws.onmessage = (e) => { const m = JSON.parse(e.data); if (m.id && pend[m.id]) pend[m.id](m.result); if (m.method === 'Runtime.exceptionThrown') console.log('ERROR JS', JSON.stringify(m.params).slice(0, 300)); };
+await send('Runtime.enable'); await send('Page.enable');
+await send('Page.navigate', { url: 'http://localhost:5174/calculadora-indemnizacion/' });
+await new Promise((r) => setTimeout(r, 3000));
+const ev = async (expression) => (await send('Runtime.evaluate', { expression, returnByValue: true })).result.value;
+const set = (idv, v) => `(()=>{const e=document.getElementById('${idv}');e.value='${v}';e.dispatchEvent(new Event('input',{bubbles:true}));})()`;
+for (const [k, v] of [['c-ingreso', '3000000'], ['c-dias', '60'], ['c-pcl', '20'], ['c-edad', '35'], ['c-gastos', '2000000']]) await ev(set(k, v));
+await new Promise((r) => setTimeout(r, 300));
+console.log('años sugeridos (esperado 30):', await ev("document.getElementById('c-anios').value"));
+console.log('daño emergente:', await ev("document.getElementById('r-emergente').textContent"));
+console.log('consolidado   :', await ev("document.getElementById('r-consolidado').textContent"));
+console.log('futuro        :', await ev("document.getElementById('r-futuro').textContent"));
+console.log('total         :', await ev("document.getElementById('r-total').textContent"));
+await ev(set('c-culpa', '50'));
+await new Promise((r) => setTimeout(r, 200));
+console.log('total con 50% culpa:', await ev("document.getElementById('r-total').textContent"));
+console.log('barra de progreso lectura existe:', await ev("!!document.getElementById('readProgress')"));
+ch.kill(); process.exit(0);

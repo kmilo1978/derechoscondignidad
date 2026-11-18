@@ -1,0 +1,1334 @@
+{
+ "Resumen": [
+  [
+   "Mapa de keywords y blog — Abogados de accidentes de tránsito en Medellín"
+  ],
+  [
+   "Complemento al informe LocalRank (nov 2026). Las keywords son hipótesis: sin datos de volumen hasta que se validen."
+  ],
+  [
+   "Cómo usar este libro"
+  ],
+  [
+   "• Celdas amarillas = para llenar: Volumen mensual y Dificultad (hoja Keywords), Responsable y Fecha (hojas Blog y Alertas). Ejemplo: Volumen = 320, Dificultad = 25.",
+   "",
+   "",
+   ""
+  ],
+  [
+   "• Fuente sugerida para volumen y dificultad: Google Keyword Planner, Search Console o Ahrefs/Semrush. Nada de esto está medido todavía.",
+   "",
+   "",
+   ""
+  ],
+  [
+   "• Las URLs destino, la prioridad y la asignación de Ola 2 y Ola 3 son propuestas de trabajo, no datos. Ola 1 = primeros 30 días.",
+   "",
+   "",
+   ""
+  ],
+  [
+   "• Las columnas Prioridad, Estado y Ola tienen lista desplegable; las tablas de abajo se recalculan solas.",
+   "",
+   "",
+   ""
+  ],
+  [
+   "Keywords por cluster"
+  ],
+  [
+   "Categoría",
+   "Cantidad"
+  ],
+  [
+   "Transaccional base",
+   "12"
+  ],
+  [
+   "Por municipio",
+   "10"
+  ],
+  [
+   "Costo y honorarios",
+   "4"
+  ],
+  [
+   "Cálculo de indemnización",
+   "5"
+  ],
+  [
+   "Qué hago ahora",
+   "8"
+  ],
+  [
+   "Aseguradoras y entidades",
+   "6"
+  ],
+  [
+   "Medicina Legal y calificación",
+   "5"
+  ],
+  [
+   "Nichos nuevos (no están en el informe)",
+   "15"
+  ],
+  [
+   "Total",
+   "65"
+  ],
+  [
+   "Keywords por prioridad"
+  ],
+  [
+   "Categoría",
+   "Cantidad"
+  ],
+  [
+   "Alta",
+   "19"
+  ],
+  [
+   "Media",
+   "34"
+  ],
+  [
+   "Baja",
+   "12"
+  ],
+  [
+   "Total",
+   "65"
+  ],
+  [
+   "Artículos de blog por ola"
+  ],
+  [
+   "Categoría",
+   "Cantidad"
+  ],
+  [
+   "Ola 1",
+   "8"
+  ],
+  [
+   "Ola 2",
+   "6"
+  ],
+  [
+   "Ola 3",
+   "7"
+  ],
+  [
+   "Total",
+   "21"
+  ],
+  [
+   "Artículos de blog por estado"
+  ],
+  [
+   "Categoría",
+   "Cantidad"
+  ],
+  [
+   "Pendiente",
+   "21"
+  ],
+  [
+   "En redacción",
+   "0"
+  ],
+  [
+   "En revisión legal",
+   "0"
+  ],
+  [
+   "Publicado",
+   "0"
+  ],
+  [
+   "Total",
+   "21"
+  ],
+  [
+   "Avance de validación"
+  ],
+  [
+   "Indicador",
+   "Valor"
+  ],
+  [
+   "Keywords con volumen cargado",
+   "0"
+  ],
+  [
+   "% de keywords con volumen",
+   "0"
+  ],
+  [
+   "Artículos revisados por abogado",
+   "0"
+  ]
+ ],
+ "Keywords": [
+  [
+   "Keyword",
+   "Cluster",
+   "Intención",
+   "Tipo de página",
+   "URL destino (propuesta)",
+   "Prioridad",
+   "Volumen mensual (llenar)",
+   "Dificultad 0-100 (llenar)",
+   "Estado",
+   "Notas"
+  ],
+  [
+   "abogado accidente de tránsito medellín",
+   "Transaccional base",
+   "Transaccional",
+   "Home / macro",
+   "/",
+   "Alta",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogados de accidentes de tránsito medellín",
+   "Transaccional base",
+   "Transaccional",
+   "Home / macro",
+   "/",
+   "Alta",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogado de lesiones personales medellín",
+   "Transaccional base",
+   "Transaccional",
+   "Home / macro",
+   "/",
+   "Alta",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogado indemnización accidente de tránsito antioquia",
+   "Transaccional base",
+   "Transaccional",
+   "Home / macro",
+   "/",
+   "Alta",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogado accidente de moto medellín",
+   "Transaccional base",
+   "Transaccional",
+   "Landing servicio",
+   "/servicios/accidentes-moto/",
+   "Alta",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogado accidente de carro medellín",
+   "Transaccional base",
+   "Transaccional",
+   "Landing servicio",
+   "/servicios/accidentes-carro/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogado por choque medellín",
+   "Transaccional base",
+   "Transaccional",
+   "Home / macro",
+   "/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogado siniestro vial medellín",
+   "Transaccional base",
+   "Transaccional",
+   "Home / macro",
+   "/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "consulta gratis abogado accidente de tránsito",
+   "Transaccional base",
+   "Transaccional",
+   "Home / macro",
+   "/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogado cuota litis accidente de tránsito",
+   "Transaccional base",
+   "Transaccional",
+   "Landing servicio",
+   "/honorarios-cuota-litis/",
+   "Alta",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogado que cobra a éxito accidente de tránsito",
+   "Transaccional base",
+   "Transaccional",
+   "Landing servicio",
+   "/honorarios-cuota-litis/",
+   "Alta",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogado accidente de tránsito sin anticipos",
+   "Transaccional base",
+   "Transaccional",
+   "Landing servicio",
+   "/honorarios-cuota-litis/",
+   "Alta",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogado accidente de tránsito bello",
+   "Por municipio",
+   "Transaccional",
+   "Página local",
+   "/abogado-accidentes-transito-bello/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogado accidente de tránsito itagüí",
+   "Por municipio",
+   "Transaccional",
+   "Página local",
+   "/abogado-accidentes-transito-itagui/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogado accidente de tránsito envigado",
+   "Por municipio",
+   "Transaccional",
+   "Página local",
+   "/abogado-accidentes-transito-envigado/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogado accidente de tránsito sabaneta",
+   "Por municipio",
+   "Transaccional",
+   "Página local",
+   "/abogado-accidentes-transito-sabaneta/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogado accidente de tránsito la estrella",
+   "Por municipio",
+   "Transaccional",
+   "Página local",
+   "/abogado-accidentes-transito-la-estrella/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogado accidente de tránsito rionegro",
+   "Por municipio",
+   "Transaccional",
+   "Página local",
+   "/abogado-accidentes-transito-rionegro/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogado accidente de tránsito copacabana",
+   "Por municipio",
+   "Transaccional",
+   "Página local",
+   "/abogado-accidentes-transito-copacabana/",
+   "Baja",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogado accidente de tránsito caldas",
+   "Por municipio",
+   "Transaccional",
+   "Página local",
+   "/abogado-accidentes-transito-caldas/",
+   "Baja",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogado accidente de tránsito girardota",
+   "Por municipio",
+   "Transaccional",
+   "Página local",
+   "/abogado-accidentes-transito-girardota/",
+   "Baja",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogado accidente de tránsito barbosa",
+   "Por municipio",
+   "Transaccional",
+   "Página local",
+   "/abogado-accidentes-transito-barbosa/",
+   "Baja",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "cuánto cobra un abogado por un accidente de tránsito",
+   "Costo y honorarios",
+   "Comercial",
+   "Blog",
+   "/blog/cuanto-cobra-abogado-accidente-transito/",
+   "Alta",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "qué porcentaje cobra un abogado cuota litis",
+   "Costo y honorarios",
+   "Comercial",
+   "Blog",
+   "/blog/cuanto-cobra-abogado-accidente-transito/",
+   "Alta",
+   "",
+   "",
+   "Pendiente",
+   "Secundaria de la misma URL"
+  ],
+  [
+   "vale la pena contratar abogado después de un accidente",
+   "Costo y honorarios",
+   "Comercial",
+   "Blog",
+   "/blog/vale-la-pena-contratar-abogado/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "cuánto cuesta demandar por accidente de tránsito",
+   "Costo y honorarios",
+   "Comercial",
+   "Blog",
+   "/blog/vale-la-pena-contratar-abogado/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "calculadora indemnización accidente de tránsito colombia",
+   "Cálculo de indemnización",
+   "Comercial",
+   "Herramienta",
+   "/calculadora-indemnizacion/",
+   "Alta",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "cómo se calcula el lucro cesante consolidado y futuro",
+   "Cálculo de indemnización",
+   "Informacional",
+   "Blog",
+   "/blog/como-se-calcula-indemnizacion/",
+   "Alta",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "cómo se calcula el daño moral accidente de tránsito",
+   "Cálculo de indemnización",
+   "Informacional",
+   "Blog",
+   "/blog/dano-moral-vida-de-relacion/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "cuánto pagan por incapacidad permanente SOAT",
+   "Cálculo de indemnización",
+   "Informacional",
+   "Blog",
+   "/blog/soat-cuanto-cubre/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "cuánto pagan por muerte en accidente de tránsito",
+   "Cálculo de indemnización",
+   "Comercial",
+   "Landing servicio",
+   "/servicios/muerte-accidente-transito/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "qué hacer después de un accidente de tránsito en medellín",
+   "Qué hago ahora",
+   "Informacional",
+   "Blog",
+   "/blog/que-hacer-despues-accidente-transito/",
+   "Alta",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "qué hacer si me chocan en moto",
+   "Qué hago ahora",
+   "Informacional",
+   "Blog",
+   "/blog/que-hacer-despues-accidente-transito/",
+   "Alta",
+   "",
+   "",
+   "Pendiente",
+   "Secundaria de la misma URL"
+  ],
+  [
+   "el conductor me ofrece dinero, ¿acepto?",
+   "Qué hago ahora",
+   "Informacional",
+   "Blog",
+   "/blog/firmar-acuerdo-aseguradora/",
+   "Alta",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "debo firmar el acuerdo de la aseguradora",
+   "Qué hago ahora",
+   "Informacional",
+   "Blog",
+   "/blog/firmar-acuerdo-aseguradora/",
+   "Alta",
+   "",
+   "",
+   "Pendiente",
+   "Secundaria de la misma URL"
+  ],
+  [
+   "cómo obtener el IPAT o informe de accidente",
+   "Qué hago ahora",
+   "Informacional",
+   "Blog",
+   "/blog/ipat-informe-accidente/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "documentos para reclamar el SOAT",
+   "Qué hago ahora",
+   "Informacional",
+   "Blog",
+   "/blog/reclamar-soat-paso-a-paso/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "cuánto tiempo tengo para reclamar el SOAT",
+   "Qué hago ahora",
+   "Informacional",
+   "Blog",
+   "/blog/plazos-demandar-accidente/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "cuánto demora una demanda por accidente de tránsito",
+   "Qué hago ahora",
+   "Informacional",
+   "Blog",
+   "/blog/etapas-duracion-proceso/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "aseguradora objetó siniestro qué hacer",
+   "Aseguradoras y entidades",
+   "Transaccional",
+   "Landing servicio",
+   "/servicios/objecion-aseguradora/",
+   "Alta",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "SOAT Sura no quiere pagar",
+   "Aseguradoras y entidades",
+   "Transaccional",
+   "Landing servicio",
+   "/servicios/objecion-aseguradora/",
+   "Alta",
+   "",
+   "",
+   "Pendiente",
+   "Secundaria de la misma URL"
+  ],
+  [
+   "queja ante la Superfinanciera por no pago de seguro",
+   "Aseguradoras y entidades",
+   "Informacional",
+   "Blog",
+   "/blog/aseguradora-objeta-como-responder/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "modelo derecho de petición a aseguradora",
+   "Aseguradoras y entidades",
+   "Comercial",
+   "Lead magnet",
+   "/recursos/modelo-derecho-de-peticion/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "se agotó el SOAT en la clínica qué hago",
+   "Aseguradoras y entidades",
+   "Transaccional",
+   "Landing servicio",
+   "/servicios/gastos-medicos-sobre-tope-soat/",
+   "Alta",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "la EPS cubre accidente de tránsito",
+   "Aseguradoras y entidades",
+   "Informacional",
+   "Blog",
+   "/blog/soat-cuanto-cubre/",
+   "Baja",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "cita Medicina Legal por accidente de tránsito",
+   "Medicina Legal y calificación",
+   "Transaccional",
+   "Landing servicio",
+   "/servicios/medicina-legal/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "cuántos días de incapacidad por fractura de tibia, clavícula o fémur",
+   "Medicina Legal y calificación",
+   "Informacional",
+   "Blog",
+   "/blog/dias-incapacidad-fracturas/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "Junta Regional de Calificación Antioquia",
+   "Medicina Legal y calificación",
+   "Informacional",
+   "Blog",
+   "/blog/junta-calificacion-guia/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "porcentaje de pérdida de capacidad laboral para pensión de invalidez",
+   "Medicina Legal y calificación",
+   "Informacional",
+   "Blog",
+   "/blog/junta-calificacion-guia/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   "Secundaria de la misma URL"
+  ],
+  [
+   "cómo apelar un dictamen de la junta de calificación",
+   "Medicina Legal y calificación",
+   "Informacional",
+   "Blog",
+   "/blog/apelar-dictamen-junta/",
+   "Baja",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "indemnización lesión de menisco o ligamento cruzado accidente de moto",
+   "Nichos nuevos (no están en el informe)",
+   "Comercial",
+   "Landing servicio",
+   "/servicios/lesion-rodilla/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "indemnización lesión de hombro accidente de moto",
+   "Nichos nuevos (no están en el informe)",
+   "Comercial",
+   "Landing servicio",
+   "/servicios/lesion-hombro/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "indemnización fractura de tobillo o pie accidente de tránsito",
+   "Nichos nuevos (no están en el informe)",
+   "Comercial",
+   "Landing servicio",
+   "/servicios/fractura-tobillo-pie/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "indemnización fractura de costillas accidente de tránsito",
+   "Nichos nuevos (no están en el informe)",
+   "Comercial",
+   "Landing servicio",
+   "/servicios/fractura-costillas/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "indemnización lesión de mano o dedos accidente de tránsito",
+   "Nichos nuevos (no están en el informe)",
+   "Comercial",
+   "Landing servicio",
+   "/servicios/lesion-mano-dedos/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "accidente domiciliario Rappi quién paga",
+   "Nichos nuevos (no están en el informe)",
+   "Comercial",
+   "Landing servicio",
+   "/servicios/domiciliarios-plataformas/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogado accidente domiciliario moto medellín",
+   "Nichos nuevos (no están en el informe)",
+   "Comercial",
+   "Landing servicio",
+   "/servicios/domiciliarios-plataformas/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "indemnización accidente patineta eléctrica colombia",
+   "Nichos nuevos (no están en el informe)",
+   "Comercial",
+   "Landing servicio",
+   "/servicios/patineta-electrica/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogado accidente monopatín eléctrico",
+   "Nichos nuevos (no están en el informe)",
+   "Comercial",
+   "Landing servicio",
+   "/servicios/patineta-electrica/",
+   "Media",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogado accidente con camión o volqueta medellín",
+   "Nichos nuevos (no están en el informe)",
+   "Transaccional",
+   "Landing servicio",
+   "/servicios/vehiculos-pesados/",
+   "Baja",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogado accidente tractomula",
+   "Nichos nuevos (no están en el informe)",
+   "Transaccional",
+   "Landing servicio",
+   "/servicios/vehiculos-pesados/",
+   "Baja",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "abogado accidente bus intermunicipal",
+   "Nichos nuevos (no están en el informe)",
+   "Transaccional",
+   "Landing servicio",
+   "/servicios/vehiculos-pesados/",
+   "Baja",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "niño atropellado indemnización colombia",
+   "Nichos nuevos (no están en el informe)",
+   "Comercial",
+   "Landing servicio",
+   "/servicios/menores-adultos-mayores/",
+   "Baja",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "adulto mayor atropellado abogado",
+   "Nichos nuevos (no están en el informe)",
+   "Comercial",
+   "Landing servicio",
+   "/servicios/menores-adultos-mayores/",
+   "Baja",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ],
+  [
+   "mujer embarazada accidente de tránsito indemnización",
+   "Nichos nuevos (no están en el informe)",
+   "Comercial",
+   "Landing servicio",
+   "/servicios/menores-adultos-mayores/",
+   "Baja",
+   "",
+   "",
+   "Pendiente",
+   ""
+  ]
+ ],
+ "Blog": [
+  [
+   "#",
+   "Ola",
+   "Cluster",
+   "Tipo",
+   "Título del artículo",
+   "Keyword objetivo",
+   "Intención",
+   "Enlaza a (landing)",
+   "Responsable (llenar)",
+   "Estado",
+   "Fecha publicación (llenar)",
+   "Revisado por abogado"
+  ],
+  [
+   "1",
+   "Ola 1",
+   "Pilar",
+   "Pilar",
+   "Accidente de tránsito en Colombia: qué hacer, a quién reclamar y cuánto te pueden indemnizar",
+   "accidente de tránsito qué hacer a quién reclamar indemnización",
+   "Informacional",
+   "Home",
+   "",
+   "Pendiente",
+   "",
+   "No"
+  ],
+  [
+   "2",
+   "Ola 1",
+   "Primeras horas",
+   "Cluster",
+   "Qué hacer en los primeros 30 minutos y las primeras 72 horas",
+   "qué hacer después de un accidente de tránsito",
+   "Informacional",
+   "Home",
+   "",
+   "Pendiente",
+   "",
+   "No"
+  ],
+  [
+   "3",
+   "Ola 1",
+   "Primeras horas",
+   "Cluster",
+   "¿Debo firmar lo que me ofrece la aseguradora?",
+   "firmar acuerdo aseguradora accidente",
+   "Informacional",
+   "Landing: Fracturas moto",
+   "",
+   "Pendiente",
+   "",
+   "No"
+  ],
+  [
+   "4",
+   "Ola 2",
+   "Primeras horas",
+   "Cluster",
+   "Cómo conseguir el IPAT y qué pruebas guardar",
+   "informe accidente de tránsito medellín",
+   "Informacional",
+   "Home",
+   "",
+   "Pendiente",
+   "",
+   "No"
+  ],
+  [
+   "5",
+   "Ola 1",
+   "SOAT",
+   "Cluster",
+   "Cuánto cubre el SOAT y qué pasa cuando se agota",
+   "SOAT se agotó",
+   "Informacional",
+   "Landing: Gastos sobre el tope",
+   "",
+   "Pendiente",
+   "",
+   "No"
+  ],
+  [
+   "6",
+   "Ola 1",
+   "SOAT",
+   "Cluster",
+   "SOAT vs. demanda civil: qué recupera cada uno",
+   "diferencia SOAT demanda civil",
+   "Informacional",
+   "Landing: Demanda civil",
+   "",
+   "Pendiente",
+   "",
+   "No"
+  ],
+  [
+   "7",
+   "Ola 2",
+   "SOAT",
+   "Cluster",
+   "Cómo reclamar el SOAT paso a paso",
+   "documentos reclamar SOAT",
+   "Informacional",
+   "Landing: Aseguradoras",
+   "",
+   "Pendiente",
+   "",
+   "No"
+  ],
+  [
+   "8",
+   "Ola 1",
+   "Cuánto vale",
+   "Cluster",
+   "Cómo se calcula tu indemnización, con ejemplo",
+   "cálculo indemnización accidente",
+   "Informacional",
+   "Calculadora",
+   "",
+   "Pendiente",
+   "",
+   "No"
+  ],
+  [
+   "9",
+   "Ola 1",
+   "Cuánto vale",
+   "Cluster",
+   "Cuánto pagan por una fractura, según el hueso",
+   "indemnización fractura fémur o tibia",
+   "Comercial",
+   "Landing: Fracturas",
+   "",
+   "Pendiente",
+   "",
+   "No"
+  ],
+  [
+   "10",
+   "Ola 3",
+   "Cuánto vale",
+   "Cluster",
+   "Daño moral y daño a la vida de relación explicados",
+   "daño moral accidente de tránsito",
+   "Informacional",
+   "Home",
+   "",
+   "Pendiente",
+   "",
+   "No"
+  ],
+  [
+   "11",
+   "Ola 2",
+   "Plazos y proceso",
+   "Cluster",
+   "Plazos que no puedes dejar vencer (querella, demanda)",
+   "cuánto tiempo tengo para demandar",
+   "Informacional",
+   "Landing: Penal",
+   "",
+   "Pendiente",
+   "",
+   "No"
+  ],
+  [
+   "12",
+   "Ola 3",
+   "Plazos y proceso",
+   "Cluster",
+   "Etapas y duración de un proceso",
+   "cuánto demora una demanda",
+   "Informacional",
+   "Home",
+   "",
+   "Pendiente",
+   "",
+   "No"
+  ],
+  [
+   "13",
+   "Ola 2",
+   "Actores",
+   "Cluster",
+   "Guía del motociclista lesionado",
+   "derechos motociclista accidente",
+   "Informacional",
+   "Landing: Fracturas moto",
+   "",
+   "Pendiente",
+   "",
+   "No"
+  ],
+  [
+   "14",
+   "Ola 2",
+   "Actores",
+   "Cluster",
+   "Parrillero, ciclista y peatón: quién responde",
+   "quién paga al parrillero",
+   "Informacional",
+   "Landing: Parrillero",
+   "",
+   "Pendiente",
+   "",
+   "No"
+  ],
+  [
+   "15",
+   "Ola 3",
+   "Actores",
+   "Cluster",
+   "Domiciliarios y pasajeros de Uber, DiDi o InDrive",
+   "accidente domiciliario plataforma",
+   "Informacional",
+   "Landing: Plataformas",
+   "",
+   "Pendiente",
+   "",
+   "No"
+  ],
+  [
+   "16",
+   "Ola 3",
+   "Estado",
+   "Cluster",
+   "Accidente por hueco: cómo demandar a la Alcaldía",
+   "demanda alcaldía hueco",
+   "Informacional",
+   "Landing: Estado y vías",
+   "",
+   "Pendiente",
+   "",
+   "No"
+  ],
+  [
+   "17",
+   "Ola 2",
+   "Aseguradoras",
+   "Cluster",
+   "Por qué objetan y cómo responder (con modelo descargable)",
+   "aseguradora objetó siniestro",
+   "Informacional",
+   "Landing: Objeción de póliza",
+   "",
+   "Pendiente",
+   "",
+   "No"
+  ],
+  [
+   "18",
+   "Ola 3",
+   "Medicina Legal",
+   "Cluster",
+   "Cómo prepararte para la cita de Medicina Legal",
+   "medicina legal incapacidad accidente",
+   "Informacional",
+   "Landing: Medicina Legal",
+   "",
+   "Pendiente",
+   "",
+   "No"
+  ],
+  [
+   "19",
+   "Ola 3",
+   "Medicina Legal",
+   "Cluster",
+   "Junta de Calificación: qué es y cómo apelar",
+   "junta regional calificación antioquia",
+   "Informacional",
+   "Landing: PCL",
+   "",
+   "Pendiente",
+   "",
+   "No"
+  ],
+  [
+   "20",
+   "Ola 3",
+   "Local",
+   "Cluster",
+   "Datos de siniestralidad en Medellín y el Valle de Aburrá",
+   "accidentalidad Medellín",
+   "Informacional",
+   "Home",
+   "",
+   "Pendiente",
+   "",
+   "No"
+  ],
+  [
+   "21",
+   "Ola 1",
+   "Costo",
+   "Cluster",
+   "Cuánto cobra un abogado de accidentes: cuota litis explicada",
+   "cuánto cobra un abogado por un accidente de tránsito",
+   "Comercial",
+   "Honorarios cuota litis",
+   "",
+   "Pendiente",
+   "",
+   "No"
+  ]
+ ],
+ "Alertas": [
+  [
+   "#",
+   "Tema",
+   "Detalle",
+   "Acción",
+   "Estado",
+   "Responsable (llenar)"
+  ],
+  [
+   "1",
+   "Landings sin menú",
+   "Una landing 'huérfana' (sin enlaces internos) no recibe autoridad ni posiciona.",
+   "Usar header mínimo (logo, teléfono, WhatsApp) y breadcrumbs en las landings que se quieran posicionar. Las de geofencing para pauta pueden ir noindex.",
+   "Pendiente",
+   ""
+  ],
+  [
+   "2",
+   "FAQ con Schema",
+   "Desde 2023 Google limitó los rich results de FAQ a sitios gubernamentales y de salud; no esperar fragmento enriquecido.",
+   "Mantener el FAQ como estructura y para long-tails. Marcar el sitio con LegalService/Attorney y LocalBusiness.",
+   "Pendiente",
+   ""
+  ],
+  [
+   "3",
+   "Contenido YMYL",
+   "El contenido legal exige credibilidad (E-E-A-T).",
+   "Autor abogado con tarjeta profesional, fecha de actualización y cita de normas (Código Penal art. 120, Ley 769 de 2002). Verificar plazos y topes del SOAT antes de publicar.",
+   "Pendiente",
+   ""
+  ],
+  [
+   "4",
+   "Revisión legal del copy",
+   "El informe cita 'Decreto 1123 de 2007' como Estatuto del Abogado; probablemente es la Ley 1123 de 2007 (Código Disciplinario). Frases como 'puede superar los 40 millones' o 'vale entre 30 y 60 millones' pueden chocar con ese régimen.",
+   "Confirmar la norma y que el abogado titular apruebe todo el copy y los anuncios.",
+   "Pendiente",
+   ""
+  ],
+  [
+   "5",
+   "Dominios del PDF",
+   "Los dominios aparecen con la primera letra cortada (p. ej. 'bogadoslesionesmedellin'), seguramente por la extracción del texto.",
+   "Reverificar disponibilidad. Preferir dominio de marca sobre exact-match.",
+   "Pendiente",
+   ""
+  ],
+  [
+   "6",
+   "Volúmenes sin validar",
+   "Las keywords son hipótesis; no hay datos de volumen.",
+   "Validar en Google Keyword Planner / Search Console y revisar qué tipo de resultados muestra Google para cada keyword.",
+   "Pendiente",
+   ""
+  ]
+ ]
+}

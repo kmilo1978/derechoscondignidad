@@ -1,0 +1,19 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build.mjs && tailwindcss -c tailwind.config.js -i src/input.css -o dist/assets/style.css --minify && node tools/docs.mjs",
+    "serve": "npx http-server dist -p 5174 -c-1",
+    "check": "node check-links.mjs && node check-seo.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}

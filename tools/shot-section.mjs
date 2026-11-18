@@ -1,0 +1,22 @@
+// Captura una sección concreta: node tools/shot-section.mjs <url> <selector> <ancho> <archivo>
+import { spawn } from 'node:child_process';
+import fs from 'node:fs';
+const [url, sel, w, out] = process.argv.slice(2);
+const ch = spawn('C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', ['--headless=new', '--disable-gpu', '--hide-scrollbars', '--remote-debugging-port=9673', '--user-data-dir=' + process.env.TEMP + '\\chr21', 'about:blank'], { stdio: 'ignore' });
+await new Promise((r) => setTimeout(r, 3000));
+const tabs = await (await fetch('http://127.0.0.1:9673/json')).json();
+const ws = new WebSocket(tabs.find((t) => t.type === 'page').webSocketDebuggerUrl);
+await new Promise((r) => (ws.onopen = r));
+let id = 0; const pend = {};
+const send = (method, params = {}) => new Promise((r) => { const i = ++id; pend[i] = r; ws.send(JSON.stringify({ id: i, method, params })); });
+ws.onmessage = (e) => { const m = JSON.parse(e.data); if (m.id && pend[m.id]) pend[m.id](m.result); };
+await send('Page.enable');
+await send('Emulation.setDeviceMetricsOverride', { width: +w, height: 900, deviceScaleFactor: 1, mobile: +w < 800 });
+await send('Page.navigate', { url: 'http://localhost:5174' + url });
+await new Promise((r) => setTimeout(r, 1500));
+const box = JSON.parse((await send('Runtime.evaluate', { expression: `(() => { const el = document.querySelector('${sel}'); el.scrollIntoView(); const r = el.getBoundingClientRect(); return JSON.stringify({ x: r.x + scrollX, y: r.y + scrollY, w: r.width, h: r.height, sw: document.documentElement.scrollWidth }); })()`, returnByValue: true })).result.value);
+await new Promise((r) => setTimeout(r, 800));
+const s = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true, clip: { x: 0, y: Math.max(0, box.y - 16), width: +w, height: box.h + 32, scale: 1 } });
+fs.writeFileSync(out, Buffer.from(s.data, 'base64'));
+console.log(JSON.stringify(box));
+ch.kill(); process.exit(0);

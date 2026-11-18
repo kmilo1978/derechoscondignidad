@@ -1,0 +1,16 @@
+import { spawn } from 'node:child_process';
+const ch = spawn('C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', ['--headless=new', '--disable-gpu', '--remote-debugging-port=9668', '--user-data-dir=' + process.env.TEMP + '\\chr16', 'about:blank'], { stdio: 'ignore' });
+await new Promise((r) => setTimeout(r, 3000));
+const tabs = await (await fetch('http://127.0.0.1:9668/json')).json();
+const ws = new WebSocket(tabs.find((t) => t.type === 'page').webSocketDebuggerUrl);
+await new Promise((r) => (ws.onopen = r));
+let id = 0; const pend = {};
+const send = (method, params = {}) => new Promise((r) => { const i = ++id; pend[i] = r; ws.send(JSON.stringify({ id: i, method, params })); });
+ws.onmessage = (e) => { const m = JSON.parse(e.data); if (m.id && pend[m.id]) pend[m.id](m.result); };
+await send('Page.enable');
+await send('Emulation.setDeviceMetricsOverride', { width: 375, height: 800, deviceScaleFactor: 1, mobile: true });
+await send('Page.navigate', { url: 'http://localhost:5174' + (process.argv[2] || '/') });
+await new Promise((r) => setTimeout(r, 1200));
+const expr = `(() => { const out=[]; document.querySelectorAll('body *').forEach(el=>{const r=el.getBoundingClientRect(); if(r.width&&r.right>376){ let p=el.parentElement; const chain=[]; while(p&&p!==document.body){chain.push(p.tagName+'.'+String(p.className).slice(0,40)+'['+Math.round(p.getBoundingClientRect().right)+']'); p=p.parentElement;} out.push(el.tagName+'.'+String(el.className).slice(0,40)+' w='+Math.round(r.width)+' <- '+chain.slice(0,4).join(' < '));}}); return out.slice(0,4).join('\\n'); })()`;
+console.log((await send('Runtime.evaluate', { expression: expr, returnByValue: true })).result.value);
+ch.kill(); process.exit(0);

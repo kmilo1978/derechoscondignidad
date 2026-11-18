@@ -1,0 +1,88 @@
+# Sitemap jerárquico implementado
+
+Páginas indexables: 79. Landings de pauta noindex: 2.
+
+Navegación principal: Inicio | Accidentes y lesiones | SOAT y aseguradoras | Responsabilidad civil | Blog | Nosotros | Contacto. "Casos y resultados" y "Testimonios" se activarán solo cuando existan casos reales y autorizados (`SITE.cases`, `SITE.testimonials`).
+
+- `/` — Abogado de accidentes de tránsito en Medellín 
+    - `/abogado-accidentes-transito-barbosa/` — Abogado de accidentes de tránsito en Barbosa 
+    - `/abogado-accidentes-transito-bello/` — Abogado de accidentes de tránsito en Bello 
+    - `/abogado-accidentes-transito-caldas/` — Abogado de accidentes de tránsito en Caldas 
+    - `/abogado-accidentes-transito-copacabana/` — Abogado de accidentes de tránsito en Copacabana 
+    - `/abogado-accidentes-transito-el-carmen-de-viboral/` — Abogado de accidentes de tránsito en El Carmen de Viboral 
+    - `/abogado-accidentes-transito-el-retiro/` — Abogado de accidentes de tránsito en El Retiro 
+    - `/abogado-accidentes-transito-envigado/` — Abogado de accidentes de tránsito en Envigado 
+    - `/abogado-accidentes-transito-girardota/` — Abogado de accidentes de tránsito en Girardota 
+    - `/abogado-accidentes-transito-itagui/` — Abogado de accidentes de tránsito en Itagüí 
+    - `/abogado-accidentes-transito-la-ceja/` — Abogado de accidentes de tránsito en La Ceja 
+    - `/abogado-accidentes-transito-la-estrella/` — Abogado de accidentes de tránsito en La Estrella 
+    - `/abogado-accidentes-transito-rionegro/` — Abogado de accidentes de tránsito en Rionegro 
+    - `/abogado-accidentes-transito-sabaneta/` — Abogado de accidentes de tránsito en Sabaneta 
+  - `/area-metropolitana/` — Abogado de accidentes de tránsito en el Valle de Aburrá y el Oriente antioqueño 
+  - `/blog/` — Guías para víctimas de accidentes de tránsito 
+    - `/blog/accidente-transito-colombia-que-hacer-a-quien-reclamar/` — Accidente de tránsito en Colombia: qué hacer, a quién reclamar y qué se puede indemnizar 
+    - `/blog/aseguradora-objeta-como-responder/` — La aseguradora objetó mi siniestro: cómo responder y qué opciones tienes 
+    - `/blog/como-se-calcula-indemnizacion/` — Cómo se calcula una indemnización por accidente de tránsito: variables y límites 
+    - `/blog/cuanto-cobra-abogado-accidente-transito/` — Cuánto cobra un abogado de accidentes de tránsito: la cuota litis explicada 
+    - `/blog/dano-moral-vida-de-relacion/` — Daño moral y daño a la vida de relación: qué son y cómo se prueban 
+    - `/blog/demanda-alcaldia-hueco/` — Accidente por un hueco: cómo reclamar a la Alcaldía u otra entidad 
+    - `/blog/dias-incapacidad-fracturas/` — Cuántos días de incapacidad por una fractura: cómo se determina 
+    - `/blog/diferencia-soat-demanda-civil/` — SOAT vs. demanda civil: qué recupera cada vía 
+    - `/blog/domiciliarios-plataformas-accidente/` — Domiciliarios y pasajeros de Uber, DiDi o inDrive: quién responde en un accidente 
+    - `/blog/etapas-duracion-proceso/` — Etapas de un proceso por accidente de tránsito: del reclamo a la sentencia 
+    - `/blog/firmar-acuerdo-aseguradora/` — ¿Debo firmar lo que me ofrece la aseguradora después de un accidente? 
+    - `/blog/guia-motociclista-lesionado/` — Guía del motociclista lesionado en Medellín: derechos y pasos 
+    - `/blog/indemnizacion-fractura-segun-hueso/` — Cuánto pagan por una fractura: por qué depende del hueso, las secuelas y las pruebas 
+    - `/blog/ipat-informe-accidente/` — IPAT: qué es el informe del accidente de tránsito y cómo conseguirlo 
+    - `/blog/junta-calificacion-guia/` — Junta de Calificación de Invalidez: qué es y cómo controvertir un dictamen 
+    - `/blog/medicina-legal-cita-accidente/` — Cómo prepararte para la cita de Medicina Legal tras un accidente 
+    - `/blog/parrillero-ciclista-peaton-quien-responde/` — Parrillero, ciclista y peatón: quién responde por mis lesiones 
+    - `/blog/plazos-demandar-accidente/` — Plazos para reclamar tras un accidente de tránsito: por qué no debes esperar 
+    - `/blog/que-hacer-despues-accidente-transito/` — Qué hacer después de un accidente de tránsito en Medellín: guía paso a paso 
+    - `/blog/reclamar-soat-paso-a-paso/` — Cómo reclamar el SOAT paso a paso: documentos y trámite 
+    - `/blog/soat-cuanto-cubre/` — Cuánto cubre el SOAT y qué pasa cuando se agota 
+    - `/blog/vale-la-pena-contratar-abogado/` — ¿Vale la pena contratar un abogado después de un accidente de tránsito? 
+  - `/calculadora-indemnizacion/` — Calculadora orientativa de indemnización por accidente de tránsito 
+  - `/contacto/` — Contacto 
+  - `/glosario/` — Glosario de términos de accidentes de tránsito 
+  - `/honorarios-cuota-litis/` — Honorarios y cuota litis 
+- `/lp/accidente-moto/` — ¿Te lesionaste en un accidente de moto en Medellín? **(noindex, landing de pauta)**
+- `/lp/aseguradora-objeto-reclamacion/` — ¿La aseguradora objetó o no quiere pagar tu reclamación? **(noindex, landing de pauta)**
+- `/no-encontrado/` — Esta página no existe o cambió de dirección **(noindex, landing de pauta)**
+  - `/nosotros/` — Nosotros 
+  - `/politica-de-cookies/` — Política de cookies 
+  - `/politica-de-privacidad/` — Política de privacidad 
+  - `/preguntas-frecuentes/` — Preguntas frecuentes 
+    - `/recursos/modelo-derecho-de-peticion/` — Modelo de derecho de petición a una aseguradora 
+  - `/servicios/` — Servicios para víctimas de accidentes de tránsito 
+    - `/servicios/accidente-in-itinere/` — Accidente de tránsito en el trayecto al trabajo (in itinere) 
+    - `/servicios/accidente-mortal/` — Muerte en accidente de tránsito: apoyo jurídico a la familia 
+    - `/servicios/accidentes-carro/` — Abogado de accidentes de carro en Medellín 
+    - `/servicios/accidentes-ciclistas/` — Abogado para ciclistas atropellados en Medellín 
+    - `/servicios/accidentes-moto/` — Abogado de accidentes de moto en Medellín 
+    - `/servicios/accidentes-pasajeros-transporte-publico/` — Accidentes de pasajeros en bus y transporte público 
+    - `/servicios/accidentes-peatones/` — Abogado para peatones atropellados en Medellín 
+    - `/servicios/accidentes-plataformas/` — Accidentes en Uber, DiDi, inDrive o Cabify 
+    - `/servicios/accidentes-senalizacion-semaforos/` — Accidentes por semáforos dañados o falta de señalización 
+    - `/servicios/accidentes-vias-mal-estado/` — Accidentes por huecos, vías en mal estado o alcantarillas sin tapa 
+    - `/servicios/amputaciones/` — Amputaciones y pérdida de extremidades por accidente de tránsito 
+    - `/servicios/aseguradoras-no-pagan/` — La aseguradora objetó o no quiere pagar tu reclamación 
+    - `/servicios/denuncia-lesiones-culposas/` — Denuncia penal por lesiones personales culposas en un accidente de tránsito 
+    - `/servicios/fracturas-accidente-transito/` — Fracturas por accidente de tránsito: fémur, tibia, clavícula y pelvis 
+    - `/servicios/gastos-medicos-superan-soat/` — Gastos médicos que superan el tope del SOAT 
+    - `/servicios/latigazo-cervical/` — Latigazo cervical por accidente de tránsito: qué reclamar 
+    - `/servicios/lesiones-columna/` — Lesiones de columna y hernias discales tras un accidente 
+    - `/servicios/lesiones-graves/` — Lesiones graves y secuelas por accidente de tránsito 
+    - `/servicios/lesiones-parrillero-moto/` — Parrillero lesionado en un accidente de moto 
+    - `/servicios/lesiones-personales/` — Lesiones personales por accidente de tránsito en Medellín 
+    - `/servicios/quemaduras-cicatrices/` — Quemaduras por fricción, cicatrices y daño estético 
+    - `/servicios/responsabilidad-civil/` — Demanda de responsabilidad civil por accidente de tránsito 
+    - `/servicios/soat/` — SOAT: qué cubre y cómo reclamarlo tras un accidente 
+    - `/servicios/trauma-craneoencefalico/` — Trauma craneoencefálico y daño cerebral por accidente de tránsito 
+    - `/servicios/trauma-dental-maxilofacial/` — Trauma dental y lesiones maxilofaciales por accidente de tránsito 
+    - `/servicios/trauma-ocular/` — Trauma ocular y pérdida de visión por accidente de tránsito 
+    - `/servicios/trauma-psicologico/` — Trauma psicológico, estrés postraumático y miedo a conducir 
+    - `/servicios/vehiculo-fantasma/` — Accidente con conductor que huyó (vehículo fantasma) 
+    - `/servicios/vehiculo-sin-soat/` — Accidente con un vehículo sin SOAT 
+  - `/terminos-de-uso/` — Términos de uso 
+  - `/tratamiento-de-datos/` — Autorización de tratamiento de datos personales 

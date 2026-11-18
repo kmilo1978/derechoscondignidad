@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+const h = fs.readFileSync('dist/index.html', 'utf8');
+const strip = (x) => x.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, ' ');
+const plain = (x) => x.replace(/<[^>]+>/g, ' ').replace(/&[a-z]+;/g, ' ').replace(/\s+/g, ' ').trim();
+const a = strip(h);
+console.log('completo sin scripts:', plain(a).split(' ').length);
+const b = a.replace(/<header[\s\S]*?<\/header>/g, ' ');
+console.log('sin <header>:', plain(b).split(' ').length, '| cantidad de <header>:', (h.match(/<header/g) || []).length);
+const c = b.replace(/<footer[\s\S]*?<\/footer>/g, ' ');
+console.log('sin <footer>:', plain(c).split(' ').length);
+const d = c.replace(/<nav[\s\S]*?<\/nav>/g, ' ');
+console.log('sin <nav>:', plain(d).split(' ').length);
+const main = (h.match(/<main[\s\S]*?<\/main>/) || [''])[0];
+console.log('contenido de <main> (palabras reales):', plain(strip(main)).split(' ').length);

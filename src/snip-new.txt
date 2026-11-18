@@ -1,0 +1,179 @@
+// ---------- Interactividad y estructura de lectura ----------
+ICONS.home = '<path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>';
+ICONS.calc = '<rect width="16" height="20" x="4" y="2" rx="2"/><path d="M8 6h8M16 14v4M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"/>';
+
+const crumbsBar = (c) => `<nav aria-label="Migas de pan" class="bg-white border-b border-slate-200"><ol class="max-w-7xl mx-auto px-6 py-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-slate-500">${c.map((x, i) => i === c.length - 1
+  ? `<li aria-current="page" class="text-navy-900 font-medium">${esc(x[0])}</li>`
+  : `<li class="flex items-center gap-2"><a href="${x[1]}" class="hover:text-gold-600 inline-flex items-center gap-1.5">${i === 0 ? ic('home', 'w-4 h-4') : ''}${esc(x[0])}</a>${ic('down', 'w-4 h-4 text-slate-300 -rotate-90')}</li>`).join('')}</ol></nav>`;
+
+const CTA_MARK = '<section class="relative bg-navy-900 text-white overflow-hidden">\n  <div class="absolute inset-0 cta-diag"';
+const insertBeforeCta = (body, html) => { const i = body.lastIndexOf(CTA_MARK); return i === -1 ? body + html : body.slice(0, i) + html + body.slice(i); };
+const faqSection = (list, title = 'Preguntas frecuentes', search = false) => `<section class="py-16 bg-white" aria-labelledby="h-faq-auto"><div class="max-w-3xl mx-auto px-6"><h2 id="h-faq-auto" class="text-3xl font-semibold text-navy-900 tracking-tight mb-6">${esc(title)}</h2>${faqHtml(list, search)}</div></section>`;
+
+// Glosario en línea: primera aparición de cada término por página
+const TIPSET = new Set();
+const TERMS = [[/\bSOAT\b/, 'soat'], [/\bIPAT\b/, 'ipat'], [/\bADRES\b/, 'adres'], [/lucro cesante/i, 'lucro-cesante'], [/daño emergente/i, 'dano-emergente'], [/perjuicios morales|daño moral/i, 'dano-moral'], [/daño a la vida de relación/i, 'dano-vida-relacion'], [/cuota litis/i, 'cuota-litis'], [/Medicina Legal/, 'medicina-legal'], [/pérdida de capacidad laboral/i, 'pcl'], [/concurrencia de culpas/i, 'concurrencia-culpas'], [/finiquito/i, 'transaccion'], [/conciliación/i, 'conciliacion'], [/objeción/i, 'objecion'], [/querella/i, 'querella'], [/epicrisis/i, 'epicrisis'], [/\bARL\b/, 'arl'], [/prescripción/i, 'prescripcion'], [/vehículo fantasma/i, 'vehiculo-fantasma']];
+const tipify = (html) => {
+  const tags = []; let out = html;
+  for (const [re, key] of TERMS) {
+    if (TIPSET.has(key) || !GLOSARIO[key]) continue;
+    const m = re.exec(out); if (!m) continue;
+    TIPSET.add(key);
+    tags.push(`<span class="tip" tabindex="0" data-tip="${esc(GLOSARIO[key][1])}">${m[0]}</span>`);
+    out = out.slice(0, m.index) + `\u0001${tags.length - 1}\u0001` + out.slice(m.index + m[0].length);
+  }
+  return out.replace(/\u0001(\d+)\u0001/g, (_, n) => tags[+n]);
+};
+const para = (p) => `<p class="leading-relaxed mb-4">${tipify(esc(p))}</p>`;
+
+const checklistHtml = (slug, docs) => `<div data-checklist="${slug}" class="bg-white border border-slate-200 rounded-2xl p-5">
+  <div class="flex items-center justify-between gap-3 flex-wrap"><p class="font-semibold text-navy-900">Marca lo que ya tienes <span class="text-sm font-normal text-slate-500">(<span data-count>0 de ${docs.length}</span>)</span></p><div class="flex gap-4 text-xs no-print"><button type="button" data-checklist-copy class="underline">Copiar lista</button><button type="button" data-checklist-print class="underline">Imprimir</button></div></div>
+  <div class="mt-3 h-1.5 bg-slate-100 rounded-full overflow-hidden"><div data-bar class="h-full w-0 bg-gold-500 transition-all"></div></div>
+  <ul class="mt-4 space-y-2">${docs.map((d) => `<li><label class="flex gap-3 items-start cursor-pointer text-sm"><input type="checkbox" class="chk mt-0.5 w-4 h-4 accent-yellow-600 shrink-0"><span>${esc(d)}</span></label></li>`).join('')}</ul></div>`;
+
+const HOME_FAQ = faqsFor(FAQ_GENERAL, ['primeros', 'seguros', 'honorarios'], 'home', 8);
+const BIG_FAQ = faqsFor(FAQ_GENERAL, ['primeros', 'seguros', 'lesiones', 'proceso', 'honorarios', 'transporte', 'estado', 'contacto'], 'faq', 28);
+
+// ---------- Formulario completo de contacto ----------
+const MUNI_NAMES = ['Medellín', ...MUNICIPIOS.map((m) => m.name), 'Otro municipio de Antioquia', 'Otro departamento'];
+const fIn = 'w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-navy-900 focus:outline-none focus:ring-2 focus:ring-gold-500';
+const fText = (id, label, { type = 'text', req = false, ph = '', ac = '', name } = {}) => `<div><label for="${id}" class="block text-sm font-semibold text-navy-900 mb-1.5">${label}${req ? ' <span class="text-red-600" aria-hidden="true">*</span>' : ''}</label><input id="${id}" name="${name || id.replace('k-', '')}" type="${type}" ${req ? 'required' : ''} ${ac ? `autocomplete="${ac}"` : ''} placeholder="${ph}" class="${fIn}"></div>`;
+const fSel = (id, label, opts, { req = false, name } = {}) => `<div><label for="${id}" class="block text-sm font-semibold text-navy-900 mb-1.5">${label}${req ? ' <span class="text-red-600" aria-hidden="true">*</span>' : ''}</label><select id="${id}" name="${name || id.replace('k-', '')}" class="${fIn}"><option value="">Selecciona…</option>${opts.map((o) => `<option>${esc(o)}</option>`).join('')}</select></div>`;
+const fRadios = (name, legend, opts) => `<fieldset><legend class="block text-sm font-semibold text-navy-900 mb-1.5">${legend}</legend><div class="flex flex-wrap gap-2">${opts.map((o, i) => `<label class="inline-flex items-center gap-2 border border-slate-200 bg-slate-50 rounded-lg px-3 py-2 text-sm cursor-pointer has-[:checked]:border-gold-500 has-[:checked]:bg-gold-500/10"><input type="radio" name="${name}" value="${esc(o)}" data-label="${esc(legend)}" class="accent-yellow-600"> ${esc(o)}</label>`).join('')}</div></fieldset>`;
+const fieldset = (title, inner) => `<fieldset class="space-y-4"><legend class="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600 mb-1">${title}</legend>${inner}</fieldset>`;
+
+function contactFormHtml() {
+  const docs = ['IPAT / informe de la autoridad', 'Historia clínica', 'Incapacidades', 'Facturas y recibos', 'Fotos o videos', 'Póliza o SOAT'];
+  return `<div class="bg-white border border-slate-200 rounded-2xl p-6 md:p-8" id="formulario">
+  <h2 class="text-2xl font-semibold text-navy-900 tracking-tight">Cuéntanos tu caso</h2>
+  <p class="mt-1 text-sm text-slate-500">Cuanta más información nos des, mejor podremos orientarte. Los campos con <span class="text-red-600">*</span> son obligatorios. Si no sabes una respuesta, déjala en blanco.</p>
+  <form data-lead data-loc="contacto" class="mt-6 space-y-8" novalidate>
+    ${fieldset('1. Tus datos de contacto', `<div class="grid sm:grid-cols-2 gap-4">${fText('k-nombre', 'Nombre completo', { req: true, ac: 'name', name: 'nombre' })}${fText('k-telefono', 'Teléfono o celular', { type: 'tel', req: true, ac: 'tel', ph: '300 000 0000', name: 'telefono' })}</div>
+      <div class="grid sm:grid-cols-2 gap-4">${fText('k-correo', 'Correo electrónico (opcional)', { type: 'email', ac: 'email', name: 'correo' })}${fSel('k-residencia', 'Municipio donde vives', MUNI_NAMES, { name: 'residencia' })}</div>
+      <div class="grid sm:grid-cols-2 gap-4">${fSel('k-canal', 'Canal preferido', ['WhatsApp', 'Llamada', 'Correo'], { name: 'canal' })}${fSel('k-horario', 'Mejor horario para contactarte', ['Mañana', 'Tarde', 'Noche', 'Cualquier horario'], { name: 'horario' })}</div>
+      <label class="flex items-center gap-2 text-sm"><input type="checkbox" name="tiene_whatsapp" value="Sí" data-label="Este número tiene WhatsApp" class="accent-yellow-600"> Este número tiene WhatsApp</label>`)}
+    ${fieldset('2. Sobre el accidente', `<div class="grid sm:grid-cols-2 gap-4">${fText('k-fecha', 'Fecha aproximada del accidente', { type: 'date', name: 'fecha' })}${fSel('k-lugar', 'Municipio donde ocurrió', MUNI_NAMES, { name: 'lugar' })}</div>
+      <div class="grid sm:grid-cols-2 gap-4">${fSel('k-tipo', '¿Qué tipo de accidente fue?', ['Accidente de moto', 'Accidente de carro', 'Atropello (peatón)', 'Ciclista', 'Pasajero de transporte público', 'Pasajero de plataforma (Uber, DiDi, inDrive…)', 'Parrillero', 'Accidente por vía en mal estado o señalización', 'Otro'], { name: 'tipo' })}${fSel('k-rol', '¿Cuál fue tu rol?', ['Conductor', 'Parrillero o acompañante', 'Peatón', 'Ciclista', 'Pasajero', 'Familiar de la víctima'], { name: 'rol' })}</div>
+      ${fRadios('hubo_lesionados', '¿Hubo lesionados?', ['Sí', 'No'])}
+      <div class="grid sm:grid-cols-2 gap-4">${fSel('k-gravedad', 'Gravedad de las lesiones', ['Leves', 'Moderadas', 'Graves (cirugía u hospitalización)', 'Fallecimiento de la víctima'], { name: 'gravedad' })}${fSel('k-atencion', '¿Ha recibido atención médica?', ['Sí, ya terminó', 'Sí, sigue en tratamiento', 'No todavía'], { name: 'atencion' })}</div>`)}
+    ${fieldset('3. Responsable, seguros y documentos', `<div class="grid sm:grid-cols-2 gap-4">${fSel('k-ipat', '¿La autoridad elaboró informe (IPAT)?', ['Sí', 'No', 'No sé'], { name: 'ipat' })}${fSel('k-identificado', '¿Se identificó al otro vehículo o conductor?', ['Sí', 'No, huyó', 'No sé'], { name: 'identificado' })}</div>
+      <div class="grid sm:grid-cols-2 gap-4">${fSel('k-soat', '¿El otro vehículo tenía SOAT?', ['Sí', 'No', 'No sé'], { name: 'soat_otro' })}${fSel('k-aseguradora', '¿Te contactó alguna aseguradora?', ['Sí', 'No'], { name: 'aseguradora' })}</div>
+      ${fRadios('firmo', '¿Has firmado algún documento o acuerdo?', ['No', 'Sí', 'No estoy seguro'])}
+      <fieldset><legend class="block text-sm font-semibold text-navy-900 mb-1.5">¿Qué documentos tienes?</legend><div class="grid sm:grid-cols-2 gap-2">${docs.map((d) => `<label class="flex items-center gap-2 text-sm"><input type="checkbox" name="docs" value="${esc(d)}" data-label="Documentos que tengo" class="accent-yellow-600"> ${esc(d)}</label>`).join('')}</div></fieldset>`)}
+    ${fieldset('4. Cuéntanos qué pasó', `<div><label for="k-desc" class="block text-sm font-semibold text-navy-900 mb-1.5">Descripción breve</label><textarea id="k-desc" name="descripcion" rows="5" placeholder="¿Cómo ocurrió, qué lesiones tienes y qué te gustaría resolver?" class="${fIn}"></textarea></div>`)}
+    <div class="space-y-3 text-sm">
+      <label class="flex gap-3 items-start"><input type="checkbox" name="consent" required class="mt-0.5 w-4 h-4 accent-yellow-600"><span>Autorizo el tratamiento de mis datos personales para ser contactado, según la <a class="underline" href="/tratamiento-de-datos/">autorización de tratamiento de datos</a> y la <a class="underline" href="/politica-de-privacidad/">política de privacidad</a>. <span class="text-red-600">*</span></span></label>
+      <label class="flex gap-3 items-start text-slate-500"><input type="checkbox" name="consent_salud" class="mt-0.5 w-4 h-4 accent-yellow-600"><span>Entiendo que la información sobre mi salud es un dato sensible, que no estoy obligado a suministrarla y que solo se usará para analizar mi caso.</span></label>
+    </div>
+    <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
+    <button type="submit" class="w-full inline-flex items-center justify-center gap-2 bg-navy-900 hover:bg-navy-800 text-white font-semibold px-6 py-4 rounded-lg">Enviar consulta ${ic('arrow')}</button>
+    <p role="status" class="text-sm" aria-live="polite"></p>
+  </form>
+  <div data-success class="hidden">
+    <div class="flex items-center gap-3 text-green-700"><span class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">${ic('check')}</span><h3 class="text-xl font-semibold text-navy-900">Resumen de tu consulta</h3></div>
+    <p class="mt-3 text-sm">Revisa el resumen. ${hasWA ? 'Envíalo por WhatsApp para que lo revisemos.' : 'Cuando se configure el WhatsApp de la firma podrás enviarlo directamente; mientras tanto puedes copiarlo.'}</p>
+    <pre data-summary class="mt-4 whitespace-pre-wrap bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm text-slate-700"></pre>
+    <div class="mt-5 flex flex-wrap gap-3"><a data-wa-link target="_blank" rel="noopener" class="hidden inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-5 py-3 rounded-lg">${ic('chat')}Enviar por WhatsApp</a><button type="button" data-copy-summary class="border border-slate-300 px-5 py-3 rounded-lg font-medium text-navy-900">Copiar resumen</button><button type="button" data-again class="px-5 py-3 text-sm underline">Enviar otra consulta</button></div>
+  </div>
+</div>`;
+}
+
+// ---------- Área metropolitana y municipios ----------
+const muniUrl = (m) => `/abogado-accidentes-transito-${m.slug}/`;
+function areaMetro() {
+  const crumbs = [['Inicio', '/'], ['Área metropolitana', '/area-metropolitana/']];
+  const body = pageHero({ crumbs, h1: 'Abogado de accidentes de tránsito en el Valle de Aburrá', sub: 'Orientamos a víctimas de accidentes en Medellín y en los municipios del área metropolitana: Bello, Itagüí, Envigado, Sabaneta, La Estrella, Caldas, Copacabana, Girardota y Barbosa.', ctas: false }) + `
+<div class="max-w-7xl mx-auto px-6 py-14 space-y-12">
+  ${answerBox('El SOAT es de alcance nacional: atiende a las víctimas sin importar el municipio del accidente. Lo que cambia entre municipios es la autoridad de tránsito que elabora el informe, quién administra la vía y los trámites locales. Elige tu municipio para ver recomendaciones específicas.')}
+  ${SITE.coverageConfirmed ? '' : pending('confirmar con la firma la cobertura real en cada municipio y la modalidad de atención (presencial o virtual).')}
+  <section><h2 class="text-2xl md:text-3xl font-semibold text-navy-900 tracking-tight mb-5">Municipios que orientamos</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <a href="/" class="group bg-white border border-slate-200 hover:border-gold-500 hover:shadow-glow rounded-2xl p-6 transition-all"><p class="text-xs uppercase tracking-wide text-gold-600 font-semibold">Sede principal</p><h3 class="mt-1 font-semibold text-navy-900 text-lg">Medellín</h3><p class="mt-2 text-sm">Página de inicio con todos los servicios.</p></a>
+      ${MUNICIPIOS.map((m) => `<a href="${muniUrl(m)}" class="group bg-white border border-slate-200 hover:border-gold-500 hover:shadow-glow rounded-2xl p-6 transition-all"><p class="text-xs uppercase tracking-wide text-gold-600 font-semibold">Zona ${m.zona}</p><h3 class="mt-1 font-semibold text-navy-900 text-lg">${esc(m.name)}</h3><p class="mt-2 text-sm">Qué hacer si el accidente ocurrió en ${esc(m.name)} y cómo reunir los soportes.</p><span class="mt-4 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-navy-900">Ver página ${ic('arrow', 'w-4 h-4')}</span></a>`).join('')}
+    </div></section>
+  <section><h2 class="text-2xl md:text-3xl font-semibold text-navy-900 tracking-tight mb-5">Comparativo de referencia</h2>${tableHtml({ cap: 'Municipios del Valle de Aburrá: zona y corredores de referencia (información general, verificar en fuentes oficiales)', head: ['Municipio', 'Zona', 'Corredores y transporte de referencia'], rows: MUNICIPIOS.map((m) => [m.name, m.zona === 'norte' ? 'Norte' : 'Sur', `${m.vias}. ${m.transporte}.`]) })}</section>
+  <section><h2 class="text-2xl md:text-3xl font-semibold text-navy-900 tracking-tight mb-5">Qué cambia entre un municipio y otro</h2>${bullets(['La autoridad de tránsito que atiende el accidente y elabora el IPAT.', 'La entidad que administra la vía (municipio, entidad nacional o concesión), relevante si el estado de la vía influyó.', 'Los trámites y dependencias locales para solicitar copias de informes.', 'La disponibilidad de cámaras públicas y privadas cercanas, que conviene solicitar de inmediato.'])}<p class="mt-4 text-sm text-slate-500">La ley sustancial (SOAT, responsabilidad civil, perjuicios) es la misma en todo el país.</p></section>
+</div>` + ctaFinal();
+  render({ url: '/area-metropolitana/', title: 'Abogado de accidentes de tránsito en el Valle de Aburrá', desc: 'Orientación a víctimas de accidentes de tránsito en Medellín, Bello, Itagüí, Envigado, Sabaneta, La Estrella, Caldas, Copacabana, Girardota y Barbosa.', body, crumbs, faq: { pools: ['cobertura', 'primeros', 'seguros'], min: 8 } });
+}
+
+function municipios() {
+  areaMetro();
+  for (const m of MUNICIPIOS) {
+    const url = muniUrl(m);
+    const crumbs = [['Inicio', '/'], ['Área metropolitana', '/area-metropolitana/'], [m.name, url]];
+    const near = m.vecinos.map((n) => MUNICIPIOS.find((x) => x.name === n)).filter(Boolean);
+    const servicios = ['accidentes-moto', 'accidentes-carro', 'accidentes-peatones', 'soat', 'aseguradoras-no-pagan', 'lesiones-graves'];
+    const body = pageHero({ crumbs, h1: `Abogado de accidentes de tránsito en ${m.name}`, sub: `Orientación jurídica para personas lesionadas en ${m.name} (zona ${m.zona} del Valle de Aburrá): qué hacer, qué reclamar y con qué soportes.` }) + `
+<div class="max-w-7xl mx-auto px-6 py-14 space-y-14">
+  ${answerBox(`Si sufriste un accidente de tránsito en ${m.name}, el SOAT atiende tu atención médica inicial sin importar quién tuvo la culpa, y los demás perjuicios se reclaman al responsable y a su aseguradora. Lo que depende del municipio es la autoridad que elabora el informe y quién administra la vía. Antes de firmar acuerdos, reúne tus soportes y pide una revisión.`)}
+  ${SITE.coverageConfirmed ? '' : pending(`confirmar con la firma que presta servicio en ${m.name}, la modalidad de atención y validar los datos locales de esta página.`)}
+  <section id="contexto" class="scroll-mt-28 grid lg:grid-cols-[1.4fr_1fr] gap-10"><div><h2 class="text-2xl md:text-3xl font-semibold text-navy-900 tracking-tight mb-5">Accidentes en ${esc(m.name)}: contexto útil</h2><p class="leading-relaxed mb-4">${tipify(esc(m.p1))}</p><p class="leading-relaxed">${tipify(esc(m.p2))}</p></div>
+    <aside class="bg-white border border-slate-200 rounded-2xl p-6 text-sm space-y-3"><p class="font-semibold text-navy-900">Datos de referencia</p><dl class="space-y-2"><div><dt class="text-slate-500">Zona</dt><dd class="font-medium text-navy-900 capitalize">${m.zona} del Valle de Aburrá</dd></div><div><dt class="text-slate-500">Corredores</dt><dd class="font-medium text-navy-900">${esc(m.vias)}</dd></div><div><dt class="text-slate-500">Transporte</dt><dd class="font-medium text-navy-900">${esc(m.transporte)}</dd></div>${near.length ? `<div><dt class="text-slate-500">Municipios cercanos</dt><dd class="font-medium text-navy-900">${near.map((n) => `<a class="underline" href="${muniUrl(n)}">${esc(n.name)}</a>`).join(', ')}${m.vecinos.includes('Medellín') ? ', <a class="underline" href="/">Medellín</a>' : ''}</dd></div>` : ''}</dl><p class="text-xs text-slate-400">Información general; verifica datos locales en fuentes oficiales.</p></aside></section>
+  <section id="que-hacer" class="scroll-mt-28"><h2 class="text-2xl md:text-3xl font-semibold text-navy-900 tracking-tight mb-5">Qué hacer si el accidente ocurrió en ${esc(m.name)}</h2>
+    <ol class="space-y-4">${[['Atención médica', `Acude al centro de salud más cercano. Informa que fue un accidente de tránsito para que el SOAT y la historia clínica queden correctamente registrados.`], ['Informe de la autoridad', `Solicita que la autoridad de tránsito que atiende en ${m.name} elabore el IPAT. Verifica en las páginas oficiales del municipio cómo pedir la copia.`], ['Pruebas del lugar', 'Fotos, videos, ubicación exacta, testigos y cámaras cercanas. Pide a comercios y edificios que conserven sus grabaciones.'], ['Datos del otro vehículo', 'Placa, conductor, propietario, aseguradora y SOAT. Consulta la placa en el RUNT y guarda constancia.'], ['Antes de firmar', 'No firmes acuerdos ni finiquitos sin entender qué derechos dejas de reclamar. Pide una revisión.']].map(([t, d], i) => `<li class="flex gap-4"><span class="shrink-0 w-8 h-8 rounded-full bg-navy-900 text-gold-500 flex items-center justify-center text-sm font-semibold">${i + 1}</span><div><p class="font-semibold text-navy-900">${esc(t)}</p><p class="text-sm">${tipify(esc(d))}</p></div></li>`).join('')}</ol></section>
+  <section id="servicios" class="scroll-mt-28"><h2 class="text-2xl md:text-3xl font-semibold text-navy-900 tracking-tight mb-5">Servicios más consultados</h2><div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">${servicios.map((s) => `<a href="${svcUrl(s)}" class="bg-white border border-slate-200 hover:border-gold-500 rounded-xl p-5"><p class="font-semibold text-navy-900">${esc(SERVICES[s].short)}</p><p class="mt-1 text-sm">${esc(SERVICES[s].metaDesc.slice(0, 95))}…</p></a>`).join('')}</div></section>
+  <section class="bg-white border border-slate-200 rounded-2xl p-6"><p class="font-semibold text-navy-900">Otros municipios del Valle de Aburrá</p><p class="mt-2 text-sm flex flex-wrap gap-x-4 gap-y-1">${MUNICIPIOS.filter((x) => x !== m).map((x) => `<a class="underline text-navy-900" href="${muniUrl(x)}">${esc(x.name)}</a>`).join('')}<a class="underline text-navy-900" href="/area-metropolitana/">Ver todos</a></p></section>
+  <p class="text-xs text-slate-400">Contenido informativo; no constituye asesoría jurídica ni garantiza resultados.</p>
+</div>` + ctaFinal(`¿Tu accidente fue en ${m.name}?`, 'Cuéntanos qué pasó. Revisamos tu caso y te explicamos tus opciones, sin presiones.');
+    render({ url, title: `Abogado de accidentes de tránsito en ${m.name} | ${SITE.name}`, desc: `Orientación para víctimas de accidentes de tránsito en ${m.name}: informe de la autoridad, SOAT, aseguradoras y reclamación de perjuicios.`, body, crumbs,
+      schema: [{ '@context': 'https://schema.org', '@type': 'WebPage', name: `Abogado de accidentes de tránsito en ${m.name}`, url: SITE.url + url, inLanguage: 'es-CO', datePublished: SITE.published, dateModified: SITE.lastReview, about: { '@type': 'City', name: m.name } }],
+      faq: { own: muniFaqs(m), pools: ['cobertura', 'primeros', 'seguros'], seed: m.slug, min: 8 } });
+  }
+}
+
+// ---------- Calculadora orientativa ----------
+const cMoney = (id, label, hint) => `<div><label for="${id}" class="block text-sm font-semibold text-navy-900 mb-1">${label}</label><input id="${id}" type="text" inputmode="numeric" data-money placeholder="0" autocomplete="off" class="${fIn}">${hint ? `<p class="mt-1 text-xs text-slate-500">${hint}</p>` : ''}</div>`;
+const cNum = (id, label, hint, extra = '') => `<div><label for="${id}" class="block text-sm font-semibold text-navy-900 mb-1">${label}</label><input id="${id}" type="number" min="0" inputmode="decimal" placeholder="0" ${extra} class="${fIn}">${hint ? `<p class="mt-1 text-xs text-slate-500">${hint}</p>` : ''}</div>`;
+const rRow = (id, label, bar) => `<div><div class="flex justify-between gap-3 text-sm"><span>${label}</span><strong id="${id}" class="text-navy-900">$ 0</strong></div>${bar ? `<div class="mt-1 h-2 bg-slate-100 rounded-full overflow-hidden"><div id="${bar}" class="h-full w-0 bg-gold-500 transition-all duration-300"></div></div>` : ''}</div>`;
+
+function calculadora() {
+  const crumbs = [['Inicio', '/'], ['Calculadora de indemnización', '/calculadora-indemnizacion/']];
+  const body = pageHero({ crumbs, h1: 'Calculadora orientativa de indemnización por accidente de tránsito', sub: 'Estima cómo influyen tus ingresos, la incapacidad y las secuelas en los perjuicios patrimoniales. Es una herramienta de orientación, no una oferta ni una predicción.', ctas: false }) + `
+<div class="max-w-7xl mx-auto px-6 py-12 space-y-12">
+  <div class="bg-amber-50 border border-amber-300 rounded-xl p-5 text-sm text-amber-900" role="note"><strong>Importante:</strong> esta calculadora es solo orientativa y está en revisión por un abogado. No incluye perjuicios morales ni otros extrapatrimoniales, no garantiza ningún monto y no reemplaza la revisión individual de tu caso. Los cálculos se hacen en tu navegador y no se envían a ningún servidor.</div>
+  <div id="calc" class="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-start">
+    <form class="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 space-y-8" onsubmit="return false" novalidate>
+      <fieldset class="space-y-4"><legend class="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600 mb-1">1. Ingresos e incapacidad</legend>
+        ${cMoney('c-ingreso', 'Ingreso mensual antes del accidente (COP)', 'Lo que recibías al mes; con soportes si es posible.')}
+        <label class="flex items-center gap-2 text-sm"><input id="c-formal" type="checkbox" class="accent-yellow-600"> Trabajador con contrato formal (se suma un factor prestacional del 25 %)</label>
+        <div class="grid sm:grid-cols-2 gap-4">${cNum('c-dias', 'Días de incapacidad', 'Según tus incapacidades médicas.')}${cNum('c-pcl', 'Pérdida de capacidad laboral (%)', 'Solo si existe calificación. Si no, déjalo en 0.', 'max="100"')}</div>
+      </fieldset>
+      <fieldset class="space-y-4"><legend class="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600 mb-1">2. Edad y años considerados</legend>
+        <div class="grid sm:grid-cols-2 gap-4">${cNum('c-edad', 'Edad actual', '', 'max="100"')}${cNum('c-anios', 'Años de vida laboral a considerar', 'Se sugiere hasta los 65 años; puedes ajustarlo. Un abogado puede usar otros criterios.')}</div>
+      </fieldset>
+      <fieldset class="space-y-4"><legend class="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600 mb-1">3. Gastos soportados (daño emergente)</legend>
+        ${cMoney('c-gastos', 'Gastos médicos y de transporte ya pagados por ti (COP)', 'Solo los que no te reembolsaron.')}
+        ${cMoney('c-futuros', 'Gastos futuros con cotización o soporte médico (COP)', 'Cirugías, terapias, prótesis, etc.')}
+        ${cMoney('c-otros', 'Otros daños materiales (COP)', 'Por ejemplo, moto, bicicleta o celular.')}
+      </fieldset>
+      <fieldset class="space-y-4"><legend class="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600 mb-1">4. Ajustes</legend>
+        ${cNum('c-culpa', 'Culpa estimada de la víctima (%)', 'Si el accidente tuvo culpas compartidas, la reparación puede reducirse proporcionalmente.', 'max="100"')}
+        <details class="text-sm"><summary class="cursor-pointer font-semibold text-navy-900">Supuestos avanzados</summary><div class="mt-3">${cNum('c-tasa', 'Tasa de interés técnico anual (%)', 'Se usa para traer a valor presente el lucro cesante futuro. Valor por defecto: 6.', 'step="0.1" value="6"')}</div></details>
+      </fieldset>
+      <button type="button" id="c-reset" class="text-sm underline">Limpiar formulario</button>
+    </form>
+    <div class="space-y-4 lg:sticky lg:top-28">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6" aria-live="polite">
+        <h2 class="text-xl font-semibold text-navy-900">Resultado orientativo</h2>
+        <p id="c-empty" class="mt-3 text-sm text-slate-500">Completa los campos de la izquierda para ver el desglose.</p>
+        <div id="c-result" class="hidden mt-4 space-y-4">
+          ${rRow('r-emergente', 'Daño emergente', 'b-emergente')}${rRow('r-consolidado', 'Lucro cesante consolidado', 'b-consolidado')}${rRow('r-futuro', 'Lucro cesante futuro', 'b-futuro')}
+          <div class="border-t border-slate-200 pt-3 space-y-2">${rRow('r-subtotal', 'Subtotal patrimonial')}${rRow('r-ajuste', 'Ajuste por concurrencia de culpa')}<div class="flex justify-between items-baseline gap-3 pt-2 border-t border-slate-200"><span class="font-semibold text-navy-900">Total patrimonial orientativo</span><strong id="r-total" class="text-2xl text-navy-900">$ 0</strong></div></div>
+          <ul id="r-warn" class="text-xs text-amber-800 list-disc pl-5 space-y-1"></ul>
+          <p class="text-xs text-slate-500">No incluye perjuicios morales, daño a la vida de relación ni otros extrapatrimoniales, que dependen de las pruebas y de la decisión del juez o del acuerdo.</p>
+          <div class="flex flex-wrap gap-2 no-print"><button type="button" id="c-copy" class="border border-slate-300 rounded-lg px-4 py-2 text-sm font-medium text-navy-900">Copiar resumen</button><button type="button" id="c-print" class="border border-slate-300 rounded-lg px-4 py-2 text-sm font-medium text-navy-900">Imprimir</button><a id="c-wa" ${hasWA ? `data-wa="https://wa.me/${digits(SITE.whatsapp)}" target="_blank" rel="noopener"` : ''} href="/contacto/" class="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold rounded-lg px-4 py-2 text-sm">${ic('chat', 'w-4 h-4')}Que un abogado lo revise</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section id="como-funciona" class="scroll-mt-28"><h2 class="text-2xl md:text-3xl font-semibold text-navy-900 tracking-tight mb-5">Cómo se calcula</h2>${tableHtml({ cap: 'Fórmulas usadas por la calculadora (orientativas, pendientes de validación jurídica)', head: ['Concepto', 'Fórmula', 'Supuestos'], rows: [['Daño emergente', 'Gastos pagados + gastos futuros soportados + otros daños materiales', 'Solo gastos con soporte'], ['Lucro cesante consolidado', 'Ingreso × (días de incapacidad ÷ 30)', 'Incapacidad total durante el período; factor prestacional opcional'], ['Lucro cesante futuro', 'Ingreso × % de pérdida de capacidad × [(1 − (1 + i)^−n) ÷ i]', 'n = meses de vida laboral considerados; i = tasa mensual equivalente a la tasa anual indicada'], ['Ajuste por culpa', 'Subtotal × (1 − % de culpa de la víctima)', 'Reducción proporcional'], ['Perjuicios extrapatrimoniales', 'No se calculan', 'Dependen de pruebas y decisión del juez o acuerdo']] })}</section>
+  <section id="limites" class="scroll-mt-28"><h2 class="text-2xl md:text-3xl font-semibold text-navy-900 tracking-tight mb-5">Límites de esta herramienta</h2>${bullets(['No predice lo que reconocerá una aseguradora o un juez.', 'No considera indexación, intereses moratorios ni costas.', 'No reemplaza la calificación de pérdida de capacidad laboral por entidades competentes.', 'La vida laboral y las tablas de supervivencia pueden analizarse con criterios distintos por un abogado.', 'No incluye el amparo del SOAT ni descuenta pagos ya recibidos.'])}</section>
+  <section id="glosario" class="scroll-mt-28"><h2 class="text-2xl md:text-3xl font-semibold text-navy-900 tracking-tight mb-5">Definiciones clave</h2>${glossHtml(['dano-emergente', 'lucro-cesante', 'pcl', 'concurrencia-culpas', 'dano-moral', 'dano-vida-relacion'])}</section>
+  <section id="fuentes" class="scroll-mt-28"><h2 class="text-2xl md:text-3xl font-semibold text-navy-900 tracking-tight mb-5">Fuentes de referencia</h2>${sourcesHtml(['suin', 'medicinalegal'])}</section>
+</div>` + ctaFinal();
+  render({ url: '/calculadora-indemnizacion/', title: 'Calculadora de indemnización por accidente de tránsito | IndemnizaVial', desc: 'Calculadora orientativa de perjuicios patrimoniales tras un accidente de tránsito: daño emergente, lucro cesante y ajuste por culpa. No es una oferta ni una predicción.', body, crumbs, scripts: ['/assets/calc.js'],
+    faq: { pools: ['calculadora', 'lesiones', 'proceso'], min: 8 },
+    schema: [{ '@context': 'https://schema.org', '@type': 'WebPage', name: 'Calculadora orientativa de indemnización', url: SITE.url + '/calculadora-indemnizacion/', inLanguage: 'es-CO', dateModified: SITE.lastReview }] });
+}
+
