@@ -75,17 +75,35 @@ const NAV = [
   { label: 'Accidentes y lesiones', hubs: ['accidentes-lesiones', 'victimas-transporte'] },
   { label: 'SOAT y aseguradoras', hubs: ['soat-aseguradoras'] },
   { label: 'Responsabilidad civil', hubs: ['responsabilidad-estado'] },
-  { label: 'Cobertura', href: '/area-metropolitana/' },
   { label: 'Calculadora', href: '/calculadora-indemnizacion/' },
   { label: 'Guías', href: '/blog/' },
-  { label: 'Nosotros', href: '/nosotros/' },
-  { label: 'Contacto', href: '/contacto/' },
+  {
+    label: 'La Firma',
+    items: [
+      { label: 'Quiénes somos', href: '/nosotros/', desc: 'Conoce a nuestro equipo legal' },
+      { label: 'Cobertura territorial', href: '/area-metropolitana/', desc: 'Valle de Aburrá y Oriente' },
+      { label: 'Contacto y sedes', href: '/contacto/', desc: 'Oficinas, teléfonos y ubicación' },
+      { label: 'Glosario de términos', href: '/glosario/', desc: 'Términos de tránsito explicados fácil' },
+    ],
+  },
 ];
 const hub = (id) => HUBS.find((h) => h.id === id);
 
 function header() {
   const desk = NAV.map((n) => {
     if (n.href) return `<a href="${n.href}" class="px-2 2xl:px-3 py-2 text-[13px] 2xl:text-[14.5px] font-medium rounded-lg hover:bg-white/5 text-white/90 hover:text-gold-500 focus-visible:text-gold-500 transition-colors whitespace-nowrap">${n.label}</a>`;
+    if (n.items) {
+      const dropItems = n.items.map((it) => `<a href="${it.href}" class="block px-4 py-2.5 text-sm hover:bg-navy-900 hover:text-gold-500 focus-visible:bg-navy-900 focus-visible:text-gold-500 transition-colors group/item">
+        <span class="block font-semibold text-navy-900 group-hover/item:text-gold-500">${esc(it.label)}</span>
+        ${it.desc ? `<span class="block text-xs text-slate-500 group-hover/item:text-slate-300 mt-0.5">${esc(it.desc)}</span>` : ''}
+      </a>`).join('');
+      return `<div class="relative group">
+        <a href="${n.items[0].href}" class="px-2 2xl:px-3 py-2 text-[13px] 2xl:text-[14.5px] font-medium rounded-lg hover:bg-white/5 text-white/90 hover:text-gold-500 group-hover:text-gold-500 group-focus-within:text-gold-500 transition-colors inline-flex items-center gap-1 whitespace-nowrap">${n.label}${ic('down', 'w-4 h-4')}</a>
+        <div class="absolute right-0 xl:left-0 top-full hidden group-hover:block group-focus-within:block pt-2 w-64 z-50">
+          <div class="bg-white rounded-xl shadow-xl border border-slate-200 py-2 divide-y divide-slate-100">${dropItems}</div>
+        </div>
+      </div>`;
+    }
     const items = n.hubs.flatMap((id) => hub(id).items).slice(0, 8).map((s) => `<a href="${svcUrl(s)}" class="block px-4 py-2 text-sm text-slate-700 hover:bg-navy-900 hover:text-gold-500 focus-visible:bg-navy-900 focus-visible:text-gold-500 transition-colors">${esc(SERVICES[s].short)}</a>`).join('');
     return `<div class="relative group">
       <a href="/servicios/#${n.hubs[0]}" class="px-2 2xl:px-3 py-2 text-[13px] 2xl:text-[14.5px] font-medium rounded-lg hover:bg-white/5 text-white/90 hover:text-gold-500 group-hover:text-gold-500 group-focus-within:text-gold-500 transition-colors inline-flex items-center gap-1 whitespace-nowrap">${n.label}${ic('down', 'w-4 h-4')}</a>
@@ -94,6 +112,10 @@ function header() {
   const mobLink = 'flex items-center justify-between py-3.5 text-base text-white/90 hover:text-gold-500 focus-visible:text-gold-500 transition-colors';
   const mob = NAV.map((n) => {
     if (n.href) return `<li class="border-b border-white/10"><a href="${n.href}" class="${mobLink}">${n.label}</a></li>`;
+    if (n.items) {
+      const items = n.items.map((it) => `<li><a href="${it.href}" class="block py-2.5 pl-4 text-[15px] text-slate-300 hover:text-gold-500 border-l border-white/10 hover:border-gold-500 transition-colors">${esc(it.label)}</a></li>`).join('');
+      return `<li class="border-b border-white/10"><details class="group/m"><summary class="${mobLink} cursor-pointer list-none group-open/m:text-gold-500">${n.label}<span class="transition-transform group-open/m:rotate-180">${ic('down', 'w-5 h-5')}</span></summary><ul class="pb-3 space-y-0.5">${items}</ul></details></li>`;
+    }
     const items = n.hubs.flatMap((id) => hub(id).items).map((sv) => `<li><a href="${svcUrl(sv)}" class="block py-2.5 pl-4 text-[15px] text-slate-300 hover:text-gold-500 border-l border-white/10 hover:border-gold-500 transition-colors">${esc(SERVICES[sv].short)}</a></li>`).join('');
     return `<li class="border-b border-white/10"><details class="group/m"><summary class="${mobLink} cursor-pointer list-none group-open/m:text-gold-500">${n.label}<span class="transition-transform group-open/m:rotate-180">${ic('down', 'w-5 h-5')}</span></summary><ul class="pb-3 space-y-0.5">${items}<li><a href="/servicios/#${n.hubs[0]}" class="block py-2.5 pl-4 text-[15px] font-semibold text-gold-500 border-l border-gold-500">Ver toda la sección</a></li></ul></details></li>`;
   }).join('');
@@ -102,10 +124,12 @@ function header() {
     <a href="/" class="flex items-center shrink-0" aria-label="${esc(SITE.name)} - Inicio"><span class="bg-white rounded-lg px-3 py-1.5 flex items-center">${logoImg('h-10 w-auto')}</span></a>
     <nav class="hidden xl:flex flex-1 justify-center items-center gap-1 2xl:gap-1.5 min-w-0" aria-label="Principal">${desk}</nav>
     <div class="hidden xl:flex items-center gap-3 shrink-0">
-      <button type="button" data-open-search class="inline-flex items-center gap-2 px-3 py-2 text-[13px] 2xl:text-[14px] text-white/80 hover:text-white bg-white/5 hover:bg-white/10 border border-white/15 rounded-lg transition-colors cursor-pointer" aria-label="Buscar en el sitio (Ctrl+K)">
-        ${ic('search', 'w-4 h-4 text-gold-500')}
-        <span class="hidden 2xl:inline">Buscar...</span>
-        <kbd class="px-1.5 py-0.5 text-[10px] bg-white/10 text-slate-300 rounded border border-white/15 font-mono">Ctrl K</kbd>
+      <button type="button" data-open-search class="inline-flex items-center justify-between gap-3 px-3.5 py-2 text-xs 2xl:text-sm text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/15 hover:border-white/30 rounded-xl transition-all cursor-pointer w-48 2xl:w-60 shadow-xs" aria-label="Buscar en el sitio (Ctrl+K)">
+        <span class="flex items-center gap-2 text-slate-300 truncate">
+          ${ic('search', 'w-4 h-4 text-gold-500 shrink-0')}
+          <span class="truncate">Buscar en el sitio...</span>
+        </span>
+        <kbd class="px-1.5 py-0.5 text-[10px] bg-white/10 text-slate-300 rounded border border-white/15 font-mono shrink-0">Ctrl K</kbd>
       </button>
       ${btnWA('WhatsApp', '!py-2.5 !px-5 text-sm', 'header')}
     </div>
