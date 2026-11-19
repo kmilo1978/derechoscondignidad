@@ -236,4 +236,301 @@
       var form = p.parentNode.querySelector('form'); p.classList.add('hidden'); form.classList.remove('hidden'); form.reset();
     });
   });
+
+  // ---------- Buscador general del sitio ----------
+  (function () {
+    var dialog = document.getElementById('searchDialog');
+    if (!dialog) return;
+    var input = document.getElementById('siteSearchInput');
+    var resultsBox = document.getElementById('searchResults');
+    var closeBtn = document.getElementById('searchCloseBtn');
+    var emptyState = document.getElementById('searchEmptyState');
+    var chips = $$('[data-search-chip]');
+    var searchTriggers = $$('[data-open-search]');
+    var searchData = null;
+    var fetchPromise = null;
+    var activeIndex = -1;
+    var lastFocused = null;
+
+    function loadIndex() {
+      if (searchData) return Promise.resolve(searchData);
+      if (fetchPromise) return fetchPromise;
+      fetchPromise = fetch('/assets/search-index.json')
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          searchData = data;
+          return data;
+        })
+        .catch(function (err) {
+          console.warn('Error cargando índice de búsqueda:', err);
+          return [];
+        });
+      return fetchPromise;
+    }
+
+    function fold(str) {
+      return (str || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase();
+    }
+
+    function escapeHtml(str) {
+      return (str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function highlightMatch(text, tokens) {
+      if (!text) return '';
+      var esc = escapeHtml(text);
+      if (!tokens || !tokens.length) return esc;
+      tokens.forEach(function (token) {
+        if (token.length < 2) return;
+        var reg = new RegExp('(' + token.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&') + ')', 'gi');
+        esc = esc.replace(reg, '<mark class="bg-gold-200 text-navy-950 font-semibold px-0.5 rounded">$1</mark>');
+      });
+      return esc;
+    }
+
+    function openSearch(initialQuery) {
+      lastFocused = document.activeElement;
+      loadIndex();
+      if (typeof dialog.showModal === 'function') {
+        if (!dialog.open) dialog.showModal();
+      } else {
+        dialog.setAttribute('open', '');
+      }
+      document.documentElement.classList.add('search-open');
+      if (input) {
+        if (initialQuery !== undefined) {
+          input.value = initialQuery;
+          doSearch(initialQuery);
+        }
+        setTimeout(function () { input.focus(); input.select(); }, 50);
+      }
+    }
+
+    function closeSearch() {
+      if (typeof dialog.close === 'function') {
+        if (dialog.open) dialog.close();
+      } else {
+        dialog.removeAttribute('open');
+      }
+      document.documentElement.classList.remove('search-open');
+      activeIndex = -1;
+      if (lastFocused && typeof lastFocused.focus === 'function') {
+        lastFocused.focus();
+      }
+    }
+
+    searchTriggers.forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        openSearch();
+      });
+      btn.addEventListener('mouseenter', loadIndex, { once: true });
+      btn.addEventListener('focus', loadIndex, { once: true });
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeSearch);
+    }
+
+    // Light dismiss: Test pointer position per modern web guidance
+    dialog.addEventListener('click', function (e) {
+      var rect = dialog.getBoundingClientRect();
+      var isInDialog = (
+        rect.top <= e.clientY && e.clientY <= rect.top + rect.height &&
+        rect.left <= e.clientX && e.clientX <= rect.left + rect.width
+      );
+      if (!isInDialog) {
+        closeSearch();
+      }
+    });
+
+    // Close on native cancel (Esc)
+    dialog.addEventListener('cancel', function () {
+      document.documentElement.classList.remove('search-open');
+      activeIndex = -1;
+      if (lastFocused && typeof lastFocused.focus === 'function') {
+        setTimeout(function () { lastFocused.focus(); }, 10);
+      }
+    });
+
+    // Chips
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var q = chip.getAttribute('data-search-chip');
+        if (input) {
+          input.value = q;
+          doSearch(q);
+          input.focus();
+        }
+      });
+    });
+
+    function categoryColor(cat) {
+      switch (cat) {
+        case 'Servicios': return 'bg-gold-100 text-gold-900 border-gold-200';
+        case 'Guías': return 'bg-blue-100 text-blue-900 border-blue-200';
+        case 'Municipios': return 'bg-emerald-100 text-emerald-900 border-emerald-200';
+        case 'Calculadora': return 'bg-purple-100 text-purple-900 border-purple-200';
+        case 'Glosario': return 'bg-amber-100 text-amber-900 border-amber-200';
+        default: return 'bg-slate-100 text-slate-800 border-slate-200';
+      }
+    }
+
+    function doSearch(q) {
+      var query = fold(q).trim();
+      if (!query || query.length < 2) {
+        resultsBox.innerHTML = '';
+        if (emptyState) resultsBox.appendChild(emptyState);
+        activeIndex = -1;
+        return;
+      }
+
+      loadIndex().then(function (data) {
+        if (!data || !data.length) return;
+        var tokens = query.split(/\s+/).filter(Boolean);
+        var scored = [];
+
+        data.forEach(function (item) {
+          var tFold = fold(item.t);
+          var kFold = fold(item.k);
+          var dFold = fold(item.d);
+          var cFold = fold(item.c);
+
+          var matchCount = 0;
+          var score = 0;
+
+          tokens.forEach(function (token) {
+            var tokenScore = 0;
+            if (tFold.startsWith(token)) tokenScore += 40;
+            else if (tFold.indexOf(token) !== -1) tokenScore += 25;
+
+            if (kFold.indexOf(token) !== -1) tokenScore += 15;
+            if (cFold.indexOf(token) !== -1) tokenScore += 10;
+            if (dFold.indexOf(token) !== -1) tokenScore += 5;
+
+            if (tokenScore > 0) {
+              matchCount++;
+              score += tokenScore;
+            }
+          });
+
+          if (matchCount === tokens.length || (tokens.length > 1 && matchCount >= tokens.length - 1 && score > 20)) {
+            scored.push({ item: item, score: score });
+          }
+        });
+
+        scored.sort(function (a, b) { return b.score - a.score; });
+        var top = scored.slice(0, 10).map(function (s) { return s.item; });
+
+        if (!top.length) {
+          var waEl = document.querySelector('a[data-track="whatsapp"][href^="https://wa.me/"]') ||
+                     document.querySelector('a[data-track="call"][href^="tel:"]') ||
+                     document.querySelector('a[href="/contacto/"]');
+          var linkHref = '/contacto/';
+          var linkLabel = 'Consultar caso sin costo';
+          var linkIcon = '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>';
+
+          if (waEl) {
+            var href = waEl.getAttribute('href');
+            if (href.indexOf('wa.me') !== -1) {
+              linkHref = href.split('?')[0] + '?text=' + encodeURIComponent('Hola, busqué en la web sobre "' + q + '" y quisiera orientación con un abogado.');
+              linkLabel = 'Consultar por WhatsApp sin costo';
+              linkIcon = '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>';
+            } else {
+              linkHref = href;
+              linkLabel = 'Llamar a un abogado ahora';
+            }
+          }
+
+          var fallbackBtn = '<a href="' + linkHref + '" target="_blank" rel="noopener" class="mt-4 inline-flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-5 py-2.5 rounded-lg text-sm transition-colors cursor-pointer">' + linkIcon + linkLabel + '</a>';
+          resultsBox.innerHTML = '<div class="py-10 px-6 text-center text-slate-600"><p class="text-base font-semibold text-navy-900">No encontramos resultados para &ldquo;' + escapeHtml(q) + '&rdquo;</p><p class="text-xs text-slate-500 mt-2 max-w-md mx-auto">No te preocupes. Tu caso puede tener coberturas específicas. Escríbenos directamente y te orientamos sin costo.</p>' + fallbackBtn + '</div>';
+          activeIndex = -1;
+          return;
+        }
+
+        var html = top.map(function (item, idx) {
+          var catBadge = '<span class="inline-block px-2 py-0.5 text-[11px] font-semibold rounded-md border ' + categoryColor(item.c) + '">' + escapeHtml(item.c) + '</span>';
+          var highlightedTitle = highlightMatch(item.t, tokens);
+          var highlightedDesc = highlightMatch(item.d ? (item.d.length > 110 ? item.d.slice(0, 110) + '…' : item.d) : '', tokens);
+
+          return '<a href="' + item.u + '" role="option" aria-selected="false" data-search-index="' + idx + '" class="search-item group flex items-start justify-between gap-3 p-3 rounded-xl hover:bg-slate-100 transition-colors border border-transparent hover:border-slate-200">' +
+            '<div class="flex-1 min-w-0">' +
+              '<div class="flex items-center gap-2 mb-1">' + catBadge + '<span class="text-xs text-slate-400 group-hover:text-slate-600">' + escapeHtml(item.u) + '</span></div>' +
+              '<h3 class="text-sm font-semibold text-navy-900 group-hover:text-gold-700 leading-snug">' + highlightedTitle + '</h3>' +
+              (highlightedDesc ? '<p class="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">' + highlightedDesc + '</p>' : '') +
+            '</div>' +
+            '<span class="text-slate-300 group-hover:text-gold-600 shrink-0 mt-1 transition-colors"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></span>' +
+          '</a>';
+        }).join('');
+
+        resultsBox.innerHTML = html;
+        activeIndex = -1;
+      });
+    }
+
+    if (input) {
+      var debounceTimer;
+      input.addEventListener('input', function () {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(function () {
+          doSearch(input.value);
+        }, 120);
+      });
+
+      input.addEventListener('keydown', function (e) {
+        var items = $$('.search-item', resultsBox);
+        if (!items.length) return;
+
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          activeIndex = (activeIndex + 1) % items.length;
+          updateActiveItem(items);
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          activeIndex = (activeIndex - 1 + items.length) % items.length;
+          updateActiveItem(items);
+        } else if (e.key === 'Enter') {
+          if (activeIndex >= 0 && items[activeIndex]) {
+            e.preventDefault();
+            items[activeIndex].click();
+          }
+        }
+      });
+    }
+
+    function updateActiveItem(items) {
+      items.forEach(function (el, i) {
+        var isSelected = (i === activeIndex);
+        el.setAttribute('aria-selected', String(isSelected));
+        if (isSelected) {
+          el.classList.add('bg-slate-100', 'ring-1', 'ring-gold-500');
+          el.scrollIntoView({ block: 'nearest' });
+        } else {
+          el.classList.remove('bg-slate-100', 'ring-1', 'ring-gold-500');
+        }
+      });
+    }
+
+    // Global keyboard shortcut: Ctrl+K / Cmd+K or / (when not typing in an input)
+    document.addEventListener('keydown', function (e) {
+      var activeTag = (document.activeElement && document.activeElement.tagName) || '';
+      var isInput = activeTag === 'INPUT' || activeTag === 'TEXTAREA' || activeTag === 'SELECT';
+
+      if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) {
+        e.preventDefault();
+        if (dialog.open) closeSearch(); else openSearch();
+      } else if (e.key === '/' && !isInput && !dialog.open) {
+        e.preventDefault();
+        openSearch();
+      }
+    });
+  })();
+
 })();

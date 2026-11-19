@@ -90,3 +90,27 @@ label { cursor: pointer; }
   .rtable td:empty, .rtable td[data-label=""]::before, .rtable th[data-label=""]::before { display: none; }
   .rtable caption { padding: .25rem 0 0; }
 }
+
+/* ---- Buscador Modal (HTML5 Dialog) ---- */
+#searchDialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  border: none;
+  background: transparent;
+  padding: 1rem;
+  max-width: 42rem;
+  width: calc(100% - 2rem);
+  max-height: calc(100dvh - 3rem);
+  overflow: visible;
+}
+#searchDialog:modal {
+  overscroll-behavior: contain;
+}
+#searchDialog::backdrop {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  overflow: hidden;
+  overscroll-behavior: contain;
+}

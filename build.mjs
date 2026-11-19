@@ -41,6 +41,7 @@ const ICONS = {
   x: '<path d="M18 6 6 18M6 6l12 12"/>',
   clock: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
   file: '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8"/>',
+  search: '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
 };
 const ic = (n, cls = 'w-5 h-5') => `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n]}</svg>`;
 
@@ -97,20 +98,49 @@ function header() {
     return `<li class="border-b border-white/10"><details class="group/m"><summary class="${mobLink} cursor-pointer list-none group-open/m:text-gold-500">${n.label}<span class="transition-transform group-open/m:rotate-180">${ic('down', 'w-5 h-5')}</span></summary><ul class="pb-3 space-y-0.5">${items}<li><a href="/servicios/#${n.hubs[0]}" class="block py-2.5 pl-4 text-[15px] font-semibold text-gold-500 border-l border-gold-500">Ver toda la sección</a></li></ul></details></li>`;
   }).join('');
   return `<header class="sticky top-0 z-40 bg-navy-900/95 backdrop-blur border-b border-white/10">
-  <div class="max-w-7xl 2xl:max-w-[1440px] mx-auto px-6 h-20 flex items-center justify-between gap-6 2xl:gap-10">
+  <div class="max-w-7xl 2xl:max-w-[1440px] mx-auto px-6 h-20 flex items-center justify-between gap-4 2xl:gap-8">
     <a href="/" class="flex items-center shrink-0" aria-label="${esc(SITE.name)} - Inicio"><span class="bg-white rounded-lg px-3 py-1.5 flex items-center">${logoImg('h-10 w-auto')}</span></a>
     <nav class="hidden xl:flex flex-1 justify-center items-center gap-1 2xl:gap-1.5 min-w-0" aria-label="Principal">${desk}</nav>
-    <div class="hidden xl:block shrink-0">${btnWA('WhatsApp', '!py-2.5 !px-5 text-sm', 'header')}</div>
-    <button id="menuBtn" type="button" class="xl:hidden text-white w-11 h-11 -mr-2 inline-flex items-center justify-center rounded-lg hover:bg-white/10 hover:text-gold-500 transition-colors" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu"><span data-icon-open>${ic('menu', 'w-7 h-7')}</span><span data-icon-close class="hidden">${ic('x', 'w-7 h-7')}</span></button>
+    <div class="hidden xl:flex items-center gap-3 shrink-0">
+      <button type="button" data-open-search class="inline-flex items-center gap-2 px-3 py-2 text-[13px] 2xl:text-[14px] text-white/80 hover:text-white bg-white/5 hover:bg-white/10 border border-white/15 rounded-lg transition-colors cursor-pointer" aria-label="Buscar en el sitio (Ctrl+K)">
+        ${ic('search', 'w-4 h-4 text-gold-500')}
+        <span class="hidden 2xl:inline">Buscar...</span>
+        <kbd class="px-1.5 py-0.5 text-[10px] bg-white/10 text-slate-300 rounded border border-white/15 font-mono">Ctrl K</kbd>
+      </button>
+      ${btnWA('WhatsApp', '!py-2.5 !px-5 text-sm', 'header')}
+    </div>
+    <div class="flex xl:hidden items-center gap-1">
+      <button type="button" data-open-search class="text-white w-10 h-10 inline-flex items-center justify-center rounded-lg hover:bg-white/10 hover:text-gold-500 transition-colors cursor-pointer" aria-label="Buscar en el sitio">
+        ${ic('search', 'w-6 h-6 text-gold-500')}
+      </button>
+      <button id="menuBtn" type="button" class="text-white w-11 h-11 -mr-2 inline-flex items-center justify-center rounded-lg hover:bg-white/10 hover:text-gold-500 transition-colors" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu"><span data-icon-open>${ic('menu', 'w-7 h-7')}</span><span data-icon-close class="hidden">${ic('x', 'w-7 h-7')}</span></button>
+    </div>
   </div>
-  <div id="mobileMenu" class="hidden xl:hidden bg-navy-900 border-t border-white/10 px-6 pb-6 max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain"><nav aria-label="Menú móvil"><ul>${mob}</ul></nav><div class="pt-5">${btnWA('Escríbenos por WhatsApp', 'w-full', 'menu')}</div></div>
+  <div id="mobileMenu" class="hidden xl:hidden bg-navy-900 border-t border-white/10 px-6 pb-6 max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain">
+    <div class="pt-4 pb-2">
+      <button type="button" data-open-search class="w-full flex items-center gap-3 px-3.5 py-2.5 text-sm text-slate-300 bg-white/5 hover:bg-white/10 border border-white/15 rounded-lg transition-colors text-left cursor-pointer">
+        ${ic('search', 'w-4 h-4 text-gold-500')}
+        <span>Buscar servicios, SOAT, trámites...</span>
+        <kbd class="ml-auto text-xs bg-white/10 px-1.5 py-0.5 rounded text-slate-400 font-mono">Ctrl K</kbd>
+      </button>
+    </div>
+    <nav aria-label="Menú móvil"><ul>${mob}</ul></nav>
+    <div class="pt-5">${btnWA('Escríbenos por WhatsApp', 'w-full', 'menu')}</div>
+  </div>
 </header>`;
 }
 
 function headerMin() {
   return `<header class="bg-navy-900 border-b border-white/10"><div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
     <a href="/" class="flex items-center" aria-label="${esc(SITE.name)} - Inicio"><span class="bg-white rounded-lg px-2.5 py-1 flex items-center">${logoImg('h-8 w-auto')}</span></a>
-    <div class="flex items-center gap-2"><a href="${telLink}" data-track="call" data-loc="header-min" class="hidden sm:inline-flex items-center gap-2 text-white text-sm px-3 py-2">${ic('phone', 'w-4 h-4')}${hasPhone ? esc(SITE.phone) : 'Llamar'}</a>${btnWA('WhatsApp', '!py-2 !px-4 text-sm', 'header-min')}</div></div></header>`;
+    <div class="flex items-center gap-2">
+      <button type="button" data-open-search class="text-white/80 hover:text-white p-2 rounded-lg hover:bg-white/10 transition-colors inline-flex items-center gap-1.5 text-sm cursor-pointer" aria-label="Buscar en el sitio">
+        ${ic('search', 'w-4 h-4 text-gold-500')}
+        <span class="hidden sm:inline">Buscar</span>
+      </button>
+      <a href="${telLink}" data-track="call" data-loc="header-min" class="hidden sm:inline-flex items-center gap-2 text-white text-sm px-3 py-2">${ic('phone', 'w-4 h-4')}${hasPhone ? esc(SITE.phone) : 'Llamar'}</a>
+      ${btnWA('WhatsApp', '!py-2 !px-4 text-sm', 'header-min')}
+    </div></div></header>`;
 }
 function footerMin() {
   return `<footer class="bg-navy-900 text-slate-400 py-8 text-xs"><div class="max-w-5xl mx-auto px-6"><p>La información de esta página es orientativa y no constituye asesoría jurídica ni garantiza resultados.</p><p class="mt-2"><a class="underline" href="/politica-de-privacidad/">Política de privacidad</a> · <a class="underline" href="/tratamiento-de-datos/">Tratamiento de datos</a></p></div></footer>`;
@@ -138,6 +168,52 @@ function footer() {
   </div>
 </footer>
 <a href="${hasWA ? waLink() : telLink}" data-track="${hasWA ? 'whatsapp' : 'call'}" data-loc="flotante" ${hasWA ? 'target="_blank" rel="noopener"' : ''} class="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-4 py-3 rounded-full shadow-lg" aria-label="${hasWA ? 'Contactar por WhatsApp' : 'Llamar ahora'}">${ic(hasWA ? 'chat' : 'phone', 'w-6 h-6')}<span class="hidden sm:inline">${hasWA ? 'WhatsApp' : 'Llamar'}</span></a>`;
+}
+
+function searchModalHtml() {
+  return `
+<dialog id="searchDialog" aria-labelledby="searchModalTitle" class="fixed inset-0 m-auto p-0 border-0 bg-transparent max-w-2xl w-[calc(100%-2rem)] max-h-[85vh] z-50 text-slate-800 backdrop:bg-navy-950/80 backdrop:backdrop-blur-xs overscroll-contain">
+  <div class="bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[85vh]">
+    <div class="relative flex items-center border-b border-slate-200 px-4 py-3 bg-slate-50/70">
+      <span class="text-gold-600 mr-3 shrink-0" aria-hidden="true">${ic('search', 'w-5 h-5')}</span>
+      <h2 id="searchModalTitle" class="sr-only">Buscador del sitio</h2>
+      <input id="siteSearchInput" type="search" autocomplete="off" autocapitalize="off" spellcheck="false"
+             placeholder="Buscar servicios, SOAT, aseguradoras, guías o municipios..."
+             aria-label="Buscar en todo el sitio"
+             class="w-full bg-transparent text-navy-900 placeholder:text-slate-400 text-base md:text-lg focus:outline-none pr-8">
+      <button id="searchCloseBtn" type="button" class="text-slate-400 hover:text-navy-900 p-1.5 rounded-lg hover:bg-slate-200/60 transition-colors cursor-pointer" aria-label="Cerrar buscador">
+        ${ic('x', 'w-5 h-5')}
+      </button>
+    </div>
+    <div id="searchChips" class="px-4 py-2.5 bg-slate-50 border-b border-slate-100 flex items-center gap-1.5 flex-wrap text-xs text-slate-600">
+      <span class="font-medium text-slate-400 mr-1">Sugerencias:</span>
+      <button type="button" data-search-chip="SOAT" class="px-2.5 py-1 rounded-full bg-white hover:bg-gold-50 hover:text-gold-800 border border-slate-200 hover:border-gold-400 font-medium transition-colors cursor-pointer">SOAT</button>
+      <button type="button" data-search-chip="Accidente moto" class="px-2.5 py-1 rounded-full bg-white hover:bg-gold-50 hover:text-gold-800 border border-slate-200 hover:border-gold-400 font-medium transition-colors cursor-pointer">Moto</button>
+      <button type="button" data-search-chip="Aseguradora" class="px-2.5 py-1 rounded-full bg-white hover:bg-gold-50 hover:text-gold-800 border border-slate-200 hover:border-gold-400 font-medium transition-colors cursor-pointer">Aseguradoras</button>
+      <button type="button" data-search-chip="Calculadora" class="px-2.5 py-1 rounded-full bg-white hover:bg-gold-50 hover:text-gold-800 border border-slate-200 hover:border-gold-400 font-medium transition-colors cursor-pointer">Calculadora</button>
+      <button type="button" data-search-chip="Hueco en la vía" class="px-2.5 py-1 rounded-full bg-white hover:bg-gold-50 hover:text-gold-800 border border-slate-200 hover:border-gold-400 font-medium transition-colors cursor-pointer">Vías y Huecos</button>
+      <button type="button" data-search-chip="Peatón" class="px-2.5 py-1 rounded-full bg-white hover:bg-gold-50 hover:text-gold-800 border border-slate-200 hover:border-gold-400 font-medium transition-colors cursor-pointer">Peatones</button>
+      <button type="button" data-search-chip="Fracturas" class="px-2.5 py-1 rounded-full bg-white hover:bg-gold-50 hover:text-gold-800 border border-slate-200 hover:border-gold-400 font-medium transition-colors cursor-pointer">Fracturas</button>
+    </div>
+    <div id="searchResults" role="listbox" aria-label="Resultados de búsqueda" class="overflow-y-auto overscroll-contain p-2 space-y-1 flex-1">
+      <div id="searchEmptyState" class="py-12 px-6 text-center text-slate-500">
+        <p class="text-sm font-medium">Escribe al menos 2 letras o haz clic en una sugerencia.</p>
+        <p class="text-xs text-slate-400 mt-1">Busca entre servicios de accidentes, reclamaciones ante aseguradoras, SOAT y cobertura en Antioquia.</p>
+      </div>
+    </div>
+    <div class="px-4 py-2.5 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
+      <div class="hidden sm:flex items-center gap-3">
+        <span><kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono shadow-xs text-[10px]">↑</kbd> <kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono shadow-xs text-[10px]">↓</kbd> navegar</span>
+        <span><kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono shadow-xs text-[10px]">↵</kbd> abrir</span>
+        <span><kbd class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono shadow-xs text-[10px]">Esc</kbd> cerrar</span>
+      </div>
+      <div class="flex items-center gap-1.5 ml-auto">
+        <span class="text-slate-400">¿Duda urgente?</span>
+        <a href="${waLink()}" target="_blank" rel="noopener" class="font-medium text-gold-700 hover:text-gold-800 hover:underline inline-flex items-center gap-1">${ic('chat', 'w-3.5 h-3.5')}Consultar por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</dialog>`;
 }
 
 // ---------- Layout ----------
@@ -187,6 +263,7 @@ ${crumbBar}${body}
 </main>
 ${minimal ? footerMin() : footer()}
 <button id="toTop" type="button" aria-label="Volver arriba" class="fixed bottom-20 right-5 z-40 w-11 h-11 rounded-full bg-navy-900 text-white shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-opacity">${ic('down', 'w-5 h-5 rotate-180')}</button>
+${searchModalHtml()}
 ${scripts.map((s) => `<script src="${s}?v=${BUILD_V}" defer></script>`).join('')}
 <script src="/assets/app.js?v=${BUILD_V}" defer></script>
 </body>
@@ -1397,5 +1474,35 @@ home(); servicesHub(); Object.keys(SERVICES).forEach(servicePage); otherPages();
 tech();
 fs.mkdirSync('docs', { recursive: true });
 fs.writeFileSync('docs/_pages.json', JSON.stringify(pageMeta, null, 1));
+const searchIndex = pageMeta
+  .filter((p) => !p.noindex && p.url !== '/no-encontrado/')
+  .map((p) => {
+    let cat = 'General';
+    if (p.url.startsWith('/servicios/')) cat = 'Servicios';
+    else if (p.url.startsWith('/blog/')) cat = 'Guías';
+    else if (p.url.startsWith('/abogado-accidentes-transito-')) cat = 'Municipios';
+    else if (p.url.startsWith('/glosario/')) cat = 'Glosario';
+    else if (p.url.startsWith('/calculadora-')) cat = 'Calculadora';
+    else if (p.url.startsWith('/recursos/')) cat = 'Recursos';
+
+    const h2s = (p.h2 || []).filter((h) =>
+      !h.includes('Preguntas frecuentes') &&
+      !h.includes('¿Tuviste un accidente') &&
+      !h.includes('Cuéntanos tu caso') &&
+      !h.includes('Fuentes y normas')
+    ).slice(0, 5).join(' ');
+
+    return {
+      t: p.title.replace(/\s*\|\s*Derechos con Dignidad.*$/i, '').trim(),
+      u: p.url,
+      c: cat,
+      d: p.desc || '',
+      k: `${p.h1 || ''} ${h2s} ${(p.crumbs || []).join(' ')}`.toLowerCase()
+    };
+  });
+fs.writeFileSync('dist/assets/search-index.json', JSON.stringify(searchIndex));
+fs.mkdirSync('src/assets', { recursive: true });
+fs.writeFileSync('src/assets/search-index.json', JSON.stringify(searchIndex));
+console.log('Search index generado:', searchIndex.length, 'páginas');
 console.log('Páginas indexables:', pages.length);
 
