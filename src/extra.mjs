@@ -67,7 +67,7 @@ export const EXTRA = {
     ],
     errores: ['Aceptar dinero en el lugar sin conocer la gravedad real de las lesiones.', 'No pedir copia del IPAT ni de la historia clínica.', 'Reparar la moto sin documentar antes los daños con fotos y cotización.'],
     urgente: ['Hay lesiones graves, cirugía o hospitalización prolongada.', 'La aseguradora te ofrece un pago y te pide firmar un finiquito.', 'El conductor responsable no tiene seguro o huyó.'],
-    faqs: [['¿Qué documentos necesito para empezar?', 'IPAT si existe, historia clínica, incapacidades, facturas, fotos del lugar y de la moto, y datos del otro conductor y su aseguradora.'], ['¿Cuánto tiempo puede durar un reclamo?', 'Depende de la vía elegida y de la complejidad. Un abogado puede explicarte las etapas, sin prometer tiempos.'], ['¿El SOAT de mi moto cubre mis gastos?', 'Atiende la atención médica inicial dentro de sus amparos y topes. Lo que exceda se estudia por otras vías.']],
+    faqs: [['¿Qué documentos necesito para empezar?', 'IPAT si existe, historia clínica, incapacidades, facturas, fotos del lugar y de la moto, y datos del otro conductor y su aseguradora.'], ['¿Cuánto tiempo puede tardar la reclamación de una indemnización por moto?', 'Una reclamación directa con la aseguradora suele resolverse entre 1 y 3 meses si la documentación médica y de responsabilidad está completa. Si la aseguradora objeta o formula una oferta lesiva y se acude a conciliación o demanda civil, el trámite judicial puede tomar entre 8 y 24 meses según el juzgado asignado.'], ['¿El SOAT de mi moto cubre mis gastos?', 'Atiende la atención médica inicial dentro de sus amparos y topes. Lo que exceda se estudia por otras vías.']],
     fuentes: ['runt', 'adres', 'senado'],
   },
   'accidentes-carro': {
@@ -81,7 +81,7 @@ export const EXTRA = {
     ],
     errores: ['Creer que no hay lesión porque no sientes dolor el primer día.', 'Declarar culpabilidad ante la aseguradora sin asesoría.', 'No conservar las fotos y videos del lugar.'],
     urgente: ['Hay lesiones en columna, cabeza o fracturas.', 'La otra aseguradora te cita a declarar o a firmar documentos.', 'Hay controversia sobre quién causó el accidente.'],
-    faqs: [['¿Y si el conductor responsable es de una empresa?', 'La reclamación puede incluir a la empresa y a su aseguradora, según el vínculo y las pólizas. Se revisa con los documentos reales.'], ['¿Puedo reclamar daños al vehículo y lesiones juntos?', 'Son perjuicios distintos que pueden reclamarse en conjunto o por separado según la estrategia.'], ['¿Debo hacer el peritaje?', 'Puede ser una prueba útil. Consulta antes de contratarlo para saber si conviene y cómo.']],
+    faqs: [['¿Qué pasa si el vehículo que me chocó pertenece a una empresa o entidad?', 'Bajo el régimen de responsabilidad por el hecho ajeno (artículo 2347 del Código Civil), la empresa propietaria responde civil y solidariamente por los actos de su conductor empleado. Esto ofrece mayor respaldo patrimonial y pólizas corporativas con mayores límites de cobertura.'], ['¿Puedo reclamar daños al vehículo y lesiones juntos?', 'Son perjuicios distintos que pueden reclamarse en conjunto o por separado según la estrategia.'], ['¿Debo contratar un peritaje técnico particular sobre los daños del vehículo?', 'Si el choque causó pérdida total o daños estructurales graves y la aseguradora subvalora el arreglo, un peritaje técnico automotriz certificado es una prueba pericial de alto valor para sustentar la demanda o la conciliación formal.']],
     fuentes: ['runt', 'senado', 'superfinanciera'],
   },
   'lesiones-graves': {
@@ -95,7 +95,7 @@ export const EXTRA = {
     ],
     errores: ['Dejar de lado el tratamiento psicológico por considerarlo secundario.', 'No asistir a las valoraciones de Medicina Legal o de la junta.', 'Aceptar una cifra antes de conocer el pronóstico definitivo.'],
     urgente: ['Te citaron a Medicina Legal o a una junta de calificación.', 'El SOAT se agotó y siguen los tratamientos.', 'La lesión afecta tu capacidad para trabajar.'],
-    faqs: [['¿Cuándo se conoce el alcance de una secuela?', 'Cuando el médico considera que el tratamiento llegó a un punto estable. Reclamar antes puede dejar por fuera perjuicios.'], ['¿Qué papel tiene mi familia?', 'Los familiares cercanos pueden tener perjuicios propios (morales) y apoyarte con soportes y cuidados.'], ['¿Puedo mejorar mi dictamen?', 'Un dictamen puede controvertirse mediante los recursos previstos. Consulta para saber qué opciones tienes.']],
+    faqs: [['¿Cuándo se conoce el alcance de una secuela?', 'Cuando el médico considera que el tratamiento llegó a un punto estable. Reclamar antes puede dejar por fuera perjuicios.'], ['¿Qué papel tiene mi familia?', 'Los familiares cercanos pueden tener perjuicios propios (morales) y apoyarte con soportes y cuidados.'], ['¿Puedo controvertir el dictamen si considero que la Junta de Calificación me asignó un porcentaje muy bajo?', 'Sí. Dispones de diez (10) días hábiles tras la notificación para interponer recursos de reposición y en subsidio apelación ante la Junta Regional, para que la Junta Nacional de Calificación de Invalidez revise de fondo el caso y recalifique tus secuelas.']],
     fuentes: ['medicinalegal', 'adres', 'suin'],
   },
   'accidente-mortal': {
@@ -122,7 +122,7 @@ export const EXTRA = {
     ],
     errores: ['No pedir cámaras de comercios cercanos de inmediato.', 'Aceptar arreglos sin conocer la evolución de las lesiones.', 'No anotar la placa o descripción del vehículo.'],
     urgente: ['El conductor huyó.', 'Hay lesiones graves o la víctima es un menor.', 'Piden firmar documentos de pago.'],
-    faqs: [['¿Importa si crucé por un lugar no autorizado?', 'Puede influir en el análisis, pero el conductor mantiene deberes de cuidado. Debe estudiarse el caso.'], ['¿Cómo consigo las cámaras?', 'Pide a los comercios que conserven las grabaciones y presenta la denuncia cuanto antes; muchas se sobrescriben pronto.']],
+    faqs: [['¿Puedo reclamar si crucé la calle por un lugar no demarcado?', 'Sí. Aunque la aseguradora intentará alegar imprudencia de la víctima para reducir el monto (artículo 2357 del Código Civil), la ley exige al conductor mantener el control del automotor a una velocidad que le permita detenerse ante imprevistos, por lo que la responsabilidad principal se mantiene en el conductor.'], ['¿Cómo se consiguen los videos de cámaras de seguridad antes de que se borren?', 'La mayoría de cámaras privadas sobreescriben sus grabaciones en 7 a 15 días. Radicamos solicitudes formales inmediatas con fundamento en el derecho de petición a comercios y solicitamos vía Fiscalía la copia de los domos de seguridad pública del sistema 123 de Medellín.']],
     fuentes: ['adres', 'senado', 'movilidad'],
   },
   'lesiones-parrillero-moto': {
@@ -228,7 +228,7 @@ export const EXTRA = {
     ],
     errores: ['No presentar la denuncia de inmediato.', 'No pedir a comercios que conserven sus cámaras.', 'No registrar descripciones del vehículo mientras aún las recuerdas.'],
     urgente: ['Hay lesiones graves.', 'Existen cámaras que podrían borrarse pronto.', 'Dudas sobre cómo pedir la atención por ADRES.'],
-    faqs: [['¿Qué debo anotar?', 'Color, marca, placa parcial, dirección de huida, hora y cualquier detalle de los testigos.'], ['¿Puede aparecer el responsable después?', 'Sí. Las pruebas conservadas permiten reclamar si llega a identificarse.']],
+    faqs: [['¿Qué datos debo registrar de inmediato sobre el vehículo fugitivo?', 'Anota color, marca probable, placa parcial, sentido de huida y testimonios de transeúntes. Solicita a locales comerciales cercanos que preserven sus videos de vigilancia.'], ['¿Qué pasa si el conductor fugitivo es identificado semanas después gracias a las cámaras?', 'Una vez la Fiscalía o la investigación identifiquen la placa y al propietario, se amplía la denuncia penal y se radica de inmediato la reclamación civil contra el responsable y su aseguradora voluntaria, descontando lo que la ADRES haya sufragado en urgencias.']],
     fuentes: ['adres', 'senado'],
   },
   'responsabilidad-civil': {

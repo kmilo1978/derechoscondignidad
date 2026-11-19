@@ -669,14 +669,14 @@ function home() {
       <p class="mt-6 text-lg md:text-xl text-slate-100 leading-relaxed max-w-2xl drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">Si tú o un familiar resultaron lesionados, te explicamos con claridad qué puedes reclamar, ante quién y con qué soportes. Sin presiones y sin promesas irreales.</p>
       <div class="mt-9 flex flex-wrap gap-3">${btnWA('Hablar por WhatsApp', '', 'hero')}<a href="#situaciones" class="inline-flex items-center justify-center gap-2 border border-white/30 hover:bg-white/10 text-white font-medium px-6 py-3.5 rounded-lg transition-colors">Identificar mi situación ${ic('down')}</a></div>
       <ul class="mt-12 pt-8 border-t border-white/10 grid sm:grid-cols-3 gap-6 text-sm">
-        <li class="flex gap-3">${ic('check', 'w-5 h-5 text-gold-500 shrink-0')}<span><strong class="block text-white">Lenguaje claro</strong>Sin tecnicismos innecesarios.</span></li>
-        <li class="flex gap-3">${ic('check', 'w-5 h-5 text-gold-500 shrink-0')}<span><strong class="block text-white">Sin presiones</strong>Decides con información.</span></li>
-        <li class="flex gap-3">${ic('check', 'w-5 h-5 text-gold-500 shrink-0')}<span><strong class="block text-white">Honorarios por escrito</strong>Condiciones claras desde el inicio.</span></li>
+        <li class="flex gap-3">${ic('check', 'w-5 h-5 text-gold-500 shrink-0')}<span><strong class="block text-white">Explicación directa</strong>Entiendes tus derechos y opciones reales sin tecnicismos innecesarios.</span></li>
+        <li class="flex gap-3">${ic('check', 'w-5 h-5 text-gold-500 shrink-0')}<span><strong class="block text-white">Decisión informada</strong>Evaluamos la viabilidad del caso antes de que asumas compromisos.</span></li>
+        <li class="flex gap-3">${ic('check', 'w-5 h-5 text-gold-500 shrink-0')}<span><strong class="block text-white">Honorarios por escrito</strong>Pactamos porcentaje a cuota litis en contrato formal, sin cobros ocultos.</span></li>
       </ul>
     </div>
     <div class="bg-white rounded-2xl shadow-2xl p-6 md:p-8 border-t-4 border-gold-500 text-slate-600" id="formulario">
-      <h2 class="text-2xl font-semibold text-navy-900 tracking-tight">Cuéntanos tu caso</h2>
-      <p class="text-sm text-slate-500 mt-1">Te respondemos con una primera orientación.</p>
+      <h2 class="text-2xl font-semibold text-navy-900 tracking-tight">Evaluación confidencial de tu caso</h2>
+      <p class="text-sm text-slate-500 mt-1">Un abogado especialista revisará los antecedentes y te responderá con una orientación clara.</p>
       <form id="leadForm" class="mt-6 space-y-4" novalidate>
         <div class="grid sm:grid-cols-2 gap-4">
           <div><label for="f-nombre" class="block text-xs font-semibold uppercase tracking-wide text-navy-900 mb-1.5">Nombre</label><input id="f-nombre" name="nombre" required autocomplete="name" placeholder="Tu nombre" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-navy-900 focus:outline-none focus:ring-2 focus:ring-gold-500"></div>
@@ -694,7 +694,7 @@ function home() {
 
 <section class="bg-white border-b border-slate-200">
   <div class="max-w-7xl mx-auto px-6 py-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
-    ${[['users', 'Atención humana', 'Te escucha una persona que entiende tu situación.'], ['check', 'Consulta sin costo', 'La primera revisión de tu caso no tiene costo.'], ['shield', 'Defensa experta', 'Acompañamiento jurídico en accidentes de tránsito.'], ['clock', 'Disponibilidad 24/7', 'Llámanos o escríbenos a cualquier hora.']].map(([i, t, d]) => `<div class="flex gap-3"><span class="text-gold-700 shrink-0">${ic(i, 'w-6 h-6')}</span><div><p class="font-semibold text-navy-900">${t}</p><p class="text-slate-500">${d}</p></div></div>`).join('')}
+    ${[['users', 'Orientación sin tecnicismos', 'Hablamos en tu mismo idioma para que comprendas cada paso legal y médico.'], ['check', 'Evaluación inicial sin costo', 'Revisamos croquis, SOAT y pólizas antes de definir honorarios.'], ['shield', 'Especialidad exclusiva', 'Litigio y conciliación enfocado en indemnizaciones por accidentes de tránsito.'], ['clock', 'Atención inmediata', 'Respondemos por WhatsApp y canales directos en momentos críticos tras el choque.']].map(([i, t, d]) => `<div class="flex gap-3"><span class="text-gold-700 shrink-0">${ic(i, 'w-6 h-6')}</span><div><p class="font-semibold text-navy-900">${t}</p><p class="text-slate-500">${d}</p></div></div>`).join('')}
   </div>
 </section>
 
@@ -703,7 +703,7 @@ function home() {
   <div class="max-w-7xl mx-auto px-6">
     <p class="text-gold-700 text-xs font-semibold uppercase tracking-[0.2em] text-center">Tu situación</p>
     <h2 class="text-3xl md:text-4xl font-semibold text-navy-900 tracking-tight text-center mt-2">¿Qué te ocurrió?</h2>
-    <p class="text-center mt-3 max-w-2xl mx-auto">Elige la opción que más se parezca a tu caso y te llevamos a la información que necesitas.</p>
+    <p class="text-center mt-3 max-w-2xl mx-auto">Cada tipo de siniestro vial tiene reglas específicas de aseguramiento y pruebas. Selecciona tu situación para ir al detalle exacto:</p>
     <div class="mt-10 flex flex-wrap justify-center gap-3">
       ${sit.map(([l, s]) => `<a href="${svcUrl(s)}" class="inline-flex items-center gap-2 bg-white border border-slate-200 hover:border-gold-500 hover:shadow-glow rounded-full px-5 py-3 text-navy-900 font-medium transition-all">${esc(l)}${ic('arrow', 'w-4 h-4 text-gold-700')}</a>`).join('')}
     </div>
@@ -734,7 +734,7 @@ function home() {
 <section class="py-20 bg-navy-900 text-white">
   <div class="max-w-7xl mx-auto px-6">
     <p class="text-gold-500 text-xs font-semibold uppercase tracking-[0.2em]">Cómo trabajamos</p>
-    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mt-2">Un proceso claro, paso a paso</h2>
+    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mt-2">Cómo gestionamos tu caso</h2>
     <ol class="mt-10 grid md:grid-cols-5 gap-6">
       ${PASOS_CASO.map(([t, d], i) => `<li class="border-t-2 border-gold-500 pt-4"><span class="text-gold-500 font-semibold">0${i + 1}</span><h3 class="mt-1 text-lg font-semibold">${esc(t)}</h3><p class="mt-2 text-sm text-slate-400 leading-relaxed">${esc(d)}</p></li>`).join('')}
     </ol>
@@ -798,7 +798,7 @@ function home() {
       <p class="mt-4 leading-relaxed">Orientamos a víctimas de accidentes en Medellín, en los municipios del área metropolitana y en el Oriente antioqueño. El SOAT es nacional; lo que cambia es la autoridad de tránsito y la administración de la vía.</p>
       ${Object.entries(REGIONES).map(([k, R]) => `<p class="mt-6 text-xs font-semibold uppercase tracking-wider text-slate-500">${R.label}</p><div class="mt-2 flex flex-wrap gap-2">${MUNICIPIOS.filter((m) => regionOf(m) === k).map((m) => `<a href="${muniUrl(m)}" class="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 hover:border-gold-500 rounded-full px-4 py-2 text-sm text-navy-900">${esc(m.name)}</a>`).join('')}</div>`).join('')}
       <p class="mt-5"><a href="/area-metropolitana/" class="font-semibold text-navy-900 hover:text-gold-700 inline-flex items-center gap-2">Ver toda la cobertura ${ic('arrow')}</a></p></div>
-    <div class="bg-navy-900 text-white rounded-2xl p-8"><span class="text-gold-500">${ic('calc', 'w-8 h-8')}</span><h2 class="mt-4 text-2xl font-semibold tracking-tight">Calculadora orientativa</h2><p class="mt-3 text-slate-300 leading-relaxed">Mira cómo influyen tus ingresos, la incapacidad y las secuelas en los perjuicios patrimoniales. Es una herramienta de orientación, no una oferta ni una predicción.</p><a href="/calculadora-indemnizacion/" class="mt-6 inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-6 py-3 rounded-lg">Usar la calculadora ${ic('arrow')}</a></div>
+    <div class="bg-navy-900 text-white rounded-2xl p-8"><span class="text-gold-500">${ic('calc', 'w-8 h-8')}</span><h2 class="mt-4 text-2xl font-semibold tracking-tight">Calculadora orientativa de indemnización</h2><p class="mt-3 text-slate-300 leading-relaxed">Estima el impacto económico de tu incapacidad médica, lucro cesante y secuelas permanentes según tus ingresos demostrables y la normativa colombiana.</p><a href="/calculadora-indemnizacion/" class="mt-6 inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-6 py-3 rounded-lg">Usar la calculadora ${ic('arrow')}</a></div>
   </div>
 </section>
 
@@ -1195,7 +1195,7 @@ const checklistHtml = (slug, docs) => `<div data-checklist="${slug}" class="bg-w
   <div class="mt-3 h-1.5 bg-slate-100 rounded-full overflow-hidden"><div data-bar class="h-full w-0 bg-gold-500 transition-all"></div></div>
   <ul class="mt-4 space-y-2">${docs.map((d) => `<li><label class="flex gap-3 items-start cursor-pointer text-sm"><input type="checkbox" class="chk mt-0.5 w-4 h-4 accent-yellow-600 shrink-0"><span>${esc(d)}</span></label></li>`).join('')}</ul></div>`;
 
-const RECIBES = [['file', 'Revisión inicial del caso', 'Analizamos lo que te ocurrió y los datos que tienes.'], ['scale', 'Ruta jurídica recomendada', 'Qué vía conviene en tu situación y por qué.'], ['shield', 'Documentos clave', 'Qué soportes reunir y cuáles son los más importantes.'], ['clock', 'Próximos pasos con tiempos estimados', 'Qué sigue, en qué orden y con qué plazos orientativos.']];
+const RECIBES = [['file', 'Diagnóstico preliminar de viabilidad', 'Revisamos los hechos del siniestro, la asignación de responsabilidad y el estado de tu atención médica.'], ['scale', 'Estrategia de reclamación definida', 'Te explicamos si corresponde acudir al SOAT, al fondo ADRES, a la póliza contractual o extracontractual, o a la vía judicial ordinaria.'], ['shield', 'Checklist de pruebas críticas', 'Identificamos qué documentos médicos, testimonios y facturas de gastos debes preservar antes de que prescriban o se extravíen.'], ['clock', 'Plazos y términos legales reales', 'Te advertimos sobre términos de prescripción, tiempos de respuesta de las aseguradoras y etapas procesales para evitar sorpresas.']];
 const recibeHtml = (dark = false) => `<ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">${RECIBES.map(([i, t, d]) => `<li class="${dark ? 'bg-white/5 border-white/10 text-slate-300' : 'bg-white border-slate-200'} border rounded-2xl p-5"><span class="text-gold-700">${ic(i, 'w-6 h-6')}</span><p class="mt-3 font-semibold ${dark ? 'text-white' : 'text-navy-900'}">${t}</p><p class="mt-1 text-sm">${d}</p></li>`).join('')}</ul>`;
 const HOME_FAQ = faqsFor(FAQ_GENERAL, ['primeros', 'seguros', 'honorarios'], 'home', 8);
 const BIG_FAQ = faqsFor(FAQ_GENERAL, ['primeros', 'seguros', 'lesiones', 'proceso', 'honorarios', 'transporte', 'estado', 'contacto'], 'faq', 28);
