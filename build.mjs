@@ -4,6 +4,7 @@ import { SITE } from './src/config.mjs';
 import { CATEGORIES, AREAS } from './src/areas.mjs';
 import { ENTITIES, linkEntities, detectEntities } from './src/entities.mjs';
 import { PRIVACIDAD, AUTORIZACION, TERMINOS, COOKIES, LEGAL_FAQ } from './src/legal.mjs';
+import { PAGE_SEO, AREA_SEO, HOME_FAQ, areaFaqs } from './src/seo.mjs';
 
 const DIST = 'dist';
 const BUILD_V = Date.now().toString(36);
@@ -297,11 +298,19 @@ function heroBgFor(url) {
   return '/assets/hero/hero-home.webp';
 }
 
+function heroAltFor(url, h1) {
+  if (PAGE_SEO[url]?.heroAlt) return PAGE_SEO[url].heroAlt;
+  const slug = url.replace(/^\/areas-de-accion\/|\/$/g, '');
+  if (AREA_SEO[slug]?.heroAlt) return AREA_SEO[slug].heroAlt;
+  return `${h1 || SITE.name} - Defensa jurídica de derechos humanos en Colombia`;
+}
+
 const pageHero = ({ url = '', h1, sub, ctas = true }) => {
   const bg = heroBgFor(url);
+  const alt = heroAltFor(url, h1);
   return `<section class="relative bg-[#003854] text-white overflow-hidden">
   <div class="absolute inset-0">
-    <img src="${bg}" alt="${esc(h1)} - ${esc(SITE.name)}" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center" />
+    <img src="${bg}" alt="${esc(alt)}" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center" />
     <div class="absolute inset-0 bg-gradient-to-r from-[#070d1a]/85 via-[#0f172a]/70 to-[#0f172a]/55" aria-hidden="true"></div>
   </div>
   <div class="relative max-w-7xl mx-auto px-6 py-10 sm:py-14 md:py-20">
@@ -311,6 +320,27 @@ const pageHero = ({ url = '', h1, sub, ctas = true }) => {
   </div>
 </section>`;
 };
+
+const answerBox = (text) =>
+  `<div class="bg-gold-500/10 border-l-4 border-gold-500 rounded-r-xl p-5" data-respuesta><p class="text-xs font-semibold uppercase tracking-wider text-gold-700">Respuesta directa</p><p class="mt-2 text-navy-900 leading-relaxed">${rich(text)}</p></div>`;
+
+const faqHtml = (faqs) =>
+  `<div data-faq class="space-y-3">${faqs
+    .map(
+      ([q, a]) =>
+        `<details class="group bg-white border border-slate-200 rounded-xl p-5"><summary class="flex justify-between items-center gap-4 cursor-pointer font-semibold text-navy-900 list-none">${esc(q)}<span class="shrink-0 transition-transform group-open:rotate-180">${ic('down')}</span></summary><p class="mt-3 text-slate-600 leading-relaxed text-sm sm:text-base">${rich(a)}</p></details>`
+    )
+    .join('')}</div>`;
+
+const faqSchema = (faqs) => ({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(([q, a]) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+});
 
 const ctaFinal = (
   title = '¿Necesitas orientación jurídica confidencial?',
@@ -359,10 +389,30 @@ function render({ url, title, desc, body, crumbs = [], schema = [], noindex = fa
     '@id': SITE.url + '/#organization',
     name: SITE.legalName || SITE.name,
     url: SITE.url,
-    description: 'Firma de abogados especializada en defensa de derechos humanos, crímenes de Estado, procesos ante la JEP y la CIDH y reparación integral.',
+    logo: SITE.url + LOGO.url,
+    image: SITE.url + (hasOG ? '/assets/og-default.png' : LOGO.url),
+    description: 'Firma de abogados especializada en defensa de derechos humanos, crímenes de Estado, procesos ante la JEP y la CIDH y reparación integral en Colombia.',
     areaServed: { '@type': 'Country', name: 'Colombia' },
     knowsLanguage: 'es',
-    ...(hasPhone ? { telephone: SITE.phoneDial || SITE.phone } : {}),
+    knowsAbout: [
+      'Derechos Humanos',
+      'Crímenes de Estado',
+      'Jurisdicción Especial para la Paz (JEP)',
+      'Comisión Interamericana de Derechos Humanos (CIDH)',
+      'Corte Interamericana de Derechos Humanos',
+      'Reparación directa',
+      'Desaparición forzada',
+      'Ejecuciones extrajudiciales',
+      'Unión Patriótica',
+      'Privación injusta de la libertad',
+    ],
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '00:00',
+      closes: '23:59',
+    },
+    ...(hasPhone ? { telephone: SITE.phoneDial || SITE.phone, contactPoint: { '@type': 'ContactPoint', contactType: 'legal orientation', telephone: SITE.phoneDial || SITE.phone, areaServed: 'CO', availableLanguage: 'es' } } : {}),
     ...(SITE.email ? { email: SITE.email } : {}),
     ...(SITE.address
       ? {
@@ -375,12 +425,24 @@ function render({ url, title, desc, body, crumbs = [], schema = [], noindex = fa
           },
         }
       : {}),
+    ...(TEAM.length
+      ? {
+          employee: TEAM.map((m) => ({
+            '@type': 'Person',
+            name: m.name,
+            jobTitle: m.role,
+          })),
+        }
+      : {}),
   };
 
   const ld = [org, bc, ...schema]
     .filter(Boolean)
     .map((o) => `<script type="application/ld+json">${JSON.stringify(o)}</script>`)
     .join('\n');
+
+  const heroMatch = body.match(/<img\s+[^>]*src="(\/assets\/hero\/[^"]+)"[^>]*alt="([^"]*)"/);
+  const preloadHero = heroMatch ? `<link rel="preload" as="image" href="${heroMatch[1]}" fetchpriority="high">` : '';
 
   const html = `<!DOCTYPE html>
 <html lang="es-CO" class="scroll-smooth">
@@ -390,12 +452,17 @@ function render({ url, title, desc, body, crumbs = [], schema = [], noindex = fa
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${canonical}">
-${noindex ? '<meta name="robots" content="noindex, follow">' : '<meta name="robots" content="index, follow">'}
+${noindex ? '<meta name="robots" content="noindex, follow">' : '<meta name="robots" content="index, follow, max-image-preview:large">'}
 <meta property="og:type" content="website"><meta property="og:locale" content="es_CO"><meta property="og:site_name" content="${esc(SITE.name)}"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}"><meta property="og:url" content="${canonical}">
+${hasOG ? `<meta property="og:image" content="${SITE.url}/assets/og-default.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="${esc(SITE.name)} - Defensa de víctimas del Estado">` : ''}
+<meta name="twitter:card" content="${hasOG ? 'summary_large_image' : 'summary'}"><meta name="twitter:title" content="${esc(title)}"><meta name="twitter:description" content="${esc(desc)}">${hasOG ? `<meta name="twitter:image" content="${SITE.url}/assets/og-default.png">` : ''}
 <meta name="theme-color" content="#0f172a">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/favicon.png" type="image/png" sizes="64x64">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="manifest" href="/assets/site.webmanifest">
+${preloadHero}
+<link rel="preload" as="style" href="/assets/style.css?v=${BUILD_V}">
 <link rel="stylesheet" href="/assets/style.css?v=${BUILD_V}">
 ${ld}
 </head>
@@ -417,7 +484,13 @@ ${searchModalHtml()}
   const out = path.join(DIST, url === '/' ? '' : url, 'index.html');
   fs.mkdirSync(path.dirname(out), { recursive: true });
   fs.writeFileSync(out, html);
-  if (!noindex) pages.push({ url });
+  if (!noindex) {
+    pages.push({
+      url,
+      heroImg: heroMatch ? heroMatch[1] : null,
+      heroAlt: heroMatch ? heroMatch[2] : null,
+    });
+  }
 }
 
 // ---------- Equipo y Casos ----------
@@ -573,7 +646,7 @@ function home() {
   const body = `
 <section class="relative bg-[#003854] text-white overflow-hidden">
   <div class="absolute inset-0">
-    <img src="/assets/hero/hero-home.webp" alt="Derechos con Dignidad: defensa jurídica de víctimas de crímenes de Estado en Colombia" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center" />
+    <img src="/assets/hero/hero-home.webp" alt="${esc(PAGE_SEO['/'].heroAlt)}" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center" />
     <div class="absolute inset-0 bg-gradient-to-r from-[#070d1a]/88 via-[#0f172a]/75 to-[#0f172a]/60" aria-hidden="true"></div>
   </div>
   <div class="relative max-w-7xl mx-auto px-6 py-12 sm:py-16 md:py-24 grid lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-12 items-center">
@@ -742,7 +815,15 @@ function home() {
   </div>
 </section>
 
-<section class="py-20 bg-slate-50" id="contacto-home">
+<section class="py-12 md:py-16 bg-slate-50 border-t border-slate-200" id="preguntas-frecuentes">
+  <div class="max-w-4xl mx-auto px-6">
+    <p class="text-gold-700 text-xs font-semibold uppercase tracking-[0.2em]">Orientación inicial</p>
+    <h2 class="text-2xl md:text-3xl font-semibold text-navy-900 tracking-tight mt-2 mb-6">Preguntas frecuentes</h2>
+    ${faqHtml(HOME_FAQ)}
+  </div>
+</section>
+
+<section class="py-16 md:py-20 bg-white" id="contacto-home">
   <div class="max-w-5xl mx-auto px-6 text-center">
     <h2 class="text-3xl md:text-4xl font-semibold text-navy-900 tracking-tight">Contacto y solicitud de asesoría</h2>
     <p class="mt-3 text-slate-600 max-w-2xl mx-auto">Atención confidencial y gratuita para víctimas y familiares en todo el país, con sede en Medellín.</p>
@@ -758,8 +839,8 @@ ${ctaFinal()}`;
 
   render({
     url: '/',
-    title: 'Derechos con Dignidad | Defensa de víctimas del Estado y derechos humanos',
-    desc: 'Firma de abogados especializada en crímenes de Estado, violaciones de derechos humanos, demandas ante la JEP y la CIDH y reparación integral en Colombia.',
+    title: PAGE_SEO['/'].title,
+    desc: PAGE_SEO['/'].desc,
     body,
     schema: [
       {
@@ -770,6 +851,7 @@ ${ctaFinal()}`;
         url: SITE.url,
         inLanguage: 'es-CO',
       },
+      faqSchema(HOME_FAQ),
     ],
   });
 }
@@ -811,8 +893,8 @@ function areasIndex() {
 
   render({
     url: '/areas-de-accion/',
-    title: 'Áreas de acción | Derechos con Dignidad',
-    desc: 'Áreas de acción jurídica de Derechos con Dignidad: líderes sociales, excombatientes, desaparición forzada, ejecuciones extrajudiciales, Unión Patriótica e indemnizaciones.',
+    title: PAGE_SEO['/areas-de-accion/'].title,
+    desc: PAGE_SEO['/areas-de-accion/'].desc,
     body,
     crumbs,
   });
@@ -850,8 +932,8 @@ function procesosIndex() {
 
   render({
     url: '/procesos-y-demandas/',
-    title: 'Procesos y demandas | Derechos con Dignidad',
-    desc: 'Demandas ante la JEP, peticiones ante la CIDH, privación injusta de la libertad, desaparición forzada, tortura y responsabilidad del Estado.',
+    title: PAGE_SEO['/procesos-y-demandas/'].title,
+    desc: PAGE_SEO['/procesos-y-demandas/'].desc,
     body,
     crumbs,
   });
@@ -878,12 +960,17 @@ function areaPage(slug) {
   ].join(' ');
   const linkedEntities = detectEntities(allText);
 
+  const seo = AREA_SEO[slug] || {};
+  const faqs = areaFaqs(slug, a);
+
   const toc = [
+    ...(seo.answer ? [['respuesta', 'Respuesta directa']] : []),
     ['contexto', 'Contexto del caso'],
     ...(a.listTitle ? [['quienes', a.listTitle]] : []),
     ['servicios', a.servicesTitle],
     ...(a.extraListTitle ? [['casos-frecuentes', a.extraListTitle]] : []),
     ...(a.closingTitle ? [['cierre', a.closingTitle]] : []),
+    ['faq', 'Preguntas frecuentes'],
     ...(linkedEntities.length ? [['estamentos', 'Estamentos externos']] : []),
   ];
 
@@ -891,8 +978,9 @@ function areaPage(slug) {
 
   const body =
     pageHero({ url: areaUrl(slug), h1: a.title, sub: a.sub }) +
-    `<div class="max-w-7xl mx-auto px-6 py-14 grid lg:grid-cols-[1fr_320px] gap-12">
+    `<div class="max-w-7xl mx-auto px-6 py-12 md:py-14 grid lg:grid-cols-[1fr_320px] gap-10 lg:gap-12">
       <article class="space-y-12 min-w-0">
+        ${seo.answer ? `<div id="respuesta" class="scroll-mt-28">${answerBox(seo.answer)}</div>` : ''}
         <section id="contexto" class="scroll-mt-28">
           <h2 class="text-2xl md:text-3xl font-semibold text-navy-900 tracking-tight mb-4">Contexto jurídico y humanitario</h2>
           ${a.intro.map(para).join('')}
@@ -949,6 +1037,11 @@ function areaPage(slug) {
           <footer class="mt-3 text-sm text-slate-300">${esc(a.ctaNote)}</footer>
         </blockquote>
 
+        <section id="faq" class="scroll-mt-28">
+          <h2 class="text-2xl font-semibold text-navy-900 tracking-tight mb-4">Preguntas frecuentes</h2>
+          ${faqHtml(faqs)}
+        </section>
+
         ${entitiesSection(linkedEntities)}
       </article>
 
@@ -979,10 +1072,33 @@ function areaPage(slug) {
 
   render({
     url: areaUrl(slug),
-    title: `${a.title} | ${SITE.name}`,
-    desc: a.sub,
+    title: seo.title || `${a.title} | ${SITE.name}`,
+    desc: seo.desc || a.sub,
     body,
     crumbs,
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: a.title,
+        url: SITE.url + areaUrl(slug),
+        inLanguage: 'es-CO',
+        datePublished: SITE.published,
+        dateModified: SITE.lastReview,
+        isPartOf: { '@id': SITE.url + '/#website' },
+        about: a.short,
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: a.short,
+        serviceType: 'Defensa jurídica en derechos humanos y crímenes de Estado',
+        provider: { '@id': SITE.url + '/#organization' },
+        areaServed: { '@type': 'Country', name: 'Colombia' },
+        description: seo.desc || a.sub,
+      },
+      faqSchema(faqs),
+    ],
   });
 }
 
@@ -1008,10 +1124,18 @@ function nosotrosPage() {
 
   render({
     url: '/nosotros/',
-    title: 'Nuestro equipo | Derechos con Dignidad',
-    desc: 'Conoce al equipo jurídico de Derechos con Dignidad, especializado en litigio contra el Estado y defensa de los derechos humanos.',
+    title: PAGE_SEO['/nosotros/'].title,
+    desc: PAGE_SEO['/nosotros/'].desc,
     body,
     crumbs,
+    schema: TEAM.map((m) => ({
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: m.name,
+      jobTitle: m.role,
+      worksFor: { '@id': SITE.url + '/#organization' },
+      ...(teamPhoto(m) ? { image: SITE.url + teamPhoto(m) } : {}),
+    })),
   });
 }
 
@@ -1066,8 +1190,8 @@ function casosPage() {
 
   render({
     url: '/casos/',
-    title: 'Casos relevantes | Derechos con Dignidad',
-    desc: 'Casos relevantes y trayectoria de Derechos con Dignidad: Unión Patriótica ante la Corte IDH, Macrocaso 06 en la JEP y Masacre de El Topacio.',
+    title: PAGE_SEO['/casos/'].title,
+    desc: PAGE_SEO['/casos/'].desc,
     body,
     crumbs,
   });
@@ -1099,7 +1223,7 @@ function contactoPage() {
           </div>
         </div>
         <div class="h-full bg-slate-100">
-          <img src="/assets/team/equipo-derechos-con-dignidad.jpg" alt="Equipo jurídico de Derechos con Dignidad en su oficina de Medellín" width="585" height="480" loading="lazy" decoding="async" class="w-full h-full object-cover object-top" />
+          <img src="/assets/team/equipo-derechos-con-dignidad.webp" alt="Equipo jurídico de Derechos con Dignidad en su oficina de Medellín: Andrés Restrepo, Alejandro Botero, Yudy Elena Moreno, Juan Esteban Montoya y Daniel Montoya" width="585" height="480" loading="lazy" decoding="async" class="w-full h-full object-cover object-top" />
         </div>
       </section>
       ${SITE.mapEmbed
@@ -1110,8 +1234,8 @@ function contactoPage() {
 
   render({
     url: '/contacto/',
-    title: 'Contacto y asesoría | Derechos con Dignidad',
-    desc: 'Comunícate con Derechos con Dignidad en Medellín. Solicita una primera orientación jurídica confidencial y gratuita.',
+    title: PAGE_SEO['/contacto/'].title,
+    desc: PAGE_SEO['/contacto/'].desc,
     body,
     crumbs,
   });
@@ -1159,8 +1283,8 @@ function legalPage({ url, title, desc, h1, sub, sections, note, faq }) {
 function legales() {
   legalPage({
     url: '/politica-de-privacidad/',
-    title: 'Política de privacidad | Derechos con Dignidad',
-    desc: 'Cómo recoge, usa y protege los datos personales Derechos con Dignidad conforme a la Ley 1581 de 2012.',
+    title: PAGE_SEO['/politica-de-privacidad/'].title,
+    desc: PAGE_SEO['/politica-de-privacidad/'].desc,
     h1: 'Política de privacidad',
     sub: 'Cómo recopilamos, protegemos y utilizamos los datos personales.',
     sections: PRIVACIDAD,
@@ -1169,8 +1293,8 @@ function legales() {
   });
   legalPage({
     url: '/tratamiento-de-datos/',
-    title: 'Política de tratamiento de datos personales | Derechos con Dignidad',
-    desc: 'Autorización y política de tratamiento de datos personales conforme a la Ley 1581 de 2012.',
+    title: PAGE_SEO['/tratamiento-de-datos/'].title,
+    desc: PAGE_SEO['/tratamiento-de-datos/'].desc,
     h1: 'Tratamiento de datos personales',
     sub: 'Autorización para el tratamiento de datos personales y datos sensibles.',
     sections: AUTORIZACION,
@@ -1178,8 +1302,8 @@ function legales() {
   });
   legalPage({
     url: '/terminos-de-uso/',
-    title: 'Términos de uso | Derechos con Dignidad',
-    desc: 'Condiciones de uso del sitio web informativo de Derechos con Dignidad.',
+    title: PAGE_SEO['/terminos-de-uso/'].title,
+    desc: PAGE_SEO['/terminos-de-uso/'].desc,
     h1: 'Términos de uso',
     sub: 'Condiciones de uso y alcance informativo del sitio.',
     sections: TERMINOS,
@@ -1187,8 +1311,8 @@ function legales() {
   });
   legalPage({
     url: '/politica-de-cookies/',
-    title: 'Política de cookies | Derechos con Dignidad',
-    desc: 'Información sobre cookies y almacenamiento local en el sitio web de Derechos con Dignidad.',
+    title: PAGE_SEO['/politica-de-cookies/'].title,
+    desc: PAGE_SEO['/politica-de-cookies/'].desc,
     h1: 'Política de cookies',
     sub: 'Uso de cookies y tecnologías de almacenamiento.',
     sections: COOKIES,
@@ -1213,7 +1337,7 @@ function notFoundPage() {
   render({
     url: '/no-encontrado/',
     title: 'Página no encontrada | Derechos con Dignidad',
-    desc: 'La página solicitada no existe. Vuelve al inicio de Derechos con Dignidad.',
+    desc: 'La página solicitada no existe o cambió de dirección. Vuelve al inicio de Derechos con Dignidad o consulta nuestras áreas de acción y procesos.',
     body,
     noindex: true,
   });
@@ -1237,9 +1361,9 @@ const w = (f, c) => {
   fs.writeFileSync(full, c);
 };
 
-// Copiar assets estáticos
+// Copiar assets estáticos (solo las imágenes y favicons realmente usados para optimizar velocidad)
 w('assets/logo' + LOGO.ext, fs.readFileSync(LOGO.file));
-for (const ic2 of ['apple-touch-icon.png', 'icon-512.png']) {
+for (const ic2 of ['favicon.ico', 'favicon.png', 'apple-touch-icon.png', 'icon-512.png']) {
   if (fs.existsSync('src/assets/' + ic2)) fs.copyFileSync('src/assets/' + ic2, path.join(DIST, 'assets', ic2));
 }
 w(
@@ -1259,9 +1383,174 @@ w(
 );
 if (hasOG) fs.copyFileSync('src/assets/og-default.png', path.join(DIST, 'assets', 'og-default.png'));
 if (fs.existsSync('src/assets/team')) fs.cpSync('src/assets/team', path.join(DIST, 'assets', 'team'), { recursive: true });
-if (fs.existsSync('src/assets/hero')) fs.cpSync('src/assets/hero', path.join(DIST, 'assets', 'hero'), { recursive: true });
-if (fs.existsSync('src/assets/favicon.svg')) fs.copyFileSync('src/assets/favicon.svg', path.join(DIST, 'assets', 'favicon.svg'));
+for (const hImg of ['hero-home.webp', 'hero-equipo.webp', 'hero-contacto.webp', 'hero-legal.webp', 'hero-penal.webp', 'hero-no-encontrado.webp']) {
+  if (fs.existsSync('src/assets/hero/' + hImg)) {
+    fs.mkdirSync(path.join(DIST, 'assets', 'hero'), { recursive: true });
+    fs.copyFileSync('src/assets/hero/' + hImg, path.join(DIST, 'assets', 'hero', hImg));
+  }
+}
 w('assets/app.js', fs.readFileSync('src/app.js', 'utf8'));
+
+// ---------- SEO técnico, sitemap, robots, .htaccess y posicionamiento LLM (llms.txt / llms-full.txt) ----------
+function tech() {
+  w(
+    'sitemap.xml',
+    `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${pages
+  .map((p) => {
+    const imgTag = p.heroImg
+      ? `\n    <image:image>\n      <image:loc>${SITE.url}${p.heroImg}</image:loc>\n      <image:title>${esc(p.heroAlt || SITE.name)}</image:title>\n    </image:image>`
+      : '';
+    return `  <url>\n    <loc>${SITE.url}${p.url}</loc>\n    <lastmod>${SITE.lastReview}</lastmod>${imgTag}\n  </url>`;
+  })
+  .join('\n')}
+</urlset>\n`
+  );
+
+  w(
+    'robots.txt',
+    `# Política de rastreo para buscadores y motores de IA - Derechos con Dignidad
+User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: ${SITE.url}/sitemap.xml
+`
+  );
+
+  w(
+    '.htaccess',
+    `# Derechos con Dignidad - Optimización Apache / cPanel
+DirectoryIndex index.html
+Options -Indexes
+ErrorDocument 404 /404.html
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/plain text/xml application/xml image/svg+xml application/json
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 month"
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+`
+  );
+
+  const legalMd = LEGAL_LINKS.map(([t, u]) => `- [${t}](${SITE.url}${u})`).join('\n');
+  const entitiesMd = ENTITIES.map((e) => `- [${e.name}](${e.url}): ${e.desc}`).join('\n');
+
+  w(
+    'llms.txt',
+    [
+      `# ${SITE.name}`,
+      `> ${SITE.name} es una firma jurídica colombiana con sede principal en Medellín (${SITE.address}, teléfono ${SITE.phone}), especializada en defensa de víctimas del Estado, derechos humanos, crímenes de lesa humanidad, litigio ante la JEP y el Sistema Interamericano (CIDH y Corte IDH), y demandas de reparación integral en toda Colombia. Primera consulta gratuita y confidencial; disponibilidad 24/7.`,
+      `Última actualización: ${SITE.lastReview}. Idioma: español (Colombia).`,
+      '## Datos clave',
+      [
+        `- Organización: ${SITE.name}`,
+        `- Enfoque: Litigio de interés público y representación judicial de víctimas`,
+        `- Sede principal: ${SITE.address}`,
+        `- Teléfono: ${SITE.phone}`,
+        `- Atención: ${SITE.hours} (primera consulta gratuita y confidencial)`,
+        `- Cobertura: Toda Colombia e instancias internacionales`,
+      ].join('\n'),
+      '## Áreas de acción, procesos y demandas',
+      ...CATEGORIES.map(
+        (cat) =>
+          `### ${cat.title}\n` +
+          cat.items
+            .map((slug) => {
+              const a = AREAS[slug];
+              const seo = AREA_SEO[slug];
+              return `- [${a.title}](${SITE.url}${areaUrl(slug)}): ${seo?.answer || a.sub}`;
+            })
+            .join('\n')
+      ),
+      '## Casos relevantes documentados',
+      SITE.cases
+        .map((c) => `- **${c.title}** (${c.instance}): ${c.result} [Ver detalles](${SITE.url}/casos/#${c.slug})`)
+        .join('\n'),
+      '## Equipo jurídico',
+      SITE.team.map((m) => `- ${m.name}: ${m.role}`).join('\n'),
+      '## Estamentos del Estado y organismos oficiales',
+      entitiesMd,
+      '## Páginas institucionales y legales',
+      [`- [Nuestro equipo](${SITE.url}/nosotros/)`, `- [Casos relevantes](${SITE.url}/casos/)`, `- [Contacto y asesoría](${SITE.url}/contacto/)`, legalMd].join('\n'),
+      '## Documentación completa para asistentes de IA',
+      `- [Contenido completo en Markdown](${SITE.url}/llms-full.txt)`,
+    ].join('\n\n') + '\n'
+  );
+
+  const fullBlocks = [
+    `# ${SITE.name} (Corpus completo para motores de búsqueda e IA)`,
+    `> Defensa jurídica de víctimas del Estado, derechos humanos, crímenes de lesa humanidad, litigio ante la JEP, CIDH, Corte IDH y Consejo de Estado en Colombia. Sede: ${SITE.address}. Teléfono: ${SITE.phone}. Atención 24/7; primera consulta gratuita y confidencial. Última actualización: ${SITE.lastReview}.`,
+    '## Preguntas frecuentes principales',
+    HOME_FAQ.map(([q, a]) => `### ${q}\n${a}`).join('\n\n'),
+    '## Áreas de acción, procesos y demandas (detalle)',
+    ...Object.entries(AREAS).map(([slug, a]) => {
+      const seo = AREA_SEO[slug];
+      const parts = [
+        `### ${a.title}`,
+        `URL: ${SITE.url}${areaUrl(slug)}`,
+        seo?.answer ? `**Respuesta directa:** ${seo.answer}` : '',
+        ...(a.intro || []),
+        a.listTitle ? `**${a.listTitle}**\n` + a.listItems.map((i) => `- ${i}`).join('\n') : '',
+        a.servicesTitle ? `**${a.servicesTitle}**\n` + a.services.map(([t, d]) => `- **${t}:** ${d}`).join('\n') : '',
+        a.extraListTitle ? `**${a.extraListTitle}**\n` + a.extraListItems.map((i) => `- ${i}`).join('\n') : '',
+        ...(a.closingText || []),
+      ].filter(Boolean);
+      return parts.join('\n\n');
+    }),
+    '## Casos relevantes documentados y modelo de litigio',
+    ...SITE.cases.map((c) =>
+      [
+        `### ${c.title}`,
+        `Instancia: ${c.instance}`,
+        `Contexto: ${c.context}`,
+        `Rol de Derechos con Dignidad: ${c.work}`,
+        `Resultado y estado: ${c.result}`,
+        `Fuentes: ${(c.sources || []).map(([l, u]) => `[${l}](${u})`).join(' | ')}`,
+      ].join('\n\n')
+    ),
+    '## Estamentos oficiales vinculados',
+    entitiesMd,
+  ];
+  w('llms-full.txt', fullBlocks.join('\n\n') + '\n');
+}
+tech();
 
 // 404.html en la raíz
 w(

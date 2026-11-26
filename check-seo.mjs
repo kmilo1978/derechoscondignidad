@@ -22,13 +22,20 @@ for (const f of files) {
   const d = (h.match(/<meta name="description" content="(.*?)"/) || [])[1] || '';
   const h1 = (h.match(/<h1[\s>]/g) || []).length;
   if (h1 !== 1) bad(f, `h1=${h1}`);
-  if (!t) bad(f, 'sin title');
-  if (!d) bad(f, 'sin meta description');
+  if (t.length < 20 || t.length > 72) bad(f, `title ${t.length} car.`);
+  if (d.length < 90 || d.length > 175) bad(f, `meta ${d.length} car.`);
   if (titles.has(t)) bad(f, 'title duplicado');
   titles.set(t, f);
   if (metas.has(d)) bad(f, 'meta duplicada');
   metas.set(d, f);
   if (!/rel="canonical"/.test(h) && !/404\.html$/.test(f)) bad(f, 'sin canonical');
+  if (!/property="og:image"/.test(h)) bad(f, 'sin og:image');
+
+  for (const imgTag of h.matchAll(/<img\s+([^>]+)>/g)) {
+    const attrs = imgTag[1];
+    if (!/\balt="[^"]+"/.test(attrs)) bad(f, 'imagen sin alt descriptivo');
+    if (!/\bwidth="\d+"/.test(attrs) || !/\bheight="\d+"/.test(attrs)) bad(f, 'imagen sin width/height');
+  }
 
   const rel = f.replace('dist', '').replace(/\\/g, '/');
   if (rel !== '/index.html' && !/404\.html$/.test(rel) && !/aria-label="Migas de pan"/.test(h)) {
@@ -50,6 +57,10 @@ for (const f of files) {
   for (const m of h.matchAll(/href="#([^"]+)"/g)) {
     if (!ids.includes(m[1])) bad(f, 'ancla rota #' + m[1]);
   }
+}
+
+for (const reqFile of ['dist/sitemap.xml', 'dist/robots.txt', 'dist/llms.txt', 'dist/llms-full.txt', 'dist/.htaccess', 'dist/assets/favicon.ico', 'dist/assets/favicon.png']) {
+  if (!fs.existsSync(reqFile)) bad(reqFile, 'archivo tecnico faltante');
 }
 
 console.log(`Revisadas ${files.length} páginas. Problemas: ${problems}`);

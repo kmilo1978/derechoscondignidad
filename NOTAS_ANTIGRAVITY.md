@@ -16,3 +16,8 @@
 - Fecha: 2026-11-26
 - Resultado: Aprobado (build, check-links, check-seo y verificación en navegador en escritorio y móvil sin errores).
 - Observaciones: Corregido el selector CSS `.breadcrumb ol` en `src/input.css` tras detectar en navegador que inicialmente apilaba en vertical; verificado posteriormente en una sola línea horizontal.
+
+## Validación completada (SEO On-Page, LLM, Imágenes, Velocidad y Favicon)
+- Fecha: 2026-11-26
+- Resultado: Aprobado (0 enlaces rotos, 0 problemas SEO/técnicos en 26 archivos HTML).
+- Observaciones: Se generaron `favicon.ico`, `favicon.png`, `apple-touch-icon.png`, `icon-512.png`, `og-default.png` actualizado, foto del equipo convertida a WebP (`28.4 KB`), precarga de imagen hero LCP, `sitemap.xml`, `robots.txt`, `.htaccess`, `llms.txt` y `llms-full.txt`, además de bloques de respuesta directa y FAQPage JSON-LD.
