@@ -1322,17 +1322,45 @@ function legales() {
 
 // ---------- 404 ----------
 function notFoundPage() {
+  const quick = [
+    ['shield', 'Áreas de acción', 'Crímenes de Estado, líderes sociales, Unión Patriótica e indemnizaciones.', '/areas-de-accion/'],
+    ['gavel', 'Procesos y demandas', 'Demandas ante la JEP, CIDH, desaparición forzada y privación injusta.', '/procesos-y-demandas/'],
+    ['users', 'Nuestro equipo', 'Conoce a los abogados especialistas en derechos humanos y litigio.', '/nosotros/'],
+    ['scale', 'Casos relevantes', 'Trayectoria documentada ante la Corte IDH, JEP y litigio multinivel.', '/casos/'],
+    ['pin', 'Contacto y ubicación', 'Atención 24/7 en Medellín, mapa interactivo y formulario confidencial.', '/contacto/'],
+    ['file', 'Política de privacidad', 'Reserva profesional y tratamiento de datos personales (Ley 1581).', '/politica-de-privacidad/'],
+  ];
+
   const body = `<section class="relative bg-[#003854] text-white overflow-hidden">
   <div class="absolute inset-0">
-    <img src="/assets/hero/hero-no-encontrado.webp" alt="Página no encontrada - ${esc(SITE.name)}" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center" />
-    <div class="absolute inset-0 bg-gradient-to-r from-[#070d1a]/85 via-[#0f172a]/70 to-[#0f172a]/55" aria-hidden="true"></div>
+    <img src="/assets/hero/hero-no-encontrado.webp" alt="Página no encontrada en ${esc(SITE.name)}" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center" />
+    <div class="absolute inset-0 bg-gradient-to-r from-[#070d1a]/88 via-[#0f172a]/75 to-[#0f172a]/60" aria-hidden="true"></div>
   </div>
-  <div class="relative max-w-3xl mx-auto px-6 py-20 md:py-28 text-center">
+  <div class="relative max-w-3xl mx-auto px-6 py-16 md:py-24 text-center">
     <p class="text-7xl md:text-8xl font-semibold tracking-tight text-gold-500" aria-hidden="true">404</p>
-    <h1 class="mt-4 text-3xl md:text-4xl font-semibold tracking-tight">Esta página no existe o cambió de dirección</h1>
-    <p class="mt-4 text-lg text-slate-300">Revisa el enlace o explora nuestras áreas de acción y procesos jurídicos.</p>
-    <div class="mt-8 flex flex-wrap gap-3 justify-center"><a href="/" class="${goldBtn}">Volver al inicio</a>${btnCall(undefined, '', '404')}</div>
-  </div></section>`;
+    <h1 class="mt-4 text-3xl md:text-4xl font-semibold tracking-tight text-white">Esta página no existe o cambió de dirección</h1>
+    <p class="mt-4 text-base sm:text-lg text-slate-200 leading-relaxed">Revisa el enlace o usa el buscador y los accesos directos para encontrar el servicio o la información jurídica que necesitas.</p>
+    <div class="mt-8 flex flex-wrap gap-3 justify-center">
+      <a href="/" class="${goldBtn}">Volver al inicio</a>
+      <button type="button" data-open-search class="${outlineBtn} cursor-pointer">${ic('search', 'w-5 h-5')}Buscar en el sitio</button>
+      ${btnCall(undefined, '', '404')}
+    </div>
+  </div>
+</section>
+<section class="py-12 md:py-16 bg-slate-50">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-2xl font-semibold text-navy-900 tracking-tight mb-6 text-center">Quizás buscabas</h2>
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      ${quick
+        .map(
+          ([i, t, x, u]) =>
+            `<li><a href="${u}" class="group flex gap-4 items-start bg-white border border-slate-200 hover:border-gold-500 hover:shadow-glow rounded-xl p-5 h-full transition-all"><span class="w-10 h-10 shrink-0 rounded-lg bg-navy-900 text-gold-500 flex items-center justify-center">${ic(i, 'w-5 h-5')}</span><span class="min-w-0"><span class="block font-semibold text-navy-900 group-hover:text-gold-700">${esc(t)}</span><span class="block text-sm text-slate-600 mt-1 leading-relaxed">${esc(x)}</span></span></a></li>`
+        )
+        .join('')}
+    </ul>
+    <p class="mt-8 text-center text-sm text-slate-600">¿Necesitas orientación confidencial? <a class="underline text-navy-900 font-medium hover:text-gold-700" href="/contacto/">Escríbenos desde contacto</a>.</p>
+  </div>
+</section>`;
 
   render({
     url: '/no-encontrado/',
