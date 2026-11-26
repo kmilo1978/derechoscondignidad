@@ -55,6 +55,15 @@ export const ENTITIES = [
     ],
   },
   {
+    id: 'corte-constitucional',
+    name: 'Corte Constitucional de Colombia',
+    url: 'https://www.corteconstitucional.gov.co/',
+    desc: 'Máximo tribunal encargado de la guarda de la integridad y supremacía de la Constitución Política.',
+    patterns: [
+      /\bCorte Constitucional\b/g,
+    ],
+  },
+  {
     id: 'fiscalia',
     name: 'Fiscalía General de la Nación',
     url: 'https://www.fiscalia.gov.co/colombia/',
@@ -124,11 +133,13 @@ export const ENTITIES = [
   },
 ];
 
-// Enlaza la primera o todas las menciones de estamentos en HTML ya escapado, evitando anidar <a>.
-export function linkEntities(escapedHtml) {
+// Enlaza menciones de estamentos en HTML ya escapado, evitando anidar <a> y adaptando contraste en fondos oscuros.
+export function linkEntities(escapedHtml, dark = false) {
   const tokens = [];
   let out = escapedHtml;
-  const linkClass = 'underline decoration-gold-600/70 underline-offset-2 text-navy-900 font-medium hover:text-gold-700 transition-colors';
+  const linkClass = dark
+    ? 'underline decoration-gold-500/80 underline-offset-2 text-gold-500 font-medium hover:text-white transition-colors'
+    : 'underline decoration-gold-600/70 underline-offset-2 text-navy-900 font-medium hover:text-gold-700 transition-colors';
 
   for (const ent of ENTITIES) {
     for (const re of ent.patterns) {

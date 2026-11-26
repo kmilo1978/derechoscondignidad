@@ -13,7 +13,8 @@ export const SITE = {
   street: 'Calle 53 # 45-112',
   address: 'Calle 53 # 45-112, Medellín, Antioquia',
   hours: 'Disponibilidad 24/7',
-  mapEmbed: '', // URL de embed de Google Maps
+  mapEmbed: '', // Pegar aquí el src del iframe de Google Maps ("Compartir > Insertar un mapa")
+  mapUrl: 'https://www.google.com/maps/search/?api=1&query=Calle+53+%23+45-112,+Medellin,+Antioquia',
   lawyers: [], // [{ name, tp: 'tarjeta profesional', bio, photo }]
   teamIntro: 'Profesionales con experiencia en litigio contra el Estado y defensa de los derechos humanos.',
   team: [

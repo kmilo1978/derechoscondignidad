@@ -18,7 +18,7 @@ const esc = (s) =>
     .replace(/"/g, '&quot;');
 
 const digits = (s) => String(s).replace(/\D/g, '');
-const rich = (txt) => linkEntities(esc(txt));
+const rich = (txt, dark = false) => linkEntities(esc(txt), dark);
 const para = (p) => `<p class="leading-relaxed mb-4">${rich(p)}</p>`;
 
 // ---------- Iconos SVG inline (misma línea de diseño, sin emoticones) ----------
@@ -305,7 +305,7 @@ const pageHero = ({ url = '', h1, sub, ctas = true }) => {
   </div>
   <div class="relative max-w-7xl mx-auto px-6 py-14 md:py-20">
     <h1 class="text-3xl md:text-5xl font-semibold tracking-tight max-w-4xl leading-tight">${esc(h1)}</h1>
-    ${sub ? `<p class="mt-5 text-lg text-slate-100 max-w-3xl leading-relaxed">${rich(sub)}</p>` : ''}
+    ${sub ? `<p class="mt-5 text-lg text-slate-100 max-w-3xl leading-relaxed">${rich(sub, true)}</p>` : ''}
     ${ctas ? `<div class="mt-8 flex flex-wrap gap-3">${btnWA('Hablar por WhatsApp', '', 'hero')}${btnCall(undefined, '', 'hero')}</div>` : ''}
   </div>
 </section>`;
@@ -530,13 +530,14 @@ function home() {
   </div>
   <div class="relative max-w-7xl mx-auto px-6 py-16 md:py-24 grid lg:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
     <div>
-      <h1 class="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.08]">Defensa jurídica para <span class="text-gold-500">víctimas del Estado</span> y reparación integral</h1>
-      <p class="mt-6 text-lg md:text-xl text-slate-100 leading-relaxed max-w-2xl">En ${esc(SITE.name)} representamos a víctimas y familiares frente a crímenes de Estado y violaciones graves de derechos humanos, con litigio nacional ante el Consejo de Estado y la JEP, y defensa internacional ante la CIDH y la Corte Interamericana de Derechos Humanos.</p>
+      <h1 class="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.08]">Defendemos a <span class="text-gold-500">Víctimas del Estado</span> y Luchamos por su <span class="text-gold-500">Reparación Integral</span></h1>
+      <p class="mt-6 text-lg md:text-xl text-slate-100 leading-relaxed max-w-2xl">${rich('Especialistas en Derechos Humanos, CIDH, JEP y crímenes de lesa humanidad.', true)}</p>
       <div class="mt-9 flex flex-wrap gap-3">${btnWA('Hablar por WhatsApp', '', 'hero')}<a href="#areas" class="inline-flex items-center justify-center gap-2 border border-white/30 hover:bg-white/10 text-white font-medium px-6 py-3.5 rounded-lg transition-colors">Explorar áreas de acción ${ic('down')}</a></div>
-      <ul class="mt-12 pt-8 border-t border-white/10 grid sm:grid-cols-3 gap-6 text-sm">
-        <li class="flex gap-3">${ic('shield', 'w-5 h-5 text-gold-500 shrink-0')}<span><strong class="block text-white">Reserva absoluta</strong>Protegemos tu identidad, tus pruebas y la seguridad de tu familia.</span></li>
-        <li class="flex gap-3">${ic('gavel', 'w-5 h-5 text-gold-500 shrink-0')}<span><strong class="block text-white">Litigio especializado</strong>Acciones de reparación directa, macrocasos y peticiones internacionales.</span></li>
-        <li class="flex gap-3">${ic('heart', 'w-5 h-5 text-gold-500 shrink-0')}<span><strong class="block text-white">Trato humano</strong>Acompañamiento jurídico cercano, sin revictimización ni tecnicismos.</span></li>
+      <ul class="mt-12 pt-8 border-t border-white/10 grid sm:grid-cols-2 gap-6 text-sm">
+        <li class="flex gap-3">${ic('gavel', 'w-5 h-5 text-gold-500 shrink-0')}<span><strong class="block text-white">Defensa Experta</strong>Abogados especializados en litigio contra el Estado.</span></li>
+        <li class="flex gap-3">${ic('users', 'w-5 h-5 text-gold-500 shrink-0')}<span><strong class="block text-white">Atención Humana</strong>Acompañamiento empático y personalizado en cada paso.</span></li>
+        <li class="flex gap-3">${ic('shield', 'w-5 h-5 text-gold-500 shrink-0')}<span><strong class="block text-white">Consulta Sin Costo</strong>Evaluamos su caso de forma gratuita y confidencial.</span></li>
+        <li class="flex gap-3">${ic('clock', 'w-5 h-5 text-gold-500 shrink-0')}<span><strong class="block text-white">Disponibilidad 24/7</strong>Estamos a su lado cuando más nos necesita.</span></li>
       </ul>
     </div>
     <div class="bg-white rounded-2xl shadow-2xl p-6 md:p-8 border-t-4 border-gold-500 text-slate-600" id="formulario">
@@ -557,13 +558,34 @@ function home() {
   </div>
 </section>
 
-<section class="py-12 bg-white border-b border-slate-200" id="quienes-somos">
-  <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-[1fr_auto] gap-6 items-center">
+<section class="py-16 bg-white border-b border-slate-200" id="quienes-somos">
+  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-[1.25fr_0.75fr] gap-10 items-center">
     <div>
-      <h2 class="text-2xl font-semibold text-navy-900">Presentación institucional</h2>
-      <p class="mt-3 leading-relaxed text-slate-600"><strong class="text-navy-900">${esc(SITE.name)}</strong> es una firma jurídica dedicada a la defensa de víctimas de crímenes de Estado y violaciones graves de derechos humanos en Colombia. Con sede en ${esc(SITE.address)} y atención 24/7, acompañamos a víctimas y familiares desde la reconstrucción probatoria hasta las instancias judiciales nacionales e internacionales.</p>
+      <p class="text-gold-700 text-xs font-semibold uppercase tracking-[0.2em]">${rich('Especialistas en Derechos Humanos, CIDH, JEP y crímenes de lesa humanidad.')}</p>
+      <h2 class="mt-2 text-3xl md:text-4xl font-semibold text-navy-900 tracking-tight">Has venido al lugar correcto</h2>
+      <p class="mt-4 leading-relaxed text-slate-600">Representamos los intereses de cientos de personas y familias que han sufrido daños por el actuar del Estado colombiano.</p>
+      <p class="mt-3 leading-relaxed text-slate-600">${rich('Actuamos ante la Corte Interamericana de Derechos Humanos, el Consejo de Estado, Corte Constitucional, tribunales y juzgados de la jurisdicción contencioso administrativa y como representantes de víctimas ante la Fiscalía General de la Nación y jueces penales.')}</p>
+      <p class="mt-3 leading-relaxed text-slate-600">Desde nuestra sede principal en Medellín, adelantamos procesos en todo el país y ante instancias internacionales.</p>
+      <div class="mt-6">
+        <a href="/nosotros/" class="inline-flex items-center justify-center gap-2 border border-slate-300 hover:border-gold-500 text-navy-900 font-semibold px-5 py-3 rounded-lg transition-colors">Conocer al equipo ${ic('arrow', 'w-4 h-4')}</a>
+      </div>
     </div>
-    <a href="/nosotros/" class="inline-flex items-center justify-center gap-2 border border-slate-300 hover:border-gold-500 text-navy-900 font-semibold px-5 py-3 rounded-lg transition-colors shrink-0">Conocer al equipo ${ic('arrow', 'w-4 h-4')}</a>
+    <div class="grid gap-4">
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 flex items-start gap-4">
+        <span class="w-11 h-11 rounded-xl bg-navy-900 text-gold-500 flex items-center justify-center shrink-0">${ic('shield', 'w-6 h-6')}</span>
+        <div>
+          <p class="font-semibold text-navy-900 text-lg">Años de experiencia certificados.</p>
+          <p class="mt-1 text-sm text-slate-600">Trayectoria comprobada en litigio contra el Estado y defensa de los derechos humanos.</p>
+        </div>
+      </div>
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 flex items-start gap-4">
+        <span class="w-11 h-11 rounded-xl bg-navy-900 text-gold-500 flex items-center justify-center shrink-0">${ic('check', 'w-6 h-6')}</span>
+        <div>
+          <p class="font-semibold text-navy-900 text-lg">Casos ganados exitosos durante nuestro trayecto.</p>
+          <p class="mt-1 text-sm text-slate-600">Representación comprometida ante tribunales nacionales e internacionales.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -668,7 +690,7 @@ function home() {
 
 <section class="py-16 bg-white">
   <div class="max-w-7xl mx-auto px-6">
-    ${entitiesSection(ENTITIES.filter((e) => ['jep', 'cidh', 'corte-idh', 'consejo-estado', 'fiscalia', 'arn'].includes(e.id)), 'Estamentos del Estado y organismos internacionales')}
+    ${entitiesSection(ENTITIES.filter((e) => ['jep', 'cidh', 'corte-idh', 'consejo-estado', 'corte-constitucional', 'fiscalia'].includes(e.id)), 'Estamentos del Estado y organismos internacionales')}
   </div>
 </section>
 
@@ -986,7 +1008,9 @@ function contactoPage() {
         <div class="bg-white border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('phone', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">Teléfono</p>${hasPhone ? `<p class="mt-2"><a class="underline text-navy-900" data-track="call" data-loc="contacto" href="${telLink}">${esc(SITE.phone)}</a></p>` : `<p class="mt-2 text-sm">${pending('teléfono.')}</p>`}</div>
         <div class="bg-white border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('pin', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">Oficina en Medellín</p><p class="mt-2 text-sm text-slate-600">${esc(SITE.address)}</p><p class="mt-1 text-sm text-slate-500">${esc(SITE.hours)}</p></div>
       </div>
-      ${SITE.mapEmbed ? `<iframe title="Ubicación de la oficina en Medellín" src="${esc(SITE.mapEmbed)}" class="w-full h-80 rounded-2xl border border-slate-200" loading="lazy"></iframe>` : pending('enlace del mapa interactivo de Google Maps y correo electrónico de la firma.')}
+      ${SITE.mapEmbed
+        ? `<section class="space-y-3"><div class="flex flex-wrap items-center justify-between gap-3"><h2 class="text-xl font-semibold text-navy-900">Ubicación de nuestra oficina en Medellín</h2>${SITE.mapUrl ? `<a href="${esc(SITE.mapUrl)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-navy-900 hover:text-gold-700 underline underline-offset-2">Abrir en Google Maps ${ic('external', 'w-4 h-4')}</a>` : ''}</div><iframe title="Ubicación de la oficina de Derechos con Dignidad en Medellín" src="${esc(SITE.mapEmbed)}" class="w-full h-80 rounded-2xl border border-slate-200" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></section>`
+        : `<section class="bg-white border border-slate-200 rounded-2xl p-6 space-y-3"><div class="flex flex-wrap items-center justify-between gap-3"><h2 class="text-xl font-semibold text-navy-900">Ubicación de nuestra oficina en Medellín</h2>${SITE.mapUrl ? `<a href="${esc(SITE.mapUrl)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-navy-900 hover:text-gold-700 underline underline-offset-2">Ver dirección en Google Maps ${ic('external', 'w-4 h-4')}</a>` : ''}</div><p class="text-sm text-slate-600">${esc(SITE.address)}</p>${pending('código o enlace de inserción (iframe) de Google Maps y correo electrónico de la firma.')}</section>`}
       ${contactFormHtml()}
     </div>`;
 
