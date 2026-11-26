@@ -540,6 +540,7 @@
     var panel = document.getElementById('waPanel');
     var closeBtn = document.getElementById('waCloseBtn');
     var noteInput = document.getElementById('waNote');
+    var emailInput = document.getElementById('waEmail');
     var sendLink = document.getElementById('waSendLink');
     var opts = $$('[data-wa-option]', widget);
     var waNum = widget.getAttribute('data-wa') || '';
@@ -551,7 +552,9 @@
     function buildMessage() {
       var msg = pageTag ? selectedBase.replace('Derechos con Dignidad', 'Derechos con Dignidad' + pageTag) : selectedBase;
       var note = noteInput ? noteInput.value.trim() : '';
+      var email = emailInput ? emailInput.value.trim() : '';
       if (note) msg += ' Datos / detalle: ' + note + '.';
+      if (email) msg += ' Correo: ' + email + '.';
       return msg;
     }
 
@@ -599,6 +602,7 @@
       });
     });
     if (noteInput) noteInput.addEventListener('input', syncLink);
+    if (emailInput) emailInput.addEventListener('input', syncLink);
     document.addEventListener('click', function (e) {
       if (panel && !panel.classList.contains('hidden') && !widget.contains(e.target)) {
         setOpen(false);

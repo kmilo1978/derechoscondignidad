@@ -264,9 +264,9 @@ function whatsappWidgetHtml() {
       </div>
       <button id="waCloseBtn" type="button" class="text-slate-300 hover:text-gold-500 p-1 rounded-lg hover:bg-white/10 transition-colors cursor-pointer" aria-label="Cerrar opciones de WhatsApp">${ic('x', 'w-5 h-5')}</button>
     </div>
-    <div class="p-4 space-y-3.5 max-h-[75dvh] overflow-y-auto overscroll-contain">
+    <div class="p-3.5 space-y-3 max-h-[75dvh] overflow-y-auto overscroll-contain">
       <div>
-        <p class="text-xs font-semibold uppercase tracking-wider text-navy-900 mb-2">¿Por qué nos consultas?</p>
+        <p class="text-xs font-semibold uppercase tracking-wider text-navy-900 mb-1.5">¿Por qué nos consultas?</p>
         <div class="flex flex-wrap gap-1.5">
           ${options
             .map(
@@ -280,7 +280,11 @@ function whatsappWidgetHtml() {
         <label for="waNote" class="block text-xs font-semibold uppercase tracking-wider text-navy-900 mb-1">Tu nombre o detalle breve (opcional)</label>
         <input id="waNote" type="text" maxlength="140" placeholder="Ej. Carlos, consulta en Medellín" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-navy-900 focus:outline-none focus:ring-2 focus:ring-gold-500">
       </div>
-      <a id="waSendLink" href="https://wa.me/${esc(waNum)}?text=${encodeURIComponent(defaultMsg)}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-loc="burbuja" class="w-full inline-flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-4 py-3 rounded-xl text-sm transition-colors">${ic('chat', 'w-4 h-4')}Enviar por WhatsApp</a>
+      <div>
+        <label for="waEmail" class="block text-xs font-semibold uppercase tracking-wider text-navy-900 mb-1">Correo electrónico (opcional)</label>
+        <input id="waEmail" type="email" autocomplete="email" maxlength="120" placeholder="tu@correo.com" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-navy-900 focus:outline-none focus:ring-2 focus:ring-gold-500">
+      </div>
+      <a id="waSendLink" href="https://wa.me/${esc(waNum)}?text=${encodeURIComponent(defaultMsg)}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-loc="burbuja" class="w-full inline-flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-4 py-2.5 rounded-xl text-sm transition-colors">${ic('chat', 'w-4 h-4')}Enviar por WhatsApp</a>
     </div>
   </div>
   <button id="waBtn" type="button" aria-expanded="false" aria-controls="waPanel" aria-label="Abrir opciones de consulta por WhatsApp" title="WhatsApp" class="w-14 h-14 inline-flex items-center justify-center bg-gold-500 hover:bg-gold-600 text-navy-900 rounded-full shadow-xl border border-gold-600/40 transition-colors cursor-pointer">${ic('chat', 'w-7 h-7')}</button>
