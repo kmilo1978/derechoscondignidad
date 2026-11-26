@@ -214,7 +214,8 @@ function footer() {
     <div>
       <p class="text-white text-xs font-semibold uppercase tracking-widest mb-4">Contacto</p>
       <ul class="space-y-3 text-sm text-slate-400">
-        <li class="flex gap-2">${ic('pin', 'w-4 h-4 mt-0.5 text-gold-500 shrink-0')}<span>${SITE.address ? esc(SITE.address) : 'Medellín, Antioquia'}</span></li>
+        <li class="flex gap-2">${ic('pin', 'w-4 h-4 mt-0.5 text-gold-500 shrink-0')}<a href="/contacto/#mapa" class="hover:text-gold-500 underline underline-offset-2">${SITE.address ? esc(SITE.address) : 'Medellín, Antioquia'}</a></li>
+        <li class="flex gap-2">${ic('external', 'w-4 h-4 mt-0.5 text-gold-500 shrink-0')}<a href="${esc(SITE.mapUrl)}" target="_blank" rel="noopener noreferrer" class="hover:text-gold-500 underline underline-offset-2">Ver mapa en Google Maps</a></li>
         <li class="flex gap-2">${ic('phone', 'w-4 h-4 mt-0.5 text-gold-500 shrink-0')}<a href="${telLink}" class="hover:text-gold-500" data-track="call" data-loc="footer">${hasPhone ? esc(SITE.phone) : 'Ver página de contacto'}</a></li>
         ${SITE.email ? `<li class="flex gap-2">${ic('mail', 'w-4 h-4 mt-0.5 text-gold-500 shrink-0')}<a href="mailto:${esc(SITE.email)}" class="hover:text-gold-500">${esc(SITE.email)}</a></li>` : ''}
       </ul>
@@ -1071,7 +1072,7 @@ function contactoPage() {
         </div>
       </section>
       ${SITE.mapEmbed
-        ? `<section class="space-y-3"><div class="flex flex-wrap items-center justify-between gap-3"><h2 class="text-xl font-semibold text-navy-900">Ubicación de nuestra oficina en Medellín</h2>${SITE.mapUrl ? `<a href="${esc(SITE.mapUrl)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-navy-900 hover:text-gold-700 underline underline-offset-2">Abrir en Google Maps ${ic('external', 'w-4 h-4')}</a>` : ''}</div><iframe title="Ubicación de la oficina de Derechos con Dignidad en Medellín" src="${esc(SITE.mapEmbed)}" class="w-full h-80 rounded-2xl border border-slate-200" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></section>`
+        ? `<section id="mapa" class="scroll-mt-28 bg-white border border-slate-200 rounded-2xl p-6 space-y-4"><div class="flex flex-wrap items-center justify-between gap-3"><div><h2 class="text-xl font-semibold text-navy-900">Ubicación de nuestra oficina en Medellín</h2><p class="text-sm text-slate-600 mt-1">${esc(SITE.address)}</p></div>${SITE.mapUrl ? `<a href="${esc(SITE.mapUrl)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-navy-900 hover:text-gold-700 underline underline-offset-2">Abrir en Google Maps ${ic('external', 'w-4 h-4')}</a>` : ''}</div><iframe title="Mapa de ubicación de Derechos con Dignidad en Medellín" src="${esc(SITE.mapEmbed)}" class="w-full h-80 rounded-xl border border-slate-200 bg-slate-100" loading="eager"></iframe></section>`
         : `<section class="bg-white border border-slate-200 rounded-2xl p-6 space-y-3"><div class="flex flex-wrap items-center justify-between gap-3"><h2 class="text-xl font-semibold text-navy-900">Ubicación de nuestra oficina en Medellín</h2>${SITE.mapUrl ? `<a href="${esc(SITE.mapUrl)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-navy-900 hover:text-gold-700 underline underline-offset-2">Ver dirección en Google Maps ${ic('external', 'w-4 h-4')}</a>` : ''}</div><p class="text-sm text-slate-600">${esc(SITE.address)}</p>${pending('código o enlace de inserción (iframe) de Google Maps y correo electrónico de la firma.')}</section>`}
       ${contactFormHtml()}
     </div>`;

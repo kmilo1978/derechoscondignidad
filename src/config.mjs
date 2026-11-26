@@ -11,9 +11,9 @@ export const SITE = {
   whatsapp: '', // solo dígitos con indicativo, ej. '573001234567'
   email: '',
   street: 'Calle 53 # 45-112',
-  address: 'Calle 53 # 45-112, Medellín, Antioquia',
+  address: 'Calle 53 # 45-112, Edificio Centro Colseguros, Medellín, Antioquia',
   hours: 'Disponibilidad 24/7',
-  mapEmbed: '', // Pegar aquí el src del iframe de Google Maps ("Compartir > Insertar un mapa")
+  mapEmbed: 'https://www.openstreetmap.org/export/embed.html?bbox=-75.5677%2C6.2478%2C-75.5597%2C6.2528&layer=mapnik&marker=6.250307%2C-75.563698',
   mapUrl: 'https://www.google.com/maps/search/?api=1&query=Calle+53+%23+45-112,+Medellin,+Antioquia',
   lawyers: [], // [{ name, tp: 'tarjeta profesional', bio, photo }]
   teamIntro: 'Profesionales con experiencia en litigio contra el Estado y defensa de los derechos humanos.',
