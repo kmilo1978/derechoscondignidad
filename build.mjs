@@ -226,7 +226,7 @@ function footer() {
         <li class="flex gap-2">${ic('pin', 'w-4 h-4 mt-0.5 text-gold-500 shrink-0')}<a href="/contacto/#mapa" class="hover:text-gold-500 underline underline-offset-2">${SITE.address ? esc(SITE.address) : 'Medellín, Antioquia'}</a></li>
         <li class="flex gap-2">${ic('external', 'w-4 h-4 mt-0.5 text-gold-500 shrink-0')}<a href="${esc(SITE.mapUrl)}" target="_blank" rel="noopener noreferrer" class="hover:text-gold-500 underline underline-offset-2">Ver mapa en Google Maps</a></li>
         <li class="flex gap-2">${ic('phone', 'w-4 h-4 mt-0.5 text-gold-500 shrink-0')}<a href="${telLink}" class="hover:text-gold-500" data-track="call" data-loc="footer">${hasPhone ? esc(SITE.phone) : 'Ver página de contacto'}</a></li>
-        ${SITE.email ? `<li class="flex gap-2">${ic('mail', 'w-4 h-4 mt-0.5 text-gold-500 shrink-0')}<a href="mailto:${esc(SITE.email)}" class="hover:text-gold-500">${esc(SITE.email)}</a></li>` : ''}
+        ${SITE.email ? `<li class="flex gap-2">${ic('mail', 'w-4 h-4 mt-0.5 text-gold-500 shrink-0')}<a href="mailto:${esc(SITE.email)}" class="hover:text-gold-500 break-all">Correo: ${esc(SITE.email)}</a></li>` : ''}
       </ul>
       <div class="mt-5 rounded-xl bg-white/[0.04] border border-white/10 p-4">
         <p class="text-gold-500 text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5">${ic('clock', 'w-4 h-4 shrink-0')}Atención 24 Horas</p>
@@ -832,13 +832,14 @@ function home() {
 </section>
 
 <section class="py-16 md:py-20 bg-white" id="contacto-home">
-  <div class="max-w-5xl mx-auto px-6 text-center">
+  <div class="max-w-7xl mx-auto px-6 text-center">
     <h2 class="text-3xl md:text-4xl font-semibold text-navy-900 tracking-tight">Contacto y solicitud de asesoría</h2>
     <p class="mt-3 text-slate-600 max-w-2xl mx-auto">Atención confidencial y gratuita para víctimas y familiares en todo el país, con sede en Medellín.</p>
-    <div class="mt-8 grid sm:grid-cols-3 gap-6 text-left">
-      <div class="bg-white border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('chat', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">WhatsApp</p><p class="text-sm mt-1 text-slate-600">${hasWA ? esc(SITE.whatsapp) : 'Número por confirmar'}</p></div>
-      <div class="bg-white border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('phone', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">Teléfono</p><p class="text-sm mt-1 text-slate-600">${hasPhone ? esc(SITE.phone) : 'Número por confirmar'}</p></div>
-      <div class="bg-white border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('pin', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">Oficina y horario</p><p class="text-sm mt-1 text-slate-600">${esc(SITE.address)} · ${esc(SITE.hours)}</p></div>
+    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left">
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('chat', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">WhatsApp</p><p class="text-sm mt-1 text-slate-600">${hasWA ? esc(SITE.whatsapp) : 'Número por confirmar'}</p></div>
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('phone', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">Teléfono</p><p class="text-sm mt-1 text-slate-600">${hasPhone ? `<a href="${telLink}" class="underline text-navy-900 hover:text-gold-700">${esc(SITE.phone)}</a>` : 'Número por confirmar'}</p></div>
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('mail', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">Correo</p><p class="text-sm mt-1 text-slate-600">${SITE.email ? `<a href="mailto:${esc(SITE.email)}" class="underline text-navy-900 hover:text-gold-700 break-all">${esc(SITE.email)}</a>` : 'Correo por confirmar'}</p></div>
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('pin', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">Oficina y horario</p><p class="text-sm mt-1 text-slate-600">${esc(SITE.address)} · ${esc(SITE.hours)}</p></div>
     </div>
     <p class="mt-8"><a href="/contacto/" class="inline-flex items-center gap-2 bg-navy-900 hover:bg-navy-800 text-white font-semibold px-6 py-3.5 rounded-lg transition-colors">Ir a contacto y formulario ${ic('arrow', 'w-4 h-4')}</a></p>
   </div>
@@ -1215,29 +1216,32 @@ function contactoPage() {
       sub: 'Primera orientación gratuita y confidencial. Atendemos con reserva total.',
       ctas: false,
     }) +
-    `<div class="max-w-5xl mx-auto px-6 py-14 space-y-10">
-      <div class="grid md:grid-cols-3 gap-5">
-        <div class="bg-white border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('chat', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">WhatsApp</p>${hasWA ? `<p class="mt-3">${btnWA('Escribir', '!py-2.5', 'contacto')}</p>` : `<p class="mt-2 text-sm">${pending('número de WhatsApp.')}</p>`}</div>
-        <div class="bg-white border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('phone', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">Teléfono</p>${hasPhone ? `<p class="mt-2"><a class="underline text-navy-900" data-track="call" data-loc="contacto" href="${telLink}">${esc(SITE.phone)}</a></p>` : `<p class="mt-2 text-sm">${pending('teléfono.')}</p>`}</div>
-        <div class="bg-white border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('pin', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">Oficina en Medellín</p><p class="mt-2 text-sm text-slate-600">${esc(SITE.address)}</p><p class="mt-1 text-sm text-slate-500">${esc(SITE.hours)}</p></div>
-      </div>
-      <section class="bg-white border border-slate-200 rounded-2xl overflow-hidden grid md:grid-cols-2 items-center">
-        <div class="p-6 md:p-8 space-y-4">
-          <p class="text-gold-700 text-xs font-semibold uppercase tracking-[0.2em]">Nuestro equipo en Medellín</p>
-          <h2 class="text-2xl font-semibold text-navy-900 tracking-tight">Atención directa y confidencial</h2>
-          <p class="text-sm text-slate-600 leading-relaxed">Nuestro equipo jurídico te escucha y acompaña con respeto y reserva absoluta desde nuestra sede principal en Medellín, adelantando procesos en todo el país y ante instancias internacionales.</p>
-          <div class="pt-2 flex flex-wrap gap-3">
-            <a href="/nosotros/" class="inline-flex items-center gap-2 border border-slate-300 hover:border-gold-500 text-navy-900 font-semibold px-4 py-2.5 rounded-lg text-sm transition-colors">Conocer al equipo ${ic('arrow', 'w-4 h-4')}</a>
+    `<div class="max-w-7xl mx-auto px-6 py-12 md:py-14 grid lg:grid-cols-[1fr_360px] gap-8 lg:gap-10 items-start">
+      <div class="space-y-10 min-w-0">
+        <section class="bg-white border border-slate-200 rounded-2xl overflow-hidden grid md:grid-cols-2 items-center">
+          <div class="p-6 md:p-8 space-y-4">
+            <p class="text-gold-700 text-xs font-semibold uppercase tracking-[0.2em]">Nuestro equipo en Medellín</p>
+            <h2 class="text-2xl font-semibold text-navy-900 tracking-tight">Atención directa y confidencial</h2>
+            <p class="text-sm text-slate-600 leading-relaxed">Nuestro equipo jurídico te escucha y acompaña con respeto y reserva absoluta desde nuestra sede principal en Medellín, adelantando procesos en todo el país y ante instancias internacionales.</p>
+            <div class="pt-2 flex flex-wrap gap-3">
+              <a href="/nosotros/" class="inline-flex items-center gap-2 border border-slate-300 hover:border-gold-500 text-navy-900 font-semibold px-4 py-2.5 rounded-lg text-sm transition-colors">Conocer al equipo ${ic('arrow', 'w-4 h-4')}</a>
+            </div>
           </div>
-        </div>
-        <div class="h-full bg-slate-100">
-          <img src="/assets/team/equipo-derechos-con-dignidad.webp" alt="Equipo jurídico de Derechos con Dignidad en su oficina de Medellín: Andrés Restrepo, Alejandro Botero, Yudy Elena Moreno, Juan Esteban Montoya y Daniel Montoya" width="585" height="480" loading="lazy" decoding="async" class="w-full h-full object-cover object-top" />
-        </div>
-      </section>
-      ${SITE.mapEmbed
-        ? `<section id="mapa" class="scroll-mt-28 bg-white border border-slate-200 rounded-2xl p-6 space-y-4"><div class="flex flex-wrap items-center justify-between gap-3"><div><h2 class="text-xl font-semibold text-navy-900">Ubicación de nuestra oficina en Medellín</h2><p class="text-sm text-slate-600 mt-1">${esc(SITE.address)}</p></div>${SITE.mapUrl ? `<a href="${esc(SITE.mapUrl)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-navy-900 hover:text-gold-700 underline underline-offset-2">Abrir en Google Maps ${ic('external', 'w-4 h-4')}</a>` : ''}</div><div class="map-frame bg-slate-100"><iframe title="Mapa de ubicación de Derechos con Dignidad en Medellín" src="${esc(SITE.mapEmbed)}" class="w-full h-80" loading="eager"></iframe></div></section>`
-        : `<section class="bg-white border border-slate-200 rounded-2xl p-6 space-y-3"><div class="flex flex-wrap items-center justify-between gap-3"><h2 class="text-xl font-semibold text-navy-900">Ubicación de nuestra oficina en Medellín</h2>${SITE.mapUrl ? `<a href="${esc(SITE.mapUrl)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-navy-900 hover:text-gold-700 underline underline-offset-2">Ver dirección en Google Maps ${ic('external', 'w-4 h-4')}</a>` : ''}</div><p class="text-sm text-slate-600">${esc(SITE.address)}</p>${pending('código o enlace de inserción (iframe) de Google Maps y correo electrónico de la firma.')}</section>`}
-      ${contactFormHtml()}
+          <div class="h-full bg-slate-100">
+            <img src="/assets/team/equipo-derechos-con-dignidad.webp" alt="Equipo jurídico de Derechos con Dignidad en su oficina de Medellín: Andrés Restrepo, Alejandro Botero, Yudy Elena Moreno, Juan Esteban Montoya y Daniel Montoya" width="585" height="480" loading="lazy" decoding="async" class="w-full h-full object-cover object-top" />
+          </div>
+        </section>
+        ${SITE.mapEmbed
+          ? `<section id="mapa" class="scroll-mt-28 bg-white border border-slate-200 rounded-2xl p-6 space-y-4"><div class="flex flex-wrap items-center justify-between gap-3"><div><h2 class="text-xl font-semibold text-navy-900">Ubicación de nuestra oficina en Medellín</h2><p class="text-sm text-slate-600 mt-1">${esc(SITE.address)}</p></div>${SITE.mapUrl ? `<a href="${esc(SITE.mapUrl)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-navy-900 hover:text-gold-700 underline underline-offset-2">Abrir en Google Maps ${ic('external', 'w-4 h-4')}</a>` : ''}</div><div class="map-frame bg-slate-100"><iframe title="Mapa de ubicación de Derechos con Dignidad en Medellín" src="${esc(SITE.mapEmbed)}" class="w-full h-80" loading="eager"></iframe></div></section>`
+          : `<section class="bg-white border border-slate-200 rounded-2xl p-6 space-y-3"><div class="flex flex-wrap items-center justify-between gap-3"><h2 class="text-xl font-semibold text-navy-900">Ubicación de nuestra oficina en Medellín</h2>${SITE.mapUrl ? `<a href="${esc(SITE.mapUrl)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-navy-900 hover:text-gold-700 underline underline-offset-2">Ver dirección en Google Maps ${ic('external', 'w-4 h-4')}</a>` : ''}</div><p class="text-sm text-slate-600">${esc(SITE.address)}</p>${pending('código o enlace de inserción (iframe) de Google Maps.')}</section>`}
+        ${contactFormHtml()}
+      </div>
+      <aside class="space-y-5 lg:sticky lg:top-28" aria-label="Canales de contacto">
+        <div class="bg-white border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('chat', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">WhatsApp</p>${hasWA ? `<p class="mt-3">${btnWA('Escribir', '!py-2.5', 'contacto')}</p>` : `<p class="mt-2 text-sm">${pending('número de WhatsApp.')}</p>`}</div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('phone', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">Teléfono</p>${hasPhone ? `<p class="mt-2"><a class="underline text-navy-900 hover:text-gold-700" data-track="call" data-loc="contacto" href="${telLink}">${esc(SITE.phone)}</a></p>` : `<p class="mt-2 text-sm">${pending('teléfono.')}</p>`}</div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('mail', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">Correo</p>${SITE.email ? `<p class="mt-2 text-sm"><a class="underline text-navy-900 hover:text-gold-700 break-all" href="mailto:${esc(SITE.email)}">${esc(SITE.email)}</a></p>` : `<p class="mt-2 text-sm">${pending('correo electrónico.')}</p>`}</div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('pin', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">Oficina en Medellín</p><p class="mt-2 text-sm text-slate-600">${esc(SITE.address)}</p><p class="mt-1 text-sm text-slate-500">${esc(SITE.hours)}</p></div>
+      </aside>
     </div>`;
 
   render({
@@ -1520,6 +1524,7 @@ ErrorDocument 404 /404.html
         `- Enfoque: Litigio de interés público y representación judicial de víctimas`,
         `- Sede principal: ${SITE.address}`,
         `- Teléfono: ${SITE.phone}`,
+        ...(SITE.email ? [`- Correo: ${SITE.email}`] : []),
         `- Atención: ${SITE.hours} (primera consulta gratuita y confidencial)`,
         `- Cobertura: Toda Colombia e instancias internacionales`,
       ].join('\n'),
