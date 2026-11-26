@@ -345,13 +345,38 @@ const crumbsBar = (c) => `<nav aria-label="Migas de pan" class="breadcrumb bg-wh
 </nav>`;
 
 // ---------- Hero & Helpers ----------
+const HERO_MAP = {
+  '/': 'hero-home.webp',
+  '/areas-de-accion/': 'hero-areas.webp',
+  '/procesos-y-demandas/': 'hero-penal.webp',
+  '/nosotros/': 'hero-equipo.webp',
+  '/casos/': 'hero-casos.webp',
+  '/contacto/': 'hero-contacto.webp',
+  '/politica-de-privacidad/': 'hero-legal.webp',
+  '/tratamiento-de-datos/': 'hero-legal.webp',
+  '/terminos-de-uso/': 'hero-legal.webp',
+  '/politica-de-cookies/': 'hero-legal.webp',
+  '/no-encontrado/': 'hero-no-encontrado.webp',
+  '/areas-de-accion/lideres-sociales-asesinados/': 'hero-lideres.webp',
+  '/areas-de-accion/homicidio-excombatientes-firmantes-paz/': 'hero-jep.webp',
+  '/areas-de-accion/demandas-jep/': 'hero-jep.webp',
+  '/areas-de-accion/demandas-cidh/': 'hero-cidh.webp',
+  '/areas-de-accion/violacion-derechos-humanos/': 'hero-cidh.webp',
+  '/areas-de-accion/desaparicion-forzada/': 'hero-desaparicion.webp',
+  '/areas-de-accion/ejecuciones-extrajudiciales/': 'hero-verdad-memoria.webp',
+  '/areas-de-accion/falsos-positivos/': 'hero-verdad-memoria.webp',
+  '/areas-de-accion/masacres-agentes-estado/': 'hero-verdad-memoria.webp',
+  '/areas-de-accion/union-patriotica/': 'hero-union-patriotica.webp',
+  '/areas-de-accion/crimenes-de-estado/': 'hero-union-patriotica.webp',
+  '/areas-de-accion/privacion-injusta-libertad/': 'hero-libertad.webp',
+  '/areas-de-accion/victimas-de-tortura/': 'hero-libertad.webp',
+  '/areas-de-accion/indemnizaciones-victimas-estado/': 'hero-indemnizacion.webp',
+  '/areas-de-accion/demandas-contra-el-estado/': 'hero-penal.webp',
+};
+
 function heroBgFor(url) {
-  if (url === '/') return '/assets/hero/hero-home.webp';
-  if (url.includes('nosotros') || url.includes('equipo')) return '/assets/hero/hero-equipo.webp';
-  if (url.includes('contacto')) return '/assets/hero/hero-contacto.webp';
-  if (url.includes('privacidad') || url.includes('datos') || url.includes('terminos') || url.includes('cookies')) return '/assets/hero/hero-legal.webp';
-  if (url.includes('procesos') || url.includes('jep') || url.includes('cidh') || url.includes('demandas')) return '/assets/hero/hero-penal.webp';
-  return '/assets/hero/hero-home.webp';
+  const file = HERO_MAP[url] || 'hero-home.webp';
+  return `/assets/hero/${file}`;
 }
 
 function heroAltFor(url, h1) {
@@ -1471,7 +1496,7 @@ w(
 );
 if (hasOG) fs.copyFileSync('src/assets/og-default.png', path.join(DIST, 'assets', 'og-default.png'));
 if (fs.existsSync('src/assets/team')) fs.cpSync('src/assets/team', path.join(DIST, 'assets', 'team'), { recursive: true });
-for (const hImg of ['hero-home.webp', 'hero-equipo.webp', 'hero-contacto.webp', 'hero-legal.webp', 'hero-penal.webp', 'hero-no-encontrado.webp']) {
+for (const hImg of [...new Set(Object.values(HERO_MAP))]) {
   if (fs.existsSync('src/assets/hero/' + hImg)) {
     fs.mkdirSync(path.join(DIST, 'assets', 'hero'), { recursive: true });
     fs.copyFileSync('src/assets/hero/' + hImg, path.join(DIST, 'assets', 'hero', hImg));
