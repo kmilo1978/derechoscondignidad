@@ -75,7 +75,7 @@ const pending = (txt) =>
     ? ''
     : `<p class="rounded-lg border border-dashed border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-500" data-pendiente>Pendiente de la firma: ${esc(txt)}</p>`;
 
-const goldBtn = 'inline-flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-950 font-semibold px-6 py-3.5 rounded-lg transition-colors';
+const goldBtn = 'inline-flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-6 py-3.5 rounded-lg transition-colors';
 const outlineBtn = 'inline-flex items-center justify-center gap-2 border border-white/30 hover:bg-white/10 text-white font-medium px-6 py-3.5 rounded-lg transition-colors';
 
 const btnWA = (label = 'Escríbenos por WhatsApp', cls = '', loc = 'cta') =>
@@ -229,7 +229,7 @@ function footer() {
         ${SITE.email ? `<li class="flex gap-2">${ic('mail', 'w-4 h-4 mt-0.5 text-gold-500 shrink-0')}<a href="mailto:${esc(SITE.email)}" class="hover:text-gold-500 break-all">Correo: ${esc(SITE.email)}</a></li>` : ''}
       </ul>
       <div class="mt-5 rounded-xl bg-white/[0.04] border border-white/10 p-4">
-        <p class="text-gold-400 text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5">${ic('clock', 'w-4 h-4 shrink-0')}Atención 24 Horas</p>
+        <p class="text-gold-500 text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5">${ic('clock', 'w-4 h-4 shrink-0')}Atención 24 Horas</p>
         <p class="mt-2 text-xs text-slate-300 leading-relaxed">Estamos disponibles para usted 24/7. Su primera consulta es completamente gratis y confidencial.</p>
       </div>
     </div>
@@ -259,7 +259,7 @@ function whatsappWidgetHtml() {
   <div id="waPanel" class="hidden absolute bottom-16 right-0 w-[min(22rem,calc(100vw-3.25rem))] bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden text-left" role="dialog" aria-labelledby="waPanelTitle">
     <div class="bg-navy-900 text-white px-4 py-3 flex items-start justify-between gap-3">
       <div>
-        <p id="waPanelTitle" class="font-semibold text-base text-gold-400">Consulta por WhatsApp</p>
+        <p id="waPanelTitle" class="font-semibold text-base text-gold-500">Consulta por WhatsApp</p>
         <p class="text-xs text-slate-300 mt-0.5">Atención 24/7 confidencial y sin costo</p>
       </div>
       <button id="waCloseBtn" type="button" class="text-slate-300 hover:text-gold-500 p-1 rounded-lg hover:bg-white/10 transition-colors cursor-pointer" aria-label="Cerrar opciones de WhatsApp">${ic('x', 'w-5 h-5')}</button>
@@ -280,10 +280,10 @@ function whatsappWidgetHtml() {
         <label for="waNote" class="block text-xs font-semibold uppercase tracking-wider text-navy-900 mb-1">Tu nombre o detalle breve (opcional)</label>
         <input id="waNote" type="text" maxlength="140" placeholder="Ej. Carlos, consulta en Medellín" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-navy-900 focus:outline-none focus:ring-2 focus:ring-gold-500">
       </div>
-      <a id="waSendLink" href="https://wa.me/${esc(waNum)}?text=${encodeURIComponent(defaultMsg)}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-loc="burbuja" class="w-full inline-flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-950 font-semibold px-4 py-3 rounded-xl text-sm transition-colors">${ic('chat', 'w-4 h-4')}Enviar por WhatsApp</a>
+      <a id="waSendLink" href="https://wa.me/${esc(waNum)}?text=${encodeURIComponent(defaultMsg)}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-loc="burbuja" class="w-full inline-flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-4 py-3 rounded-xl text-sm transition-colors">${ic('chat', 'w-4 h-4')}Enviar por WhatsApp</a>
     </div>
   </div>
-  <button id="waBtn" type="button" aria-expanded="false" aria-controls="waPanel" aria-label="Abrir opciones de consulta por WhatsApp" title="WhatsApp" class="w-14 h-14 inline-flex items-center justify-center bg-gold-500 hover:bg-gold-600 text-navy-950 rounded-full shadow-xl border border-gold-600/40 transition-colors cursor-pointer">${ic('chat', 'w-7 h-7')}</button>
+  <button id="waBtn" type="button" aria-expanded="false" aria-controls="waPanel" aria-label="Abrir opciones de consulta por WhatsApp" title="WhatsApp" class="w-14 h-14 inline-flex items-center justify-center bg-gold-500 hover:bg-gold-600 text-navy-900 rounded-full shadow-xl border border-gold-600/40 transition-colors cursor-pointer">${ic('chat', 'w-7 h-7')}</button>
 </div>`;
 }
 
@@ -360,10 +360,10 @@ function heroAltFor(url, h1) {
 const pageHero = ({ url = '', h1, sub, ctas = true }) => {
   const bg = heroBgFor(url);
   const alt = heroAltFor(url, h1);
-  return `<section class="relative bg-[#0f3d5e] text-white overflow-hidden">
+  return `<section class="relative bg-[#003854] text-white overflow-hidden">
   <div class="absolute inset-0">
     <img src="${bg}" alt="${esc(alt)}" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center" />
-    <div class="absolute inset-0 bg-gradient-to-r from-[#071e2f]/85 via-[#0f3d5e]/70 to-[#0f3d5e]/55" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#070d1a]/85 via-[#0f172a]/70 to-[#0f172a]/55" aria-hidden="true"></div>
   </div>
   <div class="relative max-w-7xl mx-auto px-6 py-10 sm:py-14 md:py-20">
     <h1 class="text-2xl sm:text-3xl md:text-5xl font-semibold tracking-tight max-w-4xl leading-tight text-white">${esc(h1)}</h1>
@@ -508,7 +508,7 @@ ${noindex ? '<meta name="robots" content="noindex, follow">' : '<meta name="robo
 <meta property="og:type" content="website"><meta property="og:locale" content="es_CO"><meta property="og:site_name" content="${esc(SITE.name)}"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}"><meta property="og:url" content="${canonical}">
 ${hasOG ? `<meta property="og:image" content="${SITE.url}/assets/og-default.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="${esc(SITE.name)} - Defensa de víctimas del Estado">` : ''}
 <meta name="twitter:card" content="${hasOG ? 'summary_large_image' : 'summary'}"><meta name="twitter:title" content="${esc(title)}"><meta name="twitter:description" content="${esc(desc)}">${hasOG ? `<meta name="twitter:image" content="${SITE.url}/assets/og-default.png">` : ''}
-<meta name="theme-color" content="#0f3d5e">
+<meta name="theme-color" content="#0f172a">
 <link rel="icon" href="/assets/favicon.ico" sizes="any">
 <link rel="icon" href="/assets/favicon.png" type="image/png" sizes="64x64">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -559,7 +559,7 @@ const teamHtml = () => `<section id="equipo" class="scroll-mt-28 bg-navy-900 tex
       return `<li class="group bg-white/[0.04] border border-white/10 hover:border-gold-500/60 rounded-2xl px-4 py-6 text-center transition-colors flex flex-col items-center">
         ${ph ? `<img src="${ph}" alt="Foto de ${esc(m.name)}" width="112" height="112" loading="lazy" decoding="async" class="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover ring-2 ring-white/15 group-hover:ring-gold-500 transition">` : `<span class="w-24 h-24 md:w-28 md:h-28 rounded-full bg-white/10 ring-2 ring-white/15 flex items-center justify-center text-2xl font-semibold text-gold-500" aria-hidden="true">${initials(m.name)}</span>`}
         <p class="mt-4 font-semibold leading-snug text-white">${esc(m.name)}</p>
-        <p class="mt-1 text-sm text-gold-400 leading-snug">${esc(m.role)}</p>
+        <p class="mt-1 text-sm text-gold-500 leading-snug">${esc(m.role)}</p>
         ${m.bio ? `<p class="mt-2 text-xs text-slate-300 leading-relaxed">${esc(m.bio)}</p>` : ''}
         ${m.linkedin ? `<a href="${esc(m.linkedin)}" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex items-center gap-1 text-xs text-slate-300 hover:text-gold-500 underline underline-offset-2">LinkedIn ${ic('external', 'w-3.5 h-3.5')}</a>` : ''}
       </li>`;
@@ -684,7 +684,7 @@ function contactFormHtml() {
     <div class="flex items-center gap-3 text-green-700"><span class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">${ic('check')}</span><h3 class="text-xl font-semibold text-navy-900">Resumen de tu solicitud</h3></div>
     <p class="mt-3 text-sm text-slate-600">Revisa el resumen. ${hasWA ? 'Puedes enviarlo directamente por WhatsApp.' : 'Puedes copiar este resumen mientras se configura el canal directo de WhatsApp.'}</p>
     <pre data-summary class="mt-4 whitespace-pre-wrap bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm text-slate-700"></pre>
-    <div class="mt-5 flex flex-wrap gap-3"><a data-wa-link target="_blank" rel="noopener noreferrer" class="hidden inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-950 font-semibold px-5 py-3 rounded-lg">${ic('chat')}Enviar por WhatsApp</a><button type="button" data-copy-summary class="border border-slate-300 px-5 py-3 rounded-lg font-medium text-navy-900">Copiar resumen</button><button type="button" data-again class="px-5 py-3 text-sm underline text-navy-900">Enviar otra consulta</button></div>
+    <div class="mt-5 flex flex-wrap gap-3"><a data-wa-link target="_blank" rel="noopener noreferrer" class="hidden inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-5 py-3 rounded-lg">${ic('chat')}Enviar por WhatsApp</a><button type="button" data-copy-summary class="border border-slate-300 px-5 py-3 rounded-lg font-medium text-navy-900">Copiar resumen</button><button type="button" data-again class="px-5 py-3 text-sm underline text-navy-900">Enviar otra consulta</button></div>
   </div>
 </div>`;
 }
@@ -696,10 +696,10 @@ function home() {
   const indem = catById('indemnizaciones-reparacion');
 
   const body = `
-<section class="relative bg-[#0f3d5e] text-white overflow-hidden">
+<section class="relative bg-[#003854] text-white overflow-hidden">
   <div class="absolute inset-0">
     <img src="/assets/hero/hero-home.webp" alt="${esc(PAGE_SEO['/'].heroAlt)}" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center" />
-    <div class="absolute inset-0 bg-gradient-to-r from-[#071e2f]/88 via-[#0f3d5e]/75 to-[#0f3d5e]/60" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#070d1a]/88 via-[#0f172a]/75 to-[#0f172a]/60" aria-hidden="true"></div>
   </div>
   <div class="relative max-w-7xl mx-auto px-6 py-12 sm:py-16 md:py-24 grid lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-12 items-center">
     <div>
@@ -828,7 +828,7 @@ function home() {
     <div>
       <div class="bg-navy-900 text-white rounded-3xl p-8 md:p-10 grid lg:grid-cols-[1.2fr_auto] gap-8 items-center">
         <div>
-          <p class="text-gold-400 text-xs font-semibold uppercase tracking-[0.2em]">${esc(indem.title)}</p>
+          <p class="text-gold-500 text-xs font-semibold uppercase tracking-[0.2em]">${esc(indem.title)}</p>
           <h3 class="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">${esc(AREAS['indemnizaciones-victimas-estado'].title)}</h3>
           <p class="mt-3 text-slate-300 leading-relaxed max-w-2xl">${esc(AREAS['indemnizaciones-victimas-estado'].sub)}</p>
         </div>
@@ -1221,7 +1221,7 @@ function casosPage() {
       </section>
 
       <section class="bg-navy-900 text-white rounded-3xl p-6 sm:p-8 md:p-10" aria-labelledby="h-modelo-litigio">
-        <p class="text-gold-400 text-xs font-semibold uppercase tracking-[0.2em]">Estrategia procesal</p>
+        <p class="text-gold-500 text-xs font-semibold uppercase tracking-[0.2em]">Estrategia procesal</p>
         <h2 id="h-modelo-litigio" class="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">Modelo de litigio multinivel</h2>
         <p class="mt-3 text-slate-300 max-w-3xl leading-relaxed">Dependiendo de la naturaleza del crimen de Estado o la violación de derechos humanos, estructuramos rutas paralelas y complementarias para proteger la verdad, la justicia y la reparación integral:</p>
         <ol class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -1387,10 +1387,10 @@ function notFoundPage() {
     ['file', 'Política de privacidad', 'Reserva profesional y tratamiento de datos personales (Ley 1581).', '/politica-de-privacidad/'],
   ];
 
-  const body = `<section class="relative bg-[#0f3d5e] text-white overflow-hidden">
+  const body = `<section class="relative bg-[#003854] text-white overflow-hidden">
   <div class="absolute inset-0">
     <img src="/assets/hero/hero-no-encontrado.webp" alt="Página no encontrada en ${esc(SITE.name)}" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center" />
-    <div class="absolute inset-0 bg-gradient-to-r from-[#071e2f]/88 via-[#0f3d5e]/75 to-[#0f3d5e]/60" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#070d1a]/88 via-[#0f172a]/75 to-[#0f172a]/60" aria-hidden="true"></div>
   </div>
   <div class="relative max-w-3xl mx-auto px-6 py-16 md:py-24 text-center">
     <p class="text-7xl md:text-8xl font-semibold tracking-tight text-gold-500" aria-hidden="true">404</p>
@@ -1458,7 +1458,7 @@ w(
     start_url: '/',
     display: 'browser',
     background_color: '#ffffff',
-    theme_color: '#0f3d5e',
+    theme_color: '#0f172a',
     icons: [
       { src: '/assets/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
       { src: '/assets/icon-512.png', sizes: '512x512', type: 'image/png' },

@@ -5,12 +5,11 @@ module.exports = {
     extend: {
       fontFamily: { sans: ['system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'] },
       colors: {
-        navy: { 800: '#174d74', 900: '#0f3d5e', 950: '#071e2f' },
+        navy: { 800: '#1e293b', 900: '#0f172a', 950: '#070d1a' },
         gold: {
           50: '#f8f5ef',
           100: '#efe8db',
           200: '#dfd1b7',
-          400: '#c5ac84',
           500: '#b2966a',
           600: '#9c8054',
           700: '#6e5633',
