@@ -74,7 +74,7 @@ nav[data-toc] a.is-active { color: #7a5f0f; font-weight: 600; border-left-color:
 }
 
 /* ---- Adaptación a dispositivos ---- */
-html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: 6rem; }
 img, video, iframe { max-width: 100%; }
 svg { flex-shrink: 0; }
 h1, h2, h3 { overflow-wrap: break-word; text-wrap: balance; }

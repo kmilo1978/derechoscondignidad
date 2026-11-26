@@ -138,8 +138,8 @@ function header() {
   }).join('');
 
   return `<header class="sticky top-0 z-40 bg-navy-900/95 backdrop-blur border-b border-white/10">
-  <div class="max-w-7xl 2xl:max-w-[1440px] mx-auto px-6 h-20 flex items-center justify-between gap-4 2xl:gap-8">
-    <a href="/" class="flex items-center shrink-0" aria-label="${esc(SITE.name)} - Inicio"><span class="bg-white rounded-lg px-3 py-1.5 flex items-center">${logoImg('h-10 w-auto')}</span></a>
+  <div class="max-w-7xl 2xl:max-w-[1440px] mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-3 sm:gap-4 2xl:gap-8">
+    <a href="/" class="flex items-center shrink-0" aria-label="${esc(SITE.name)} - Inicio"><span class="bg-white rounded-lg px-2.5 sm:px-3 py-1 sm:py-1.5 flex items-center">${logoImg('h-8 sm:h-10 w-auto')}</span></a>
     <nav class="hidden xl:flex flex-1 justify-center items-center gap-1 2xl:gap-2 min-w-0" aria-label="Principal">${desk}</nav>
     <div class="hidden xl:flex items-center gap-3 shrink-0">
       <button type="button" data-open-search class="inline-flex items-center justify-between gap-3 px-3.5 py-2 text-xs 2xl:text-sm text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/15 hover:border-white/30 rounded-xl transition-all cursor-pointer w-48 2xl:w-56" aria-label="Buscar en el sitio (Ctrl+K)">
@@ -304,10 +304,10 @@ const pageHero = ({ url = '', h1, sub, ctas = true }) => {
     <img src="${bg}" alt="${esc(h1)} - ${esc(SITE.name)}" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center" />
     <div class="absolute inset-0 bg-gradient-to-r from-[#070d1a]/85 via-[#0f172a]/70 to-[#0f172a]/55" aria-hidden="true"></div>
   </div>
-  <div class="relative max-w-7xl mx-auto px-6 py-14 md:py-20">
-    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight max-w-4xl leading-tight">${esc(h1)}</h1>
-    ${sub ? `<p class="mt-5 text-lg text-slate-100 max-w-3xl leading-relaxed">${rich(sub, true)}</p>` : ''}
-    ${ctas ? `<div class="mt-8 flex flex-wrap gap-3">${btnWA('Hablar por WhatsApp', '', 'hero')}${btnCall(undefined, '', 'hero')}</div>` : ''}
+  <div class="relative max-w-7xl mx-auto px-6 py-10 sm:py-14 md:py-20">
+    <h1 class="text-2xl sm:text-3xl md:text-5xl font-semibold tracking-tight max-w-4xl leading-tight">${esc(h1)}</h1>
+    ${sub ? `<p class="mt-4 sm:mt-5 text-base sm:text-lg text-slate-100 max-w-3xl leading-relaxed">${rich(sub, true)}</p>` : ''}
+    ${ctas ? `<div class="mt-6 sm:mt-8 flex flex-wrap gap-3">${btnWA('Hablar por WhatsApp', '', 'hero')}${btnCall(undefined, '', 'hero')}</div>` : ''}
   </div>
 </section>`;
 };
@@ -428,7 +428,7 @@ const initials = (n) => n.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[
 const teamHtml = () => `<section id="equipo" class="scroll-mt-28 bg-navy-900 text-white rounded-3xl px-5 py-10 md:p-10" aria-labelledby="h-equipo">
   <h2 id="h-equipo" class="text-2xl md:text-3xl font-semibold tracking-tight">Nuestro equipo</h2>
   <p class="mt-2 text-slate-300 leading-relaxed max-w-3xl">${esc(SITE.teamIntro || '')}</p>
-  <ul class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+  <ul class="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
     ${TEAM.map((m) => {
       const ph = teamPhoto(m);
       return `<li class="group bg-white/[0.04] border border-white/10 hover:border-gold-500/60 rounded-2xl px-4 py-6 text-center transition-colors flex flex-col items-center">
@@ -444,21 +444,21 @@ const teamHtml = () => `<section id="equipo" class="scroll-mt-28 bg-navy-900 tex
 
 const casesBlock = () =>
   SITE.cases && SITE.cases.length
-    ? `<div class="space-y-8">${SITE.cases
+    ? `<div class="space-y-6 md:space-y-8">${SITE.cases
         .slice(0, 5)
         .map(
-          (c, idx) => `<article id="${esc(c.slug)}" class="scroll-mt-28 bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-xs">
-            <div class="flex flex-wrap items-start justify-between gap-4 pb-5 border-b border-slate-100">
-              <div class="space-y-2 max-w-4xl">
+          (c, idx) => `<article id="${esc(c.slug)}" class="scroll-mt-28 bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 md:p-8 shadow-xs">
+            <div class="flex flex-wrap items-start justify-between gap-4 pb-4 sm:pb-5 border-b border-slate-100">
+              <div class="space-y-2 max-w-4xl min-w-0">
                 <div class="flex flex-wrap items-center gap-3">
-                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-navy-900 text-gold-500 text-xs font-semibold">0${idx + 1}</span>
+                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-navy-900 text-gold-500 text-xs font-semibold shrink-0">0${idx + 1}</span>
                   ${c.type ? `<span class="text-xs font-semibold uppercase tracking-wider text-gold-700">${esc(c.type)}</span>` : ''}
                 </div>
-                <h3 class="text-2xl md:text-3xl font-semibold text-navy-900 leading-snug">${esc(c.title)}</h3>
+                <h3 class="text-xl sm:text-2xl md:text-3xl font-semibold text-navy-900 leading-snug">${esc(c.title)}</h3>
                 ${c.instance ? `<p class="text-sm font-medium text-slate-600">Instancia: ${rich(c.instance)}</p>` : ''}
               </div>
             </div>
-            <div class="pt-6 grid lg:grid-cols-[1.35fr_0.65fr] gap-8 items-start">
+            <div class="pt-5 sm:pt-6 grid lg:grid-cols-[1.35fr_0.65fr] gap-6 lg:gap-8 items-start">
               <div class="space-y-4">
                 ${c.context ? `<div><p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5">Contexto del proceso</p><p class="text-base text-slate-600 leading-relaxed">${rich(c.context)}</p></div>` : ''}
                 ${c.work ? `<div><p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5">Rol de Derechos con Dignidad</p><p class="text-base text-slate-600 leading-relaxed">${rich(c.work)}</p></div>` : ''}
@@ -576,10 +576,10 @@ function home() {
     <img src="/assets/hero/hero-home.webp" alt="Derechos con Dignidad: defensa jurídica de víctimas de crímenes de Estado en Colombia" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center" />
     <div class="absolute inset-0 bg-gradient-to-r from-[#070d1a]/88 via-[#0f172a]/75 to-[#0f172a]/60" aria-hidden="true"></div>
   </div>
-  <div class="relative max-w-7xl mx-auto px-6 py-16 md:py-24 grid lg:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
+  <div class="relative max-w-7xl mx-auto px-6 py-12 sm:py-16 md:py-24 grid lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-12 items-center">
     <div>
-      <h1 class="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.08] text-white">Defendemos a Víctimas del Estado y Luchamos por su Reparación Integral</h1>
-      <p class="mt-6 text-lg md:text-xl text-slate-100 leading-relaxed max-w-2xl">${rich('Especialistas en Derechos Humanos, CIDH, JEP y crímenes de lesa humanidad.', true)}</p>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1] text-white">Defendemos a Víctimas del Estado y Luchamos por su Reparación Integral</h1>
+      <p class="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-slate-100 leading-relaxed max-w-2xl">${rich('Especialistas en Derechos Humanos, CIDH, JEP y crímenes de lesa humanidad.', true)}</p>
       <div class="mt-9 flex flex-wrap gap-3">${btnWA('Hablar por WhatsApp', '', 'hero')}<a href="#areas" class="inline-flex items-center justify-center gap-2 border border-white/30 hover:bg-white/10 text-white font-medium px-6 py-3.5 rounded-lg transition-colors">Explorar áreas de acción ${ic('down')}</a></div>
       <ul class="mt-12 pt-8 border-t border-white/10 grid sm:grid-cols-2 gap-6 text-sm">
         <li class="flex gap-3">${ic('gavel', 'w-5 h-5 text-gold-500 shrink-0')}<span><strong class="block text-white">Defensa Experta</strong>Abogados especializados en litigio contra el Estado.</span></li>
@@ -606,7 +606,7 @@ function home() {
   </div>
 </section>
 
-<section class="py-16 bg-white border-b border-slate-200" id="quienes-somos">
+<section class="py-12 md:py-16 bg-white border-b border-slate-200" id="quienes-somos">
   <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-[1.25fr_0.75fr] gap-10 items-center">
     <div>
       <p class="text-gold-700 text-xs font-semibold uppercase tracking-[0.2em]">${rich('Especialistas en Derechos Humanos, CIDH, JEP y crímenes de lesa humanidad.')}</p>
@@ -637,7 +637,7 @@ function home() {
   </div>
 </section>
 
-<section id="areas" class="py-20 bg-slate-50 scroll-mt-24">
+<section id="areas" class="py-12 md:py-20 bg-slate-50 scroll-mt-24">
   <div class="max-w-7xl mx-auto px-6 space-y-16">
     <div class="max-w-3xl">
       <p class="text-gold-700 text-xs font-semibold uppercase tracking-[0.2em]">Especialidades jurídicas</p>
@@ -1043,7 +1043,7 @@ function casosPage() {
         ${casesBlock()}
       </section>
 
-      <section class="bg-navy-900 text-white rounded-3xl p-8 md:p-10" aria-labelledby="h-modelo-litigio">
+      <section class="bg-navy-900 text-white rounded-3xl p-6 sm:p-8 md:p-10" aria-labelledby="h-modelo-litigio">
         <p class="text-gold-500 text-xs font-semibold uppercase tracking-[0.2em]">Estrategia procesal</p>
         <h2 id="h-modelo-litigio" class="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">Modelo de litigio multinivel</h2>
         <p class="mt-3 text-slate-300 max-w-3xl leading-relaxed">Dependiendo de la naturaleza del crimen de Estado o la violación de derechos humanos, estructuramos rutas paralelas y complementarias para proteger la verdad, la justicia y la reparación integral:</p>
