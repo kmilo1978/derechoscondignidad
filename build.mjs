@@ -240,13 +240,65 @@ function footer() {
       <ul class="flex flex-wrap gap-x-5 gap-y-2">${LEGAL_LINKS.map(([t, u]) => `<li><a class="hover:text-gold-500" href="${u}">${esc(t)}</a></li>`).join('')}</ul>
     </div>
   </div>
-</footer>
-<a href="${hasWA ? waLink() : telLink}" data-track="${hasWA ? 'whatsapp' : 'call'}" data-loc="flotante" ${hasWA ? 'target="_blank" rel="noopener noreferrer"' : ''} class="lg:hidden fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-4 py-3 rounded-full shadow-lg" aria-label="${hasWA ? 'Contactar por WhatsApp' : 'Llamar ahora'}">${ic(hasWA ? 'chat' : 'phone', 'w-6 h-6')}<span class="hidden sm:inline">${hasWA ? 'WhatsApp' : 'Llamar'}</span></a>`;
+</footer>`;
+}
+
+function whatsappWidgetHtml() {
+  const options = [
+    ['Crímenes de Estado y DD.HH.', 'Hola, vengo desde el sitio web de Derechos con Dignidad y necesito orientación confidencial sobre un caso de crímenes de Estado o violación de derechos humanos.'],
+    ['Demandas ante la JEP o CIDH', 'Hola, vengo desde el sitio web de Derechos con Dignidad y quisiera asesoría sobre un proceso ante la JEP o la CIDH.'],
+    ['Desaparición o falsos positivos', 'Hola, vengo desde el sitio web de Derechos con Dignidad y busco representación jurídica por desaparición forzada o ejecución extrajudicial.'],
+    ['Privación injusta de la libertad', 'Hola, vengo desde el sitio web de Derechos con Dignidad y quiero consultar sobre una demanda por privación injusta de la libertad.'],
+    ['Indemnizaciones y reparación', 'Hola, vengo desde el sitio web de Derechos con Dignidad y necesito orientación sobre indemnizaciones y reparación integral.'],
+  ];
+  const waNum = digits(SITE.whatsapp);
+  const defaultMsg = 'Hola, vengo desde el sitio web de Derechos con Dignidad y quisiera recibir orientación jurídica confidencial.';
+
+  return `<div id="waWidget" class="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-50" data-wa="${esc(waNum)}">
+  <div id="waPanel" class="hidden absolute bottom-16 right-0 w-[min(23rem,calc(100vw-3.25rem))] bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden text-left" role="dialog" aria-labelledby="waPanelTitle">
+    <div class="bg-navy-900 text-white px-4 py-3 flex items-start justify-between gap-3">
+      <div>
+        <p id="waPanelTitle" class="font-semibold text-base text-gold-500">Consulta por WhatsApp</p>
+        <p class="text-xs text-slate-300 mt-0.5">Atención 24/7 confidencial y sin costo</p>
+      </div>
+      <button id="waCloseBtn" type="button" class="text-slate-300 hover:text-gold-500 p-1 rounded-lg hover:bg-white/10 transition-colors cursor-pointer" aria-label="Cerrar opciones de WhatsApp">${ic('x', 'w-5 h-5')}</button>
+    </div>
+    <div class="p-3.5 space-y-3 max-h-[75dvh] overflow-y-auto overscroll-contain">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-wider text-navy-900 mb-1.5">1. Elige tu tipo de consulta</p>
+        <div class="flex flex-wrap gap-1.5">
+          ${options
+            .map(
+              ([label, msg]) =>
+                `<button type="button" data-wa-option="${esc(msg)}" aria-pressed="false" class="text-left text-xs px-2.5 py-1.5 rounded-lg border border-slate-200 bg-slate-50 hover:border-gold-500 hover:bg-gold-500/10 text-navy-900 transition-colors cursor-pointer">${esc(label)}</button>`
+            )
+            .join('')}
+        </div>
+      </div>
+      <div>
+        <label for="waCustomMsg" class="block text-xs font-semibold uppercase tracking-wider text-navy-900 mb-1">2. Mensaje personalizado desde el sitio</label>
+        <textarea id="waCustomMsg" rows="2" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-navy-900 focus:outline-none focus:ring-2 focus:ring-gold-500">${esc(defaultMsg)}</textarea>
+      </div>
+      ${
+        hasWA
+          ? `<a id="waSendLink" href="https://wa.me/${esc(waNum)}?text=${encodeURIComponent(defaultMsg)}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-loc="burbuja" class="w-full inline-flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-4 py-2.5 rounded-xl text-sm transition-colors">${ic('chat', 'w-4 h-4')}Enviar mensaje por WhatsApp</a>`
+          : `<div class="space-y-2">
+              <p class="text-xs text-slate-600 bg-slate-50 border border-dashed border-slate-300 rounded-lg px-3 py-1.5">WhatsApp directo pendiente de activar. Copia este mensaje o envíalo en nuestro formulario.</p>
+              <button type="button" id="waCopyBtn" class="w-full inline-flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-4 py-2.5 rounded-xl text-sm transition-colors cursor-pointer">${ic('chat', 'w-4 h-4')}Copiar mensaje personalizado</button>
+              <p id="waCopyStatus" class="text-xs text-green-700 font-medium hidden" role="status"></p>
+              <a href="/contacto/#formulario" class="w-full inline-flex items-center justify-center gap-2 border border-slate-300 hover:border-gold-500 text-navy-900 font-medium px-4 py-2 rounded-xl text-sm transition-colors">Ir al formulario de contacto</a>
+            </div>`
+      }
+    </div>
+  </div>
+  <button id="waBtn" type="button" aria-expanded="false" aria-controls="waPanel" aria-label="Abrir opciones de consulta por WhatsApp" class="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-4 py-3 rounded-full shadow-xl border border-gold-600/40 transition-colors cursor-pointer">${ic('chat', 'w-6 h-6')}<span class="hidden sm:inline">WhatsApp</span></button>
+</div>`;
 }
 
 function searchModalHtml() {
   const chips = ['JEP', 'CIDH', 'Líderes sociales', 'Falsos positivos', 'Desaparición forzada', 'Unión Patriótica', 'Reparación'];
-  return `<dialog id="searchDialog" aria-labelledby="searchModalTitle" class="fixed inset-0 m-auto p-0 border-0 bg-transparent max-w-2xl w-[calc(100%-2rem)] max-h-[85vh] z-50 text-slate-800 backdrop:bg-navy-950/80 backdrop:backdrop-blur-xs overscroll-contain">
+  return `${whatsappWidgetHtml()}
+<dialog id="searchDialog" aria-labelledby="searchModalTitle" class="fixed inset-0 m-auto p-0 border-0 bg-transparent max-w-2xl w-[calc(100%-2rem)] max-h-[85vh] z-50 text-slate-800 backdrop:bg-navy-950/80 backdrop:backdrop-blur-xs overscroll-contain">
   <div class="bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[85vh]">
     <div class="relative flex items-center border-b border-slate-200 px-4 py-3 bg-slate-50/70">
       <span class="text-gold-700 mr-3 shrink-0" aria-hidden="true">${ic('search', 'w-5 h-5')}</span>
