@@ -444,37 +444,68 @@ const teamHtml = () => `<section id="equipo" class="scroll-mt-28 bg-navy-900 tex
 
 const casesBlock = () =>
   SITE.cases && SITE.cases.length
-    ? `<div class="grid lg:grid-cols-3 gap-6">${SITE.cases
+    ? `<div class="space-y-8">${SITE.cases
         .slice(0, 5)
         .map(
-          (c) => `<article class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between gap-5">
-            <div class="space-y-3">
-              ${c.type ? `<p class="text-xs font-semibold uppercase tracking-wider text-gold-700">${esc(c.type)}</p>` : ''}
-              <h3 class="text-xl font-semibold text-navy-900 leading-snug">${esc(c.title)}</h3>
-              ${c.instance ? `<p class="text-xs font-medium text-slate-500">Instancia: ${rich(c.instance)}</p>` : ''}
-              ${c.context ? `<p class="text-sm text-slate-600 leading-relaxed">${rich(c.context)}</p>` : ''}
-              ${c.work ? `<p class="text-sm text-slate-600 leading-relaxed"><strong class="text-navy-900">Rol de Derechos con Dignidad:</strong> ${rich(c.work)}</p>` : ''}
-              ${c.result ? `<p class="text-sm text-navy-900 bg-slate-50 border-l-4 border-gold-500 rounded-r-lg p-3 leading-relaxed"><strong>Resultado y estado:</strong> ${rich(c.result)}</p>` : ''}
+          (c, idx) => `<article id="${esc(c.slug)}" class="scroll-mt-28 bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-xs">
+            <div class="flex flex-wrap items-start justify-between gap-4 pb-5 border-b border-slate-100">
+              <div class="space-y-2 max-w-4xl">
+                <div class="flex flex-wrap items-center gap-3">
+                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-navy-900 text-gold-500 text-xs font-semibold">0${idx + 1}</span>
+                  ${c.type ? `<span class="text-xs font-semibold uppercase tracking-wider text-gold-700">${esc(c.type)}</span>` : ''}
+                </div>
+                <h3 class="text-2xl md:text-3xl font-semibold text-navy-900 leading-snug">${esc(c.title)}</h3>
+                ${c.instance ? `<p class="text-sm font-medium text-slate-600">Instancia: ${rich(c.instance)}</p>` : ''}
+              </div>
             </div>
-            ${
-              c.sources && c.sources.length
-                ? `<div class="pt-4 border-t border-slate-100">
-                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Fuentes y documentos</p>
-                    <ul class="space-y-1.5 text-xs">
-                      ${c.sources
-                        .map(
-                          ([label, url]) =>
-                            `<li><a href="${esc(url)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-navy-900 hover:text-gold-700 underline decoration-gold-600/60 underline-offset-2">${esc(label)} ${ic('external', 'w-3.5 h-3.5 shrink-0')}</a></li>`
-                        )
-                        .join('')}
-                    </ul>
-                  </div>`
-                : ''
-            }
+            <div class="pt-6 grid lg:grid-cols-[1.35fr_0.65fr] gap-8 items-start">
+              <div class="space-y-4">
+                ${c.context ? `<div><p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5">Contexto del proceso</p><p class="text-base text-slate-600 leading-relaxed">${rich(c.context)}</p></div>` : ''}
+                ${c.work ? `<div><p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5">Rol de Derechos con Dignidad</p><p class="text-base text-slate-600 leading-relaxed">${rich(c.work)}</p></div>` : ''}
+              </div>
+              <div class="space-y-5">
+                ${c.result ? `<div class="bg-slate-50 border-l-4 border-gold-500 rounded-r-xl p-4"><p class="text-xs font-semibold uppercase tracking-wider text-gold-700 mb-1">Resultado y estado</p><p class="text-sm text-navy-900 leading-relaxed font-medium">${rich(c.result)}</p></div>` : ''}
+                ${
+                  c.sources && c.sources.length
+                    ? `<div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-600 mb-2.5">Fuentes y documentos oficiales</p>
+                        <ul class="space-y-2 text-xs">
+                          ${c.sources
+                            .map(
+                              ([label, url]) =>
+                                `<li><a href="${esc(url)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-navy-900 hover:text-gold-700 underline decoration-gold-600/60 underline-offset-2 font-medium">${esc(label)} ${ic('external', 'w-3.5 h-3.5 shrink-0')}</a></li>`
+                            )
+                            .join('')}
+                        </ul>
+                      </div>`
+                    : ''
+                }
+              </div>
+            </div>
           </article>`
         )
         .join('')}</div>`
     : pending('casos relevantes documentados y autorizados (máximo 5 casos), respetando la confidencialidad de las personas involucradas.');
+
+const casesTeaser = () =>
+  SITE.cases && SITE.cases.length
+    ? `<div class="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+        <div class="space-y-4 max-w-3xl">
+          <p class="text-slate-600 leading-relaxed">${rich('Nuestra trayectoria incluye representación judicial de víctimas y litigio de interés público ante instancias nacionales e internacionales, como la Corte Interamericana de Derechos Humanos y la Jurisdicción Especial para la Paz (JEP).')}</p>
+          <ul class="space-y-2 text-sm">
+            ${SITE.cases
+              .slice(0, 5)
+              .map(
+                (c) => `<li class="flex items-start gap-2.5"><span class="text-gold-700 shrink-0 mt-0.5">${ic('check', 'w-4 h-4')}</span><a href="/casos/#${esc(c.slug)}" class="text-navy-900 hover:text-gold-700 font-medium underline decoration-slate-300 underline-offset-2">${esc(c.title)}</a></li>`
+              )
+              .join('')}
+          </ul>
+        </div>
+        <div class="shrink-0">
+          <a href="/casos/" class="inline-flex items-center justify-center gap-2 bg-navy-900 hover:bg-navy-800 text-white font-semibold px-6 py-3.5 rounded-lg transition-colors">Explorar casos relevantes ${ic('arrow', 'w-4 h-4')}</a>
+        </div>
+      </div>`
+    : pending('casos relevantes documentados y autorizados.');
 
 // ---------- Bloque de estamentos externos ----------
 function entitiesSection(list, title = 'Estamentos y organismos de referencia') {
@@ -701,7 +732,7 @@ function home() {
       </div>
       <a href="/casos/" class="text-sm font-semibold text-navy-900 hover:text-gold-700 inline-flex items-center gap-1">Ver sección de casos ${ic('arrow', 'w-4 h-4')}</a>
     </div>
-    ${casesBlock()}
+    ${casesTeaser()}
   </div>
 </section>
 
