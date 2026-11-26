@@ -578,7 +578,7 @@ function home() {
   </div>
   <div class="relative max-w-7xl mx-auto px-6 py-16 md:py-24 grid lg:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
     <div>
-      <h1 class="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.08]">Defendemos a <span class="text-gold-500">Víctimas del Estado</span> y Luchamos por su <span class="text-gold-500">Reparación Integral</span></h1>
+      <h1 class="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.08] text-white">Defendemos a Víctimas del Estado y Luchamos por su Reparación Integral</h1>
       <p class="mt-6 text-lg md:text-xl text-slate-100 leading-relaxed max-w-2xl">${rich('Especialistas en Derechos Humanos, CIDH, JEP y crímenes de lesa humanidad.', true)}</p>
       <div class="mt-9 flex flex-wrap gap-3">${btnWA('Hablar por WhatsApp', '', 'hero')}<a href="#areas" class="inline-flex items-center justify-center gap-2 border border-white/30 hover:bg-white/10 text-white font-medium px-6 py-3.5 rounded-lg transition-colors">Explorar áreas de acción ${ic('down')}</a></div>
       <ul class="mt-12 pt-8 border-t border-white/10 grid sm:grid-cols-2 gap-6 text-sm">
