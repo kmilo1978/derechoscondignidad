@@ -207,7 +207,7 @@
         var existing = lines.filter(function (l) { return l.label === label; })[0];
         if (existing && (el.type === 'checkbox')) existing.value += ', ' + el.value; else lines.push({ label: label, value: el.value.trim() });
       });
-      var text = 'Hola, quisiera una orientación sobre mi accidente de tránsito.\n' + lines.map(function (l) { return l.label + ': ' + l.value; }).join('\n');
+      var text = 'Hola, quisiera orientación jurídica confidencial sobre mi caso.\n' + lines.map(function (l) { return l.label + ': ' + l.value; }).join('\n');
       track('form_submit', form.getAttribute('data-loc') || 'home');
       var wa = document.querySelector('a[data-track="whatsapp"][href^="https://wa.me/"]');
       if (panel) {
@@ -374,11 +374,10 @@
 
     function categoryColor(cat) {
       switch (cat) {
-        case 'Servicios': return 'bg-gold-100 text-gold-900 border-gold-200';
-        case 'Guías': return 'bg-blue-100 text-blue-900 border-blue-200';
-        case 'Municipios': return 'bg-emerald-100 text-emerald-900 border-emerald-200';
-        case 'Calculadora': return 'bg-purple-100 text-purple-900 border-purple-200';
-        case 'Glosario': return 'bg-amber-100 text-amber-900 border-amber-200';
+        case 'Áreas de Acción': return 'bg-gold-100 text-gold-900 border-gold-200';
+        case 'Procesos y Demandas': return 'bg-blue-100 text-blue-900 border-blue-200';
+        case 'Indemnizaciones': return 'bg-emerald-100 text-emerald-900 border-emerald-200';
+        case 'Legales': return 'bg-amber-100 text-amber-900 border-amber-200';
         default: return 'bg-slate-100 text-slate-800 border-slate-200';
       }
     }
@@ -450,7 +449,7 @@
           }
 
           var fallbackBtn = '<a href="' + linkHref + '" target="_blank" rel="noopener" class="mt-4 inline-flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-5 py-2.5 rounded-lg text-sm transition-colors cursor-pointer">' + linkIcon + linkLabel + '</a>';
-          resultsBox.innerHTML = '<div class="py-10 px-6 text-center text-slate-600"><p class="text-base font-semibold text-navy-900">No encontramos resultados para &ldquo;' + escapeHtml(q) + '&rdquo;</p><p class="text-xs text-slate-500 mt-2 max-w-md mx-auto">No te preocupes. Tu caso puede tener coberturas específicas. Escríbenos directamente y te orientamos sin costo.</p>' + fallbackBtn + '</div>';
+          resultsBox.innerHTML = '<div class="py-10 px-6 text-center text-slate-600"><p class="text-base font-semibold text-navy-900">No encontramos resultados para &ldquo;' + escapeHtml(q) + '&rdquo;</p><p class="text-xs text-slate-500 mt-2 max-w-md mx-auto">Cada situación jurídica requiere revisión individual. Escríbenos de forma confidencial y te orientamos sin costo.</p>' + fallbackBtn + '</div>';
           activeIndex = -1;
           return;
         }

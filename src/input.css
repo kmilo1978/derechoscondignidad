@@ -28,8 +28,17 @@ nav[data-toc] a { display: block; border-left: 2px solid transparent; padding-le
 nav[data-toc] a.is-active { color: #7a5f0f; font-weight: 600; border-left-color: #d4af37; }
 .chk:checked + span { text-decoration: line-through; color: #94a3b8; }
 
-/* Rendimiento: solo secciones CLARAS sin fondos oscuros dentro (evita falsos fallos de contraste en auditorías) */
-#quienes-somos, #situaciones, #que-recibes, #esencial, #contacto-home, #faq, #glosario, #fuentes, section[aria-labelledby="h-faq-auto"] { content-visibility: auto; contain-intrinsic-size: auto 600px; }
+/* Rendimiento: solo secciones CLARAS sin fondos oscuros dentro */
+#quienes-somos, #areas, #casos, #contacto-home { content-visibility: auto; contain-intrinsic-size: auto 600px; }
+
+/* ---- Migas de pan (Breadcrumbs) accesibles ---- */
+.breadcrumb ol { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 0.5rem; list-style: none; margin: 0; padding: 0; }
+.breadcrumb ol > li { display: inline-flex; align-items: center; gap: 0.5rem; }
+.breadcrumb ol > li + li::before { content: "/" / ""; color: #94a3b8; font-weight: 400; }
+.breadcrumb ol > li > a:focus-visible { position: relative; z-index: 1; }
+@media (forced-colors: active) {
+  .breadcrumb [aria-current="page"] { text-decoration: underline; }
+}
 
 @media print {
   header, footer, aside, #readProgress, #toTop, a[aria-label="Contactar por WhatsApp"], .no-print { display: none !important; }
