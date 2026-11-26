@@ -50,7 +50,7 @@ const ic = (n, cls = 'w-5 h-5') =>
 // ---------- Logo ----------
 const LOGO_CANDIDATES = ['logo.png', 'logo.webp', 'logo.jpg', 'logo.jpeg', 'logo.svg'];
 const logoFile = LOGO_CANDIDATES.find((n) => fs.existsSync('src/assets/' + n));
-const LOGO = { url: '/assets/' + logoFile, file: 'src/assets/' + logoFile, ext: path.extname(logoFile), w: 150, h: 50 };
+const LOGO = { url: '/assets/' + logoFile, file: 'src/assets/' + logoFile, ext: path.extname(logoFile), w: 182, h: 50 };
 const hasOG = fs.existsSync('src/assets/og-default.png');
 const logoImg = (cls = 'h-10 w-auto') =>
   `<img src="${LOGO.url}" alt="${esc(SITE.name)}" width="${LOGO.w}" height="${LOGO.h}" class="${cls}" decoding="async">`;
@@ -191,7 +191,7 @@ function footer() {
   <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
     <div class="md:col-span-1">
       <a href="/" class="inline-flex bg-white rounded-lg px-3 py-2" aria-label="${esc(SITE.name)} - Inicio">${logoImg('h-10 w-auto')}</a>
-      <p class="mt-4 text-sm text-slate-400 leading-relaxed">Defensa jurídica de víctimas de crímenes de Estado, violaciones de derechos humanos y reparación integral en Colombia.</p>
+      <p class="mt-4 text-sm text-slate-300 leading-relaxed">Defendemos sus derechos con valentía y compromiso. Justicia para las víctimas de crímenes de Estado.</p>
     </div>
     <div>
       <p class="text-white text-xs font-semibold uppercase tracking-widest mb-4">Áreas y procesos</p>
@@ -217,8 +217,11 @@ function footer() {
         <li class="flex gap-2">${ic('pin', 'w-4 h-4 mt-0.5 text-gold-500 shrink-0')}<span>${SITE.address ? esc(SITE.address) : 'Medellín, Antioquia'}</span></li>
         <li class="flex gap-2">${ic('phone', 'w-4 h-4 mt-0.5 text-gold-500 shrink-0')}<a href="${telLink}" class="hover:text-gold-500" data-track="call" data-loc="footer">${hasPhone ? esc(SITE.phone) : 'Ver página de contacto'}</a></li>
         ${SITE.email ? `<li class="flex gap-2">${ic('mail', 'w-4 h-4 mt-0.5 text-gold-500 shrink-0')}<a href="mailto:${esc(SITE.email)}" class="hover:text-gold-500">${esc(SITE.email)}</a></li>` : ''}
-        <li class="flex gap-2">${ic('clock', 'w-4 h-4 mt-0.5 text-gold-500 shrink-0')}<span>${esc(SITE.hours)}</span></li>
       </ul>
+      <div class="mt-5 rounded-xl bg-white/[0.04] border border-white/10 p-4">
+        <p class="text-gold-500 text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5">${ic('clock', 'w-4 h-4 shrink-0')}Atención 24 Horas</p>
+        <p class="mt-2 text-xs text-slate-300 leading-relaxed">Estamos disponibles para usted 24/7. Su primera consulta es completamente gratis y confidencial.</p>
+      </div>
     </div>
   </div>
   <div class="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-white/10 text-xs text-slate-400 leading-relaxed">
