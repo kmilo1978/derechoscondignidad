@@ -13,7 +13,7 @@ export const SITE = {
   street: 'Calle 53 # 45-112',
   address: 'Calle 53 # 45-112, Edificio Centro Colseguros, Medellín, Antioquia',
   hours: 'Disponibilidad 24/7',
-  mapEmbed: 'https://www.openstreetmap.org/export/embed.html?bbox=-75.5677%2C6.2478%2C-75.5597%2C6.2528&layer=mapnik&marker=6.250307%2C-75.563698',
+  mapEmbed: 'https://maps.google.com/maps?q=6.250307,-75.563698+(Derechos%20con%20Dignidad)&hl=es&z=17&output=embed',
   mapUrl: 'https://www.google.com/maps/search/?api=1&query=Calle+53+%23+45-112,+Medellin,+Antioquia',
   lawyers: [], // [{ name, tp: 'tarjeta profesional', bio, photo }]
   teamIntro: 'Profesionales con experiencia en litigio contra el Estado y defensa de los derechos humanos.',
