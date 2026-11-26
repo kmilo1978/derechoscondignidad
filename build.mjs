@@ -250,12 +250,13 @@ function whatsappWidgetHtml() {
     ['Desaparición o falsos positivos', 'Hola, vengo desde el sitio web de Derechos con Dignidad y busco representación jurídica por desaparición forzada o ejecución extrajudicial.'],
     ['Privación injusta de la libertad', 'Hola, vengo desde el sitio web de Derechos con Dignidad y quiero consultar sobre una demanda por privación injusta de la libertad.'],
     ['Indemnizaciones y reparación', 'Hola, vengo desde el sitio web de Derechos con Dignidad y necesito orientación sobre indemnizaciones y reparación integral.'],
+    ['Otra consulta jurídica', 'Hola, vengo desde el sitio web de Derechos con Dignidad y quisiera recibir orientación jurídica confidencial.'],
   ];
   const waNum = digits(SITE.whatsapp);
   const defaultMsg = 'Hola, vengo desde el sitio web de Derechos con Dignidad y quisiera recibir orientación jurídica confidencial.';
 
   return `<div id="waWidget" class="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-50" data-wa="${esc(waNum)}">
-  <div id="waPanel" class="hidden absolute bottom-16 right-0 w-[min(23rem,calc(100vw-3.25rem))] bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden text-left" role="dialog" aria-labelledby="waPanelTitle">
+  <div id="waPanel" class="hidden absolute bottom-16 right-0 w-[min(22rem,calc(100vw-3.25rem))] bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden text-left" role="dialog" aria-labelledby="waPanelTitle">
     <div class="bg-navy-900 text-white px-4 py-3 flex items-start justify-between gap-3">
       <div>
         <p id="waPanelTitle" class="font-semibold text-base text-gold-500">Consulta por WhatsApp</p>
@@ -263,9 +264,9 @@ function whatsappWidgetHtml() {
       </div>
       <button id="waCloseBtn" type="button" class="text-slate-300 hover:text-gold-500 p-1 rounded-lg hover:bg-white/10 transition-colors cursor-pointer" aria-label="Cerrar opciones de WhatsApp">${ic('x', 'w-5 h-5')}</button>
     </div>
-    <div class="p-3.5 space-y-3 max-h-[75dvh] overflow-y-auto overscroll-contain">
+    <div class="p-4 space-y-3.5 max-h-[75dvh] overflow-y-auto overscroll-contain">
       <div>
-        <p class="text-xs font-semibold uppercase tracking-wider text-navy-900 mb-1.5">1. Elige tu tipo de consulta</p>
+        <p class="text-xs font-semibold uppercase tracking-wider text-navy-900 mb-2">¿Por qué nos consultas?</p>
         <div class="flex flex-wrap gap-1.5">
           ${options
             .map(
@@ -276,19 +277,10 @@ function whatsappWidgetHtml() {
         </div>
       </div>
       <div>
-        <label for="waCustomMsg" class="block text-xs font-semibold uppercase tracking-wider text-navy-900 mb-1">2. Mensaje personalizado desde el sitio</label>
-        <textarea id="waCustomMsg" rows="2" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-navy-900 focus:outline-none focus:ring-2 focus:ring-gold-500">${esc(defaultMsg)}</textarea>
+        <label for="waNote" class="block text-xs font-semibold uppercase tracking-wider text-navy-900 mb-1">Tu nombre o detalle breve (opcional)</label>
+        <input id="waNote" type="text" maxlength="140" placeholder="Ej. Carlos, consulta en Medellín" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-navy-900 focus:outline-none focus:ring-2 focus:ring-gold-500">
       </div>
-      ${
-        hasWA
-          ? `<a id="waSendLink" href="https://wa.me/${esc(waNum)}?text=${encodeURIComponent(defaultMsg)}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-loc="burbuja" class="w-full inline-flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-4 py-2.5 rounded-xl text-sm transition-colors">${ic('chat', 'w-4 h-4')}Enviar mensaje por WhatsApp</a>`
-          : `<div class="space-y-2">
-              <p class="text-xs text-slate-600 bg-slate-50 border border-dashed border-slate-300 rounded-lg px-3 py-1.5">WhatsApp directo pendiente de activar. Copia este mensaje o envíalo en nuestro formulario.</p>
-              <button type="button" id="waCopyBtn" class="w-full inline-flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-4 py-2.5 rounded-xl text-sm transition-colors cursor-pointer">${ic('chat', 'w-4 h-4')}Copiar mensaje personalizado</button>
-              <p id="waCopyStatus" class="text-xs text-green-700 font-medium hidden" role="status"></p>
-              <a href="/contacto/#formulario" class="w-full inline-flex items-center justify-center gap-2 border border-slate-300 hover:border-gold-500 text-navy-900 font-medium px-4 py-2 rounded-xl text-sm transition-colors">Ir al formulario de contacto</a>
-            </div>`
-      }
+      <a id="waSendLink" href="https://wa.me/${esc(waNum)}?text=${encodeURIComponent(defaultMsg)}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-loc="burbuja" class="w-full inline-flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-4 py-3 rounded-xl text-sm transition-colors">${ic('chat', 'w-4 h-4')}Enviar por WhatsApp</a>
     </div>
   </div>
   <button id="waBtn" type="button" aria-expanded="false" aria-controls="waPanel" aria-label="Abrir opciones de consulta por WhatsApp" title="WhatsApp" class="w-14 h-14 inline-flex items-center justify-center bg-gold-500 hover:bg-gold-600 text-navy-900 rounded-full shadow-xl border border-gold-600/40 transition-colors cursor-pointer">${ic('chat', 'w-7 h-7')}</button>

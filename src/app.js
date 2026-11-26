@@ -532,30 +532,32 @@
     });
   })();
 
-  // ---------- Burbuja flotante de WhatsApp con opciones y mensaje personalizado ----------
+  // ---------- Burbuja flotante de WhatsApp con opciones y envío directo ----------
   (function () {
     var widget = document.getElementById('waWidget');
     if (!widget) return;
     var btn = document.getElementById('waBtn');
     var panel = document.getElementById('waPanel');
     var closeBtn = document.getElementById('waCloseBtn');
-    var msgBox = document.getElementById('waCustomMsg');
+    var noteInput = document.getElementById('waNote');
     var sendLink = document.getElementById('waSendLink');
-    var copyBtn = document.getElementById('waCopyBtn');
-    var copyStatus = document.getElementById('waCopyStatus');
     var opts = $$('[data-wa-option]', widget);
     var waNum = widget.getAttribute('data-wa') || '';
     var h1El = document.querySelector('main h1');
     var pageName = h1El ? h1El.textContent.trim().replace(/\s+/g, ' ') : '';
     var pageTag = (location.pathname !== '/' && pageName) ? ' (desde: ' + pageName + ')' : '';
+    var selectedBase = 'Hola, vengo desde el sitio web de Derechos con Dignidad y quisiera recibir orientación jurídica confidencial.';
 
-    if (msgBox && pageTag) {
-      msgBox.value = 'Hola, vengo desde el sitio web de Derechos con Dignidad' + pageTag + ' y quisiera recibir orientación jurídica confidencial.';
+    function buildMessage() {
+      var msg = pageTag ? selectedBase.replace('Derechos con Dignidad', 'Derechos con Dignidad' + pageTag) : selectedBase;
+      var note = noteInput ? noteInput.value.trim() : '';
+      if (note) msg += ' Datos / detalle: ' + note + '.';
+      return msg;
     }
 
     function syncLink() {
-      if (sendLink && waNum && msgBox) {
-        sendLink.href = 'https://wa.me/' + waNum + '?text=' + encodeURIComponent(msgBox.value.trim());
+      if (sendLink) {
+        sendLink.href = 'https://wa.me/' + waNum + '?text=' + encodeURIComponent(buildMessage());
       }
     }
 
@@ -592,27 +594,11 @@
           o.classList.toggle('border-slate-200', !active);
           o.classList.toggle('bg-slate-50', !active);
         });
-        if (msgBox) {
-          var base = opt.getAttribute('data-wa-option') || '';
-          msgBox.value = pageTag ? base.replace('Derechos con Dignidad', 'Derechos con Dignidad' + pageTag) : base;
-          syncLink();
-        }
+        selectedBase = opt.getAttribute('data-wa-option') || selectedBase;
+        syncLink();
       });
     });
-    if (msgBox) msgBox.addEventListener('input', syncLink);
-    if (copyBtn && msgBox) {
-      copyBtn.addEventListener('click', function () {
-        var txt = msgBox.value.trim();
-        if (navigator.clipboard && txt) {
-          navigator.clipboard.writeText(txt).then(function () {
-            if (copyStatus) {
-              copyStatus.textContent = 'Mensaje copiado. Puedes pegarlo en WhatsApp o en el formulario.';
-              copyStatus.classList.remove('hidden');
-            }
-          });
-        }
-      });
-    }
+    if (noteInput) noteInput.addEventListener('input', syncLink);
     document.addEventListener('click', function (e) {
       if (panel && !panel.classList.contains('hidden') && !widget.contains(e.target)) {
         setOpen(false);
