@@ -80,7 +80,7 @@ export const AREAS = {
   'homicidio-excombatientes-firmantes-paz': {
     cat: 'crimenes-estado',
     short: 'Homicidio de excombatientes firmantes de paz',
-    icon: 'shield',
+    icon: 'flag',
     title: 'Homicidio de excombatientes firmantes de paz',
     sub: 'Abogados especializados en crímenes contra personas en proceso de reincorporación.',
     intro: [
@@ -112,7 +112,7 @@ export const AREAS = {
   'desaparicion-forzada': {
     cat: 'procesos-demandas',
     short: 'Desaparición forzada',
-    icon: 'users',
+    icon: 'search',
     title: 'Demandas por Desaparición Forzada en Colombia',
     sub: 'En Derechos con Dignidad, defendemos jurídicamente a las familias de personas desaparecidas por agentes del Estado.',
     intro: [
@@ -145,7 +145,7 @@ export const AREAS = {
   'ejecuciones-extrajudiciales': {
     cat: 'crimenes-estado',
     short: 'Ejecuciones extrajudiciales',
-    icon: 'shield',
+    icon: 'file',
     title: 'Ejecuciones extrajudiciales en Colombia',
     sub: 'Defensa legal para víctimas de asesinatos cometidos por agentes del Estado.',
     intro: [
@@ -175,7 +175,7 @@ export const AREAS = {
   'union-patriotica': {
     cat: 'crimenes-estado',
     short: 'Crímenes contra la Unión Patriótica',
-    icon: 'gavel',
+    icon: 'landmark',
     title: 'Unión Patriótica: crímenes políticos que aún claman justicia',
     sub: 'Asesoría legal para familiares de líderes asesinados, desaparecidos o exiliados por persecución política en Colombia.',
     intro: [
@@ -207,7 +207,7 @@ export const AREAS = {
   'privacion-injusta-libertad': {
     cat: 'procesos-demandas',
     short: 'Privación injusta de la libertad',
-    icon: 'scale',
+    icon: 'lock',
     title: 'Privación injusta de la libertad',
     sub: 'Abogados expertos en defender a personas detenidas injustamente en Colombia.',
     intro: [
@@ -307,7 +307,7 @@ export const AREAS = {
   'masacres-agentes-estado': {
     cat: 'crimenes-estado',
     short: 'Masacres por agentes del Estado',
-    icon: 'users',
+    icon: 'layers',
     title: 'Abogados especializados en casos de masacres cometidas por agentes del Estado',
     sub: 'Defendemos a víctimas y comunidades afectadas por asesinatos colectivos, limpiezas sociales y represión armada.',
     intro: [
@@ -335,7 +335,7 @@ export const AREAS = {
   'demandas-jep': {
     cat: 'procesos-demandas',
     short: 'Demandas ante la JEP',
-    icon: 'gavel',
+    icon: 'book',
     title: 'Demandas ante la JEP: Jurisdicción Especial para la Paz',
     sub: 'Representamos a víctimas de crímenes cometidos por agentes del Estado en el marco del conflicto armado.',
     intro: [
@@ -363,7 +363,7 @@ export const AREAS = {
   'demandas-cidh': {
     cat: 'procesos-demandas',
     short: 'Demandas ante la CIDH',
-    icon: 'scale',
+    icon: 'globe',
     title: 'Demandas ante la CIDH',
     sub: 'Representamos tu caso ante la Comisión Interamericana de Derechos Humanos, cuando el Estado colombiano te niega justicia.',
     intro: [
@@ -428,7 +428,7 @@ export const AREAS = {
   'falsos-positivos': {
     cat: 'procesos-demandas',
     short: 'Demandas por falsos positivos',
-    icon: 'gavel',
+    icon: 'award',
     title: 'Demandas por falsos positivos en Colombia',
     sub: 'Asesoría legal especializada para familiares de víctimas de ejecuciones extrajudiciales.',
     intro: [
@@ -453,7 +453,7 @@ export const AREAS = {
   'violacion-derechos-humanos': {
     cat: 'procesos-demandas',
     short: 'Violación de derechos humanos',
-    icon: 'shield',
+    icon: 'compass',
     title: 'Defensa legal en casos de violación de derechos humanos en Colombia',
     sub: 'Abogados expertos en proteger víctimas de crímenes de Estado, violencia institucional y represión sistemática.',
     intro: [

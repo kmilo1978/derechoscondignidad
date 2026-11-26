@@ -44,6 +44,14 @@ const ICONS = {
   search: '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
   home: '<path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
   external: '<path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>',
+  landmark: '<line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/>',
+  globe: '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>',
+  lock: '<rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+  award: '<path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/>',
+  book: '<path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/>',
+  flag: '<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/>',
+  compass: '<circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>',
+  layers: '<path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>',
 };
 const ic = (n, cls = 'w-5 h-5') =>
   `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n] || ICONS.scale}</svg>`;
@@ -233,7 +241,7 @@ function footer() {
     </div>
   </div>
 </footer>
-<a href="${hasWA ? waLink() : telLink}" data-track="${hasWA ? 'whatsapp' : 'call'}" data-loc="flotante" ${hasWA ? 'target="_blank" rel="noopener noreferrer"' : ''} class="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-4 py-3 rounded-full shadow-lg" aria-label="${hasWA ? 'Contactar por WhatsApp' : 'Llamar ahora'}">${ic(hasWA ? 'chat' : 'phone', 'w-6 h-6')}<span class="hidden sm:inline">${hasWA ? 'WhatsApp' : 'Llamar'}</span></a>`;
+<a href="${hasWA ? waLink() : telLink}" data-track="${hasWA ? 'whatsapp' : 'call'}" data-loc="flotante" ${hasWA ? 'target="_blank" rel="noopener noreferrer"' : ''} class="lg:hidden fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-4 py-3 rounded-full shadow-lg" aria-label="${hasWA ? 'Contactar por WhatsApp' : 'Llamar ahora'}">${ic(hasWA ? 'chat' : 'phone', 'w-6 h-6')}<span class="hidden sm:inline">${hasWA ? 'WhatsApp' : 'Llamar'}</span></a>`;
 }
 
 function searchModalHtml() {
@@ -569,7 +577,7 @@ const casesTeaser = () =>
             ${SITE.cases
               .slice(0, 5)
               .map(
-                (c) => `<li class="flex items-start gap-2.5"><span class="text-gold-700 shrink-0 mt-0.5">${ic('check', 'w-4 h-4')}</span><a href="/casos/#${esc(c.slug)}" class="text-navy-900 hover:text-gold-700 font-medium underline decoration-slate-300 underline-offset-2">${esc(c.title)}</a></li>`
+                (c) => `<li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full bg-gold-500 mt-2 shrink-0" aria-hidden="true"></span><a href="/casos/#${esc(c.slug)}" class="text-navy-900 hover:text-gold-700 font-medium underline decoration-slate-300 underline-offset-2">${esc(c.title)}</a></li>`
               )
               .join('')}
           </ul>
@@ -991,7 +999,7 @@ function areaPage(slug) {
             ? `<section id="quienes" class="scroll-mt-28">
                 <h2 class="text-2xl font-semibold text-navy-900 tracking-tight mb-4">${esc(a.listTitle)}</h2>
                 <ul class="space-y-3">
-                  ${a.listItems.map((item) => `<li class="flex gap-3">${ic('check', 'w-5 h-5 text-gold-700 shrink-0 mt-0.5')}<span>${rich(item)}</span></li>`).join('')}
+                  ${a.listItems.map((item) => `<li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full bg-gold-500 mt-2.5 shrink-0" aria-hidden="true"></span><span>${rich(item)}</span></li>`).join('')}
                 </ul>
                 ${a.listFootnote ? `<p class="mt-4 bg-gold-500/10 border-l-4 border-gold-500 rounded-r-xl p-4 text-sm text-navy-900">${rich(a.listFootnote)}</p>` : ''}
               </section>`
@@ -1017,7 +1025,7 @@ function areaPage(slug) {
             ? `<section id="casos-frecuentes" class="scroll-mt-28">
                 <h2 class="text-2xl font-semibold text-navy-900 tracking-tight mb-4">${esc(a.extraListTitle)}</h2>
                 <ul class="space-y-3">
-                  ${a.extraListItems.map((item) => `<li class="flex gap-3">${ic('shield', 'w-5 h-5 text-gold-700 shrink-0 mt-0.5')}<span>${rich(item)}</span></li>`).join('')}
+                  ${a.extraListItems.map((item) => `<li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full bg-gold-500 mt-2.5 shrink-0" aria-hidden="true"></span><span>${rich(item)}</span></li>`).join('')}
                 </ul>
               </section>`
             : ''
@@ -1247,7 +1255,7 @@ const renderBlocks = (blocks) =>
     .map((b) => {
       if (typeof b === 'string') return para(b);
       if (b.ul)
-        return `<ul class="space-y-2 mb-5">${b.ul.map((x) => `<li class="flex gap-3">${ic('check', 'w-5 h-5 text-gold-700 shrink-0 mt-0.5')}<span>${rich(x)}</span></li>`).join('')}</ul>`;
+        return `<ul class="space-y-2 mb-5">${b.ul.map((x) => `<li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full bg-gold-500 mt-2.5 shrink-0" aria-hidden="true"></span><span>${rich(x)}</span></li>`).join('')}</ul>`;
       if (b.ol)
         return `<ol class="space-y-2 mb-5 list-decimal pl-6 marker:text-gold-700 marker:font-semibold">${b.ol.map((x) => `<li class="pl-1">${rich(x)}</li>`).join('')}</ol>`;
       if (b.table) {
