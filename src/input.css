@@ -40,6 +40,30 @@ nav[data-toc] a.is-active { color: #7a5f0f; font-weight: 600; border-left-color:
   .breadcrumb [aria-current="page"] { text-decoration: underline; }
 }
 
+/* ---- Mapa interactivo: blanco y negro en reposo, dorado y a color al interactuar ---- */
+.map-frame {
+  border: 2px solid #e2e8f0;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.map-frame iframe {
+  display: block;
+  filter: grayscale(100%) contrast(1.06);
+  transition: filter 0.35s ease;
+}
+.map-frame:hover,
+.map-frame:focus-within,
+.map-frame:active {
+  border-color: #d4af37;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.22);
+}
+.map-frame:hover iframe,
+.map-frame:focus-within iframe,
+.map-frame:active iframe {
+  filter: grayscale(0%) sepia(14%) saturate(1.12);
+}
+
 @media print {
   header, footer, aside, #readProgress, #toTop, a[aria-label="Contactar por WhatsApp"], .no-print { display: none !important; }
   body { background: #fff; }
