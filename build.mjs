@@ -291,7 +291,7 @@ function whatsappWidgetHtml() {
       }
     </div>
   </div>
-  <button id="waBtn" type="button" aria-expanded="false" aria-controls="waPanel" aria-label="Abrir opciones de consulta por WhatsApp" class="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-4 py-3 rounded-full shadow-xl border border-gold-600/40 transition-colors cursor-pointer">${ic('chat', 'w-6 h-6')}<span class="hidden sm:inline">WhatsApp</span></button>
+  <button id="waBtn" type="button" aria-expanded="false" aria-controls="waPanel" aria-label="Abrir opciones de consulta por WhatsApp" title="WhatsApp" class="w-14 h-14 inline-flex items-center justify-center bg-gold-500 hover:bg-gold-600 text-navy-900 rounded-full shadow-xl border border-gold-600/40 transition-colors cursor-pointer">${ic('chat', 'w-7 h-7')}</button>
 </div>`;
 }
 
