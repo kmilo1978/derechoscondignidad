@@ -216,7 +216,7 @@
         if (link) { if (wa) { link.href = wa.getAttribute('href').split('?')[0] + '?text=' + encodeURIComponent(text); link.classList.remove('hidden'); } else link.classList.add('hidden'); }
         form.classList.add('hidden'); panel.classList.remove('hidden'); panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } else if (wa) {
-        window.open(wa.getAttribute('href').split('?')[0] + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+        window.open(wa.getAttribute('href').split('?')[0] + '?text=' + encodeURIComponent(text), '_blank', 'noopener,noreferrer');
         show('Abrimos WhatsApp con tu mensaje listo para enviar.', true);
         form.reset();
       } else {
@@ -280,7 +280,8 @@
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;');
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
     }
 
     function highlightMatch(text, tokens) {
@@ -448,7 +449,7 @@
             }
           }
 
-          var fallbackBtn = '<a href="' + linkHref + '" target="_blank" rel="noopener" class="mt-4 inline-flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-5 py-2.5 rounded-lg text-sm transition-colors cursor-pointer">' + linkIcon + linkLabel + '</a>';
+          var fallbackBtn = '<a href="' + escapeHtml(linkHref) + '" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-5 py-2.5 rounded-lg text-sm transition-colors cursor-pointer">' + linkIcon + linkLabel + '</a>';
           resultsBox.innerHTML = '<div class="py-10 px-6 text-center text-slate-600"><p class="text-base font-semibold text-navy-900">No encontramos resultados para &ldquo;' + escapeHtml(q) + '&rdquo;</p><p class="text-xs text-slate-500 mt-2 max-w-md mx-auto">Cada situación jurídica requiere revisión individual. Escríbenos de forma confidencial y te orientamos sin costo.</p>' + fallbackBtn + '</div>';
           activeIndex = -1;
           return;
