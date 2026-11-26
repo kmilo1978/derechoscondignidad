@@ -443,17 +443,33 @@ const teamHtml = () => `<section id="equipo" class="scroll-mt-28 bg-navy-900 tex
 
 const casesBlock = () =>
   SITE.cases && SITE.cases.length
-    ? `<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">${SITE.cases
+    ? `<div class="grid lg:grid-cols-3 gap-6">${SITE.cases
         .slice(0, 5)
         .map(
-          (c) => `<article class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between">
-            <div>
+          (c) => `<article class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between gap-5">
+            <div class="space-y-3">
               ${c.type ? `<p class="text-xs font-semibold uppercase tracking-wider text-gold-700">${esc(c.type)}</p>` : ''}
-              <h3 class="mt-2 text-xl font-semibold text-navy-900">${esc(c.title)}</h3>
-              ${c.context ? `<p class="mt-2 text-sm text-slate-600 leading-relaxed">${rich(c.context)}</p>` : ''}
-              ${c.work ? `<p class="mt-2 text-sm text-slate-600 leading-relaxed"><strong class="text-navy-900">Acompañamiento:</strong> ${rich(c.work)}</p>` : ''}
-              ${c.result ? `<p class="mt-2 text-sm text-navy-900 leading-relaxed"><strong>Resultado:</strong> ${rich(c.result)}</p>` : ''}
+              <h3 class="text-xl font-semibold text-navy-900 leading-snug">${esc(c.title)}</h3>
+              ${c.instance ? `<p class="text-xs font-medium text-slate-500">Instancia: ${rich(c.instance)}</p>` : ''}
+              ${c.context ? `<p class="text-sm text-slate-600 leading-relaxed">${rich(c.context)}</p>` : ''}
+              ${c.work ? `<p class="text-sm text-slate-600 leading-relaxed"><strong class="text-navy-900">Rol de Derechos con Dignidad:</strong> ${rich(c.work)}</p>` : ''}
+              ${c.result ? `<p class="text-sm text-navy-900 bg-slate-50 border-l-4 border-gold-500 rounded-r-lg p-3 leading-relaxed"><strong>Resultado y estado:</strong> ${rich(c.result)}</p>` : ''}
             </div>
+            ${
+              c.sources && c.sources.length
+                ? `<div class="pt-4 border-t border-slate-100">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Fuentes y documentos</p>
+                    <ul class="space-y-1.5 text-xs">
+                      ${c.sources
+                        .map(
+                          ([label, url]) =>
+                            `<li><a href="${esc(url)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-navy-900 hover:text-gold-700 underline decoration-gold-600/60 underline-offset-2">${esc(label)} ${ic('external', 'w-3.5 h-3.5 shrink-0')}</a></li>`
+                        )
+                        .join('')}
+                    </ul>
+                  </div>`
+                : ''
+            }
           </article>`
         )
         .join('')}</div>`
@@ -951,7 +967,7 @@ function nosotrosPage() {
     `<div class="max-w-7xl mx-auto px-6 py-14 space-y-12">
       <section class="max-w-3xl">
         ${h2('Enfoque de Derechos con Dignidad')}
-        <p class="leading-relaxed text-slate-600">En ${esc(SITE.name)} acompañamos a víctimas de crímenes de Estado y violaciones graves de derechos humanos con rigor probatorio, absoluta confidencialidad y respeto humano. Representamos casos ante la jurisdicción contencioso-administrativa, el Consejo de Estado, la JEP y el Sistema Interamericano de Derechos Humanos (CIDH y Corte IDH).</p>
+        <p class="leading-relaxed text-slate-600">${rich(`En ${SITE.name} acompañamos a víctimas de crímenes de Estado y violaciones graves de derechos humanos con rigor probatorio, absoluta confidencialidad y respeto humano. Representamos casos ante la jurisdicción contencioso-administrativa, el Consejo de Estado, la Corte Constitucional, la Fiscalía General de la Nación, la JEP y el Sistema Interamericano de Derechos Humanos (CIDH y Corte IDH).`)}</p>
       </section>
       ${teamHtml()}
       ${pending('descripción de experiencia profesional, tarjeta profesional y enlaces a LinkedIn de cada integrante.')}
@@ -970,23 +986,56 @@ function nosotrosPage() {
 // ---------- CASOS RELEVANTES ----------
 function casosPage() {
   const crumbs = [['Inicio', '/'], ['Casos relevantes', '/casos/']];
+  const rutas = [
+    ['01', 'Vía penal', 'Denuncia e intervención como representantes de víctimas ante la Fiscalía General de la Nación y jueces penales para impulsar el esclarecimiento de los hechos.'],
+    ['02', 'Reparación directa', 'Demanda ante los juzgados y tribunales contencioso-administrativos y el Consejo de Estado para exigir la declaratoria de responsabilidad e indemnización estatal.'],
+    ['03', 'Justicia transicional', 'Acreditación de víctimas, presentación de informes y observaciones territoriales en macrocasos ante la JEP en busca de verdad y sanción.'],
+    ['04', 'Sistema interamericano', 'Escalamiento internacional ante la CIDH y la Corte Interamericana de Derechos Humanos cuando la justicia interna no brinda respuesta efectiva.'],
+  ];
   const body =
     pageHero({
       url: '/casos/',
-      h1: 'Casos relevantes y acompañamiento jurídico',
-      sub: 'Experiencias representativas sujetas a autorización expresa y estricta confidencialidad.',
+      h1: 'Casos relevantes y trayectoria jurídica',
+      sub: 'Litigio de interés público, representación de víctimas y articulación ante tribunales nacionales, la JEP y el sistema interamericano.',
       ctas: false,
     }) +
-    `<div class="max-w-7xl mx-auto px-6 py-14 space-y-8">
-      <p class="max-w-3xl leading-relaxed text-slate-600">Cada proceso es único y su publicación depende de la autorización correspondiente, protegiendo siempre la identidad e integridad de las personas involucradas.</p>
-      ${casesBlock()}
+    `<div class="max-w-7xl mx-auto px-6 py-14 space-y-14">
+      <section class="max-w-3xl space-y-4">
+        ${h2('Litigio colectivo y representación judicial de víctimas')}
+        <p class="leading-relaxed text-slate-600">${rich('Derechos con Dignidad actúa como representante judicial de víctimas y litigante de interés público ante la Corte Interamericana de Derechos Humanos, el Consejo de Estado, la Corte Constitucional, la jurisdicción contencioso-administrativa, la Fiscalía General de la Nación y la JEP.')}</p>
+        <p class="leading-relaxed text-slate-600">Los siguientes procesos documentados reflejan nuestra labor real en litigio colectivo, acreditación de víctimas y defensa de derechos humanos, con respeto absoluto por las personas involucradas y respaldo en fuentes oficiales.</p>
+      </section>
+
+      <section aria-labelledby="h-casos-doc">
+        <h2 id="h-casos-doc" class="text-2xl md:text-3xl font-semibold text-navy-900 tracking-tight mb-6">Procesos documentados</h2>
+        ${casesBlock()}
+      </section>
+
+      <section class="bg-navy-900 text-white rounded-3xl p-8 md:p-10" aria-labelledby="h-modelo-litigio">
+        <p class="text-gold-500 text-xs font-semibold uppercase tracking-[0.2em]">Estrategia procesal</p>
+        <h2 id="h-modelo-litigio" class="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">Modelo de litigio multinivel</h2>
+        <p class="mt-3 text-slate-300 max-w-3xl leading-relaxed">Dependiendo de la naturaleza del crimen de Estado o la violación de derechos humanos, estructuramos rutas paralelas y complementarias para proteger la verdad, la justicia y la reparación integral:</p>
+        <ol class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          ${rutas
+            .map(
+              ([num, t, d]) => `<li class="border-t-2 border-gold-500 pt-4">
+                <span class="text-gold-500 font-semibold">${num}</span>
+                <h3 class="mt-1 text-lg font-semibold text-white">${esc(t)}</h3>
+                <p class="mt-2 text-sm text-slate-300 leading-relaxed">${rich(d, true)}</p>
+              </li>`
+            )
+            .join('')}
+        </ol>
+      </section>
+
+      ${entitiesSection(ENTITIES.filter((e) => ['corte-idh', 'cidh', 'jep', 'consejo-estado', 'corte-constitucional', 'fiscalia', 'minjusticia', 'defensoria'].includes(e.id)), 'Estamentos del Estado y organismos oficiales')}
     </div>` +
     ctaFinal();
 
   render({
     url: '/casos/',
     title: 'Casos relevantes | Derechos con Dignidad',
-    desc: 'Casos relevantes y trayectoria jurídica de Derechos con Dignidad en defensa de víctimas del Estado y derechos humanos.',
+    desc: 'Casos relevantes y trayectoria de Derechos con Dignidad: Unión Patriótica ante la Corte IDH, Macrocaso 06 en la JEP y Masacre de El Topacio.',
     body,
     crumbs,
   });

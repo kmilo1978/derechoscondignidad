@@ -25,7 +25,56 @@ export const SITE = {
     { name: 'Daniel Montoya', role: 'Defensa penal y DD.HH.', photo: 'daniel-montoya', bio: '', linkedin: '' },
   ],
   testimonials: [], // [{ name, text }] solo reales y autorizados
-  cases: [], // [{ slug, type, context, title, summary, work, result }] solo reales y autorizados
+  cases: [
+    {
+      slug: 'union-patriotica-corte-idh',
+      type: 'Corte IDH · Litigio internacional',
+      instance: 'Corte Interamericana de Derechos Humanos',
+      title: 'Integrantes y Militantes de la Unión Patriótica vs. Colombia',
+      context:
+        'Proceso internacional por la persecución sistemática y las violaciones graves de derechos humanos cometidas desde 1984 y durante más de veinte años contra más de 6.000 integrantes y simpatizantes de la Unión Patriótica, incluidas afectaciones a la vida, la libertad personal, las garantías judiciales, la honra y la protección judicial.',
+      work:
+        'Derechos con Dignidad actuó como interviniente común junto al Centro Jurídico de Derechos Humanos y fue reconocida expresamente como peticionaria por la Corte Interamericana de Derechos Humanos, participando también en las resoluciones de supervisión de cumplimiento y en la sentencia de interpretación de 2024.',
+      result:
+        'Mediante sentencia del 27 de julio de 2022, la Corte IDH declaró la responsabilidad internacional del Estado colombiano y ordenó 17 medidas de reparación integral.',
+      sources: [
+        ['Resumen oficial - Ministerio de Justicia', 'https://www.minjusticia.gov.co/Sala-de-prensa/Documents/resumen-455-esp.pdf'],
+        ['Compilación - Defensoría del Pueblo', 'https://forseti.defensoria.gov.co/gestor/compilacion/docs/DTO_CIDH_07-27_2022.htm'],
+        ['Resolución - Jurisprudencia Corte IDH', 'https://jurisprudencia.corteidh.or.cr/pdf_viewer/972647611'],
+      ],
+    },
+    {
+      slug: 'macrocaso-06-union-patriotica-jep',
+      type: 'JEP · Justicia transicional',
+      instance: 'Jurisdicción Especial para la Paz (Sala de Reconocimiento)',
+      title: 'Macrocaso 06: Victimización de miembros de la Unión Patriótica',
+      context:
+        'Macrocaso abierto en 2019 en el que la JEP ha determinado un universo de 5.733 víctimas de la Unión Patriótica, con más de 212 víctimas individuales acreditadas y el reconocimiento de la UP, el Partido Comunista Colombiano (PCC) y Sintramienergética como sujetos colectivos.',
+      work:
+        'Representación judicial de víctimas, acompañamiento para su acreditación y aporte al escrito de observaciones del subcaso Urabá, en articulación con organizaciones como CAJAR, Forjando Futuros y el Comité Permanente por la Defensa de los Derechos Humanos.',
+      result:
+        'La Sala de Reconocimiento calificó el ataque contra la Unión Patriótica como genocidio e imputó responsabilidad penal a cinco altos mandos retirados del Ejército por el exterminio del partido.',
+      sources: [
+        ['Macrocaso 06 - JEP', 'https://www.jep.gov.co/macrocasos/caso06.html'],
+        ['Comunicado oficial - JEP', 'https://www.jep.gov.co/Sala-de-Prensa/Paginas/-la-jep-califica-el-ataque-contra-la-union-patriotica-up-como-genocidio-e-imputa-responsabilidad-penal-a-cinco-altos-mandos.aspx'],
+      ],
+    },
+    {
+      slug: 'masacre-el-topacio-san-rafael',
+      type: 'JEP · Impulso de casos en impunidad',
+      instance: 'Jurisdicción Especial para la Paz',
+      title: 'Masacre de El Topacio: 14 mineros en San Rafael, Antioquia',
+      context:
+        'Masacre de 14 mineros en San Rafael, Antioquia, que acumulaba más de tres décadas sin justicia efectiva y no figuraba entre los siete casos inicialmente priorizados por la JEP.',
+      work:
+        'El abogado Andrés Restrepo representa a las víctimas del caso. En 2020 se presentó un informe ante la JEP solicitando la investigación formal de los hechos y argumentando que la masacre se enmarca en el exterminio contra la Unión Patriótica.',
+      result:
+        'Caso documentado e impulsado ante la justicia transicional para exigir verdad, investigación judicial y reconocimiento de las víctimas.',
+      sources: [
+        ['Informe de prensa sobre el caso', 'https://www.eltiempo.com/justicia/investigacion/masacre-de-14-mineros-en-san-rafael-antioquia-lleva-32-anos-sin-justicia-506460'],
+      ],
+    },
+  ],
   gscVerification: '',
   ga4: '',
   production: false,

@@ -131,6 +131,24 @@ export const ENTITIES = [
       /\bSuperintendencia de Industria y Comercio\b/g,
     ],
   },
+  {
+    id: 'minjusticia',
+    name: 'Ministerio de Justicia y del Derecho',
+    url: 'https://www.minjusticia.gov.co/',
+    desc: 'Cartera nacional encargada de las políticas de justicia y seguimiento institucional.',
+    patterns: [
+      /\bMinisterio de Justicia(?: y del Derecho)?\b/g,
+    ],
+  },
+  {
+    id: 'defensoria',
+    name: 'Defensoría del Pueblo de Colombia',
+    url: 'https://www.defensoria.gov.co/',
+    desc: 'Entidad del Ministerio Público encargada de velar por la promoción, el ejercicio y la divulgación de los derechos humanos.',
+    patterns: [
+      /\bDefensoría del Pueblo\b/g,
+    ],
+  },
 ];
 
 // Enlaza menciones de estamentos en HTML ya escapado, evitando anidar <a> y adaptando contraste en fondos oscuros.
