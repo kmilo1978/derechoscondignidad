@@ -156,7 +156,7 @@ export function linkEntities(escapedHtml, dark = false) {
   const tokens = [];
   let out = escapedHtml;
   const linkClass = dark
-    ? 'underline decoration-gold-500/80 underline-offset-2 text-gold-500 font-medium hover:text-white transition-colors'
+    ? 'underline decoration-white/60 underline-offset-2 text-white font-medium hover:text-gold-500 hover:decoration-gold-500 focus-visible:text-gold-500 transition-colors'
     : 'underline decoration-gold-600/70 underline-offset-2 text-navy-900 font-medium hover:text-gold-700 transition-colors';
 
   for (const ent of ENTITIES) {

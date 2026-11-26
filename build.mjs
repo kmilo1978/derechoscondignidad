@@ -314,8 +314,8 @@ const pageHero = ({ url = '', h1, sub, ctas = true }) => {
     <div class="absolute inset-0 bg-gradient-to-r from-[#070d1a]/85 via-[#0f172a]/70 to-[#0f172a]/55" aria-hidden="true"></div>
   </div>
   <div class="relative max-w-7xl mx-auto px-6 py-10 sm:py-14 md:py-20">
-    <h1 class="text-2xl sm:text-3xl md:text-5xl font-semibold tracking-tight max-w-4xl leading-tight">${esc(h1)}</h1>
-    ${sub ? `<p class="mt-4 sm:mt-5 text-base sm:text-lg text-slate-100 max-w-3xl leading-relaxed">${rich(sub, true)}</p>` : ''}
+    <h1 class="text-2xl sm:text-3xl md:text-5xl font-semibold tracking-tight max-w-4xl leading-tight text-white">${esc(h1)}</h1>
+    ${sub ? `<p class="mt-4 sm:mt-5 text-base sm:text-lg text-white max-w-3xl leading-relaxed">${rich(sub, true)}</p>` : ''}
     ${ctas ? `<div class="mt-6 sm:mt-8 flex flex-wrap gap-3">${btnWA('Hablar por WhatsApp', '', 'hero')}${btnCall(undefined, '', 'hero')}</div>` : ''}
   </div>
 </section>`;
@@ -652,7 +652,7 @@ function home() {
   <div class="relative max-w-7xl mx-auto px-6 py-12 sm:py-16 md:py-24 grid lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-12 items-center">
     <div>
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1] text-white">Defendemos a Víctimas del Estado y Luchamos por su Reparación Integral</h1>
-      <p class="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-slate-100 leading-relaxed max-w-2xl">${rich('Especialistas en Derechos Humanos, CIDH, JEP y crímenes de lesa humanidad.', true)}</p>
+      <p class="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-white leading-relaxed max-w-2xl">${rich('Especialistas en Derechos Humanos, CIDH, JEP y crímenes de lesa humanidad.', true)}</p>
       <div class="mt-9 flex flex-wrap gap-3">${btnWA('Hablar por WhatsApp', '', 'hero')}<a href="#areas" class="inline-flex items-center justify-center gap-2 border border-white/30 hover:bg-white/10 text-white font-medium px-6 py-3.5 rounded-lg transition-colors">Explorar áreas de acción ${ic('down')}</a></div>
       <ul class="mt-12 pt-8 border-t border-white/10 grid sm:grid-cols-2 gap-6 text-sm">
         <li class="flex gap-3">${ic('gavel', 'w-5 h-5 text-gold-500 shrink-0')}<span><strong class="block text-white">Defensa Experta</strong>Abogados especializados en litigio contra el Estado.</span></li>
