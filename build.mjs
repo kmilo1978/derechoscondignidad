@@ -52,6 +52,7 @@ const ICONS = {
   flag: '<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/>',
   compass: '<circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>',
   layers: '<path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>',
+  linkedin: '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/>',
 };
 const ic = (n, cls = 'w-5 h-5') =>
   `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n] || ICONS.scale}</svg>`;
@@ -610,12 +611,19 @@ const teamHtml = () => `<section id="equipo" class="scroll-mt-28 bg-navy-900 tex
   <ul class="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
     ${TEAM.map((m) => {
       const ph = teamPhoto(m);
+      const iconCls = 'w-11 h-11 rounded-full border border-white/15 bg-white/5 text-slate-200 hover:text-gold-500 hover:border-gold-500/60 hover:bg-gold-500/10 inline-flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500';
+      const linkedinEl = m.linkedin
+        ? `<a href="${esc(m.linkedin)}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de ${esc(m.name)}" title="LinkedIn de ${esc(m.name)}" class="${iconCls}">${ic('linkedin', 'w-5 h-5')}</a>`
+        : `<span role="img" aria-label="LinkedIn de ${esc(m.name)} (próximamente)" title="LinkedIn próximamente" class="${iconCls} cursor-default">${ic('linkedin', 'w-5 h-5')}</span>`;
+      const emailEl = m.email
+        ? `<a href="mailto:${esc(m.email)}" aria-label="Correo de ${esc(m.name)}" title="${esc(m.email)}" class="${iconCls}">${ic('mail', 'w-5 h-5')}</a>`
+        : `<a href="/contacto/#formulario" aria-label="Escribir correo a ${esc(m.name)}" title="Enviar mensaje a ${esc(m.name)}" class="${iconCls}">${ic('mail', 'w-5 h-5')}</a>`;
       return `<li class="group bg-white/[0.04] border border-white/10 hover:border-gold-500/60 rounded-2xl px-4 py-6 text-center transition-colors flex flex-col items-center">
         ${ph ? `<img src="${ph}" alt="Foto de ${esc(m.name)}" width="112" height="112" loading="lazy" decoding="async" class="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover ring-2 ring-white/15 group-hover:ring-gold-500 transition">` : `<span class="w-24 h-24 md:w-28 md:h-28 rounded-full bg-white/10 ring-2 ring-white/15 flex items-center justify-center text-2xl font-semibold text-gold-500" aria-hidden="true">${initials(m.name)}</span>`}
         <p class="mt-4 font-semibold leading-snug text-white">${esc(m.name)}</p>
         <p class="mt-1 text-sm text-gold-500 leading-snug">${esc(m.role)}</p>
         ${m.bio ? `<p class="mt-2 text-xs text-slate-300 leading-relaxed">${esc(m.bio)}</p>` : ''}
-        ${m.linkedin ? `<a href="${esc(m.linkedin)}" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex items-center gap-1 text-xs text-slate-300 hover:text-gold-500 underline underline-offset-2">LinkedIn ${ic('external', 'w-3.5 h-3.5')}</a>` : ''}
+        <div class="mt-auto pt-4 flex items-center justify-center gap-2.5">${linkedinEl}${emailEl}</div>
       </li>`;
     }).join('')}
   </ul>

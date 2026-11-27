@@ -18,11 +18,11 @@ export const SITE = {
   lawyers: [], // [{ name, tp: 'tarjeta profesional', bio, photo }]
   teamIntro: 'Profesionales con experiencia en litigio contra el Estado y defensa de los derechos humanos.',
   team: [
-    { name: 'Andrés Restrepo', role: 'Derechos Humanos · Litigio', photo: 'andres-restrepo', bio: '', linkedin: '' },
-    { name: 'Alejandro Botero', role: 'Reparación directa', photo: 'alejandro-botero', bio: '', linkedin: '' },
-    { name: 'Yudy Elena Moreno', role: 'Acompañamiento a víctimas', photo: 'yudy-elena-moreno', bio: '', linkedin: '' },
-    { name: 'Juan Esteban Montoya', role: 'Procesos y demandas', photo: 'juan-esteban-montoya', bio: '', linkedin: '' },
-    { name: 'Daniel Montoya', role: 'Defensa penal y DD.HH.', photo: 'daniel-montoya', bio: '', linkedin: '' },
+    { name: 'Andrés Restrepo', role: 'Derechos Humanos · Litigio', photo: 'andres-restrepo', bio: '', linkedin: '', email: '' },
+    { name: 'Alejandro Botero', role: 'Reparación directa', photo: 'alejandro-botero', bio: '', linkedin: '', email: '' },
+    { name: 'Yudy Elena Moreno', role: 'Acompañamiento a víctimas', photo: 'yudy-elena-moreno', bio: '', linkedin: '', email: '' },
+    { name: 'Juan Esteban Montoya', role: 'Procesos y demandas', photo: 'juan-esteban-montoya', bio: '', linkedin: '', email: '' },
+    { name: 'Daniel Montoya', role: 'Defensa penal y DD.HH.', photo: 'daniel-montoya', bio: '', linkedin: '', email: '' },
   ],
   testimonials: [], // [{ name, text }] solo reales y autorizados
   cases: [
