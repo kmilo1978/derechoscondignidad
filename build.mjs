@@ -749,7 +749,7 @@ function contactFormHtml() {
     <p role="status" class="text-sm" aria-live="polite"></p>
   </form>
   <div data-success class="hidden">
-    <div class="flex items-center gap-3 text-green-700"><span class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">${ic('check')}</span><h3 class="text-xl font-semibold text-navy-900">Tu consulta está lista para enviar</h3></div>
+    <div class="flex items-center gap-3"><span class="w-10 h-10 rounded-xl bg-gold-50 border border-gold-200 text-gold-700 flex items-center justify-center shrink-0">${ic('check', 'w-5 h-5')}</span><h3 class="text-xl font-semibold text-navy-900">Tu consulta está lista para enviar</h3></div>
     <p class="mt-3 text-sm text-slate-600 leading-relaxed">Haz clic en <strong>Enviar por WhatsApp</strong> para iniciar tu conversación confidencial con nuestro equipo, o llámanos directamente.</p>
     <div class="mt-5 flex flex-wrap items-center gap-3"><a data-wa-link target="_blank" rel="noopener noreferrer" class="hidden inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-5 py-3 rounded-lg">${ic('chat')}Enviar por WhatsApp</a><a href="${telLink}" data-track="call" data-loc="contacto-resumen" class="inline-flex items-center gap-2 border border-navy-900/20 hover:border-gold-500 px-5 py-3 rounded-lg font-medium text-navy-900">${ic('phone', 'w-4 h-4')}Llamar</a><button type="button" data-again class="px-3 py-3 text-sm underline text-navy-900 cursor-pointer">Enviar otra consulta</button></div>
   </div>
