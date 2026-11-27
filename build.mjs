@@ -391,8 +391,8 @@ const pageHero = ({ url = '', h1, sub, ctas = true }) => {
   const alt = heroAltFor(url, h1);
   return `<section class="relative bg-[#003854] text-white overflow-hidden">
   <div class="absolute inset-0">
-    <img src="${bg}" alt="${esc(alt)}" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center" />
-    <div class="absolute inset-0 bg-gradient-to-r from-[#070d1a]/85 via-[#0f172a]/70 to-[#0f172a]/55" aria-hidden="true"></div>
+    <img src="${bg}" alt="${esc(alt)}" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center mix-blend-luminosity opacity-80" />
+    <div class="absolute inset-0 bg-gradient-to-r from-[#070d1a]/82 via-[#0f172a]/58 to-[#003854]/45" aria-hidden="true"></div>
   </div>
   <div class="relative max-w-7xl mx-auto px-6 py-10 sm:py-14 md:py-20">
     <h1 class="text-2xl sm:text-3xl md:text-5xl font-semibold tracking-tight max-w-4xl leading-tight text-white">${esc(h1)}</h1>
@@ -754,8 +754,8 @@ function home() {
   const body = `
 <section class="relative bg-[#003854] text-white overflow-hidden">
   <div class="absolute inset-0">
-    <img src="/assets/hero/hero-home.webp" alt="${esc(PAGE_SEO['/'].heroAlt)}" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center" />
-    <div class="absolute inset-0 bg-gradient-to-r from-[#070d1a]/88 via-[#0f172a]/75 to-[#0f172a]/60" aria-hidden="true"></div>
+    <img src="/assets/hero/hero-home.webp" alt="${esc(PAGE_SEO['/'].heroAlt)}" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center mix-blend-luminosity opacity-80" />
+    <div class="absolute inset-0 bg-gradient-to-r from-[#070d1a]/82 via-[#0f172a]/60 to-[#003854]/45" aria-hidden="true"></div>
   </div>
   <div class="relative max-w-7xl mx-auto px-6 py-12 sm:py-16 md:py-24 grid lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-12 items-center">
     <div>
@@ -1511,8 +1511,8 @@ function notFoundPage() {
 
   const body = `<section class="relative bg-[#003854] text-white overflow-hidden">
   <div class="absolute inset-0">
-    <img src="/assets/hero/hero-no-encontrado.webp" alt="Página no encontrada en ${esc(SITE.name)}" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center" />
-    <div class="absolute inset-0 bg-gradient-to-r from-[#070d1a]/88 via-[#0f172a]/75 to-[#0f172a]/60" aria-hidden="true"></div>
+    <img src="/assets/hero/hero-no-encontrado.webp" alt="Página no encontrada en ${esc(SITE.name)}" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center mix-blend-luminosity opacity-80" />
+    <div class="absolute inset-0 bg-gradient-to-r from-[#070d1a]/82 via-[#0f172a]/60 to-[#003854]/45" aria-hidden="true"></div>
   </div>
   <div class="relative max-w-3xl mx-auto px-6 py-16 md:py-24 text-center">
     <p class="text-7xl md:text-8xl font-semibold tracking-tight text-gold-500" aria-hidden="true">404</p>
