@@ -151,13 +151,12 @@ function header() {
   <div class="max-w-7xl 2xl:max-w-[1440px] mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-3 sm:gap-4 2xl:gap-8">
     <a href="/" class="flex items-center shrink-0" aria-label="${esc(SITE.name)} - Inicio"><span class="bg-white rounded-lg px-2.5 sm:px-3 py-1 sm:py-1.5 flex items-center">${logoImg('h-8 sm:h-10 w-auto')}</span></a>
     <nav class="hidden xl:flex flex-1 justify-center items-center gap-1 2xl:gap-2 min-w-0" aria-label="Principal">${desk}</nav>
-    <div class="hidden xl:flex items-center gap-2.5 shrink-0">
-      <button type="button" data-open-search class="inline-flex items-center justify-between gap-2.5 px-3 py-2 text-xs 2xl:text-sm text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/15 hover:border-white/30 rounded-xl transition-all cursor-pointer w-40 2xl:w-52" aria-label="Buscar en el sitio (Ctrl+K)">
+    <div class="hidden xl:flex items-center gap-3 shrink-0">
+      <button type="button" data-open-search class="inline-flex items-center justify-between gap-3 px-3.5 py-2 text-xs 2xl:text-sm text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/15 hover:border-white/30 rounded-xl transition-all cursor-pointer w-48 2xl:w-56" aria-label="Buscar en el sitio (Ctrl+K)">
         <span class="flex items-center gap-2 text-slate-300 truncate">${ic('search', 'w-4 h-4 text-gold-500 shrink-0')}<span class="truncate">Buscar en el sitio...</span></span>
         <kbd class="px-1.5 py-0.5 text-[10px] bg-white/10 text-slate-300 rounded border border-white/15 font-mono shrink-0">Ctrl K</kbd>
       </button>
-      <a href="${telLink}" data-track="call" data-loc="header" class="inline-flex items-center justify-center gap-1.5 border border-white/25 hover:border-gold-500 hover:bg-white/10 text-white font-medium py-2.5 px-3.5 rounded-lg text-xs 2xl:text-sm transition-colors whitespace-nowrap" aria-label="Llamar al ${esc(SITE.phone)}">${ic('phone', 'w-4 h-4 text-gold-500')}Llamar</a>
-      ${btnWA('WhatsApp', '!py-2.5 !px-4 text-xs 2xl:text-sm whitespace-nowrap', 'header')}
+      <a href="${telLink}" data-track="call" data-loc="header" class="${goldBtn} !py-2.5 !px-5 text-sm whitespace-nowrap" aria-label="Llamar al ${esc(SITE.phone)}">${ic('phone')}Llamar</a>
     </div>
     <div class="flex xl:hidden items-center gap-1">
       <button type="button" data-open-search class="text-white w-11 h-11 inline-flex items-center justify-center rounded-lg hover:bg-white/10 hover:text-gold-500 transition-colors cursor-pointer" aria-label="Buscar en el sitio">
@@ -177,7 +176,7 @@ function header() {
       </button>
     </div>
     <nav aria-label="Menú móvil"><ul>${mob}</ul></nav>
-    <div class="pt-5 flex flex-col gap-2.5">${btnWA('Escríbenos por WhatsApp', 'w-full', 'menu')}<a href="${telLink}" data-track="call" data-loc="menu" class="inline-flex items-center justify-center gap-2 border border-white/25 hover:bg-white/10 text-white font-medium px-6 py-3 rounded-lg transition-colors w-full">${ic('phone')}Llamar al ${esc(SITE.phone)}</a></div>
+    <div class="pt-5"><a href="${telLink}" data-track="call" data-loc="menu" class="${goldBtn} w-full">${ic('phone')}Llamar al ${esc(SITE.phone)}</a></div>
   </div>
 </header>`;
 }
