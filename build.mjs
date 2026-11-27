@@ -376,7 +376,7 @@ const HERO_MAP = {
 
 function heroBgFor(url) {
   const file = HERO_MAP[url] || 'hero-home.webp';
-  return `/assets/hero/${file}`;
+  return `/assets/hero/${file}?v=${BUILD_V}`;
 }
 
 function heroAltFor(url, h1) {
@@ -754,7 +754,7 @@ function home() {
   const body = `
 <section class="relative bg-[#003854] text-white overflow-hidden">
   <div class="absolute inset-0">
-    <img src="/assets/hero/hero-home.webp" alt="${esc(PAGE_SEO['/'].heroAlt)}" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center mix-blend-luminosity opacity-80" />
+    <img src="${heroBgFor('/')}" alt="${esc(PAGE_SEO['/'].heroAlt)}" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center mix-blend-luminosity opacity-80" />
     <div class="absolute inset-0 bg-gradient-to-r from-[#070d1a]/82 via-[#0f172a]/60 to-[#003854]/45" aria-hidden="true"></div>
   </div>
   <div class="relative max-w-7xl mx-auto px-6 py-12 sm:py-16 md:py-24 grid lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-12 items-center">
@@ -1511,7 +1511,7 @@ function notFoundPage() {
 
   const body = `<section class="relative bg-[#003854] text-white overflow-hidden">
   <div class="absolute inset-0">
-    <img src="/assets/hero/hero-no-encontrado.webp" alt="Página no encontrada en ${esc(SITE.name)}" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center mix-blend-luminosity opacity-80" />
+    <img src="${heroBgFor('/no-encontrado/')}" alt="Página no encontrada en ${esc(SITE.name)}" width="1400" height="700" loading="eager" fetchpriority="high" decoding="async" class="w-full h-full object-cover object-center mix-blend-luminosity opacity-80" />
     <div class="absolute inset-0 bg-gradient-to-r from-[#070d1a]/82 via-[#0f172a]/60 to-[#003854]/45" aria-hidden="true"></div>
   </div>
   <div class="relative max-w-3xl mx-auto px-6 py-16 md:py-24 text-center">
@@ -1606,7 +1606,7 @@ function tech() {
 ${pages
   .map((p) => {
     const imgTag = p.heroImg
-      ? `\n    <image:image>\n      <image:loc>${SITE.url}${p.heroImg}</image:loc>\n      <image:title>${esc(p.heroAlt || SITE.name)}</image:title>\n    </image:image>`
+      ? `\n    <image:image>\n      <image:loc>${SITE.url}${p.heroImg.split('?')[0]}</image:loc>\n      <image:title>${esc(p.heroAlt || SITE.name)}</image:title>\n    </image:image>`
       : '';
     return `  <url>\n    <loc>${SITE.url}${p.url}</loc>\n    <lastmod>${SITE.lastReview}</lastmod>${imgTag}\n  </url>`;
   })
