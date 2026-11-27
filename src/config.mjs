@@ -74,6 +74,38 @@ export const SITE = {
         ['Informe de prensa sobre el caso', 'https://www.eltiempo.com/justicia/investigacion/masacre-de-14-mineros-en-san-rafael-antioquia-lleva-32-anos-sin-justicia-506460'],
       ],
     },
+    {
+      slug: 'sentencia-su-168-2023-arboleda-chaverra-cidh',
+      type: 'CIDH y Corte Constitucional · Precedente estructural',
+      instance: 'Corte Constitucional de Colombia y Comisión Interamericana de Derechos Humanos (Caso 11.227)',
+      title: 'Benjamín Artemio Arboleda Chaverra y Robinson Martínez Moya (Sentencia SU-168 de 2023)',
+      context:
+        'Tras declararse en 2021 la caducidad de la acción de reparación directa ante el Consejo de Estado, la firma acompañó a los familiares mediante tutela constitucional y litigio internacional en el Caso 11.227 ante la CIDH, buscando proteger el acceso efectivo a la reparación directa para víctimas del exterminio de la Unión Patriótica.',
+      work:
+        'Organización peticionaria y representante judicial de las víctimas ante la CIDH y la Corte Constitucional frente al obstáculo procesal de la caducidad en graves violaciones de derechos humanos.',
+      result:
+        'La Sentencia SU-168 de 2023 de la Corte Constitucional unificó reglas más favorables sobre la caducidad de la reparación directa para víctimas del exterminio de la Unión Patriótica, abriendo la vía judicial interna a cientos de familias en todo el país.',
+      sources: [
+        ['Sentencia SU-168 de 2023 - Corte Constitucional', 'https://www.corteconstitucional.gov.co/relatoria/2023/su168-23.htm'],
+        ['Informe de Fondo Caso 11.227 - CIDH / OEA', 'https://www.oas.org/es/cidh/decisiones/corte/2018/11227FondoEs.pdf'],
+      ],
+    },
+    {
+      slug: 'macrocaso-03-falsos-positivos-subcaso-antioquia-jep',
+      type: 'JEP · Ejecuciones extrajudiciales',
+      instance: 'Jurisdicción Especial para la Paz (Sala de Reconocimiento, Subcaso Antioquia)',
+      title: 'Falsos positivos: Macrocaso 03, subcaso Antioquia',
+      context:
+        'Investigación de ejecuciones extrajudiciales cometidas por agentes del Estado presentadas falsamente como bajas en combate en el departamento de Antioquia dentro del Caso 03 de la JEP.',
+      work:
+        'Representación judicial de víctimas acreditadas ante la Sala de Reconocimiento de Verdad, participación en diligencias y presentación de observaciones a versiones voluntarias.',
+      result:
+        'Participación reconocida en las actuaciones oficiales del subcaso Antioquia; además, la JEP inició trámite de medida cautelar de protección a favor de los abogados representantes de víctimas del Caso 03.',
+      sources: [
+        ['Estado No. 1014 de 2023 Subcaso Antioquia - JEP', 'https://www.jep.gov.co/Notificaciones/Estado%20No.1014.2023%20SRVR%20Caso%2003%20Auto%20SUB%20D-SUBCASO%20ANTIOQUIA-062%20de%202023.pdf'],
+        ['Medida cautelar de protección - Sala de Prensa JEP', 'https://www.jep.gov.co/Sala-de-Prensa/Paginas/JEP%20inicia%20tr%C3%A1mite%20de%20medida%20cautelar%20de%20protecci%C3%B3n%20a%20abogados%20que%20representan%20a%20las%20v%C3%ADctimas%20en%20el%20caso%2003.aspx'],
+      ],
+    },
   ],
   gscVerification: '',
   ga4: '',

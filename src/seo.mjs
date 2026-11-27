@@ -31,10 +31,10 @@ export const PAGE_SEO = {
   },
   '/casos/': {
     title: 'Casos relevantes: Corte IDH y JEP | Derechos con Dignidad',
-    desc: 'Trayectoria documentada en el caso Unión Patriótica ante la Corte IDH, Macrocaso 06 en la JEP, Masacre de El Topacio y modelo de litigio multinivel.',
+    desc: 'Trayectoria en Corte IDH (Unión Patriótica), Corte Constitucional (Sentencia SU-168 de 2023), JEP (Macrocasos 03 y 06) y El Topacio.',
     heroAlt: 'Casos relevantes y litigio multinivel ante la JEP y la Corte IDH - Derechos con Dignidad',
     answer:
-      'Nuestra trayectoria verificable incluye la actuación como intervinientes comunes y peticionarios reconocidos en el caso Unión Patriótica vs. Colombia (sentencia Corte IDH de 2022), representación de víctimas en el Macrocaso 06 de la JEP e impulso judicial de la Masacre de El Topacio.',
+      'Nuestra trayectoria verificable incluye la actuación como intervinientes comunes en Unión Patriótica vs. Colombia (sentencia Corte IDH de 2022 y supervisión 2024), el precedente de unificación Sentencia SU-168 de 2023 (Caso 11.227 ante la CIDH y Corte Constitucional), la representación de víctimas en los Macrocasos 03 (subcaso Antioquia) y 06 de la JEP y el impulso de la Masacre de El Topacio.',
   },
   '/contacto/': {
     title: 'Contacto y asesoría confidencial 24/7 | Derechos con Dignidad',
@@ -199,7 +199,7 @@ export const HOME_FAQ = [
   ],
   [
     '¿Qué casos relevantes documentados respaldan su trayectoria?',
-    'Contamos con participación verificable como intervinientes comunes en el caso Integrantes y Militantes de la Unión Patriótica vs. Colombia ante la Corte IDH (sentencia de 2022), representación de víctimas en el Macrocaso 06 de la JEP e impulso del caso Masacre de El Topacio.',
+    'Contamos con participación verificable en Unión Patriótica vs. Colombia ante la Corte IDH (sentencia de 2022), el precedente Sentencia SU-168 de 2023 ante la Corte Constitucional y CIDH (Caso 11.227), representación de víctimas en los Macrocasos 03 (subcaso Antioquia) y 06 de la JEP e impulso del caso Masacre de El Topacio.',
   ],
 ];
 
