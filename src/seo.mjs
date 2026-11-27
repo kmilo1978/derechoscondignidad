@@ -5,31 +5,43 @@ export const PAGE_SEO = {
     title: 'Derechos con Dignidad | Víctimas del Estado y Derechos Humanos',
     desc: 'Abogados especialistas en derechos humanos, crímenes de Estado, JEP, CIDH, Corte IDH y reparación integral en Medellín y toda Colombia. Consulta gratis 24/7.',
     heroAlt: 'Equipo de abogados de Derechos con Dignidad en defensa de víctimas del Estado en Colombia',
+    answer:
+      'Derechos con Dignidad es una firma de abogados en Medellín que representa en toda Colombia a víctimas de crímenes de Estado, desaparición forzada, ejecuciones extrajudiciales, Unión Patriótica y privación injusta de la libertad ante el Consejo de Estado, la JEP, la CIDH y la Corte IDH.',
   },
   '/areas-de-accion/': {
     title: 'Áreas de acción e indemnizaciones | Derechos con Dignidad',
     desc: 'Representación legal en crímenes de Estado, líderes sociales, Unión Patriótica, ejecuciones extrajudiciales e indemnizaciones estables en Colombia.',
     heroAlt: 'Áreas de acción jurídica para víctimas de crímenes de Estado - Derechos con Dignidad',
+    answer:
+      'Nuestras líneas de defensa cubren crímenes de Estado, homicidio de líderes sociales y firmantes del Acuerdo de Paz, ejecuciones extrajudiciales y falsos positivos, desaparición forzada, masacres, tortura, crímenes contra la Unión Patriótica, privación injusta de la libertad e indemnizaciones integrales.',
   },
   '/procesos-y-demandas/': {
     title: 'Procesos y demandas contra el Estado | Derechos con Dignidad',
     desc: 'Demandas ante la JEP, CIDH, Corte IDH y Consejo de Estado por desaparición forzada, falsos positivos, tortura y privación injusta de la libertad.',
     heroAlt: 'Procesos judiciales nacionales e internacionales contra el Estado colombiano - Derechos con Dignidad',
+    answer:
+      'Un proceso contra el Estado en Colombia puede adelantarse por reparación directa ante el Consejo de Estado, vía penal ante la Fiscalía, acreditación en macrocasos de la JEP y, cuando hay impunidad interna, mediante petición o medidas cautelares ante la CIDH y la Corte IDH.',
   },
   '/nosotros/': {
     title: 'Nuestro equipo jurídico en Medellín | Derechos con Dignidad',
     desc: 'Conoce al equipo de Derechos con Dignidad: abogados especialistas en litigio contra el Estado, reparación directa, defensa penal y derechos humanos.',
     heroAlt: 'Abogados especialistas de Derechos con Dignidad en Medellín, Colombia',
+    answer:
+      'Nuestro equipo jurídico en Medellín (Calle 53 # 45-112, Edificio Centro Colseguros) reúne abogados especialistas en derechos humanos, litigio contra el Estado, reparación directa, defensa penal, procesos ante la JEP y acompañamiento empático a víctimas en toda Colombia.',
   },
   '/casos/': {
     title: 'Casos relevantes: Corte IDH y JEP | Derechos con Dignidad',
     desc: 'Trayectoria documentada en el caso Unión Patriótica ante la Corte IDH, Macrocaso 06 en la JEP, Masacre de El Topacio y modelo de litigio multinivel.',
     heroAlt: 'Casos relevantes y litigio multinivel ante la JEP y la Corte IDH - Derechos con Dignidad',
+    answer:
+      'Nuestra trayectoria verificable incluye la actuación como intervinientes comunes y peticionarios reconocidos en el caso Unión Patriótica vs. Colombia (sentencia Corte IDH de 2022), representación de víctimas en el Macrocaso 06 de la JEP e impulso judicial de la Masacre de El Topacio.',
   },
   '/contacto/': {
     title: 'Contacto y asesoría confidencial 24/7 | Derechos con Dignidad',
     desc: 'Primera consulta gratuita y confidencial en Medellín (Calle 53 # 45-112) y atención nacional 24/7. Solicita orientación jurídica para víctimas del Estado.',
     heroAlt: 'Oficina de Derechos con Dignidad en el centro de Medellín para orientación jurídica confidencial',
+    answer:
+      'La primera consulta es gratuita y confidencial las 24 horas. Puedes comunicarte desde Medellín (Calle 53 # 45-112, Edificio Centro Colseguros) o desde cualquier ciudad de Colombia al teléfono (604) 557 5073, por el formulario confidencial o mediante la burbuja de WhatsApp.',
   },
   '/politica-de-privacidad/': {
     title: 'Política de privacidad | Derechos con Dignidad',
@@ -209,3 +221,68 @@ export function areaFaqs(slug, area) {
   ]);
   return faqs;
 }
+
+export const HUB_FAQS = {
+  '/areas-de-accion/': [
+    [
+      '¿Qué tipo de víctimas pueden demandar al Estado en Colombia?',
+      'Pueden acudir víctimas directas y familiares afectados por acción, omisión o aquiescencia de agentes estatales, incluyendo homicidio de líderes sociales o firmantes de paz, ejecuciones extrajudiciales, desaparición forzada, masacres, tortura y privación injusta de la libertad.',
+    ],
+    [
+      '¿Qué diferencia hay entre reparación directa en Colombia y acudir a la CIDH?',
+      'La reparación directa se tramita ante los jueces contencioso-administrativos y el Consejo de Estado para obtener indemnización patrimonial; la CIDH y la Corte IDH se activan a nivel internacional cuando las instancias internas no garantizan verdad ni justicia efectiva.',
+    ],
+    [
+      '¿Quiénes pueden reclamar indemnizaciones integrales por crímenes de Estado?',
+      'Cónyuges o compañeros permanentes, hijos, padres, hermanos y personas dependientes o afectadas moral y materialmente por hechos atribuibles al Estado colombiano.',
+    ],
+  ],
+  '/procesos-y-demandas/': [
+    [
+      '¿Cuándo acudir al Consejo de Estado frente a la JEP?',
+      'Ante la jurisdicción contencioso-administrativa y el Consejo de Estado se exige la responsabilidad patrimonial e indemnización del Estado; ante la JEP se solicita acreditación como víctima en macrocasos del conflicto armado para obtener verdad plena, sanciones restaurativas y garantías de no repetición.',
+    ],
+    [
+      '¿Qué requisitos existen para presentar un caso ante la CIDH?',
+      'Por regla general se requiere demostrar que se agotaron los recursos judiciales internos o que existe retardo injustificado o falta de garantías efectivas en Colombia, salvo en solicitudes urgentes de medidas cautelares por riesgo grave e inminente.',
+    ],
+    [
+      '¿Pueden tramitarse rutas penales, administrativas e internacionales en paralelo?',
+      'Sí. Nuestro modelo de litigio multinivel coordina las denuncias penales ante la Fiscalía, la demanda de reparación directa, la acreditación ante la JEP y las peticiones interamericanas sin contradicción probatoria.',
+    ],
+  ],
+  '/nosotros/': [
+    [
+      '¿Dónde atiende Derechos con Dignidad y cubren todo el país?',
+      'Nuestra sede principal está en Medellín (Calle 53 # 45-112, Edificio Centro Colseguros, Antioquia) y representamos casos en todos los departamentos de Colombia y ante organismos internacionales.',
+    ],
+    [
+      '¿Qué áreas jurídicas integra el equipo de la firma?',
+      'Contamos con profesionales dedicados a litigio en derechos humanos, demandas de reparación directa, acompañamiento integral a víctimas, defensa penal y procesos ante la JEP y la CIDH.',
+    ],
+  ],
+  '/casos/': [
+    [
+      '¿Cuál fue la participación de Derechos con Dignidad en el caso Unión Patriótica vs. Colombia?',
+      'Derechos con Dignidad actuó como interviniente común junto al Centro Jurídico de Derechos Humanos y fue reconocida como peticionaria en la sentencia del 27 de julio de 2022 de la Corte IDH, participando también en la supervisión de cumplimiento y la sentencia de interpretación de 2024.',
+    ],
+    [
+      '¿Cómo se verifica la información de los casos relevantes publicados?',
+      'Cada caso incluye enlace directo a documentos públicos y oficiales verificables del Ministerio de Justicia, la Defensoría del Pueblo, la Jurisdicción Especial para la Paz (JEP) y la Corte Interamericana de Derechos Humanos.',
+    ],
+    [
+      '¿Cómo funciona el modelo de litigio multinivel?',
+      'Integra cuatro frentes complementarios según cada caso: vía penal ante la Fiscalía, reparación directa ante el Consejo de Estado, justicia transicional en la JEP y sistema interamericano ante la CIDH y la Corte IDH.',
+    ],
+  ],
+  '/contacto/': [
+    [
+      '¿La primera asesoría jurídica tiene algún costo?',
+      'No. La primera orientación es gratuita y se atiende bajo reserva profesional absoluta.',
+    ],
+    [
+      '¿En qué horario atienden y dónde están ubicados?',
+      'Contamos con disponibilidad 24/7 a través de la línea (604) 557 5073, la burbuja de WhatsApp y el formulario confidencial, con oficina física en Calle 53 # 45-112, Edificio Centro Colseguros, Medellín.',
+    ],
+  ],
+};

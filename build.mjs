@@ -4,7 +4,7 @@ import { SITE } from './src/config.mjs';
 import { CATEGORIES, AREAS } from './src/areas.mjs';
 import { ENTITIES, linkEntities, detectEntities } from './src/entities.mjs';
 import { PRIVACIDAD, AUTORIZACION, TERMINOS, COOKIES, LEGAL_FAQ } from './src/legal.mjs';
-import { PAGE_SEO, AREA_SEO, HOME_FAQ, areaFaqs } from './src/seo.mjs';
+import { PAGE_SEO, AREA_SEO, HOME_FAQ, HUB_FAQS, areaFaqs } from './src/seo.mjs';
 
 const DIST = 'dist';
 const BUILD_V = Date.now().toString(36);
@@ -405,6 +405,16 @@ const pageHero = ({ url = '', h1, sub, ctas = true }) => {
 const answerBox = (text) =>
   `<div class="bg-gold-500/10 border-l-4 border-gold-500 rounded-r-xl p-5" data-respuesta><p class="text-xs font-semibold uppercase tracking-wider text-gold-700">Respuesta directa</p><p class="mt-2 text-navy-900 leading-relaxed">${rich(text)}</p></div>`;
 
+const hubFaqSection = (url, cls = '') =>
+  HUB_FAQS[url]
+    ? `<section id="faq" class="scroll-mt-28 ${cls}"><h2 class="text-2xl md:text-3xl font-semibold text-navy-900 tracking-tight mb-5">Preguntas frecuentes</h2>${faqHtml(HUB_FAQS[url])}</section>`
+    : '';
+
+const speakableSpec = {
+  '@type': 'SpeakableSpecification',
+  cssSelector: ['main h1', '[data-respuesta]', '[data-faq] summary'],
+};
+
 const faqHtml = (faqs) =>
   `<div data-faq class="space-y-3">${faqs
     .map(
@@ -517,7 +527,24 @@ function render({ url, title, desc, body, crumbs = [], schema = [], noindex = fa
       : {}),
   };
 
-  const ld = [org, bc, ...schema]
+  const hasCustomWebPage = schema.some((s) => s && s['@type'] === 'WebPage');
+  const autoWebPage =
+    !noindex && !hasCustomWebPage
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'WebPage',
+          name: title,
+          description: desc,
+          url: canonical,
+          inLanguage: 'es-CO',
+          datePublished: SITE.published,
+          dateModified: SITE.lastReview,
+          isPartOf: { '@id': SITE.url + '/#website' },
+          speakable: speakableSpec,
+        }
+      : null;
+
+  const ld = [org, bc, autoWebPage, ...schema]
     .filter(Boolean)
     .map((o) => `<script type="application/ld+json">${JSON.stringify(o)}</script>`)
     .join('\n');
@@ -900,6 +927,7 @@ function home() {
   <div class="max-w-4xl mx-auto px-6">
     <p class="text-gold-700 text-xs font-semibold uppercase tracking-[0.2em]">Orientación inicial</p>
     <h2 class="text-2xl md:text-3xl font-semibold text-navy-900 tracking-tight mt-2 mb-6">Preguntas frecuentes</h2>
+    <div class="mb-6">${answerBox(PAGE_SEO['/'].answer)}</div>
     ${faqHtml(HOME_FAQ)}
   </div>
 </section>
@@ -948,6 +976,7 @@ function areasIndex() {
       sub: 'Representación legal para víctimas de crímenes de Estado, violaciones de derechos humanos y reparación integral en Colombia.',
     }) +
     `<section class="py-16"><div class="max-w-7xl mx-auto px-6 space-y-14">
+      <div class="max-w-4xl">${answerBox(PAGE_SEO['/areas-de-accion/'].answer)}</div>
       ${CATEGORIES.map(
         (cat) => `<div id="${cat.id}" class="scroll-mt-28">
           <div class="flex items-center gap-3 mb-6">
@@ -970,6 +999,7 @@ function areasIndex() {
           </div>
         </div>`
       ).join('')}
+      <div class="max-w-4xl pt-4">${hubFaqSection('/areas-de-accion/')}</div>
     </div></section>` +
     ctaFinal();
 
@@ -979,6 +1009,7 @@ function areasIndex() {
     desc: PAGE_SEO['/areas-de-accion/'].desc,
     body,
     crumbs,
+    schema: [faqSchema(HUB_FAQS['/areas-de-accion/'])],
   });
 }
 
@@ -986,13 +1017,20 @@ function areasIndex() {
 function procesosIndex() {
   const cat = catById('procesos-demandas');
   const crumbs = [['Inicio', '/'], ['Procesos y demandas', '/procesos-y-demandas/']];
+  const vias = [
+    ['Reparación directa', 'Indemnización económica, medidas de restitución y declaratoria de responsabilidad patrimonial del Estado', 'Juzgados y Tribunales Administrativos / Consejo de Estado'],
+    ['Justicia transicional (JEP)', 'Acreditación de víctimas en macrocasos del conflicto armado, verdad plena y sanciones restaurativas', 'Salas de Reconocimiento y Tribunal para la Paz (JEP)'],
+    ['Sistema Interamericano (CIDH y Corte IDH)', 'Medidas cautelares urgentes y petición internacional cuando hay impunidad o retardo injustificado en Colombia', 'Comisión y Corte Interamericana de Derechos Humanos'],
+    ['Proceso penal', 'Investigación y sanción penal contra responsables materiales y determinadores de crímenes graves', 'Fiscalía General de la Nación y jueces penales'],
+  ];
   const body =
     pageHero({
       url: '/procesos-y-demandas/',
       h1: 'Procesos y demandas contra el Estado',
       sub: 'Representación ante la JEP, el Consejo de Estado, la CIDH y la Corte Interamericana de Derechos Humanos.',
     }) +
-    `<section class="py-16"><div class="max-w-7xl mx-auto px-6 space-y-10">
+    `<section class="py-16"><div class="max-w-7xl mx-auto px-6 space-y-12">
+      <div class="max-w-4xl">${answerBox(PAGE_SEO['/procesos-y-demandas/'].answer)}</div>
       <div class="grid md:grid-cols-2 gap-6">
         ${cat.items
           .map((slug) => {
@@ -1008,6 +1046,20 @@ function procesosIndex() {
           })
           .join('')}
       </div>
+      <section aria-labelledby="h-comparativa-vias">
+        <h2 id="h-comparativa-vias" class="text-2xl md:text-3xl font-semibold text-navy-900 tracking-tight mb-4">¿Ante qué autoridad acudir según tu caso?</h2>
+        <div class="rtable overflow-x-auto bg-white border border-slate-200 rounded-2xl">
+          <table class="w-full text-left text-sm border-collapse">
+            <thead class="bg-slate-50 border-b border-slate-200 text-xs uppercase tracking-wider text-navy-900">
+              <tr><th scope="col" class="px-5 py-3.5 font-semibold">Ruta jurídica</th><th scope="col" class="px-5 py-3.5 font-semibold">Finalidad principal</th><th scope="col" class="px-5 py-3.5 font-semibold">Estamento competente</th></tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 text-slate-600">
+              ${vias.map(([r, f, e]) => `<tr><th scope="row" data-label="Ruta jurídica" class="px-5 py-4 font-semibold text-navy-900">${esc(r)}</th><td data-label="Finalidad principal" class="px-5 py-4">${rich(f)}</td><td data-label="Estamento competente" class="px-5 py-4">${rich(e)}</td></tr>`).join('')}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <div class="max-w-4xl">${hubFaqSection('/procesos-y-demandas/')}</div>
       ${entitiesSection(ENTITIES.filter((e) => ['jep', 'cidh', 'corte-idh', 'oea', 'consejo-estado', 'fiscalia', 'onu'].includes(e.id)))}
     </div></section>` +
     ctaFinal();
@@ -1018,6 +1070,21 @@ function procesosIndex() {
     desc: PAGE_SEO['/procesos-y-demandas/'].desc,
     body,
     crumbs,
+    schema: [
+      faqSchema(HUB_FAQS['/procesos-y-demandas/']),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'HowTo',
+        name: 'Cómo iniciar un proceso de defensa y reparación contra el Estado en Colombia',
+        description: PAGE_SEO['/procesos-y-demandas/'].answer,
+        step: vias.map(([r, f], idx) => ({
+          '@type': 'HowToStep',
+          position: idx + 1,
+          name: r,
+          text: f,
+        })),
+      },
+    ],
   });
 }
 
@@ -1169,6 +1236,7 @@ function areaPage(slug) {
         dateModified: SITE.lastReview,
         isPartOf: { '@id': SITE.url + '/#website' },
         about: a.short,
+        speakable: speakableSpec,
       },
       {
         '@context': 'https://schema.org',
@@ -1195,11 +1263,13 @@ function nosotrosPage() {
       ctas: false,
     }) +
     `<div class="max-w-7xl mx-auto px-6 py-14 space-y-12">
+      <div class="max-w-4xl">${answerBox(PAGE_SEO['/nosotros/'].answer)}</div>
       <section class="max-w-3xl">
         ${h2('Enfoque de Derechos con Dignidad')}
         <p class="leading-relaxed text-slate-600">${rich(`En ${SITE.name} acompañamos a víctimas de crímenes de Estado y violaciones graves de derechos humanos con rigor probatorio, absoluta confidencialidad y respeto humano. Representamos casos ante la jurisdicción contencioso-administrativa, el Consejo de Estado, la Corte Constitucional, la Fiscalía General de la Nación, la JEP y el Sistema Interamericano de Derechos Humanos (CIDH y Corte IDH).`)}</p>
       </section>
       ${teamHtml()}
+      <div class="max-w-4xl">${hubFaqSection('/nosotros/')}</div>
       ${pending('descripción de experiencia profesional, tarjeta profesional y enlaces a LinkedIn de cada integrante.')}
     </div>` +
     ctaFinal();
@@ -1210,14 +1280,17 @@ function nosotrosPage() {
     desc: PAGE_SEO['/nosotros/'].desc,
     body,
     crumbs,
-    schema: TEAM.map((m) => ({
-      '@context': 'https://schema.org',
-      '@type': 'Person',
-      name: m.name,
-      jobTitle: m.role,
-      worksFor: { '@id': SITE.url + '/#organization' },
-      ...(teamPhoto(m) ? { image: SITE.url + teamPhoto(m) } : {}),
-    })),
+    schema: [
+      faqSchema(HUB_FAQS['/nosotros/']),
+      ...TEAM.map((m) => ({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: m.name,
+        jobTitle: m.role,
+        worksFor: { '@id': SITE.url + '/#organization' },
+        ...(teamPhoto(m) ? { image: SITE.url + teamPhoto(m) } : {}),
+      })),
+    ],
   });
 }
 
@@ -1238,6 +1311,7 @@ function casosPage() {
       ctas: false,
     }) +
     `<div class="max-w-7xl mx-auto px-6 py-14 space-y-14">
+      <div class="max-w-4xl">${answerBox(PAGE_SEO['/casos/'].answer)}</div>
       <section class="max-w-3xl space-y-4">
         ${h2('Litigio colectivo y representación judicial de víctimas')}
         <p class="leading-relaxed text-slate-600">${rich('Derechos con Dignidad actúa como representante judicial de víctimas y litigante de interés público ante la Corte Interamericana de Derechos Humanos, el Consejo de Estado, la Corte Constitucional, la jurisdicción contencioso-administrativa, la Fiscalía General de la Nación y la JEP.')}</p>
@@ -1266,6 +1340,7 @@ function casosPage() {
         </ol>
       </section>
 
+      <div class="max-w-4xl">${hubFaqSection('/casos/')}</div>
       ${entitiesSection(ENTITIES.filter((e) => ['corte-idh', 'cidh', 'jep', 'consejo-estado', 'corte-constitucional', 'fiscalia', 'minjusticia', 'defensoria'].includes(e.id)), 'Estamentos del Estado y organismos oficiales')}
     </div>` +
     ctaFinal();
@@ -1276,6 +1351,21 @@ function casosPage() {
     desc: PAGE_SEO['/casos/'].desc,
     body,
     crumbs,
+    schema: [
+      faqSchema(HUB_FAQS['/casos/']),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'HowTo',
+        name: 'Modelo de litigio multinivel de Derechos con Dignidad',
+        description: PAGE_SEO['/casos/'].answer,
+        step: rutas.map(([, t, d], idx) => ({
+          '@type': 'HowToStep',
+          position: idx + 1,
+          name: t,
+          text: d,
+        })),
+      },
+    ],
   });
 }
 
@@ -1291,6 +1381,7 @@ function contactoPage() {
     }) +
     `<div class="max-w-7xl mx-auto px-6 py-12 md:py-14 grid lg:grid-cols-[1fr_360px] gap-8 lg:gap-10 items-start">
       <div class="space-y-10 min-w-0">
+        ${answerBox(PAGE_SEO['/contacto/'].answer)}
         <section class="bg-white border border-slate-200 rounded-2xl overflow-hidden grid md:grid-cols-2 items-center">
           <div class="p-6 md:p-8 space-y-4">
             <p class="text-gold-700 text-xs font-semibold uppercase tracking-[0.2em]">Nuestro equipo en Medellín</p>
@@ -1308,6 +1399,7 @@ function contactoPage() {
           ? `<section id="mapa" class="scroll-mt-28 bg-white border border-slate-200 rounded-2xl p-6 space-y-4"><div class="flex flex-wrap items-center justify-between gap-3"><div><h2 class="text-xl font-semibold text-navy-900">Ubicación de nuestra oficina en Medellín</h2><p class="text-sm text-slate-600 mt-1">${esc(SITE.address)}</p></div>${SITE.mapUrl ? `<a href="${esc(SITE.mapUrl)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-navy-900 hover:text-gold-700 underline underline-offset-2">Abrir en Google Maps ${ic('external', 'w-4 h-4')}</a>` : ''}</div><div class="map-frame bg-slate-100"><iframe title="Mapa de ubicación de Derechos con Dignidad en Medellín" src="${esc(SITE.mapEmbed)}" class="w-full h-80" loading="eager"></iframe></div></section>`
           : `<section class="bg-white border border-slate-200 rounded-2xl p-6 space-y-3"><div class="flex flex-wrap items-center justify-between gap-3"><h2 class="text-xl font-semibold text-navy-900">Ubicación de nuestra oficina en Medellín</h2>${SITE.mapUrl ? `<a href="${esc(SITE.mapUrl)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-navy-900 hover:text-gold-700 underline underline-offset-2">Ver dirección en Google Maps ${ic('external', 'w-4 h-4')}</a>` : ''}</div><p class="text-sm text-slate-600">${esc(SITE.address)}</p>${pending('código o enlace de inserción (iframe) de Google Maps.')}</section>`}
         ${contactFormHtml()}
+        ${hubFaqSection('/contacto/')}
       </div>
       <aside class="space-y-5 lg:sticky lg:top-28" aria-label="Canales de contacto">
         <div class="bg-white border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('chat', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">WhatsApp</p>${hasWA ? `<p class="mt-3">${btnWA('Escribir', '!py-2.5', 'contacto')}</p>` : `<p class="mt-2 text-sm">${pending('número de WhatsApp.')}</p>`}</div>
@@ -1323,6 +1415,7 @@ function contactoPage() {
     desc: PAGE_SEO['/contacto/'].desc,
     body,
     crumbs,
+    schema: [faqSchema(HUB_FAQS['/contacto/'])],
   });
 }
 
@@ -1634,6 +1727,16 @@ ErrorDocument 404 /404.html
     `> Defensa jurídica de víctimas del Estado, derechos humanos, crímenes de lesa humanidad, litigio ante la JEP, CIDH, Corte IDH y Consejo de Estado en Colombia. Sede: ${SITE.address}. Teléfono: ${SITE.phone}. Atención 24/7; primera consulta gratuita y confidencial. Última actualización: ${SITE.lastReview}.`,
     '## Preguntas frecuentes principales',
     HOME_FAQ.map(([q, a]) => `### ${q}\n${a}`).join('\n\n'),
+    '## Respuestas directas y preguntas por sección',
+    ...Object.entries(HUB_FAQS).map(([url, faqs]) =>
+      [
+        `### ${PAGE_SEO[url]?.title || url} (${SITE.url}${url})`,
+        PAGE_SEO[url]?.answer ? `**Respuesta directa:** ${PAGE_SEO[url].answer}` : '',
+        faqs.map(([q, a]) => `- **${q}:** ${a}`).join('\n'),
+      ]
+        .filter(Boolean)
+        .join('\n\n')
+    ),
     '## Áreas de acción, procesos y demandas (detalle)',
     ...Object.entries(AREAS).map(([slug, a]) => {
       const seo = AREA_SEO[slug];
