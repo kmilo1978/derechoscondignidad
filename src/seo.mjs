@@ -301,7 +301,7 @@ export const HUB_FAQS = {
     ],
     [
       '¿En qué horario atienden y dónde están ubicados?',
-      'Contamos con disponibilidad 24/7 a través de la línea +57 604 557 5073, la burbuja de WhatsApp y el formulario confidencial, con oficina física en Calle 53 # 45-112, Edificio Centro Colseguros, Medellín.',
+      'Contamos con atención 24/7 por WhatsApp y formulario confidencial, atención telefónica directa (+57 604 557 5073) y oficina física en Calle 53 # 45-112, Edificio Centro Colseguros, Medellín.',
     ],
     [
       '¿Atienden casos fuera de Medellín o en otras zonas de Colombia?',
@@ -319,7 +319,7 @@ export const HUB_FAQS = {
   '/colabora/': [
     [
       '¿Cómo puedo recomendar a alguien que necesita orientación jurídica?',
-      'Puedes compartirle directamente el enlace de nuestra página web, indicarle nuestra línea de atención 24/7 +57 604 557 5073 o invitarle a escribir desde la sección de contacto para recibir una primera orientación gratuita y confidencial.',
+      'Puedes compartirle directamente el enlace de nuestra página web, invitarle a escribirnos por WhatsApp 24/7, llamarnos al +57 604 557 5073 o ingresar a la sección de contacto para recibir una primera orientación gratuita y confidencial.',
     ],
     [
       '¿Cómo pueden colaborar organizaciones sociales o comunitarias con Derechos con Dignidad?',

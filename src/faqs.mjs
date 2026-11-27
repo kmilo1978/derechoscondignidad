@@ -79,7 +79,7 @@ export const POOLS = {
     ['¿Mis datos están protegidos?', 'Tus datos se tratan conforme a la política de privacidad y a la autorización que aceptas. Puedes solicitar su actualización o supresión.'],
     ['¿Debo enviar documentos por el formulario?', 'No. Te indicaremos por qué canal enviarlos de forma segura cuando hablemos.'],
     ['¿Atienden a familiares de la víctima?', 'Sí. Un familiar puede consultar en nombre de la víctima, especialmente si ella no puede hacerlo.'],
-    ['¿Hay atención las 24 horas?', 'Sí, la firma tiene disponibilidad 24/7. Si no te contestamos de inmediato, deja tu mensaje y te respondemos lo antes posible.'],
+    ['¿Hay atención las 24 horas?', 'Sí, por WhatsApp y formulario tenemos disponibilidad 24/7. Si llamas fuera de horario o no podemos contestar de inmediato, deja tu mensaje y te respondemos lo antes posible.'],
     ['¿Se puede consultar sin ir a una oficina?', 'Sí. La primera orientación puede hacerse por teléfono; si prefieres ir en persona, estamos en la Calle 53 # 45-112, Medellín.'],
   ],
   calculadora: [

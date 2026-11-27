@@ -387,7 +387,7 @@ export const AREAS = {
     extraListTitle: 'Atención directa, humana y sin barreras',
     extraListItems: [
       'Asesoría gratuita inicial y 100% confidencial',
-      'Disponibilidad por WhatsApp, correo o llamada 24/7',
+      'Disponibilidad por WhatsApp 24/7, correo o llamada telefónica',
       'Lenguaje claro y trato respetuoso',
       'Seguimiento constante, sin abandonos ni excusas',
     ],
