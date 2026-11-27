@@ -23,6 +23,10 @@ export const SITE = {
     { name: 'Yudy Elena Moreno', role: 'Acompañamiento a víctimas', photo: 'yudy-elena-moreno', bio: '', linkedin: '', email: '' },
     { name: 'Juan Esteban Montoya', role: 'Procesos y demandas', photo: 'juan-esteban-montoya', bio: '', linkedin: '', email: '' },
     { name: 'Daniel Montoya', role: 'Defensa penal y DD.HH.', photo: 'daniel-montoya', bio: '', linkedin: '', email: '' },
+    { name: 'Leydy', role: 'Ayudante jurídico', photo: 'leydy', bio: '', linkedin: '', email: '' },
+    { name: 'Mariana', role: 'Ayudante jurídico', photo: 'mariana', bio: '', linkedin: '', email: '' },
+    { name: 'Sandra', role: 'Ayudante jurídico', photo: 'sandra', bio: '', linkedin: '', email: '' },
+    { name: 'Juan Andrés', role: 'Ayudante jurídico', photo: 'juan-andres', bio: '', linkedin: '', email: '' },
   ],
   testimonials: [], // [{ name, text }] solo reales y autorizados
   cases: [
