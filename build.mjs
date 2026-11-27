@@ -608,7 +608,7 @@ const initials = (n) => n.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[
 const teamHtml = () => `<section id="equipo" class="scroll-mt-28 bg-navy-900 text-white rounded-3xl px-5 py-10 md:p-10" aria-labelledby="h-equipo">
   <h2 id="h-equipo" class="text-2xl md:text-3xl font-semibold tracking-tight">Nuestro equipo</h2>
   <p class="mt-2 text-slate-300 leading-relaxed max-w-3xl">${esc(SITE.teamIntro || '')}</p>
-  <ul class="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+  <ul class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
     ${TEAM.map((m) => {
       const ph = teamPhoto(m);
       const iconCls = 'w-11 h-11 rounded-full border border-white/15 bg-white/5 text-slate-200 hover:text-gold-500 hover:border-gold-500/60 hover:bg-gold-500/10 inline-flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500';
