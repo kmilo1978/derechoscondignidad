@@ -18,15 +18,15 @@ export const SITE = {
   lawyers: [], // [{ name, tp: 'tarjeta profesional', bio, photo }]
   teamIntro: 'Profesionales con experiencia en litigio contra el Estado y defensa de los derechos humanos.',
   team: [
-    { name: 'Andrés Restrepo', role: 'Derechos Humanos · Litigio', photo: 'andres-restrepo', bio: '', linkedin: '', email: '' },
-    { name: 'Alejandro Botero', role: 'Reparación directa', photo: 'alejandro-botero', bio: '', linkedin: '', email: '' },
-    { name: 'Yudy Elena Moreno', role: 'Acompañamiento a víctimas', photo: 'yudy-elena-moreno', bio: '', linkedin: '', email: '' },
-    { name: 'Juan Esteban Montoya', role: 'Procesos y demandas', photo: 'juan-esteban-montoya', bio: '', linkedin: '', email: '' },
-    { name: 'Daniel Montoya', role: 'Defensa penal y DD.HH.', photo: 'daniel-montoya', bio: '', linkedin: '', email: '' },
-    { name: 'Leydy', role: 'Ayudante jurídico', photo: 'leydy', bio: '', linkedin: '', email: '' },
-    { name: 'Mariana', role: 'Ayudante jurídico', photo: 'mariana', bio: '', linkedin: '', email: '' },
-    { name: 'Sandra', role: 'Ayudante jurídico', photo: 'sandra', bio: '', linkedin: '', email: '' },
-    { name: 'Juan Andrés', role: 'Ayudante jurídico', photo: 'juan-andres', bio: '', linkedin: '', email: '' },
+    { name: 'Andrés Restrepo', role: 'Derechos Humanos · Litigio', photo: 'andres-restrepo', bio: '', linkedin: '', email: '', phone: '' },
+    { name: 'Alejandro Botero', role: 'Reparación directa', photo: 'alejandro-botero', bio: '', linkedin: '', email: '', phone: '' },
+    { name: 'Yudy Elena Moreno', role: 'Acompañamiento a víctimas', photo: 'yudy-elena-moreno', bio: '', linkedin: '', email: '', phone: '' },
+    { name: 'Juan Esteban Montoya', role: 'Procesos y demandas', photo: 'juan-esteban-montoya', bio: '', linkedin: '', email: '', phone: '' },
+    { name: 'Daniel Montoya', role: 'Defensa penal y DD.HH.', photo: 'daniel-montoya', bio: '', linkedin: '', email: '', phone: '' },
+    { name: 'Leydy', role: 'Ayudante jurídico', photo: 'leydy', bio: '', linkedin: '', email: '', phone: '' },
+    { name: 'Mariana', role: 'Ayudante jurídico', photo: 'mariana', bio: '', linkedin: '', email: '', phone: '' },
+    { name: 'Sandra', role: 'Ayudante jurídico', photo: 'sandra', bio: '', linkedin: '', email: '', phone: '' },
+    { name: 'Juan Andrés', role: 'Ayudante jurídico', photo: 'juan-andres', bio: '', linkedin: '', email: '', phone: '' },
   ],
   testimonials: [], // [{ name, text }] solo reales y autorizados
   cases: [
