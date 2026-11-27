@@ -229,10 +229,6 @@ function footer() {
         <li class="flex gap-2">${ic('phone', 'w-4 h-4 mt-0.5 text-gold-500 shrink-0')}<a href="${telLink}" class="hover:text-gold-500" data-track="call" data-loc="footer">${hasPhone ? esc(SITE.phone) : 'Ver página de contacto'}</a></li>
         ${SITE.email ? `<li class="flex gap-2">${ic('mail', 'w-4 h-4 mt-0.5 text-gold-500 shrink-0')}<a href="mailto:${esc(SITE.email)}" class="hover:text-gold-500 break-all">Correo: ${esc(SITE.email)}</a></li>` : ''}
       </ul>
-      <div class="mt-5 rounded-xl bg-white/[0.04] border border-white/10 p-4">
-        <p class="text-gold-500 text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5">${ic('clock', 'w-4 h-4 shrink-0')}Atención 24 Horas</p>
-        <p class="mt-2 text-xs text-slate-300 leading-relaxed">Estamos disponibles para usted 24/7. Su primera consulta es completamente gratis y confidencial.</p>
-      </div>
     </div>
   </div>
   <div class="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-white/10 text-xs text-slate-400 leading-relaxed">
