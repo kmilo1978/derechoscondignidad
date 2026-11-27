@@ -398,7 +398,7 @@ const pageHero = ({ url = '', h1, sub, ctas = true }) => {
   <div class="relative max-w-7xl mx-auto px-6 py-10 sm:py-14 md:py-20">
     <h1 class="text-2xl sm:text-3xl md:text-5xl font-semibold tracking-tight max-w-4xl leading-tight text-white">${esc(h1)}</h1>
     ${sub ? `<p class="mt-4 sm:mt-5 text-base sm:text-lg text-white max-w-3xl leading-relaxed">${rich(sub, true)}</p>` : ''}
-    ${ctas ? `<div class="mt-6 sm:mt-8 flex flex-wrap gap-3">${btnWA('Hablar por WhatsApp', '', 'hero')}${btnCall(undefined, '', 'hero')}</div>` : ''}
+    ${ctas ? `<div class="mt-6 sm:mt-8 flex flex-wrap gap-3">${btnWA('WhatsApp', '', 'hero')}${btnCall(undefined, '', 'hero')}</div>` : ''}
   </div>
 </section>`;
 };
@@ -442,7 +442,7 @@ const ctaFinal = (
   <div class="relative max-w-3xl mx-auto px-6 py-20 text-center">
     <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">${esc(title)}</h2>
     <p class="mt-4 text-slate-300 text-lg">${esc(text)}</p>
-    <div class="mt-8 flex flex-wrap gap-3 justify-center">${btnWA('Hablar por WhatsApp', '', 'cta-final')}${btnCall(undefined, '', 'cta-final')}</div>
+    <div class="mt-8 flex flex-wrap gap-3 justify-center">${btnWA('WhatsApp', '', 'cta-final')}${btnCall(undefined, '', 'cta-final')}</div>
   </div>
 </section>`;
 
@@ -772,7 +772,7 @@ function home() {
     <div>
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1] text-white">Defendemos a Víctimas del Estado y Luchamos por su Reparación Integral</h1>
       <p class="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-white leading-relaxed max-w-2xl">${rich('Especialistas en Derechos Humanos, CIDH, JEP y crímenes de lesa humanidad.', true)}</p>
-      <div class="mt-9 flex flex-wrap items-center gap-3">${btnWA('Hablar por WhatsApp', '', 'hero')}${btnCall('Llamar', '', 'hero')}<a href="#areas" class="inline-flex items-center justify-center gap-1.5 text-sm font-medium text-gold-500 hover:text-white underline underline-offset-4 px-2 py-2 transition-colors">Explorar áreas de acción ${ic('down', 'w-4 h-4')}</a></div>
+      <div class="mt-9 flex flex-wrap items-center gap-3">${btnWA('WhatsApp', '', 'hero')}${btnCall('Llamar', '', 'hero')}<a href="#areas" class="inline-flex items-center justify-center gap-1.5 text-sm font-medium text-gold-500 hover:text-white underline underline-offset-4 px-2 py-2 transition-colors">Explorar áreas de acción ${ic('down', 'w-4 h-4')}</a></div>
       <ul class="mt-12 pt-8 border-t border-white/10 grid sm:grid-cols-2 gap-6 text-sm">
         <li class="flex gap-3">${ic('gavel', 'w-5 h-5 text-gold-500 shrink-0')}<span><strong class="block text-white">Defensa Experta</strong>Abogados especializados en litigio contra el Estado.</span></li>
         <li class="flex gap-3">${ic('users', 'w-5 h-5 text-gold-500 shrink-0')}<span><strong class="block text-white">Atención Humana</strong>Acompañamiento empático y personalizado en cada paso.</span></li>
