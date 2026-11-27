@@ -13,7 +13,7 @@ export const SITE = {
   street: 'Calle 53 # 45-112',
   address: 'Calle 53 # 45-112, Edificio Centro Colseguros, Medellín, Antioquia',
   hours: 'Disponibilidad 24/7',
-  mapEmbed: 'https://maps.google.com/maps?q=6.250307,-75.563698+(Derechos%20con%20Dignidad)&hl=es&z=17&output=embed',
+  mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.1020799022517!2d-75.56622812378136!3d6.25027829373814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4428f830e746d3%3A0xfd48709c53b9be7c!2sDerechos%20Con%20Dignida!5e0!3m2!1ses-419!2sco!4v1795816599487!5m2!1ses-419!2sco',
   mapUrl: 'https://www.google.com/maps/search/?api=1&query=Calle+53+%23+45-112,+Medellin,+Antioquia',
   lawyers: [], // [{ name, tp: 'tarjeta profesional', bio, photo }]
   teamIntro: 'Equipo interdisciplinario enfocado en diversas ramas del derecho, con experiencia en litigio contra el Estado, reparación integral y defensa de los derechos humanos.',
