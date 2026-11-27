@@ -181,7 +181,7 @@
   function labelOf(el) {
     if (el.getAttribute('data-label')) return el.getAttribute('data-label');
     var l = el.id && document.querySelector('label[for="' + el.id + '"]');
-    return l ? l.textContent.trim() : el.name;
+    return l ? l.textContent.replace(/\s*\*\s*$/, '').trim() : el.name;
   }
   $$('#leadForm, form[data-lead]').forEach(function (form) {
     var msg = form.querySelector('[role=status]') || document.getElementById('formMsg');
@@ -211,7 +211,8 @@
       track('form_submit', form.getAttribute('data-loc') || 'home');
       var wa = document.querySelector('a[data-track="whatsapp"][href^="https://wa.me/"]');
       if (panel) {
-        panel.querySelector('[data-summary]').textContent = text;
+        var summaryEl = panel.querySelector('[data-summary]');
+        if (summaryEl) summaryEl.textContent = text;
         var link = panel.querySelector('[data-wa-link]');
         if (link) { if (wa) { link.href = wa.getAttribute('href').split('?')[0] + '?text=' + encodeURIComponent(text); link.classList.remove('hidden'); } else link.classList.add('hidden'); }
         form.classList.add('hidden'); panel.classList.remove('hidden'); panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
