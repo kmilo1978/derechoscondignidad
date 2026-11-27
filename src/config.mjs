@@ -6,7 +6,7 @@ export const SITE = {
   name: 'Derechos con Dignidad',
   legalName: '', // razón social real
   nit: '',
-  phone: '+57 (604) 557 5073',
+  phone: '+57 604 557 5073',
   phoneDial: '+576045575073',
   whatsapp: '', // solo dígitos con indicativo, ej. '573001234567'
   email: 'contacto@tu-dominio.com',
