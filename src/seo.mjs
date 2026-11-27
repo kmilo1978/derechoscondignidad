@@ -27,7 +27,7 @@ export const PAGE_SEO = {
     desc: 'Conoce al equipo de Derechos con Dignidad: abogados especialistas en litigio contra el Estado, reparación directa, defensa penal y derechos humanos.',
     heroAlt: 'Abogados especialistas de Derechos con Dignidad en Medellín, Colombia',
     answer:
-      'Nuestro equipo jurídico en Medellín (Calle 53 # 45-112, Edificio Centro Colseguros) reúne abogados especialistas en derechos humanos, litigio contra el Estado, reparación directa, defensa penal, procesos ante la JEP y acompañamiento empático a víctimas en toda Colombia.',
+      'Nuestro equipo jurídico en Medellín (Calle 53 # 45-112, Edificio Centro Colseguros) trabaja como un equipo interdisciplinario enfocado en varias ramas del derecho: derechos humanos, litigio contra el Estado, derecho administrativo y reparación directa, derecho penal, derecho constitucional y justicia transicional ante la JEP y la CIDH.',
   },
   '/casos/': {
     title: 'Casos relevantes: Corte IDH y JEP | Derechos con Dignidad',
@@ -266,6 +266,18 @@ export const HUB_FAQS = {
     [
       '¿Qué áreas jurídicas integra el equipo de la firma?',
       'Contamos con profesionales dedicados a litigio en derechos humanos, demandas de reparación directa, acompañamiento integral a víctimas, defensa penal y procesos ante la JEP y la CIDH.',
+    ],
+    [
+      '¿Por qué trabajan como un equipo interdisciplinario en varias ramas del derecho?',
+      'Un mismo proceso contra el Estado suele exigir actuaciones coordinadas en derecho penal, derecho administrativo (reparación directa), derecho constitucional, justicia transicional y derechos humanos internacionales. Nuestro equipo interdisciplinario analiza cada caso desde todas estas ramas jurídicas y con acompañamiento integral para evitar contradicciones entre instancias.',
+    ],
+    [
+      '¿Cómo se organiza el equipo que atiende mi caso desde la primera consulta?',
+      'Cada caso es revisado en conjunto por nuestros abogados según la rama del derecho aplicable, con el respaldo permanente del equipo de ayudantes jurídicos encargado del seguimiento documental, probatorio y procesal ante cada despacho.',
+    ],
+    [
+      '¿Cómo puedo comunicarme con el equipo si vivo fuera de Medellín o del país?',
+      'Atendemos de manera presencial en nuestra oficina de Medellín y de forma virtual o telefónica para víctimas y familiares en cualquier lugar de Colombia o en el exterior. La primera orientación es gratuita y confidencial.',
     ],
   ],
   '/casos/': [

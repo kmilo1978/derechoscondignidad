@@ -16,7 +16,7 @@ export const SITE = {
   mapEmbed: 'https://maps.google.com/maps?q=6.250307,-75.563698+(Derechos%20con%20Dignidad)&hl=es&z=17&output=embed',
   mapUrl: 'https://www.google.com/maps/search/?api=1&query=Calle+53+%23+45-112,+Medellin,+Antioquia',
   lawyers: [], // [{ name, tp: 'tarjeta profesional', bio, photo }]
-  teamIntro: 'Profesionales con experiencia en litigio contra el Estado y defensa de los derechos humanos.',
+  teamIntro: 'Equipo interdisciplinario enfocado en diversas ramas del derecho, con experiencia en litigio contra el Estado, reparación integral y defensa de los derechos humanos.',
   team: [
     { name: 'Andrés Restrepo', role: 'Derechos Humanos · Litigio', photo: 'andres-restrepo', bio: '', linkedin: '', email: '', phone: '' },
     { name: 'Alejandro Botero', role: 'Reparación directa', photo: 'alejandro-botero', bio: '', linkedin: '', email: '', phone: '' },
