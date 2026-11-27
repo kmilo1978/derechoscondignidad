@@ -608,11 +608,11 @@ const initials = (n) => n.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[
 const teamHtml = () => `<section id="equipo" class="scroll-mt-28 bg-navy-900 text-white rounded-3xl px-5 py-10 md:p-10" aria-labelledby="h-equipo">
   <h2 id="h-equipo" class="text-2xl md:text-3xl font-semibold tracking-tight">Nuestro equipo</h2>
   <p class="mt-2 text-slate-300 leading-relaxed max-w-3xl">${esc(SITE.teamIntro || '')}</p>
-  <ul class="mt-8 flex flex-wrap justify-center gap-4">
+  <ul class="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
     ${TEAM.map((m) => {
       const ph = teamPhoto(m);
-      const iconCls = 'w-10 h-10 xl:w-11 xl:h-11 rounded-full border border-white/15 bg-white/5 text-slate-200 hover:text-gold-500 hover:border-gold-500/60 hover:bg-gold-500/10 inline-flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500';
-      const svgCls = 'w-4 h-4 xl:w-5 xl:h-5';
+      const iconCls = 'w-11 h-11 rounded-full border border-white/15 bg-white/5 text-slate-200 hover:text-gold-500 hover:border-gold-500/60 hover:bg-gold-500/10 inline-flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500';
+      const svgCls = 'w-5 h-5';
       const linkedinEl = m.linkedin
         ? `<a href="${esc(m.linkedin)}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de ${esc(m.name)}" title="LinkedIn de ${esc(m.name)}" class="${iconCls}">${ic('linkedin', svgCls)}</a>`
         : `<span role="img" aria-label="LinkedIn de ${esc(m.name)} (próximamente)" title="LinkedIn próximamente" class="${iconCls} cursor-default">${ic('linkedin', svgCls)}</span>`;
@@ -622,12 +622,12 @@ const teamHtml = () => `<section id="equipo" class="scroll-mt-28 bg-navy-900 tex
       const mPhone = m.phone ? `tel:${m.phone.startsWith('+') ? '+' + digits(m.phone) : digits(m.phone)}` : telLink;
       const phoneLabel = m.phone ? `Llamar a ${esc(m.name)}` : `Llamar a ${esc(SITE.name)} (${esc(SITE.phone)})`;
       const phoneEl = `<a href="${esc(mPhone)}" data-track="call" data-loc="equipo" aria-label="${phoneLabel}" title="${m.phone ? esc(m.phone) : esc(SITE.phone)}" class="${iconCls}">${ic('phone', svgCls)}</a>`;
-      return `<li class="w-full sm:w-[calc(50%_-_0.5rem)] md:w-[calc(33.333%_-_0.67rem)] lg:w-[calc(20%_-_0.8rem)] group bg-white/[0.04] border border-white/10 hover:border-gold-500/60 rounded-2xl px-3 xl:px-4 py-6 text-center transition-colors flex flex-col items-center">
+      return `<li class="group bg-white/[0.04] border border-white/10 hover:border-gold-500/60 rounded-2xl px-5 py-6 text-center transition-colors flex flex-col items-center">
         ${ph ? `<img src="${ph}" alt="Foto de ${esc(m.name)}" width="112" height="112" loading="lazy" decoding="async" class="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover ring-2 ring-white/15 group-hover:ring-gold-500 transition">` : `<span class="w-24 h-24 md:w-28 md:h-28 rounded-full bg-white/10 ring-2 ring-white/15 flex items-center justify-center text-2xl font-semibold text-gold-500" aria-hidden="true">${initials(m.name)}</span>`}
         <p class="mt-4 font-semibold leading-snug text-white">${esc(m.name)}</p>
         <p class="mt-1 text-sm text-gold-500 leading-snug">${esc(m.role)}</p>
         ${m.bio ? `<p class="mt-2 text-xs text-slate-300 leading-relaxed">${esc(m.bio)}</p>` : ''}
-        <div class="mt-auto pt-4 flex items-center justify-center gap-2">${linkedinEl}${emailEl}${phoneEl}</div>
+        <div class="mt-auto pt-4 flex items-center justify-center gap-2.5">${linkedinEl}${emailEl}${phoneEl}</div>
       </li>`;
     }).join('')}
   </ul>
