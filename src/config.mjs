@@ -24,7 +24,6 @@ export const SITE = {
     { name: 'Juan Esteban Montoya', role: 'Procesos y demandas', photo: 'juan-esteban-montoya', bio: '', linkedin: '', email: '', phone: '' },
     { name: 'Daniel Montoya', role: 'Defensa penal y DD.HH.', photo: 'daniel-montoya', bio: '', linkedin: '', email: '', phone: '' },
     { name: 'Leydy', role: 'Ayudante jurídico', photo: 'leydy', bio: '', linkedin: '', email: '', phone: '' },
-    { name: 'Mariana', role: 'Ayudante jurídico', photo: 'mariana', bio: '', linkedin: '', email: '', phone: '' },
     { name: 'Sandra', role: 'Ayudante jurídico', photo: 'sandra', bio: '', linkedin: '', email: '', phone: '' },
     { name: 'Juan Andrés', role: 'Ayudante jurídico', photo: 'juan-andres', bio: '', linkedin: '', email: '', phone: '' },
   ],
