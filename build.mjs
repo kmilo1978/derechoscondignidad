@@ -349,7 +349,7 @@ const HERO_MAP = {
   '/nosotros/': 'hero-equipo.webp',
   '/casos/': 'hero-casos.webp',
   '/contacto/': 'hero-contacto.webp',
-  '/colabora/': 'hero-lideres.webp',
+  '/colabora/': 'hero-colabora.webp',
   '/politica-de-privacidad/': 'hero-legal.webp',
   '/tratamiento-de-datos/': 'hero-legal.webp',
   '/terminos-de-uso/': 'hero-legal.webp',
