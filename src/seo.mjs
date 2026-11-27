@@ -4,7 +4,7 @@ export const PAGE_SEO = {
   '/': {
     title: 'Derechos con Dignidad | Víctimas del Estado y Derechos Humanos',
     desc: 'Abogados especialistas en derechos humanos, crímenes de Estado, JEP, CIDH, Corte IDH y reparación integral en Medellín y toda Colombia. Consulta gratis 24/7.',
-    heroAlt: 'Equipo de abogados de Derechos con Dignidad en defensa de víctimas del Estado en Colombia',
+    heroAlt: 'Sala de tribunal y litigio en defensa de víctimas del Estado y derechos humanos en Colombia - Derechos con Dignidad',
     answer:
       'Derechos con Dignidad es una firma de abogados en Medellín que representa en toda Colombia a víctimas de crímenes de Estado, desaparición forzada, ejecuciones extrajudiciales, Unión Patriótica y privación injusta de la libertad ante el Consejo de Estado, la JEP, la CIDH y la Corte IDH.',
   },
