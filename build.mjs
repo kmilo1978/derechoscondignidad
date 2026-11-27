@@ -54,7 +54,7 @@ const ICONS = {
   layers: '<path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>',
 };
 const ic = (n, cls = 'w-5 h-5') =>
-  `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n] || ICONS.scale}</svg>`;
+  `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n] || ICONS.scale}</svg>`;
 
 // ---------- Logo ----------
 const LOGO_CANDIDATES = ['logo.png', 'logo.webp', 'logo.jpg', 'logo.jpeg', 'logo.svg'];
@@ -632,7 +632,7 @@ const casesBlock = () =>
             <div class="flex flex-wrap items-start justify-between gap-4 pb-4 sm:pb-5 border-b border-slate-100">
               <div class="space-y-2 max-w-4xl min-w-0">
                 <div class="flex flex-wrap items-center gap-3">
-                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-navy-900 text-gold-500 text-xs font-semibold shrink-0">0${idx + 1}</span>
+                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-gold-50 border border-gold-200 text-gold-700 text-xs font-semibold shrink-0">0${idx + 1}</span>
                   ${c.type ? `<span class="text-xs font-semibold uppercase tracking-wider text-gold-700">${esc(c.type)}</span>` : ''}
                 </div>
                 <h3 class="text-xl sm:text-2xl md:text-3xl font-semibold text-navy-900 leading-snug">${esc(c.title)}</h3>
@@ -801,14 +801,14 @@ function home() {
     </div>
     <div class="grid gap-4">
       <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 flex items-start gap-4">
-        <span class="w-11 h-11 rounded-xl bg-navy-900 text-gold-500 flex items-center justify-center shrink-0">${ic('shield', 'w-6 h-6')}</span>
+        <span class="w-11 h-11 rounded-xl bg-gold-50 border border-gold-200 text-gold-700 flex items-center justify-center shrink-0">${ic('shield', 'w-5 h-5')}</span>
         <div>
           <p class="font-semibold text-navy-900 text-lg">Años de experiencia certificados.</p>
           <p class="mt-1 text-sm text-slate-600">Trayectoria comprobada en litigio contra el Estado y defensa de los derechos humanos.</p>
         </div>
       </div>
       <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 flex items-start gap-4">
-        <span class="w-11 h-11 rounded-xl bg-navy-900 text-gold-500 flex items-center justify-center shrink-0">${ic('check', 'w-6 h-6')}</span>
+        <span class="w-11 h-11 rounded-xl bg-gold-50 border border-gold-200 text-gold-700 flex items-center justify-center shrink-0">${ic('check', 'w-5 h-5')}</span>
         <div>
           <p class="font-semibold text-navy-900 text-lg">Casos ganados exitosos durante nuestro trayecto.</p>
           <p class="mt-1 text-sm text-slate-600">Representación comprometida ante tribunales nacionales e internacionales.</p>
@@ -829,7 +829,7 @@ function home() {
     <div>
       <div class="flex flex-wrap items-end justify-between gap-4 mb-6">
         <div class="flex items-center gap-3">
-          <span class="w-11 h-11 rounded-lg bg-navy-900 text-gold-500 flex items-center justify-center shrink-0">${ic(crimenes.icon, 'w-6 h-6')}</span>
+          <span class="w-11 h-11 rounded-xl bg-gold-50 border border-gold-200 text-gold-700 flex items-center justify-center shrink-0">${ic(crimenes.icon, 'w-5 h-5')}</span>
           <div>
             <h3 class="text-2xl font-semibold text-navy-900">${esc(crimenes.title)}</h3>
             <p class="text-sm text-slate-600">${esc(crimenes.desc)}</p>
@@ -843,7 +843,7 @@ function home() {
             const a = AREAS[slug];
             return `<a href="${areaUrl(slug)}" class="group bg-white border border-slate-200 hover:border-gold-500 hover:shadow-glow rounded-2xl p-6 transition-all flex flex-col justify-between">
               <div>
-                <span class="w-10 h-10 bg-slate-50 border border-slate-200 rounded-lg flex items-center justify-center text-navy-900 group-hover:bg-gold-500 transition-colors">${ic(a.icon, 'w-5 h-5')}</span>
+                <span class="w-10 h-10 bg-gold-50 border border-gold-200 rounded-lg flex items-center justify-center text-gold-700 group-hover:bg-gold-100 group-hover:border-gold-500/50 transition-colors">${ic(a.icon, 'w-5 h-5')}</span>
                 <h4 class="mt-4 text-lg font-semibold text-navy-900">${esc(a.short)}</h4>
                 <p class="mt-2 text-sm text-slate-600 leading-relaxed">${esc(a.sub)}</p>
               </div>
@@ -857,7 +857,7 @@ function home() {
     <div>
       <div class="flex flex-wrap items-end justify-between gap-4 mb-6">
         <div class="flex items-center gap-3">
-          <span class="w-11 h-11 rounded-lg bg-navy-900 text-gold-500 flex items-center justify-center shrink-0">${ic(procesos.icon, 'w-6 h-6')}</span>
+          <span class="w-11 h-11 rounded-xl bg-gold-50 border border-gold-200 text-gold-700 flex items-center justify-center shrink-0">${ic(procesos.icon, 'w-5 h-5')}</span>
           <div>
             <h3 class="text-2xl font-semibold text-navy-900">${esc(procesos.title)}</h3>
             <p class="text-sm text-slate-600">${rich(procesos.desc)}</p>
@@ -980,7 +980,7 @@ function areasIndex() {
       ${CATEGORIES.map(
         (cat) => `<div id="${cat.id}" class="scroll-mt-28">
           <div class="flex items-center gap-3 mb-6">
-            <span class="w-11 h-11 bg-navy-900 text-gold-500 rounded-lg flex items-center justify-center shrink-0">${ic(cat.icon, 'w-6 h-6')}</span>
+            <span class="w-11 h-11 bg-gold-50 border border-gold-200 text-gold-700 rounded-xl flex items-center justify-center shrink-0">${ic(cat.icon, 'w-5 h-5')}</span>
             <div><h2 class="text-2xl md:text-3xl font-semibold text-navy-900">${esc(cat.title)}</h2><p class="text-sm text-slate-600">${rich(cat.desc)}</p></div>
           </div>
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -1037,7 +1037,7 @@ function procesosIndex() {
             const a = AREAS[slug];
             return `<a href="${areaUrl(slug)}" class="group bg-white border border-slate-200 hover:border-gold-500 hover:shadow-glow rounded-2xl p-6 transition-all flex flex-col justify-between">
               <div>
-                <span class="w-10 h-10 rounded-lg bg-slate-50 border border-slate-200 text-navy-900 group-hover:bg-gold-500 flex items-center justify-center transition-colors">${ic(a.icon, 'w-5 h-5')}</span>
+                <span class="w-10 h-10 rounded-lg bg-gold-50 border border-gold-200 text-gold-700 group-hover:bg-gold-100 group-hover:border-gold-500/50 flex items-center justify-center transition-colors">${ic(a.icon, 'w-5 h-5')}</span>
                 <h2 class="mt-4 text-xl font-semibold text-navy-900 group-hover:text-gold-700">${esc(a.title)}</h2>
                 <p class="mt-2 text-sm text-slate-600 leading-relaxed">${esc(a.sub)}</p>
               </div>
@@ -1532,7 +1532,7 @@ function notFoundPage() {
       ${quick
         .map(
           ([i, t, x, u]) =>
-            `<li><a href="${u}" class="group flex gap-4 items-start bg-white border border-slate-200 hover:border-gold-500 hover:shadow-glow rounded-xl p-5 h-full transition-all"><span class="w-10 h-10 shrink-0 rounded-lg bg-navy-900 text-gold-500 flex items-center justify-center">${ic(i, 'w-5 h-5')}</span><span class="min-w-0"><span class="block font-semibold text-navy-900 group-hover:text-gold-700">${esc(t)}</span><span class="block text-sm text-slate-600 mt-1 leading-relaxed">${esc(x)}</span></span></a></li>`
+            `<li><a href="${u}" class="group flex gap-4 items-start bg-white border border-slate-200 hover:border-gold-500 hover:shadow-glow rounded-xl p-5 h-full transition-all"><span class="w-10 h-10 shrink-0 rounded-lg bg-gold-50 border border-gold-200 text-gold-700 group-hover:bg-gold-100 group-hover:border-gold-500/50 flex items-center justify-center transition-colors">${ic(i, 'w-5 h-5')}</span><span class="min-w-0"><span class="block font-semibold text-navy-900 group-hover:text-gold-700">${esc(t)}</span><span class="block text-sm text-slate-600 mt-1 leading-relaxed">${esc(x)}</span></span></a></li>`
         )
         .join('')}
     </ul>
