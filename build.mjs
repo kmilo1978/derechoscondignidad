@@ -639,8 +639,8 @@ const casesBlock = () =>
             </div>
             <div class="pt-5 sm:pt-6 grid lg:grid-cols-[1.35fr_0.65fr] gap-6 lg:gap-8 items-start">
               <div class="space-y-4">
-                ${c.context ? `<div><p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5">Contexto del proceso</p><p class="text-base text-slate-600 leading-relaxed">${rich(c.context)}</p></div>` : ''}
-                ${c.work ? `<div><p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5">Rol de Derechos con Dignidad</p><p class="text-base text-slate-600 leading-relaxed">${rich(c.work)}</p></div>` : ''}
+                ${c.context ? `<div><p class="text-xs font-semibold uppercase tracking-wider text-gold-700 mb-1.5">Contexto del proceso</p><p class="text-base text-slate-600 leading-relaxed">${rich(c.context)}</p></div>` : ''}
+                ${c.work ? `<div><p class="text-xs font-semibold uppercase tracking-wider text-gold-700 mb-1.5">Rol de Derechos con Dignidad</p><p class="text-base text-slate-600 leading-relaxed">${rich(c.work)}</p></div>` : ''}
               </div>
               <div class="space-y-5">
                 ${c.result ? `<div class="bg-slate-50 border-l-4 border-gold-500 rounded-r-xl p-4"><p class="text-xs font-semibold uppercase tracking-wider text-gold-700 mb-1">Resultado y estado</p><p class="text-sm text-navy-900 leading-relaxed font-medium">${rich(c.result)}</p></div>` : ''}
