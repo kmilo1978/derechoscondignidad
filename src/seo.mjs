@@ -284,5 +284,17 @@ export const HUB_FAQS = {
       '¿En qué horario atienden y dónde están ubicados?',
       'Contamos con disponibilidad 24/7 a través de la línea (604) 557 5073, la burbuja de WhatsApp y el formulario confidencial, con oficina física en Calle 53 # 45-112, Edificio Centro Colseguros, Medellín.',
     ],
+    [
+      '¿Atienden casos fuera de Medellín o en otras zonas de Colombia?',
+      'Sí. Aunque nuestra sede principal está en el centro de Medellín, acompañamos por teléfono, videollamada y WhatsApp a víctimas y familias en todos los departamentos de Colombia y en el exterior ante instancias nacionales e internacionales.',
+    ],
+    [
+      '¿Cómo protegen la confidencialidad de mi caso y mis datos?',
+      'Toda consulta está protegida por la reserva profesional de la abogacía y por nuestra política de tratamiento de datos conforme a la Ley 1581 de 2012. Solo el equipo jurídico asignado revisa la información suministrada.',
+    ],
+    [
+      '¿Qué información conviene tener a la mano antes de escribir o llamar?',
+      'No necesitas documentos completos para recibir la primera orientación: basta con explicar brevemente qué ocurrió, la fecha aproximada, el municipio o lugar y si existe denuncia o proceso previo en Fiscalía, JEP o Juzgado Administrativo.',
+    ],
   ],
 };
