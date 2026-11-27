@@ -73,7 +73,7 @@ export const POOLS = {
     ['¿Cómo verifico a un abogado?', 'Solicita su nombre completo y tarjeta profesional, y verifica en fuentes oficiales su vigencia y antecedentes.'],
   ],
   contacto: [
-    ['¿Cuál es la forma más rápida de contactarlos?', 'Llamando al (604) 557 5073. El formulario también sirve para dejar tu caso resumido y que te contactemos.'],
+    ['¿Cuál es la forma más rápida de contactarlos?', 'Llamando al +57 (604) 557 5073. El formulario también sirve para dejar tu caso resumido y que te contactemos.'],
     ['¿Qué información debo tener a la mano?', 'Fecha y lugar del accidente, si hubo lesionados, si la autoridad hizo informe, datos del otro vehículo y los documentos médicos que tengas.'],
     ['¿La primera orientación compromete a algo?', 'No. Es una conversación inicial para entender tu caso y explicarte opciones, sin presiones.'],
     ['¿Mis datos están protegidos?', 'Tus datos se tratan conforme a la política de privacidad y a la autorización que aceptas. Puedes solicitar su actualización o supresión.'],

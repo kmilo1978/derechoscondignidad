@@ -41,7 +41,7 @@ export const PAGE_SEO = {
     desc: 'Primera consulta gratuita y confidencial en Medellín (Calle 53 # 45-112) y atención nacional 24/7. Solicita orientación jurídica para víctimas del Estado.',
     heroAlt: 'Oficina de Derechos con Dignidad en el centro de Medellín para orientación jurídica confidencial',
     answer:
-      'La primera consulta es gratuita y confidencial las 24 horas. Puedes comunicarte desde Medellín (Calle 53 # 45-112, Edificio Centro Colseguros) o desde cualquier ciudad de Colombia al teléfono (604) 557 5073, por el formulario confidencial o mediante la burbuja de WhatsApp.',
+      'La primera consulta es gratuita y confidencial las 24 horas. Puedes comunicarte desde Medellín (Calle 53 # 45-112, Edificio Centro Colseguros) o desde cualquier ciudad de Colombia al teléfono +57 (604) 557 5073, por el formulario confidencial o mediante la burbuja de WhatsApp.',
   },
   '/colabora/': {
     title: 'Ayúdanos a llegar a más personas | Derechos con Dignidad',
@@ -301,7 +301,7 @@ export const HUB_FAQS = {
     ],
     [
       '¿En qué horario atienden y dónde están ubicados?',
-      'Contamos con disponibilidad 24/7 a través de la línea (604) 557 5073, la burbuja de WhatsApp y el formulario confidencial, con oficina física en Calle 53 # 45-112, Edificio Centro Colseguros, Medellín.',
+      'Contamos con disponibilidad 24/7 a través de la línea +57 (604) 557 5073, la burbuja de WhatsApp y el formulario confidencial, con oficina física en Calle 53 # 45-112, Edificio Centro Colseguros, Medellín.',
     ],
     [
       '¿Atienden casos fuera de Medellín o en otras zonas de Colombia?',
@@ -319,7 +319,7 @@ export const HUB_FAQS = {
   '/colabora/': [
     [
       '¿Cómo puedo recomendar a alguien que necesita orientación jurídica?',
-      'Puedes compartirle directamente el enlace de nuestra página web, indicarle nuestra línea de atención 24/7 (604) 557 5073 o invitarle a escribir desde la sección de contacto para recibir una primera orientación gratuita y confidencial.',
+      'Puedes compartirle directamente el enlace de nuestra página web, indicarle nuestra línea de atención 24/7 +57 (604) 557 5073 o invitarle a escribir desde la sección de contacto para recibir una primera orientación gratuita y confidencial.',
     ],
     [
       '¿Cómo pueden colaborar organizaciones sociales o comunitarias con Derechos con Dignidad?',
