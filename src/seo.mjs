@@ -224,7 +224,7 @@ export function areaFaqs(slug, area) {
   }
   faqs.push([
     '¿La consulta inicial tiene costo o compromete la confidencialidad?',
-    'La primera orientación jurídica es gratuita y se maneja bajo estricta confidencialidad y reserva profesional, con disponibilidad 24/7 desde Medellín para todo el país.',
+    'La primera orientación jurídica es gratuita y se maneja bajo estricta confidencialidad y reserva profesional, con disponibilidad 24/7 por WhatsApp desde Medellín para todo el país.',
   ]);
   return faqs;
 }
@@ -320,6 +320,14 @@ export const HUB_FAQS = {
     [
       '¿Cómo puedo recomendar a alguien que necesita orientación jurídica?',
       'Puedes compartirle directamente el enlace de nuestra página web, invitarle a escribirnos por WhatsApp 24/7, llamarnos al +57 604 557 5073 o ingresar a la sección de contacto para recibir una primera orientación gratuita y confidencial.',
+    ],
+    [
+      '¿La persona recomendada tiene que pagar por la primera orientación jurídica?',
+      'No. La primera consulta es gratuita y confidencial para cualquier víctima, familiar o persona que necesite evaluar una posible demanda contra el Estado, una violación de derechos humanos o una solicitud de reparación integral.',
+    ],
+    [
+      '¿En qué temas jurídicos puede recibir apoyo quien nos contacte?',
+      'Atendemos consultas sobre crímenes de Estado, falsos positivos, desaparición forzada, tortura, homicidio de líderes sociales o firmantes de paz, privación injusta de la libertad, indemnizaciones y representación ante la JEP o la CIDH.',
     ],
     [
       '¿Cómo pueden colaborar organizaciones sociales o comunitarias con Derechos con Dignidad?',

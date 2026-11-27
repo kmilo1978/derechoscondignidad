@@ -1265,10 +1265,17 @@ function nosotrosPage() {
     }) +
     `<div class="max-w-7xl mx-auto px-6 py-14 space-y-12">
       <div class="max-w-4xl">${answerBox(PAGE_SEO['/nosotros/'].answer)}</div>
-      <section class="max-w-3xl">
-        ${h2('Enfoque interdisciplinario de Derechos con Dignidad')}
-        <p class="leading-relaxed text-slate-600">${rich(`En ${SITE.name} trabajamos como un equipo interdisciplinario enfocado en varias ramas del derecho, articulando el derecho administrativo y la reparación directa, el derecho penal, el derecho constitucional, la justicia transicional y el derecho internacional de los derechos humanos.`)}</p>
-        <p class="leading-relaxed text-slate-600 mt-4">${rich('Acompañamos a víctimas de crímenes de Estado y violaciones graves de derechos humanos con rigor probatorio, absoluta confidencialidad y respeto humano ante la jurisdicción contencioso-administrativa, el Consejo de Estado, la Corte Constitucional, la Fiscalía General de la Nación, la JEP y el Sistema Interamericano de Derechos Humanos (CIDH y Corte IDH).')}</p>
+      <section class="max-w-4xl space-y-6">
+        <div>
+          ${h2('Enfoque interdisciplinario de Derechos con Dignidad')}
+          <p class="leading-relaxed text-slate-600">${rich(`En ${SITE.name} trabajamos como un equipo interdisciplinario enfocado en varias ramas del derecho, articulando el derecho administrativo y la reparación directa, el derecho penal, el derecho constitucional, la justicia transicional y el derecho internacional de los derechos humanos.`)}</p>
+          <p class="leading-relaxed text-slate-600 mt-4">${rich('Acompañamos a víctimas de crímenes de Estado y violaciones graves de derechos humanos con rigor probatorio, absoluta confidencialidad y respeto humano ante la jurisdicción contencioso-administrativa, el Consejo de Estado, la Corte Constitucional, la Fiscalía General de la Nación, la JEP y el Sistema Interamericano de Derechos Humanos (CIDH y Corte IDH).')}</p>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-4 pt-2">
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5"><p class="font-semibold text-navy-900">Análisis entre varias ramas</p><p class="mt-1.5 text-sm text-slate-600 leading-relaxed">Estudiamos cada caso desde lo penal, administrativo, constitucional e internacional para no perder ninguna vía de defensa.</p></div>
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5"><p class="font-semibold text-navy-900">Rigor probatorio y seguimiento</p><p class="mt-1.5 text-sm text-slate-600 leading-relaxed">Nuestros abogados y ayudantes jurídicos organizan documentos, plazos y actuaciones ante cada despacho sin descuidar detalles.</p></div>
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5"><p class="font-semibold text-navy-900">Medellín y cobertura nacional</p><p class="mt-1.5 text-sm text-slate-600 leading-relaxed">Desde nuestra sede en el centro de Medellín representamos a víctimas y familiares en toda Colombia y el exterior.</p></div>
+        </div>
       </section>
       ${teamHtml()}
       <div class="max-w-4xl">${hubFaqSection('/nosotros/')}</div>

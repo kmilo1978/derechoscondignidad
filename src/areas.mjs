@@ -248,7 +248,8 @@ export const AREAS = {
     sub: 'Ayudamos a víctimas y familiares a obtener reparaciones económicas justas, sostenibles y legalmente reconocidas.',
     intro: [
       'Si has sido víctima de un crimen de Estado, violencia institucional, privación injusta de la libertad o negligencia estatal, puedes acceder a una indemnización económica estable, otorgada por el Estado colombiano como parte del deber de reparar el daño causado.',
-      'Estas indemnizaciones no son subsidios, favores ni auxilios: son reconocimientos jurídicos derivados de una responsabilidad legal. En Derechos con Dignidad, nos encargamos de que ese derecho se materialice sin demoras ni abusos.',
+      'Estas indemnizaciones no son subsidios, favores ni auxilios: son reconocimientos jurídicos derivados de una responsabilidad legal establecida en el artículo 90 de la Constitución Política. En Derechos con Dignidad, nos encargamos de que ese derecho se materialice sin demoras ni abusos.',
+      'Además de la compensación económica, la reparación integral en casos graves de derechos humanos exige medidas de verdad, justicia, rehabilitación y garantías de no repetición que protejan a todo el núcleo familiar.',
     ],
     listTitle: '¿Qué es una indemnización estable?',
     listItems: [
@@ -270,6 +271,11 @@ export const AREAS = {
       'Familiares de víctimas de falsos positivos, desaparición forzada o tortura',
       'Sobrevivientes de masacres, desplazamientos o represión estatal',
       'Víctimas de negligencia institucional en salud, justicia o seguridad',
+    ],
+    closingTitle: 'Criterios jurídicos y plazos para reclamar tu indemnización',
+    closingText: [
+      'La compensación económica se calcula según los perjuicios probados ante los jueces administrativos y el Consejo de Estado: daño moral, daño emergente (gastos derivados de los hechos), lucro cesante (ingresos dejados de percibir por la víctima o su familia) y afectación a la salud o al proyecto de vida.',
+      'En cuanto al plazo legal para demandar, la regla general de caducidad de la reparación directa es de dos años; sin embargo, en crímenes de lesa humanidad, desaparición forzada o graves violaciones de derechos humanos (como en el precedente Sentencia SU-168 de 2023 ante la Corte Constitucional y la CIDH), rigen criterios especiales que protegen el acceso a la justicia. Por eso revisamos cada caso de forma individual y confidencial.',
     ],
     quote: 'Una indemnización justa no borra el daño, pero sí reconoce tu dignidad y tu derecho a rehacer tu vida.',
     ctaNote: 'Te asesoramos gratis, de forma confidencial, y te representamos hasta lograr tu reparación.',
@@ -485,7 +491,8 @@ export const AREAS = {
     title: 'Demandas contra el Estado colombiano',
     sub: 'Abogados especialistas para víctimas de violencia institucional, desplazamiento forzado y crímenes cometidos por agentes del Estado.',
     intro: [
-      'En Colombia, muchas personas han sufrido a manos de instituciones que debían protegerlas. Desde abusos policiales y asesinatos cometidos por miembros del Ejército, hasta desapariciones forzadas y masacres encubiertas, el Estado ha sido responsable de miles de casos de violencia institucional que aún claman justicia.',
+      'En Colombia, muchas personas han sufrido daños graves a manos de instituciones que debían protegerlas. Desde abusos policiales y asesinatos cometidos por miembros del Ejército, hasta desapariciones forzadas y masacres encubiertas, el Estado ha sido responsable de miles de casos de violencia institucional que aún claman justicia.',
+      'Con fundamento en el artículo 90 de la Constitución Política, el Estado responde patrimonialmente por los daños antijurídicos causados por la acción u omisión de sus agentes. Nuestro trabajo consiste en estructurar la demanda de reparación directa y coordinar las acciones penales, ante la JEP o ante el sistema interamericano cuando la justicia interna falla.',
     ],
     listTitle: 'Casos comunes de responsabilidad del Estado',
     listItems: [
@@ -501,6 +508,17 @@ export const AREAS = {
       ['Demandas de reparación directa', 'Representamos a víctimas y familiares ante la jurisdicción contencioso-administrativa y el Consejo de Estado.'],
       ['Acciones ante el sistema interamericano', 'Llevamos el caso ante la Comisión y la Corte Interamericana de Derechos Humanos cuando el Estado colombiano niega justicia o protege a los responsables.'],
       ['Acompañamiento integral en cada etapa', 'Brindamos orientación legal, apoyo emocional y representación jurídica estratégica.'],
+    ],
+    extraListTitle: '¿Qué elementos revisamos antes de presentar la demanda?',
+    extraListItems: [
+      'Acreditación del daño antijurídico sufrido por la víctima directa o su núcleo familiar',
+      'Prueba de la participación, omisión o incumplimiento del deber de protección estatal',
+      'Nexo causal respaldado con documentos oficiales, testimonios y dictámenes periciales',
+      'Análisis de caducidad y viabilidad conjunta ante el Consejo de Estado, la JEP o la CIDH',
+    ],
+    closingTitle: 'Litigio estratégico en instancias nacionales e internacionales',
+    closingText: [
+      'Cada demanda contra el Estado exige proteger las pruebas desde el primer día y elegir la ruta procesal adecuada. Evaluamos si corresponde acudir ante los juzgados administrativos y el Consejo de Estado, impulsar la acreditación de víctimas ante la JEP o presentar peticiones ante la CIDH y la Corte IDH cuando persiste la impunidad.',
     ],
     quote: 'Si perdiste a un ser querido por culpa de agentes del Estado, no estás solo. Hay un camino legal para exigir verdad, justicia y reparación.',
     ctaNote: 'Atendemos 24/7 con respeto, humanidad y total confidencialidad.',
