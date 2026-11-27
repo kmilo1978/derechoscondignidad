@@ -904,17 +904,7 @@ function home() {
   </div>
 </section>
 
-<section class="py-16 bg-white">
-  <div class="max-w-7xl mx-auto px-6">
-    ${teamHtml()}
-    <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
-      ${pending('perfiles detallados, tarjeta profesional y enlaces de LinkedIn de cada integrante del equipo.')}
-      <a href="/nosotros/" class="text-sm font-semibold text-navy-900 hover:text-gold-700 inline-flex items-center gap-1">Ver página del equipo ${ic('arrow', 'w-4 h-4')}</a>
-    </div>
-  </div>
-</section>
-
-<section class="py-16 bg-slate-50 border-y border-slate-200" id="casos">
+<section class="py-16 bg-white border-t border-slate-200" id="casos">
   <div class="max-w-7xl mx-auto px-6">
     <div class="flex flex-wrap items-end justify-between gap-4 mb-6">
       <div>
@@ -927,7 +917,7 @@ function home() {
   </div>
 </section>
 
-<section class="py-16 bg-white">
+<section class="pb-16 pt-2 bg-white">
   <div class="max-w-7xl mx-auto px-6">
     ${entitiesSection(ENTITIES.filter((e) => ['jep', 'cidh', 'corte-idh', 'consejo-estado', 'corte-constitucional', 'fiscalia'].includes(e.id)), 'Estamentos del Estado y organismos internacionales')}
   </div>
