@@ -43,6 +43,13 @@ export const PAGE_SEO = {
     answer:
       'La primera consulta es gratuita y confidencial las 24 horas. Puedes comunicarte desde Medellín (Calle 53 # 45-112, Edificio Centro Colseguros) o desde cualquier ciudad de Colombia al teléfono (604) 557 5073, por el formulario confidencial o mediante la burbuja de WhatsApp.',
   },
+  '/colabora/': {
+    title: 'Ayúdanos a llegar a más personas | Derechos con Dignidad',
+    desc: 'Tu recomendación puede abrir nuevas oportunidades para quienes necesitan orientación jurídica. Conoce cómo participar y colaborar con Derechos con Dignidad.',
+    heroAlt: 'Red de colaboración comunitaria para ampliar el acceso a la justicia y los derechos humanos - Derechos con Dignidad',
+    answer:
+      'Puedes ayudar a ampliar el acceso a la justicia recomendando nuestros servicios a familiares y conocidos, compartiendo esta página web y nuestros contenidos informativos, conectando nuestra labor con organizaciones sociales o proponiendo colaboración directa con nuestro equipo.',
+  },
   '/politica-de-privacidad/': {
     title: 'Política de privacidad | Derechos con Dignidad',
     desc: 'Política de privacidad y protección de datos personales de Derechos con Dignidad conforme a la Ley 1581 de 2012 en Colombia.',
@@ -295,6 +302,16 @@ export const HUB_FAQS = {
     [
       '¿Qué información conviene tener a la mano antes de escribir o llamar?',
       'No necesitas documentos completos para recibir la primera orientación: basta con explicar brevemente qué ocurrió, la fecha aproximada, el municipio o lugar y si existe denuncia o proceso previo en Fiscalía, JEP o Juzgado Administrativo.',
+    ],
+  ],
+  '/colabora/': [
+    [
+      '¿Cómo puedo recomendar a alguien que necesita orientación jurídica?',
+      'Puedes compartirle directamente el enlace de nuestra página web, indicarle nuestra línea de atención 24/7 (604) 557 5073 o invitarle a escribir desde la sección de contacto para recibir una primera orientación gratuita y confidencial.',
+    ],
+    [
+      '¿Cómo pueden colaborar organizaciones sociales o comunitarias con Derechos con Dignidad?',
+      'Las organizaciones sociales, colectivos de víctimas o líderes comunitarios pueden ponerse en contacto con nuestro equipo o visitar nuestra sede en Medellín (Calle 53 # 45-112, Edificio Centro Colseguros) para conversar sobre vías de articulación y acompañamiento.',
     ],
   ],
 };

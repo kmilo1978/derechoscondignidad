@@ -201,6 +201,7 @@ function footer() {
     <div class="md:col-span-1">
       <a href="/" class="inline-flex bg-white rounded-lg px-3 py-2" aria-label="${esc(SITE.name)} - Inicio">${logoImg('h-10 w-auto')}</a>
       <p class="mt-4 text-sm text-slate-300 leading-relaxed">Defendemos sus derechos con valentía y compromiso. Justicia para las víctimas de crímenes de Estado.</p>
+      <a href="/colabora/" class="mt-4 inline-flex items-center gap-1.5 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold text-xs px-4 py-2 rounded-lg transition-colors">Ayúdanos a llegar a más personas ${ic('arrow', 'w-3.5 h-3.5')}</a>
     </div>
     <div>
       <p class="text-white text-xs font-semibold uppercase tracking-widest mb-4">Áreas y procesos</p>
@@ -352,6 +353,7 @@ const HERO_MAP = {
   '/nosotros/': 'hero-equipo.webp',
   '/casos/': 'hero-casos.webp',
   '/contacto/': 'hero-contacto.webp',
+  '/colabora/': 'hero-lideres.webp',
   '/politica-de-privacidad/': 'hero-legal.webp',
   '/tratamiento-de-datos/': 'hero-legal.webp',
   '/terminos-de-uso/': 'hero-legal.webp',
@@ -1419,6 +1421,73 @@ function contactoPage() {
   });
 }
 
+// ---------- AYÚDANOS A LLEGAR A MÁS PERSONAS / COLABORA ----------
+function colaboraPage() {
+  const crumbs = [['Inicio', '/'], ['Ayúdanos a llegar a más personas', '/colabora/']];
+  const formas = [
+    ['users', 'Recomienda nuestros servicios a familiares, amigos y conocidos.'],
+    ['external', 'Comparte nuestra página web y nuestros contenidos informativos.'],
+    ['shield', 'Conecta nuestra labor con organizaciones sociales y comunitarias.'],
+    ['scale', 'Ayúdanos a ampliar nuestra red de personas que creen en la defensa de los derechos humanos.'],
+  ];
+  const body =
+    pageHero({
+      url: '/colabora/',
+      h1: 'Ayúdanos a llegar a más personas',
+      sub: 'Tu recomendación puede abrir nuevas oportunidades para quienes necesitan orientación jurídica.',
+      ctas: false,
+    }) +
+    `<div class="max-w-5xl mx-auto px-6 py-12 md:py-16 space-y-12">
+      ${answerBox(PAGE_SEO['/colabora/'].answer)}
+
+      <section class="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 space-y-4">
+        <h2 class="text-2xl md:text-3xl font-semibold text-navy-900 tracking-tight">El acceso a la justicia comienza con la información</h2>
+        <p class="leading-relaxed text-slate-600">En Derechos con Dignidad creemos que el acceso a la justicia comienza con el conocimiento de los derechos y la posibilidad de encontrar acompañamiento jurídico especializado.</p>
+        <p class="leading-relaxed text-slate-600">Por eso, queremos invitarte a ser parte de nuestra labor, compartiendo nuestros servicios con personas, familias y organizaciones que puedan necesitar orientación jurídica.</p>
+      </section>
+
+      <section aria-labelledby="h-como-participar" class="space-y-6">
+        <h2 id="h-como-participar" class="text-2xl md:text-3xl font-semibold text-navy-900 tracking-tight">¿Cómo puedes participar?</h2>
+        <ul class="grid sm:grid-cols-2 gap-4">
+          ${formas
+            .map(
+              ([icon, texto]) =>
+                `<li class="bg-white border border-slate-200 rounded-2xl p-6 flex items-start gap-4"><span class="w-10 h-10 rounded-lg bg-gold-50 border border-gold-200 text-gold-700 flex items-center justify-center shrink-0">${ic(icon, 'w-5 h-5')}</span><span class="text-navy-900 font-medium leading-relaxed">${esc(texto)}</span></li>`
+            )
+            .join('')}
+        </ul>
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-3 text-slate-600 leading-relaxed">
+          <p class="font-medium text-navy-900">Creemos en el valor de las conexiones y en las oportunidades que surgen cuando trabajamos juntos.</p>
+          <p>Cada recomendación contribuye a que nuestra labor llegue más lejos y a que más personas conozcan las alternativas jurídicas disponibles para la defensa de sus derechos.</p>
+        </div>
+      </section>
+
+      <section aria-labelledby="h-colaboracion" class="bg-navy-900 text-white rounded-3xl p-6 sm:p-8 md:p-10 space-y-5">
+        <p class="text-gold-500 text-xs font-semibold uppercase tracking-[0.2em]">Alianzas y colaboración</p>
+        <h2 id="h-colaboracion" class="text-2xl md:text-3xl font-semibold tracking-tight">¿Te interesa establecer una relación de colaboración con Derechos con Dignidad?</h2>
+        <p class="text-slate-300 leading-relaxed">Nos interesa conocer personas y organizaciones que quieran contribuir a ampliar nuestro alcance y construir nuevas oportunidades de colaboración.</p>
+        <p class="text-slate-300 leading-relaxed">Te invitamos a visitar nuestras instalaciones o ponerte en contacto con nuestro equipo para conversar sobre posibles formas de colaboración.</p>
+        <div class="pt-2 flex flex-wrap gap-3">
+          <a href="/contacto/#formulario" class="${goldBtn}">Contactar con nuestro equipo ${ic('arrow', 'w-4 h-4')}</a>
+          <a href="/contacto/#mapa" class="${outlineBtn}">${ic('pin', 'w-4 h-4')}Visitar nuestras instalaciones</a>
+        </div>
+        <p class="text-xs text-slate-300 pt-2 border-t border-white/10">Sede Medellín: ${esc(SITE.address)} · Línea de atención: ${esc(SITE.phone)}${SITE.email ? ` · Correo: ${esc(SITE.email)}` : ''}</p>
+      </section>
+
+      ${hubFaqSection('/colabora/')}
+    </div>` +
+    ctaFinal();
+
+  render({
+    url: '/colabora/',
+    title: PAGE_SEO['/colabora/'].title,
+    desc: PAGE_SEO['/colabora/'].desc,
+    body,
+    crumbs,
+    schema: [faqSchema(HUB_FAQS['/colabora/'])],
+  });
+}
+
 // ---------- PÁGINAS LEGALES ----------
 const renderBlocks = (blocks) =>
   blocks
@@ -1558,6 +1627,7 @@ Object.keys(AREAS).forEach(areaPage);
 nosotrosPage();
 casosPage();
 contactoPage();
+colaboraPage();
 legales();
 notFoundPage();
 
@@ -1716,7 +1786,7 @@ ErrorDocument 404 /404.html
       '## Estamentos del Estado y organismos oficiales',
       entitiesMd,
       '## Páginas institucionales y legales',
-      [`- [Nuestro equipo](${SITE.url}/nosotros/)`, `- [Casos relevantes](${SITE.url}/casos/)`, `- [Contacto y asesoría](${SITE.url}/contacto/)`, legalMd].join('\n'),
+      [`- [Nuestro equipo](${SITE.url}/nosotros/)`, `- [Casos relevantes](${SITE.url}/casos/)`, `- [Contacto y asesoría](${SITE.url}/contacto/)`, `- [Ayúdanos a llegar a más personas](${SITE.url}/colabora/)`, legalMd].join('\n'),
       '## Documentación completa para asistentes de IA',
       `- [Contenido completo en Markdown](${SITE.url}/llms-full.txt)`,
     ].join('\n\n') + '\n'
