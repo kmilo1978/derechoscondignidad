@@ -8,7 +8,7 @@ export const SITE = {
   nit: '',
   phone: '+57 604 557 5073',
   phoneDial: '+576045575073',
-  whatsapp: '', // solo dígitos con indicativo, ej. '573001234567'
+  whatsapp: '576045575073', // solo dígitos con indicativo, ej. '573001234567'
   email: 'contacto@tu-dominio.com',
   street: 'Calle 53 # 45-112',
   address: 'Calle 53 # 45-112, Edificio Centro Colseguros, Medellín, Antioquia',

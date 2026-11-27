@@ -151,12 +151,13 @@ function header() {
   <div class="max-w-7xl 2xl:max-w-[1440px] mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-3 sm:gap-4 2xl:gap-8">
     <a href="/" class="flex items-center shrink-0" aria-label="${esc(SITE.name)} - Inicio"><span class="bg-white rounded-lg px-2.5 sm:px-3 py-1 sm:py-1.5 flex items-center">${logoImg('h-8 sm:h-10 w-auto')}</span></a>
     <nav class="hidden xl:flex flex-1 justify-center items-center gap-1 2xl:gap-2 min-w-0" aria-label="Principal">${desk}</nav>
-    <div class="hidden xl:flex items-center gap-3 shrink-0">
-      <button type="button" data-open-search class="inline-flex items-center justify-between gap-3 px-3.5 py-2 text-xs 2xl:text-sm text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/15 hover:border-white/30 rounded-xl transition-all cursor-pointer w-48 2xl:w-56" aria-label="Buscar en el sitio (Ctrl+K)">
+    <div class="hidden xl:flex items-center gap-2.5 shrink-0">
+      <button type="button" data-open-search class="inline-flex items-center justify-between gap-2.5 px-3 py-2 text-xs 2xl:text-sm text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/15 hover:border-white/30 rounded-xl transition-all cursor-pointer w-40 2xl:w-52" aria-label="Buscar en el sitio (Ctrl+K)">
         <span class="flex items-center gap-2 text-slate-300 truncate">${ic('search', 'w-4 h-4 text-gold-500 shrink-0')}<span class="truncate">Buscar en el sitio...</span></span>
         <kbd class="px-1.5 py-0.5 text-[10px] bg-white/10 text-slate-300 rounded border border-white/15 font-mono shrink-0">Ctrl K</kbd>
       </button>
-      ${btnWA('WhatsApp', '!py-2.5 !px-5 text-sm', 'header')}
+      <a href="${telLink}" data-track="call" data-loc="header" class="inline-flex items-center justify-center gap-1.5 border border-white/25 hover:border-gold-500 hover:bg-white/10 text-white font-medium py-2.5 px-3.5 rounded-lg text-xs 2xl:text-sm transition-colors whitespace-nowrap" aria-label="Llamar al ${esc(SITE.phone)}">${ic('phone', 'w-4 h-4 text-gold-500')}Llamar</a>
+      ${btnWA('WhatsApp', '!py-2.5 !px-4 text-xs 2xl:text-sm whitespace-nowrap', 'header')}
     </div>
     <div class="flex xl:hidden items-center gap-1">
       <button type="button" data-open-search class="text-white w-11 h-11 inline-flex items-center justify-center rounded-lg hover:bg-white/10 hover:text-gold-500 transition-colors cursor-pointer" aria-label="Buscar en el sitio">
@@ -176,7 +177,7 @@ function header() {
       </button>
     </div>
     <nav aria-label="Menú móvil"><ul>${mob}</ul></nav>
-    <div class="pt-5">${btnWA('Escríbenos por WhatsApp', 'w-full', 'menu')}</div>
+    <div class="pt-5 flex flex-col gap-2.5">${btnWA('Escríbenos por WhatsApp', 'w-full', 'menu')}<a href="${telLink}" data-track="call" data-loc="menu" class="inline-flex items-center justify-center gap-2 border border-white/25 hover:bg-white/10 text-white font-medium px-6 py-3 rounded-lg transition-colors w-full">${ic('phone')}Llamar al ${esc(SITE.phone)}</a></div>
   </div>
 </header>`;
 }
@@ -228,6 +229,7 @@ function footer() {
         <li class="flex gap-2">${ic('pin', 'w-4 h-4 mt-0.5 text-gold-500 shrink-0')}<a href="/contacto/#mapa" class="hover:text-gold-500 underline underline-offset-2">${SITE.address ? esc(SITE.address) : 'Medellín, Antioquia'}</a></li>
         <li class="flex gap-2">${ic('external', 'w-4 h-4 mt-0.5 text-gold-500 shrink-0')}<a href="${esc(SITE.mapUrl)}" target="_blank" rel="noopener noreferrer" class="hover:text-gold-500 underline underline-offset-2">Ver mapa en Google Maps</a></li>
         <li class="flex gap-2">${ic('phone', 'w-4 h-4 mt-0.5 text-gold-500 shrink-0')}<a href="${telLink}" class="hover:text-gold-500" data-track="call" data-loc="footer">${hasPhone ? esc(SITE.phone) : 'Ver página de contacto'}</a></li>
+        ${hasWA ? `<li class="flex gap-2">${ic('chat', 'w-4 h-4 mt-0.5 text-gold-500 shrink-0')}<a href="${waLink()}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-loc="footer" class="hover:text-gold-500 underline underline-offset-2">WhatsApp: ${esc(SITE.phone)}</a></li>` : ''}
         ${SITE.email ? `<li class="flex gap-2">${ic('mail', 'w-4 h-4 mt-0.5 text-gold-500 shrink-0')}<a href="mailto:${esc(SITE.email)}" class="hover:text-gold-500 break-all">Correo: ${esc(SITE.email)}</a></li>` : ''}
       </ul>
     </div>
@@ -283,6 +285,7 @@ function whatsappWidgetHtml() {
         <input id="waEmail" type="email" autocomplete="email" maxlength="120" placeholder="tu@correo.com" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-navy-900 focus:outline-none focus:ring-2 focus:ring-gold-500">
       </div>
       <a id="waSendLink" href="https://wa.me/${esc(waNum)}?text=${encodeURIComponent(defaultMsg)}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-loc="burbuja" class="w-full inline-flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-4 py-2.5 rounded-xl text-sm transition-colors">${ic('chat', 'w-4 h-4')}Enviar por WhatsApp</a>
+      <a href="${telLink}" data-track="call" data-loc="burbuja" class="w-full inline-flex items-center justify-center gap-2 border border-slate-200 hover:border-gold-500 text-navy-900 font-medium px-4 py-2 rounded-xl text-xs transition-colors">${ic('phone', 'w-3.5 h-3.5 text-gold-700')}O llamar al ${esc(SITE.phone)}</a>
     </div>
   </div>
   <button id="waBtn" type="button" aria-expanded="false" aria-controls="waPanel" aria-label="Abrir opciones de consulta por WhatsApp" title="WhatsApp" class="w-14 h-14 inline-flex items-center justify-center bg-gold-500 hover:bg-gold-600 text-navy-900 rounded-full shadow-xl border border-gold-600/40 transition-colors cursor-pointer">${ic('chat', 'w-7 h-7')}</button>
@@ -750,7 +753,7 @@ function contactFormHtml() {
     <div class="flex items-center gap-3 text-green-700"><span class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">${ic('check')}</span><h3 class="text-xl font-semibold text-navy-900">Resumen de tu solicitud</h3></div>
     <p class="mt-3 text-sm text-slate-600">Revisa el resumen. ${hasWA ? 'Puedes enviarlo directamente por WhatsApp.' : 'Puedes copiar este resumen mientras se configura el canal directo de WhatsApp.'}</p>
     <pre data-summary class="mt-4 whitespace-pre-wrap bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm text-slate-700"></pre>
-    <div class="mt-5 flex flex-wrap gap-3"><a data-wa-link target="_blank" rel="noopener noreferrer" class="hidden inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-5 py-3 rounded-lg">${ic('chat')}Enviar por WhatsApp</a><button type="button" data-copy-summary class="border border-slate-300 px-5 py-3 rounded-lg font-medium text-navy-900">Copiar resumen</button><button type="button" data-again class="px-5 py-3 text-sm underline text-navy-900">Enviar otra consulta</button></div>
+    <div class="mt-5 flex flex-wrap gap-3"><a data-wa-link target="_blank" rel="noopener noreferrer" class="hidden inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-navy-900 font-semibold px-5 py-3 rounded-lg">${ic('chat')}Enviar por WhatsApp</a><a href="${telLink}" data-track="call" data-loc="contacto-resumen" class="inline-flex items-center gap-2 border border-navy-900/20 hover:border-gold-500 px-5 py-3 rounded-lg font-medium text-navy-900">${ic('phone', 'w-4 h-4')}Llamar al ${esc(SITE.phone)}</a><button type="button" data-copy-summary class="border border-slate-300 px-5 py-3 rounded-lg font-medium text-navy-900">Copiar resumen</button><button type="button" data-again class="px-5 py-3 text-sm underline text-navy-900">Enviar otra consulta</button></div>
   </div>
 </div>`;
 }
@@ -771,7 +774,7 @@ function home() {
     <div>
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1] text-white">Defendemos a Víctimas del Estado y Luchamos por su Reparación Integral</h1>
       <p class="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-white leading-relaxed max-w-2xl">${rich('Especialistas en Derechos Humanos, CIDH, JEP y crímenes de lesa humanidad.', true)}</p>
-      <div class="mt-9 flex flex-wrap gap-3">${btnWA('Hablar por WhatsApp', '', 'hero')}<a href="#areas" class="inline-flex items-center justify-center gap-2 border border-white/30 hover:bg-white/10 text-white font-medium px-6 py-3.5 rounded-lg transition-colors">Explorar áreas de acción ${ic('down')}</a></div>
+      <div class="mt-9 flex flex-wrap items-center gap-3">${btnWA('Hablar por WhatsApp', '', 'hero')}${btnCall(esc(SITE.phone), '', 'hero')}<a href="#areas" class="inline-flex items-center justify-center gap-1.5 text-sm font-medium text-gold-500 hover:text-white underline underline-offset-4 px-2 py-2 transition-colors">Explorar áreas de acción ${ic('down', 'w-4 h-4')}</a></div>
       <ul class="mt-12 pt-8 border-t border-white/10 grid sm:grid-cols-2 gap-6 text-sm">
         <li class="flex gap-3">${ic('gavel', 'w-5 h-5 text-gold-500 shrink-0')}<span><strong class="block text-white">Defensa Experta</strong>Abogados especializados en litigio contra el Estado.</span></li>
         <li class="flex gap-3">${ic('users', 'w-5 h-5 text-gold-500 shrink-0')}<span><strong class="block text-white">Atención Humana</strong>Acompañamiento empático y personalizado en cada paso.</span></li>
@@ -937,8 +940,8 @@ function home() {
     <h2 class="text-3xl md:text-4xl font-semibold text-navy-900 tracking-tight">Contacto y solicitud de asesoría</h2>
     <p class="mt-3 text-slate-600 max-w-2xl mx-auto">Atención confidencial y gratuita para víctimas y familiares en todo el país, con sede en Medellín.</p>
     <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left">
-      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('chat', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">WhatsApp</p><p class="text-sm mt-1 text-slate-600">${hasWA ? esc(SITE.whatsapp) : 'Número por confirmar'}</p></div>
-      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('phone', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">Teléfono</p><p class="text-sm mt-1 text-slate-600">${hasPhone ? `<a href="${telLink}" class="underline text-navy-900 hover:text-gold-700">${esc(SITE.phone)}</a>` : 'Número por confirmar'}</p></div>
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('chat', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">WhatsApp</p><p class="text-sm mt-1 text-slate-600">${hasWA ? `<a href="${waLink()}" target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-loc="contacto-home" class="underline text-navy-900 hover:text-gold-700 font-medium">${esc(SITE.phone)}</a>` : 'Número por confirmar'}</p></div>
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('phone', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">Teléfono</p><p class="text-sm mt-1 text-slate-600">${hasPhone ? `<a href="${telLink}" data-track="call" data-loc="contacto-home" class="underline text-navy-900 hover:text-gold-700 font-medium">${esc(SITE.phone)}</a>` : 'Número por confirmar'}</p></div>
       <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('mail', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">Correo</p><p class="text-sm mt-1 text-slate-600">${SITE.email ? `<a href="mailto:${esc(SITE.email)}" class="underline text-navy-900 hover:text-gold-700 break-all">${esc(SITE.email)}</a>` : 'Correo por confirmar'}</p></div>
       <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('pin', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">Oficina y horario</p><p class="text-sm mt-1 text-slate-600">${esc(SITE.address)} · ${esc(SITE.hours)}</p></div>
     </div>
@@ -1403,8 +1406,8 @@ function contactoPage() {
         ${hubFaqSection('/contacto/')}
       </div>
       <aside class="space-y-5 lg:sticky lg:top-28" aria-label="Canales de contacto">
-        <div class="bg-white border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('chat', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">WhatsApp</p>${hasWA ? `<p class="mt-3">${btnWA('Escribir', '!py-2.5', 'contacto')}</p>` : `<p class="mt-2 text-sm">${pending('número de WhatsApp.')}</p>`}</div>
-        <div class="bg-white border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('phone', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">Teléfono</p>${hasPhone ? `<p class="mt-2"><a class="underline text-navy-900 hover:text-gold-700" data-track="call" data-loc="contacto" href="${telLink}">${esc(SITE.phone)}</a></p>` : `<p class="mt-2 text-sm">${pending('teléfono.')}</p>`}</div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('chat', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">WhatsApp</p>${hasWA ? `<p class="mt-1 text-sm text-slate-600">${esc(SITE.phone)}</p><p class="mt-3">${btnWA('Escribir por WhatsApp', '!py-2.5 w-full text-sm', 'contacto')}</p>` : `<p class="mt-2 text-sm">${pending('número de WhatsApp.')}</p>`}</div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('phone', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">Teléfono</p>${hasPhone ? `<p class="mt-1 text-sm text-slate-600">${esc(SITE.phone)}</p><p class="mt-3"><a class="w-full inline-flex items-center justify-center gap-2 border border-navy-900/20 hover:border-gold-500 text-navy-900 font-semibold px-4 py-2.5 rounded-lg text-sm transition-colors" data-track="call" data-loc="contacto" href="${telLink}">${ic('phone', 'w-4 h-4 text-gold-700')}Llamar ahora</a></p>` : `<p class="mt-2 text-sm">${pending('teléfono.')}</p>`}</div>
         <div class="bg-white border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('mail', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">Correo</p>${SITE.email ? `<p class="mt-2 text-sm"><a class="underline text-navy-900 hover:text-gold-700 break-all" href="mailto:${esc(SITE.email)}">${esc(SITE.email)}</a></p>` : `<p class="mt-2 text-sm">${pending('correo electrónico.')}</p>`}</div>
         <div class="bg-white border border-slate-200 rounded-2xl p-6"><span class="text-gold-700">${ic('pin', 'w-6 h-6')}</span><p class="mt-3 font-semibold text-navy-900">Oficina en Medellín</p><p class="mt-2 text-sm text-slate-600">${esc(SITE.address)}</p><p class="mt-1 text-sm text-slate-500">${esc(SITE.hours)}</p></div>
       </aside>
